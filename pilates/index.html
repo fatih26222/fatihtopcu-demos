@@ -1,0 +1,2963 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>E.YILDIZ — Reformer Pilates Studio</title>
+  <meta name="description" content="Pilates, beslenme ve takip tek planda birleşir. E.YILDIZ ile sistemli dönüşüm.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================
+       BASE — Color System Maturity
+       ========================================================== */
+    :root {
+      /* Dark palette (warm espresso) */
+      --dark:        #0D0A07;
+      --dark-1:      #141008;
+      --dark-2:      #1C160E;
+      --dark-3:      #251E14;
+      --graphite:    #251E14;
+
+      /* Light palette (natural cream + linen) */
+      --cream:       #F7F3EC;
+      --cream-2:     #EEE7D9;
+      --cream-3:     #E0D5C1;
+      --sand:        #E0D5C1;
+
+      /* Text on dark */
+      --on-dark:        #FAF6F0;
+      --on-dark-2:      #EDE4D6;
+      --on-dark-dim:    #9E8E78;
+      --on-dark-mute:   #4E4234;
+
+      /* Text on light */
+      --on-light:       #1A1208;
+      --on-light-2:     #2C2010;
+      --on-light-dim:   #5C4E38;
+      --on-light-mute:  #9C8E7A;
+
+      /* Primary accent (terracotta) */
+      --accent:      #C8622A;
+      --accent-ink:  #1A0800;
+      --accent-glow: rgba(200, 98, 42, 0.16);
+
+      /* Gold — premium label, editorial detail */
+      --bronze:       #B8924A;
+      --bronze-soft:  rgba(184, 146, 74, 0.18);
+      --bronze-line:  rgba(184, 146, 74, 0.35);
+
+      /* Sage — support tone */
+      --steel:        #7A9080;
+      --steel-soft:   rgba(122, 144, 128, 0.16);
+      --steel-line:   rgba(122, 144, 128, 0.32);
+
+      /* Borders */
+      --border-dark:  rgba(200, 98, 42, 0.09);
+      --border-light: rgba(100, 60, 20, 0.09);
+
+      /* Type */
+      --font-display: "Bricolage Grotesque", system-ui, sans-serif;
+      --font-body:    "Manrope", system-ui, sans-serif;
+
+      /* Easing */
+      --ease-out:    cubic-bezier(0.22, 1, 0.36, 1);
+      --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      background: var(--dark);
+      color: var(--on-dark);
+      font-family: var(--font-body);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+    body { min-height: 100vh; }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; background: none; border: 0; color: inherit; cursor: pointer; }
+    ul, ol { list-style: none; }
+    ::selection { background: var(--accent); color: var(--accent-ink); }
+
+    /* Cursor */
+    body.cursor-ready, body.cursor-ready a, body.cursor-ready button { cursor: none; }
+    .cursor {
+      position: fixed; top: 0; left: 0;
+      width: 8px; height: 8px;
+      background: var(--on-dark);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 10000;
+      will-change: transform;
+      mix-blend-mode: difference;
+      opacity: 0;
+      transition: width 0.3s var(--ease-out), height 0.3s var(--ease-out), background 0.3s var(--ease-out), border 0.3s var(--ease-out), opacity 0.2s linear;
+    }
+    body.cursor-ready .cursor { opacity: 1; }
+    .cursor--hover { width: 36px; height: 36px; background: transparent; border: 1px solid var(--accent); mix-blend-mode: normal; }
+    @media (hover: none), (pointer: coarse) {
+      body.cursor-ready, body.cursor-ready a, body.cursor-ready button { cursor: auto !important; }
+      .cursor { display: none !important; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      body.cursor-ready, body.cursor-ready a, body.cursor-ready button { cursor: auto !important; }
+      .cursor { display: none !important; }
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+
+    /* Layout helpers */
+    .container { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 56px); }
+    .eyebrow {
+      font-family: var(--font-body);
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.32em; text-transform: uppercase;
+      color: var(--accent);
+      display: inline-flex; align-items: center; gap: 10px;
+    }
+    .eyebrow::before { content: ''; width: 26px; height: 1px; background: currentColor; }
+    /* Editorial sections use bronze eyebrow */
+    .transformation .eyebrow,
+    .about .eyebrow { color: var(--bronze); }
+    .reveal { opacity: 0; transform: translateY(40px); }
+    .reveal-stagger > * { opacity: 0; transform: translateY(40px); }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 14px 26px; border-radius: 999px;
+      font-family: var(--font-display);
+      font-weight: 600; font-size: 0.95rem; letter-spacing: -0.005em;
+      transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out), background 0.3s, border-color 0.3s;
+      will-change: transform;
+      white-space: nowrap;
+    }
+    .btn--primary { background: var(--accent); color: var(--accent-ink); }
+    .btn--primary:hover { transform: translateY(-2px); box-shadow: 0 18px 40px rgba(200, 98, 42, 0.14); }
+    .btn--ghost { background: transparent; border: 1px solid var(--steel-line); color: var(--on-dark); }
+    .btn--ghost:hover { border-color: var(--steel); }
+    .btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+    /* ==========================================================
+       NAV
+       ========================================================== */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 16px 0;
+      transition: backdrop-filter 0.3s, background 0.3s, border-color 0.3s, color 0.3s;
+      border-bottom: 1px solid transparent;
+    }
+    .nav.is-scrolled {
+      background: rgba(13,10,7,0.82);
+      backdrop-filter: blur(20px) saturate(140%);
+      -webkit-backdrop-filter: blur(20px) saturate(140%);
+      border-bottom-color: var(--border-dark);
+    }
+    .nav.is-on-light {
+      background: rgba(247,243,236,0.90);
+      border-bottom-color: var(--border-light);
+    }
+    .nav.is-on-light .nav__brand { color: var(--on-light); }
+    .nav.is-on-light .nav__link { color: var(--on-light-dim); }
+    .nav.is-on-light .nav__link:hover { color: var(--on-light); }
+    .nav__inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .nav__brand { font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; color: var(--on-dark); display: inline-flex; align-items: baseline; }
+    .nav__brand .dot { color: var(--accent); margin: 0 1px; }
+    .nav__links { display: flex; gap: 28px; }
+    .nav__link { font-family: var(--font-body); font-size: 0.9rem; font-weight: 500; color: var(--on-dark-dim); transition: color 0.25s; }
+    .nav__link:hover { color: var(--on-dark); }
+    .nav__cta { background: var(--accent); color: var(--accent-ink); padding: 10px 20px; border-radius: 999px; font-family: var(--font-body); font-weight: 600; font-size: 0.85rem; transition: transform 0.3s, box-shadow 0.3s; }
+    .nav__cta:hover { transform: translateY(-1px); box-shadow: 0 10px 28px rgba(200, 98, 42, 0.14); }
+    @media (max-width: 768px) { .nav__links { display: none; } }
+
+    /* ==========================================================
+       HERO — REWRITTEN: 3-phase scroll-scrub
+       ========================================================== */
+    .hero {
+      position: relative;
+      min-height: 230vh;
+      background: linear-gradient(180deg, var(--dark) 0%, var(--dark-1) 60%, var(--dark) 100%);
+    }
+    .hero__stage {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      background: var(--dark);
+    }
+
+    /* Atmosphere */
+    .hero__atmosphere { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+    .hero__atmosphere-glow {
+      position: absolute;
+      top: -10%; right: -10%;
+      width: 60%; height: 80%;
+      background: radial-gradient(ellipse at center, var(--accent-glow) 0%, transparent 60%);
+      filter: blur(40px);
+    }
+    .hero__atmosphere-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(to right, rgba(255,255,255,0.022) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.022) 1px, transparent 1px);
+      background-size: 80px 80px;
+      mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+      -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+    }
+    .hero__atmosphere-ring {
+      position: absolute;
+      left: 50%; top: 50%;
+      width: 90vmin; height: 90vmin;
+      max-width: 880px; max-height: 880px;
+      transform: translate(-50%, -50%);
+      border: 1px dashed var(--steel-line);
+      border-radius: 50%;
+      opacity: 0.5;
+      pointer-events: none;
+      animation: ring-rotate 90s linear infinite;
+    }
+    .hero__atmosphere-ring--inner {
+      width: 60vmin; height: 60vmin;
+      max-width: 600px; max-height: 600px;
+      border-style: solid;
+      border-color: var(--steel-soft);
+      animation-duration: 140s;
+      animation-direction: reverse;
+    }
+    @keyframes ring-rotate {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to   { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    /* Phase 1 — Brand Intro overlay */
+    .hero__brand-intro {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 20px;
+      z-index: 6;
+      pointer-events: none;
+    }
+    .hero__brand-rings {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero__brand-ring {
+      position: absolute;
+      width: clamp(280px, 36vw, 540px);
+      height: clamp(280px, 36vw, 540px);
+      border: 1px solid rgba(200, 98, 42, 0.14);
+      border-radius: 50%;
+      will-change: transform, opacity;
+    }
+    .hero__brand-ring--inner {
+      width: clamp(180px, 22vw, 340px);
+      height: clamp(180px, 22vw, 340px);
+      border-color: rgba(200, 98, 42, 0.14);
+    }
+    .hero__brand-word {
+      position: relative; z-index: 1;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(5rem, 18vw, 22rem);
+      line-height: 0.9;
+      letter-spacing: -0.05em;
+      color: #ffffff;
+      will-change: transform, opacity, color;
+    }
+    .hero__brand-word .dot { color: var(--accent); margin: 0 0.02em; }
+    .hero__brand-tag {
+      position: relative; z-index: 1;
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      letter-spacing: 0.36em;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: var(--steel);
+      will-change: transform, opacity;
+    }
+
+    /* Phase 2 + 3 — Final layout (composition) */
+    .hero__layout {
+      position: absolute; inset: 0;
+      display: flex; align-items: center;
+      z-index: 4;
+      padding: clamp(80px, 10vh, 120px) 0 clamp(60px, 8vh, 100px);
+    }
+    .hero__inner {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: clamp(40px, 5vw, 72px);
+      align-items: center;
+    }
+    .hero__content {
+      display: flex; flex-direction: column;
+      gap: clamp(20px, 3vh, 30px);
+      will-change: transform, opacity;
+    }
+    .hero__content > * { will-change: transform, opacity; }
+    .hero__badge {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 6px 16px 6px 8px;
+      border-radius: 999px;
+      background: rgba(200, 98, 42, 0.14);
+      border: 1px solid rgba(200, 98, 42, 0.14);
+      font-family: var(--font-body);
+      font-size: 0.78rem; font-weight: 500;
+      color: var(--accent); letter-spacing: 0.02em;
+      width: fit-content;
+    }
+    .hero__badge .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px rgba(200, 98, 42, 0.14); animation: pulse 2.4s var(--ease-in-out) infinite; flex-shrink: 0; }
+    @keyframes pulse { 0%, 100% { box-shadow: 0 0 0 4px rgba(200, 98, 42, 0.14); } 50% { box-shadow: 0 0 0 9px rgba(200, 98, 42, 0.14); } }
+    .hero__title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(2.4rem, 5.4vw, 5rem);
+      line-height: 0.96;
+      letter-spacing: -0.04em;
+      color: var(--on-dark);
+    }
+    .hero__title .dim { color: var(--on-dark-mute); }
+    .hero__title .accent-dot { color: var(--accent); }
+    .hero__lede { font-family: var(--font-body); font-size: clamp(1rem, 1.2vw, 1.12rem); line-height: 1.6; color: var(--on-dark-dim); max-width: 520px; }
+    .hero__lede strong { color: var(--on-dark); font-weight: 600; }
+    .hero__actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .hero__metrics {
+      display: flex; align-items: center; gap: clamp(20px, 3vw, 36px);
+      margin-top: clamp(8px, 1.5vh, 14px);
+      padding-top: clamp(20px, 3vh, 24px);
+      border-top: 1px solid var(--steel-soft);
+    }
+    .hero__metric { display: flex; flex-direction: column; gap: 4px; }
+    .hero__metric-num { font-family: var(--font-display); font-size: clamp(1.4rem, 1.8vw, 1.7rem); font-weight: 700; color: var(--on-dark); letter-spacing: -0.02em; }
+    .hero__metric-label { font-family: var(--font-body); font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--steel); }
+
+    /* Hero visual stack — layered system field */
+    .hero__visual {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      max-height: 720px;
+      will-change: transform, opacity;
+    }
+    .hero__visual-ghost-ring {
+      position: absolute;
+      inset: -10%;
+      border: 1px dashed var(--steel-line);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.6;
+      animation: ring-rotate-self 80s linear infinite;
+    }
+    @keyframes ring-rotate-self {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+    .hero__visual-ghost-ring::before {
+      content: '';
+      position: absolute;
+      inset: 8%;
+      border: 1px solid var(--steel-soft);
+      border-radius: 50%;
+    }
+
+    /* Auxiliary training image (small, behind/beside main coach) */
+    .hero__visual-aux {
+      position: absolute;
+      bottom: -10px; left: -12px;
+      width: clamp(136px, 15vw, 188px);
+      aspect-ratio: 4/5;
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid var(--bronze-line);
+      box-shadow: 0 32px 68px rgba(0,0,0,0.58), 0 0 0 1px rgba(255,255,255,0.04) inset;
+      z-index: 5;
+      background: #0d0d0d;
+      transform: rotate(-5deg);
+      will-change: transform, opacity;
+    }
+    .hero__visual-aux::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.03), rgba(0,0,0,0.42));
+      z-index: 2;
+    }
+    .hero__visual-aux::after {
+      content: 'TRAINING';
+      position: absolute; bottom: 10px; left: 12px;
+      z-index: 3;
+      font-family: var(--font-body);
+      font-size: 0.58rem; font-weight: 700;
+      letter-spacing: 0.3em;
+      color: var(--bronze);
+    }
+    .hero__visual-aux img { width: 100%; height: 100%; object-fit: cover; object-position: center 28%; filter: grayscale(0.12) brightness(0.94) contrast(1.04); }
+
+    .hero__image-slot {
+      position: relative; z-index: 2;
+      width: 100%; height: 100%;
+      border-radius: 32px;
+      overflow: hidden;
+      background: #0d0d0d;
+      border: 1px solid var(--steel-line);
+      box-shadow:
+        0 60px 120px rgba(0, 0, 0, 0.6),
+        0 0 0 1px rgba(255, 255, 255, 0.03) inset,
+        0 0 100px rgba(200, 98, 42, 0.14);
+    }
+    .hero__image-slot::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.85) 100%);
+      z-index: 2; pointer-events: none;
+    }
+    .hero__image-slot::after {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at top right, rgba(200, 98, 42, 0.14) 0%, transparent 55%);
+      z-index: 2; pointer-events: none; mix-blend-mode: screen;
+    }
+    .hero__image-slot img { width: 100%; height: 100%; object-fit: cover; object-position: center 28%; filter: grayscale(0.18) contrast(1.04) brightness(0.88); }
+    .hero__image-tag {
+      position: absolute; bottom: 24px; left: 24px;
+      z-index: 3;
+      font-family: var(--font-body);
+      font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.72);
+    }
+    .hero__image-tag .accent-mark { color: var(--accent); }
+
+    /* Floating system labels — outside slot edges */
+    .hero__floats { position: absolute; inset: 0; pointer-events: none; z-index: 3; }
+    .float-card {
+      position: absolute;
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 14px;
+      background: rgba(20,16,8,0.94);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--steel-line);
+      border-radius: 999px;
+      font-family: var(--font-body);
+      font-size: 0.78rem; font-weight: 500; color: var(--on-dark);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      white-space: nowrap;
+      will-change: transform, opacity;
+    }
+    .float-card .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+    .float-card--analiz   { top: -16px; left: -8%;   animation: drift1 6s ease-in-out infinite; }
+    .float-card--takip    { top: 14%;   right: -10%; animation: drift2 7s ease-in-out infinite; }
+    .float-card--beslenme { bottom: 30%; left: -10%; animation: drift3 5.5s ease-in-out infinite; }
+    .float-card--disiplin { bottom: -14px; right: -4%; animation: drift4 6.5s ease-in-out infinite; }
+    @keyframes drift1 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(8px, -10px); } }
+    @keyframes drift2 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(-6px, 12px); } }
+    @keyframes drift3 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(10px, 8px); } }
+    @keyframes drift4 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(-8px, -6px); } }
+
+    /* Dashboard panels */
+    .hero__panel {
+      position: absolute; z-index: 4;
+      background: rgba(20,16,8,0.96);
+      backdrop-filter: blur(20px) saturate(140%);
+      -webkit-backdrop-filter: blur(20px) saturate(140%);
+      border: 1px solid var(--steel-line);
+      border-radius: 16px;
+      padding: 14px 16px;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+      will-change: transform, opacity;
+    }
+    .hero__panel-label { font-family: var(--font-body); font-size: 0.6rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--steel); margin-bottom: 8px; }
+
+    /* Form analysis pill (top-left, bronze) */
+    .hero__panel--form {
+      top: 8%; left: -16px;
+      display: inline-flex; align-items: center; gap: 12px;
+      padding: 9px 16px;
+      border-radius: 999px;
+      border-color: var(--bronze-line);
+    }
+    .hero__panel-form-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--bronze); box-shadow: 0 0 0 3px rgba(184,146,74,0.2); flex-shrink: 0; }
+    .hero__panel-form-text { display: flex; flex-direction: column; gap: 1px; }
+    .hero__panel-form-label { font-family: var(--font-body); font-size: 0.58rem; letter-spacing: 0.26em; font-weight: 700; text-transform: uppercase; color: var(--bronze); line-height: 1; }
+    .hero__panel-form-time { font-family: var(--font-body); font-size: 0.78rem; font-weight: 600; color: var(--on-dark); line-height: 1.1; }
+
+    /* Tracking panel (top-right) */
+    .hero__panel--track { top: -14px; right: -14px; width: 210px; z-index: 6; }
+    .hero__panel-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; font-family: var(--font-body); font-size: 0.78rem; color: var(--on-dark-2); padding: 4px 0; }
+    .hero__panel-row .v { color: var(--accent); font-weight: 600; }
+    .hero__panel-row + .hero__panel-row { border-top: 1px solid var(--steel-soft); }
+    .hero__panel-spark { margin-top: 8px; height: 32px; display: flex; align-items: end; gap: 4px; }
+    .hero__panel-spark span { flex: 1; background: linear-gradient(180deg, var(--accent), rgba(200, 98, 42, 0.14)); border-radius: 2px; opacity: 0.85; }
+    .hero__panel-foot { margin-top: 8px; display: flex; justify-content: space-between; font-family: var(--font-body); font-size: 0.6rem; color: var(--steel); letter-spacing: 0.16em; text-transform: uppercase; }
+
+    /* Progress panel (mid-left, peeks out) */
+    .hero__panel--progress { bottom: 20%; left: 12%; width: 190px; z-index: 6; }
+    .hero__panel-bigval { font-family: var(--font-display); font-size: 1.7rem; font-weight: 800; color: var(--on-dark); letter-spacing: -0.025em; line-height: 1; }
+    .hero__panel-bigval .pct { color: var(--accent); }
+    .hero__panel-bar { margin-top: 12px; height: 4px; background: rgba(255,255,255,0.06); border-radius: 999px; overflow: hidden; }
+    .hero__panel-bar > span { display: block; height: 100%; width: 58%; background: linear-gradient(90deg, var(--accent), #E8A878); border-radius: 999px; }
+    .hero__panel-prog-meta { margin-top: 8px; font-family: var(--font-body); font-size: 0.66rem; color: var(--steel); letter-spacing: 0.04em; }
+
+    /* Check-in panel (bottom-right) */
+    .hero__panel--checkin { bottom: 24px; right: 24px; width: 220px; z-index: 6; }
+    .hero__panel-row .check { width: 18px; height: 18px; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(200, 98, 42, 0.14); color: var(--accent); flex-shrink: 0; }
+    .hero__panel-row .check svg { width: 10px; height: 10px; }
+    .hero__panel-row .pending { font-family: var(--font-body); font-size: 0.7rem; color: var(--bronze); font-weight: 600; letter-spacing: 0.04em; }
+
+    @media (max-width: 980px) {
+      .hero { min-height: 100vh; }
+      .hero__stage { height: auto; min-height: 100vh; }
+      .hero__layout { position: relative; }
+      .hero__inner { grid-template-columns: 1fr; gap: 50px; }
+      .hero__visual { aspect-ratio: 3/4; max-width: 460px; margin: 0 auto; }
+      .hero__visual-aux { left: -12px; bottom: -6px; width: 132px; z-index: 5; }
+      .hero__panel--progress { left: 18%; bottom: 18%; width: 172px; }
+      .float-card--analiz   { top: -8px; left: 8px; }
+      .float-card--takip    { top: 8%; right: 8px; }
+      .float-card--beslenme { bottom: 26%; left: 8px; }
+      .float-card--disiplin { bottom: 8px; right: 8px; }
+      .hero__panel--form { display: none; }
+      .hero__panel--track { display: none; }
+      .hero__panel--progress { display: none; }
+      .hero__visual-aux { display: none; }
+      .hero__visual-ghost-ring { display: none; }
+      .hero__brand-intro { position: relative; height: 50vh; }
+      .hero__brand-word { font-size: clamp(4.5rem, 22vw, 9rem); }
+    }
+
+    /* ==========================================================
+       PROBLEM (preserved structure, color tokens updated)
+       ========================================================== */
+    .problem {
+      position: relative;
+      background: linear-gradient(180deg, var(--dark) 0%, var(--dark-1) 100%);
+      padding: clamp(80px, 14vh, 140px) 0;
+      overflow: hidden;
+    }
+    .problem::before {
+      content: ''; position: absolute; inset: 0;
+      background-image:
+        radial-gradient(circle at 18% 75%, rgba(200, 98, 42, 0.14) 0%, transparent 50%),
+        radial-gradient(circle at 82% 22%, rgba(184,146,74,0.04) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .problem__head { text-align: center; max-width: 800px; margin: 0 auto clamp(50px, 8vh, 80px); display: flex; flex-direction: column; gap: 18px; align-items: center; }
+    .problem__title { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.9rem, 4.6vw, 3.8rem); line-height: 1.05; letter-spacing: -0.035em; color: var(--on-dark); }
+    .problem__title .dim { color: var(--on-dark-mute); }
+    .problem__title .accent-dot { color: var(--accent); }
+    .problem__lede { font-family: var(--font-body); color: var(--on-dark-dim); font-size: clamp(0.95rem, 1.1vw, 1.05rem); line-height: 1.6; max-width: 580px; }
+    .problem__cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .problem-card { background: linear-gradient(180deg, var(--graphite) 0%, var(--dark-1) 100%); border: 1px solid var(--border-dark); border-radius: 22px; padding: 28px; display: flex; flex-direction: column; gap: 18px; transition: border-color 0.3s, transform 0.4s var(--ease-out); will-change: transform, opacity; }
+    .problem-card:hover { border-color: var(--steel-line); transform: translateY(-4px); }
+    .problem-card__icon { width: 44px; height: 44px; border-radius: 12px; background: rgba(122,144,128,0.12); border: 1px solid rgba(122,144,128,0.22); color: #7A9080; display: inline-flex; align-items: center; justify-content: center; }
+    .problem-card__icon svg { width: 22px; height: 22px; }
+    .problem-card__num { font-family: var(--font-body); font-size: 0.7rem; letter-spacing: 0.32em; font-weight: 600; color: var(--bronze); text-transform: uppercase; }
+    .problem-card__title { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.15rem, 1.5vw, 1.4rem); letter-spacing: -0.02em; color: var(--on-dark); line-height: 1.2; }
+    .problem-card__desc { font-family: var(--font-body); font-size: 0.92rem; line-height: 1.55; color: var(--on-dark-dim); }
+    @media (max-width: 768px) { .problem__cards { grid-template-columns: 1fr; } }
+
+    /* ==========================================================
+       METHOD (structure preserved, tokens updated)
+       ========================================================== */
+    .method { background: var(--cream); color: var(--on-light); padding: clamp(80px, 12vh, 130px) 0 clamp(40px, 8vh, 80px); position: relative; overflow: hidden; }
+    .method::before {
+      content: ''; position: absolute; inset: 0;
+      background-image:
+        linear-gradient(to right, rgba(0,0,0,0.025) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0,0,0,0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+      -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+      pointer-events: none;
+    }
+    .method .eyebrow { color: var(--on-light); }
+    .method__head { text-align: center; max-width: 800px; margin: 0 auto clamp(50px, 8vh, 70px); display: flex; flex-direction: column; gap: 16px; align-items: center; position: relative; }
+    .method__title { font-family: var(--font-display); font-weight: 700; font-size: clamp(2rem, 4.8vw, 4rem); line-height: 1.02; letter-spacing: -0.04em; color: var(--on-light); }
+    .method__title .accent-dot { color: var(--accent-ink); }
+    .method__lede { font-family: var(--font-body); font-size: clamp(0.95rem, 1.1vw, 1.05rem); color: var(--on-light-dim); line-height: 1.6; }
+
+    .method__layout { position: relative; display: flex; flex-direction: column; gap: clamp(28px, 4vw, 44px); align-items: stretch; }
+    .method__sticky { position: relative; top: auto; height: auto; max-height: none; min-height: 0; display: flex; }
+
+    .engine {
+      flex: 1; display: flex; flex-direction: column;
+      background: linear-gradient(180deg, #ffffff 0%, var(--cream-2) 100%);
+      border: 1px solid var(--bronze-line);
+      border-radius: 28px; overflow: hidden;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.1), 0 0 0 1px rgba(255,255,255,0.6) inset;
+    }
+    .engine__head { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 16px 22px; border-bottom: 1px solid var(--bronze-soft); background: rgba(255,255,255,0.55); }
+    .engine__brand { display: flex; flex-direction: column; gap: 2px; }
+    .engine__brand-name { font-family: var(--font-display); font-weight: 800; font-size: 1.05rem; letter-spacing: -0.02em; color: var(--on-light); display: inline-flex; align-items: baseline; }
+    .engine__brand-name .dot { color: var(--accent-ink); }
+    .engine__brand-name em { font-style: normal; font-weight: 600; margin-left: 6px; letter-spacing: 0.16em; font-size: 0.78em; color: var(--bronze); text-transform: uppercase; }
+    .engine__brand-tag { font-family: var(--font-body); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--on-light-mute); }
+    .engine__status { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-body); font-size: 0.66rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--on-light-dim); padding: 6px 12px; background: var(--cream-2); border-radius: 999px; }
+    .engine__status .live-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 3px rgba(200, 98, 42, 0.14); animation: pulse 2.4s ease-in-out infinite; }
+
+    .engine__orbital { position: relative; flex-shrink: 0; height: clamp(180px, 22vh, 220px); border-bottom: 1px solid var(--bronze-soft); background: linear-gradient(180deg, var(--cream-2) 0%, var(--cream) 100%); overflow: hidden; }
+
+    .orbital { position: relative; margin: 0 auto; }
+    .orbital--engine { width: clamp(170px, 22vw, 210px); height: clamp(170px, 22vw, 210px); top: 50%; transform: translateY(-50%); }
+    .orbital__rings { position: absolute; inset: 0; border-radius: 50%; border: 1px dashed rgba(0,0,0,0.14); animation: orbit-rotate 90s linear infinite; }
+    .orbital__rings::before { content: ''; position: absolute; inset: 16%; border-radius: 50%; border: 1px solid rgba(0,0,0,0.06); }
+    @keyframes orbit-rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    .orbital__core { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); border-radius: 50%; background: linear-gradient(180deg, var(--graphite) 0%, var(--dark) 100%); border: 1px solid rgba(200, 98, 42, 0.14); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; z-index: 5; box-shadow: 0 0 40px rgba(200, 98, 42, 0.14), 0 12px 30px rgba(0,0,0,0.18); }
+    .orbital--engine .orbital__core { width: 60px; height: 60px; }
+    .orbital__core-pulse { position: absolute; inset: -4px; border-radius: 50%; border: 1px solid rgba(200, 98, 42, 0.14); animation: corepulse 3s var(--ease-in-out) infinite; }
+    @keyframes corepulse { 0%, 100% { transform: scale(1); opacity: 0.5; } 50% { transform: scale(1.18); opacity: 0; } }
+    .orbital__core-brand { font-family: var(--font-display); font-weight: 800; font-size: 0.78rem; letter-spacing: -0.01em; color: white; }
+    .orbital__core-brand .dot { color: var(--accent); }
+
+    .orbital__node { position: absolute; left: 50%; top: 50%; width: clamp(54px, 6.5vw, 64px); height: clamp(54px, 6.5vw, 64px); border-radius: 50%; background: #fff; border: 1px solid var(--bronze-line); box-shadow: 0 12px 28px rgba(0,0,0,0.08); display: flex; align-items: center; justify-content: center; transform: translate(-50%, -50%) translate(var(--nx, 0), var(--ny, 0)); transition: background 0.45s var(--ease-out), border-color 0.45s var(--ease-out), box-shadow 0.45s var(--ease-out), transform 0.6s var(--ease-out); z-index: 4; }
+    .orbital__node-label { font-family: var(--font-body); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.04em; color: var(--on-light); text-align: center; transition: color 0.4s; }
+    .orbital--engine .orbital__node[data-step="1"] { --nx: 0;     --ny: -78px; }
+    .orbital--engine .orbital__node[data-step="2"] { --nx: 78px;  --ny: 0;     }
+    .orbital--engine .orbital__node[data-step="3"] { --nx: 0;     --ny: 78px;  }
+    .orbital--engine .orbital__node[data-step="4"] { --nx: -78px; --ny: 0;     }
+    .orbital__node.is-active { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 0 8px rgba(200, 98, 42, 0.14), 0 18px 36px rgba(0,0,0,0.18); transform: translate(-50%, -50%) translate(var(--nx, 0), var(--ny, 0)) scale(1.18); }
+    .orbital__node.is-active .orbital__node-label { color: var(--accent-ink); }
+    .orbital__node.is-dim { opacity: 0.55; }
+
+    .orbital__lines { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+    .orbital__line { stroke: var(--steel-line); stroke-width: 1; stroke-dasharray: 3 4; transition: stroke 0.4s, stroke-width 0.4s; }
+    .orbital__line.is-active { stroke: var(--accent-ink); stroke-width: 1.6; stroke-dasharray: none; }
+
+    .engine__detail { position: relative; flex: none; min-height: 270px; overflow: hidden; background: linear-gradient(180deg, #ffffff 0%, var(--cream-2) 100%); }
+    .detail { position: absolute; inset: 0; padding: clamp(20px, 2.5vw, 28px) clamp(22px, 2.8vw, 30px); display: flex; flex-direction: column; gap: 14px; opacity: 0; transform: translateY(10px); transition: opacity 0.45s var(--ease-out), transform 0.45s var(--ease-out); pointer-events: none; }
+    .detail.is-active { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .detail__top { display: flex; align-items: baseline; gap: 12px; }
+    .detail__num { font-family: var(--font-display); font-weight: 800; font-size: 1.6rem; letter-spacing: -0.04em; color: var(--on-light); line-height: 1; }
+    .detail__title { font-family: var(--font-display); font-weight: 700; font-size: 1.4rem; letter-spacing: -0.025em; color: var(--on-light); line-height: 1; }
+    .detail__sub { font-family: var(--font-body); font-size: 0.85rem; line-height: 1.55; color: var(--on-light-dim); }
+    .detail__visual { flex: 1; min-height: 110px; border: 1px solid var(--bronze-soft); background: var(--cream-2); border-radius: 14px; padding: 14px; display: flex; overflow: hidden; position: relative; }
+    .detail__chips { display: flex; flex-wrap: wrap; gap: 6px; }
+    .detail__chip { font-family: var(--font-body); font-size: 0.66rem; font-weight: 700; letter-spacing: 0.06em; padding: 6px 10px; background: var(--cream-2); border: 1px solid var(--border-light); border-radius: 999px; color: var(--on-light); }
+    .detail__chip.is-accent { background: rgba(200, 98, 42, 0.14); border-color: rgba(200, 98, 42, 0.14); }
+
+    .vis-analiz { width: 100%; height: 100%; }
+    .vis-analiz svg { width: 100%; height: 100%; }
+    .vis-analiz .body { fill: rgba(0,0,0,0.08); stroke: rgba(0,0,0,0.18); stroke-width: 1; }
+    .vis-analiz .scan { stroke: rgba(200, 98, 42, 0.14); stroke-width: 1.4; stroke-dasharray: 3 4; }
+    .vis-analiz .lab { font-family: 'Manrope', sans-serif; font-size: 8px; font-weight: 600; fill: rgba(0,0,0,0.55); letter-spacing: 0.12em; }
+    .vis-analiz .pt { fill: var(--accent); }
+    .vis-analiz .pt-ring { fill: none; stroke: var(--accent-ink); stroke-width: 1; }
+
+    .vis-train { width: 100%; display: flex; flex-direction: column; gap: 8px; align-self: center; }
+    .train-row { display: grid; grid-template-columns: 70px 56px 1fr; align-items: center; gap: 10px; padding: 8px 10px; background: #fff; border: 1px solid var(--border-light); border-radius: 10px; }
+    .train-row__name { font-family: var(--font-display); font-weight: 700; font-size: 0.78rem; color: var(--on-light); letter-spacing: -0.01em; }
+    .train-row__sets { font-family: var(--font-body); font-size: 0.7rem; font-weight: 700; color: var(--on-light-dim); letter-spacing: 0.04em; }
+    .train-row__bar { display: block; width: 100%; height: 6px; background: var(--cream-2); border-radius: 999px; overflow: hidden; }
+    .train-row__bar > span { display: block; height: 100%; background: var(--accent); border-radius: 999px; box-shadow: 0 0 8px rgba(200, 98, 42, 0.14); }
+
+    .vis-macro { width: 100%; display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; align-self: center; }
+    .macro { background: #fff; border: 1px solid var(--border-light); border-radius: 10px; padding: 8px 6px; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+    .macro svg { width: 38px; height: 38px; }
+    .macro__name { font-family: var(--font-body); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-light-mute); }
+    .macro__val { font-family: var(--font-display); font-weight: 800; font-size: 0.85rem; color: var(--on-light); letter-spacing: -0.01em; }
+
+    .vis-track { width: 100%; height: 100%; display: flex; flex-direction: column; gap: 10px; }
+    .vis-track__week { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; }
+    .vis-track__day { aspect-ratio: 1/1; border-radius: 6px; background: #fff; border: 1px solid var(--border-light); position: relative; display: flex; align-items: center; justify-content: center; font-family: var(--font-body); font-size: 0.55rem; font-weight: 700; letter-spacing: 0.08em; color: var(--on-light-mute); }
+    .vis-track__day.is-done { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+    .vis-track__day.is-today { border-color: var(--on-light); border-width: 2px; }
+    .vis-track__chart { flex: 1; min-height: 60px; background: #fff; border: 1px solid var(--border-light); border-radius: 10px; padding: 8px 10px; position: relative; }
+    .vis-track__chart svg { width: 100%; height: 100%; }
+    .vis-track__chart .line { fill: none; stroke: var(--accent-ink); stroke-width: 1.6; stroke-linejoin: round; stroke-linecap: round; }
+    .vis-track__chart .area { fill: rgba(200, 98, 42, 0.14); }
+    .vis-track__chart .lab { font-family: 'Manrope', sans-serif; font-size: 7px; fill: var(--on-light-mute); letter-spacing: 0.1em; }
+
+    .method__steps { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+    .method-step { background: #fff; border: 1px solid var(--border-light); border-radius: 22px; padding: clamp(22px, 2.4vw, 30px); display: flex; flex-direction: column; gap: 14px; transition: border-color 0.5s var(--ease-out), box-shadow 0.5s var(--ease-out), transform 0.5s var(--ease-out), background 0.5s var(--ease-out); will-change: opacity, transform; }
+    .method-step.is-active { border-color: rgba(200, 98, 42, 0.14); box-shadow: 0 22px 50px rgba(0,0,0,0.07), 0 0 0 4px rgba(200, 98, 42, 0.14); }
+    .method-step__head { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+    .method-step__num { font-family: var(--font-display); font-weight: 800; font-size: clamp(2.2rem, 3.5vw, 2.8rem); letter-spacing: -0.04em; color: var(--on-light); line-height: 1; }
+    .method-step__title { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.4rem, 2vw, 1.7rem); letter-spacing: -0.025em; color: var(--on-light); line-height: 1.1; }
+    .method-step__hint { margin-left: auto; font-family: var(--font-body); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase; color: var(--bronze); }
+    .method-step.is-active .method-step__hint { color: var(--accent-ink); }
+    .method-step__desc { font-family: var(--font-body); font-size: clamp(0.92rem, 1vw, 1rem); line-height: 1.6; color: var(--on-light-dim); }
+    .method-step__list { display: flex; flex-direction: column; gap: 8px; padding-top: 12px; border-top: 1px dashed var(--bronze-soft); }
+    .method-step__list li { display: flex; align-items: flex-start; gap: 10px; font-family: var(--font-body); font-size: 0.86rem; color: var(--on-light-2); }
+    .method-step__list li::before { content: ''; width: 6px; height: 6px; margin-top: 7px; border-radius: 50%; background: rgba(0,0,0,0.22); flex-shrink: 0; transition: background 0.4s, box-shadow 0.4s; }
+    .method-step.is-active .method-step__list li::before { background: var(--accent); box-shadow: 0 0 0 3px rgba(200, 98, 42, 0.14); }
+    .method-step__strip { display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: var(--cream-2); border-radius: 12px; font-family: var(--font-body); font-size: 0.72rem; color: var(--on-light-dim); letter-spacing: 0.04em; }
+    .method-step__strip-label { font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bronze); white-space: nowrap; }
+    .method-step__strip-bar { flex: 1; height: 4px; background: rgba(0,0,0,0.06); border-radius: 999px; overflow: hidden; }
+    .method-step__strip-bar > span { display: block; height: 100%; background: var(--accent); border-radius: 999px; transition: width 0.6s var(--ease-out); }
+    .method-step__strip-val { font-weight: 700; color: var(--on-light); letter-spacing: 0.04em; }
+    .method-step[data-step="3"], .method-step[data-step="4"] { min-height: 100%; }
+
+    .method__mobile { display: none; }
+    @media (max-width: 980px) {
+      .method__layout { display: none; }
+      .method__mobile { display: flex; flex-direction: column; gap: 18px; }
+      .method__mobile-orbital { background: linear-gradient(180deg, #ffffff, var(--cream-2)); border: 1px solid var(--bronze-line); border-radius: 22px; padding: 18px; display: flex; align-items: center; justify-content: center; height: 240px; position: relative; }
+      .orbital--mini { width: 200px; height: 200px; position: relative; top: auto; transform: none; }
+      .orbital--mini .orbital__core { width: 56px; height: 56px; }
+      .orbital--mini .orbital__node { width: 50px; height: 50px; }
+      .orbital--mini .orbital__node-label { font-size: 0.55rem; }
+      .orbital--mini .orbital__node[data-step="1"] { --nx: 0;     --ny: -72px; }
+      .orbital--mini .orbital__node[data-step="2"] { --nx: 72px;  --ny: 0;     }
+      .orbital--mini .orbital__node[data-step="3"] { --nx: 0;     --ny: 72px;  }
+      .orbital--mini .orbital__node[data-step="4"] { --nx: -72px; --ny: 0;     }
+      .method__cards { display: flex; flex-direction: column; gap: 14px; }
+      .method-card-m { background: #fff; border: 1px solid var(--border-light); border-radius: 20px; padding: 22px 24px; display: flex; flex-direction: column; gap: 12px; transition: border-color 0.4s, box-shadow 0.4s; }
+      .method-card-m.is-active { border-color: rgba(200, 98, 42, 0.14); box-shadow: 0 16px 40px rgba(0,0,0,0.06); }
+      .method-card-m__head { display: flex; align-items: baseline; gap: 12px; }
+      .method-card-m__num { font-family: var(--font-display); font-weight: 800; font-size: 1.8rem; letter-spacing: -0.03em; color: var(--on-light); line-height: 1; }
+      .method-card-m__title { font-family: var(--font-display); font-weight: 700; font-size: 1.3rem; letter-spacing: -0.02em; color: var(--on-light); }
+      .method-card-m__desc { font-family: var(--font-body); font-size: 0.88rem; line-height: 1.55; color: var(--on-light-dim); }
+      .method-card-m__chips { display: flex; flex-wrap: wrap; gap: 6px; padding-top: 8px; border-top: 1px dashed var(--bronze-soft); }
+      .method-card-m__chip { font-family: var(--font-body); font-size: 0.66rem; font-weight: 700; letter-spacing: 0.06em; padding: 5px 10px; background: var(--cream-2); border-radius: 999px; color: var(--on-light); }
+    }
+
+    /* ==========================================================
+       MARQUEE
+       ========================================================== */
+    .marquee { background: var(--dark); border-top: 1px solid var(--border-dark); border-bottom: 1px solid var(--border-dark); padding: 26px 0; overflow: hidden; position: relative; }
+    .marquee__track { display: flex; gap: 36px; width: max-content; animation: marquee 40s linear infinite; align-items: center; }
+    .marquee__item { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.4rem, 2.6vw, 2.4rem); letter-spacing: -0.025em; text-transform: uppercase; color: var(--on-dark); display: inline-flex; align-items: center; gap: 36px; white-space: nowrap; }
+    .marquee__item--dim { color: var(--on-dark-mute); }
+    .marquee__dot { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* ==========================================================
+       WHY DIFFERENT
+       ========================================================== */
+    .why { background: var(--dark); padding: clamp(80px, 14vh, 140px) 0; position: relative; overflow: hidden; }
+    .why__head { text-align: center; max-width: 800px; margin: 0 auto clamp(50px, 8vh, 80px); display: flex; flex-direction: column; gap: 18px; align-items: center; }
+    .why__title { font-family: var(--font-display); font-weight: 700; font-size: clamp(2rem, 4.8vw, 4rem); line-height: 1.02; letter-spacing: -0.04em; color: var(--on-dark); }
+    .why__title .dim { color: var(--on-dark-mute); }
+    .why__title .accent-dot { color: var(--accent); }
+    .why__lede { font-family: var(--font-body); color: var(--on-dark-dim); font-size: clamp(0.95rem, 1.1vw, 1.05rem); line-height: 1.6; }
+    .why__compare { position: relative; display: grid; grid-template-columns: 1fr 1.05fr; gap: 0; border: 1px solid var(--border-dark); border-radius: 28px; overflow: hidden; background: var(--dark-1); }
+    .why__col { padding: clamp(28px, 4vw, 50px); display: flex; flex-direction: column; gap: 24px; position: relative; }
+    .why__col--negative { background: rgba(255, 255, 255, 0.012); border-right: 1px solid var(--border-dark); filter: saturate(0.85); }
+    .why__col--positive { background: radial-gradient(ellipse at top right, rgba(200, 98, 42, 0.14), transparent 60%), rgba(200, 98, 42, 0.14); box-shadow: inset 1px 0 0 rgba(200, 98, 42, 0.14); }
+    .why__col--positive::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: linear-gradient(180deg, transparent, var(--accent), transparent); opacity: 0.7; }
+    .why__col-head { display: flex; flex-direction: column; gap: 6px; padding-bottom: 22px; border-bottom: 1px solid var(--border-dark); }
+    .why__col-tag { font-family: var(--font-body); font-size: 0.7rem; letter-spacing: 0.32em; text-transform: uppercase; font-weight: 600; }
+    .why__col--negative .why__col-tag { color: var(--on-dark-mute); }
+    .why__col--positive .why__col-tag { color: var(--accent); }
+    .why__col-name { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.4rem, 2vw, 2rem); letter-spacing: -0.025em; }
+    .why__col--negative .why__col-name { color: var(--on-dark-dim); }
+    .why__col--positive .why__col-name { color: var(--on-dark); }
+    .why__list { display: flex; flex-direction: column; gap: 16px; }
+    .why__item { display: flex; align-items: flex-start; gap: 14px; font-family: var(--font-body); font-size: clamp(0.95rem, 1.1vw, 1.05rem); line-height: 1.5; will-change: transform, opacity; }
+    .why__col--negative .why__item { color: var(--on-dark-dim); }
+    .why__col--positive .why__item { color: var(--on-dark); font-weight: 500; }
+    .why__icon { flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-top: 2px; }
+    .why__icon--x     { background: rgba(255,90,90,0.1); color: #7A9080; }
+    .why__icon--check { background: rgba(200, 98, 42, 0.14); color: var(--accent); box-shadow: 0 0 0 4px rgba(200, 98, 42, 0.14); }
+    .why__icon svg    { width: 14px; height: 14px; }
+    @media (max-width: 768px) {
+      .why__compare { grid-template-columns: 1fr; }
+      .why__col--negative { border-right: 0; border-bottom: 1px solid var(--border-dark); }
+    }
+
+    /* ==========================================================
+       TRANSFORMATION (preserved structure, bronze details)
+       ========================================================== */
+    .transformation { background: var(--cream); color: var(--on-light); padding: clamp(80px, 14vh, 140px) 0; position: relative; overflow: hidden; }
+    .transformation__head { text-align: center; max-width: 760px; margin: 0 auto clamp(40px, 7vh, 70px); display: flex; flex-direction: column; gap: 16px; align-items: center; }
+    .transformation__title { font-family: var(--font-display); font-weight: 700; font-size: clamp(2rem, 4.8vw, 4rem); line-height: 1.02; letter-spacing: -0.04em; }
+    .transformation__title .accent-dot { color: var(--accent-ink); }
+    .transformation__lede { font-family: var(--font-body); color: var(--on-light-dim); font-size: clamp(0.95rem, 1.1vw, 1.05rem); line-height: 1.6; }
+
+    .transformation__metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: clamp(50px, 8vh, 80px); }
+    .metric-card { background: #fff; border: 1px solid var(--bronze-soft); border-radius: 24px; padding: clamp(28px, 3.5vw, 44px); display: flex; flex-direction: column; gap: 10px; position: relative; overflow: hidden; }
+    .metric-card::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--accent), transparent); opacity: 0.6; }
+    .metric-card__num { font-family: var(--font-display); font-weight: 700; font-size: clamp(2.4rem, 5vw, 4rem); line-height: 1; letter-spacing: -0.04em; color: var(--on-light); display: flex; align-items: baseline; gap: 4px; }
+    .metric-card__num .suffix { font-size: 0.42em; font-weight: 600; color: var(--bronze); }
+    .metric-card__num .prefix { font-size: 0.42em; font-weight: 600; color: var(--bronze); }
+    .metric-card__label { font-family: var(--font-body); font-size: 0.92rem; color: var(--on-light-dim); font-weight: 500; }
+
+    /* Before / After */
+    .ba { max-width: 1000px; margin: 0 auto clamp(60px, 9vh, 90px); display: flex; flex-direction: column; gap: 18px; }
+    .ba__top { display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
+    .ba__badge { display: inline-flex; align-items: center; gap: 14px; padding: 10px 18px; background: linear-gradient(180deg, var(--on-light), var(--on-light-2)); color: var(--cream); border-radius: 14px; border: 1px solid var(--bronze-line); box-shadow: 0 10px 30px rgba(0,0,0,0.18); }
+    .ba__badge-result { font-family: var(--font-display); font-weight: 800; font-size: 1.15rem; letter-spacing: -0.02em; color: var(--accent); }
+    .ba__badge-meta { font-family: var(--font-body); font-size: 0.72rem; letter-spacing: 0.04em; color: rgba(243, 239, 228, 0.72); }
+    .ba__hint { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-body); font-size: 0.72rem; color: var(--bronze); letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; }
+    .ba__hint::before { content: ''; width: 18px; height: 1px; background: currentColor; }
+    .ba__stage { position: relative; aspect-ratio: 16 / 10; border-radius: 32px; overflow: hidden; cursor: ew-resize; user-select: none; background: #ddd; box-shadow: 0 50px 100px rgba(0,0,0,0.2), 0 0 0 1px rgba(255,255,255,0.6) inset; border: 1px solid var(--bronze-line); touch-action: none; }
+    .ba__pane { position: absolute; inset: 0; overflow: hidden; }
+    .ba__pane img { width: 112%; max-width: none; height: 100%; object-fit: cover; pointer-events: none; }
+    .ba__pane--after  { z-index: 1; }
+    .ba__pane--after img { transform: translateX(8%); object-position: center 43%; }
+    .ba__pane--before { z-index: 2; width: 50%; }
+    .ba__pane--before img { filter: grayscale(0.7) contrast(0.92) brightness(0.92); transform: translateX(-8%); object-position: center 43%; }
+    .ba__tag { position: absolute; top: 18px; font-family: var(--font-body); font-size: 0.66rem; letter-spacing: 0.32em; font-weight: 700; color: white; background: rgba(0,0,0,0.6); backdrop-filter: blur(8px); padding: 7px 13px; border-radius: 6px; text-transform: uppercase; z-index: 4; }
+    .ba__pane--before .ba__tag { left: 18px; }
+    .ba__pane--after  .ba__tag { right: 18px; }
+    .ba__handle { position: absolute; top: 0; bottom: 0; width: 4px; left: 50%; transform: translateX(-50%); z-index: 3; pointer-events: none; }
+    .ba__line { position: absolute; top: 0; bottom: 0; left: 50%; transform: translateX(-50%); width: 3px; background: var(--accent); box-shadow: 0 0 18px rgba(200, 98, 42, 0.14); }
+    .ba__grip { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 56px; height: 56px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); display: flex; align-items: center; justify-content: center; box-shadow: 0 14px 32px rgba(0,0,0,0.32), 0 0 0 5px rgba(0,0,0,0.92), 0 0 0 7px rgba(200, 98, 42, 0.14); pointer-events: none; }
+    .ba__grip svg { width: 22px; height: 22px; }
+    .ba__story { text-align: center; font-family: var(--font-display); font-weight: 500; font-size: clamp(1rem, 1.6vw, 1.2rem); color: var(--on-light); letter-spacing: -0.018em; line-height: 1.45; max-width: 720px; margin: 0 auto; }
+    .ba__story em { font-style: normal; color: var(--bronze); }
+
+    /* Testimonial stack — bronze details */
+    .testimonials { margin-top: clamp(40px, 6vh, 70px); }
+    .testimonials__title { text-align: center; font-family: var(--font-display); font-weight: 600; font-size: clamp(1.3rem, 2.2vw, 1.8rem); letter-spacing: -0.025em; color: var(--on-light); margin-bottom: clamp(40px, 6vh, 60px); }
+    .testimonials__title .accent-dot { color: var(--accent-ink); }
+    .t-stack { position: relative; width: 100%; max-width: 440px; height: 540px; margin: 0 auto; }
+    .t-card { position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: linear-gradient(180deg, #ffffff 0%, var(--cream) 100%); border: 1px solid var(--bronze-soft); border-radius: 26px; padding: clamp(22px, 3vw, 30px); box-shadow: 0 35px 80px rgba(0,0,0,0.18), 0 0 0 1px rgba(255,255,255,0.7) inset; display: flex; flex-direction: column; gap: 14px; user-select: none; transition: transform 0.5s var(--ease-out), opacity 0.5s var(--ease-out), filter 0.5s var(--ease-out); will-change: transform, opacity; }
+    .t-card[data-pos="0"] { transform: rotate(-6deg) translate(0, 0) scale(1); z-index: 3; cursor: grab; filter: none; }
+    .t-card[data-pos="0"]:active { cursor: grabbing; }
+    .t-card[data-pos="1"] { transform: rotate(0deg) translate(8%, 4%) scale(0.94); z-index: 2; filter: brightness(0.9) saturate(0.92); }
+    .t-card[data-pos="2"] { transform: rotate(6deg) translate(16%, 8%) scale(0.88); z-index: 1; filter: brightness(0.78) saturate(0.85); }
+    .t-card.is-dragging { transition: none; cursor: grabbing; }
+    .t-card.is-flying { transition: transform 0.5s var(--ease-out), opacity 0.5s var(--ease-out); }
+    .t-card__top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-bottom: 14px; border-bottom: 1px dashed var(--bronze-soft); }
+    .t-card__program { font-family: var(--font-body); font-size: 0.62rem; letter-spacing: 0.32em; font-weight: 700; text-transform: uppercase; color: var(--bronze); display: inline-flex; align-items: center; gap: 8px; }
+    .t-card__program::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--bronze); box-shadow: 0 0 0 3px rgba(184,146,74,0.22); }
+    .t-card__id { font-family: var(--font-body); font-size: 0.6rem; letter-spacing: 0.18em; font-weight: 700; color: var(--bronze); }
+    .t-card__result { display: flex; align-items: baseline; gap: 14px; padding: 8px 0 4px; }
+    .t-card__result-value { font-family: var(--font-display); font-weight: 800; font-size: clamp(2.4rem, 5vw, 3.2rem); letter-spacing: -0.045em; line-height: 1; color: var(--on-light); }
+    .t-card__result-label { font-family: var(--font-body); font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--on-light-mute); font-weight: 700; }
+    .t-card__result-label .pill { color: var(--accent-ink); background: rgba(200, 98, 42, 0.14); padding: 3px 7px; border-radius: 4px; margin-right: 6px; letter-spacing: 0.06em; }
+    .t-card__quote { font-family: var(--font-display); font-weight: 500; font-size: clamp(1rem, 1.4vw, 1.18rem); line-height: 1.45; letter-spacing: -0.014em; color: var(--on-light); flex: 1; }
+    .t-card__quote::before { content: '“'; color: var(--bronze); margin-right: 2px; opacity: 0.7; }
+    .t-card__quote::after  { content: '”'; color: var(--bronze); margin-left: 2px; opacity: 0.7; }
+    .t-card__bottom { display: flex; align-items: center; gap: 14px; padding-top: 14px; border-top: 1px solid var(--bronze-soft); margin-top: auto; }
+    .t-card__avatar { width: 46px; height: 46px; border-radius: 50%; background: linear-gradient(135deg, var(--graphite), var(--dark)); color: var(--accent); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 800; font-size: 1.05rem; border: 1px solid var(--bronze-line); flex-shrink: 0; letter-spacing: -0.02em; box-shadow: 0 6px 14px rgba(0,0,0,0.18); }
+    .t-card__person { display: flex; flex-direction: column; gap: 2px; flex: 1; }
+    .t-card__person strong { font-family: var(--font-display); font-weight: 700; font-size: 0.95rem; letter-spacing: -0.01em; color: var(--on-light); }
+    .t-card__person span { font-family: var(--font-body); font-size: 0.74rem; color: var(--on-light-dim); letter-spacing: 0.02em; }
+    .t-card__verified { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-body); font-size: 0.6rem; font-weight: 700; color: var(--accent-ink); background: rgba(200, 98, 42, 0.14); padding: 6px 10px; border-radius: 999px; letter-spacing: 0.06em; white-space: nowrap; }
+    .t-card__verified::before { content: '✓'; font-weight: 900; }
+    .t-controls { margin-top: 30px; display: flex; justify-content: center; gap: 12px; }
+    .t-btn { width: 48px; height: 48px; border-radius: 50%; background: #fff; border: 1px solid var(--bronze-line); display: inline-flex; align-items: center; justify-content: center; color: var(--on-light); transition: transform 0.3s, box-shadow 0.3s, background 0.3s; }
+    .t-btn:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(0,0,0,0.12); background: var(--accent); }
+    .t-btn svg { width: 18px; height: 18px; }
+    .t-hint { text-align: center; margin-top: 14px; font-family: var(--font-body); font-size: 0.74rem; color: var(--bronze); letter-spacing: 0.04em; }
+
+    @media (max-width: 900px) {
+      .transformation__metrics { grid-template-columns: 1fr; gap: 10px; }
+      .ba__stage { aspect-ratio: 4/5; }
+      .t-stack { max-width: min(86vw, 360px); height: 500px; }
+      .t-card[data-pos="1"] { transform: rotate(0deg) translate(5%, 3%) scale(0.95); }
+      .t-card[data-pos="2"] { transform: rotate(6deg) translate(10%, 6%) scale(0.9); }
+    }
+
+    /* ==========================================================
+       SERVICES — bronze flagship label
+       ========================================================== */
+    .services { background: var(--dark); padding: clamp(80px, 14vh, 140px) 0; position: relative; }
+    .services__head { text-align: center; max-width: 760px; margin: 0 auto clamp(50px, 8vh, 70px); display: flex; flex-direction: column; gap: 14px; align-items: center; }
+    .services__title { font-family: var(--font-display); font-weight: 700; font-size: clamp(2rem, 4.8vw, 4rem); line-height: 1.02; letter-spacing: -0.04em; color: var(--on-dark); }
+    .services__title .dim { color: var(--on-dark-mute); }
+    .services__title .accent-dot { color: var(--accent); }
+
+    .services__bento { display: grid; grid-template-columns: 1.55fr 1fr; grid-auto-rows: 1fr; gap: 14px; min-height: 600px; }
+    .service-card { position: relative; background: linear-gradient(180deg, var(--graphite) 0%, var(--dark) 100%); border: 1px solid var(--border-dark); border-radius: 26px; padding: clamp(24px, 3vw, 38px); display: flex; flex-direction: column; gap: 18px; transition: transform 0.4s var(--ease-out), border-color 0.3s; overflow: hidden; isolation: isolate; will-change: transform, opacity; --mx: 50%; --my: 50%; }
+    .service-card:hover { transform: translateY(-4px); }
+
+    .service-card[data-glow]::before {
+      content: ''; position: absolute; inset: -1px; border-radius: inherit;
+      background: radial-gradient(220px 220px at var(--mx) var(--my), var(--accent), transparent 60%);
+      -webkit-mask: linear-gradient(black, black) content-box, linear-gradient(black, black);
+      -webkit-mask-composite: xor; mask-composite: exclude;
+      padding: 1px; opacity: 0; transition: opacity 0.5s var(--ease-out); pointer-events: none; z-index: 1;
+    }
+    .service-card[data-glow="strong"]::before {
+      background: radial-gradient(340px 340px at var(--mx) var(--my), var(--accent), rgba(200, 98, 42, 0.14) 35%, transparent 65%);
+    }
+    .service-card[data-glow]:hover::before { opacity: 1; }
+    .service-card[data-glow]::after {
+      content: ''; position: absolute; inset: 0; border-radius: inherit;
+      background: radial-gradient(380px 380px at var(--mx) var(--my), rgba(200, 98, 42, 0.14), transparent 70%);
+      opacity: 0; transition: opacity 0.5s var(--ease-out); pointer-events: none; z-index: 0;
+    }
+    .service-card[data-glow="strong"]::after {
+      background: radial-gradient(440px 440px at var(--mx) var(--my), rgba(200, 98, 42, 0.14), rgba(200, 98, 42, 0.14) 40%, transparent 75%);
+    }
+    .service-card[data-glow]:hover::after { opacity: 1; }
+    .service-card > * { position: relative; z-index: 2; }
+
+    .service-card__top { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; }
+    .service-card__icon { width: 52px; height: 52px; border-radius: 14px; background: rgba(200, 98, 42, 0.14); border: 1px solid rgba(200, 98, 42, 0.14); color: var(--accent); display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .service-card__icon svg { width: 24px; height: 24px; }
+
+    /* Bronze flagship label */
+    .service-card__premium-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 12px;
+      background: var(--bronze-soft);
+      border: 1px solid var(--bronze-line);
+      border-radius: 999px;
+      font-family: var(--font-body);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      color: var(--bronze);
+      text-transform: uppercase;
+    }
+    .service-card__premium-tag .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--bronze);
+      box-shadow: 0 0 0 3px rgba(184,146,74,0.25);
+    }
+    .service-card__core-tag {
+      font-family: var(--font-body);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.32em;
+      color: var(--steel);
+      text-transform: uppercase;
+      padding: 6px 0;
+    }
+
+    .service-card__heading { display: flex; flex-direction: column; gap: 8px; }
+    .service-card__num { font-family: var(--font-body); font-size: 0.7rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--accent); font-weight: 700; }
+    .service-card__title { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.5rem, 2.2vw, 2rem); line-height: 1.05; letter-spacing: -0.025em; color: var(--on-dark); }
+    .service-card--feature .service-card__title { font-size: clamp(1.85rem, 3vw, 2.6rem); }
+    .service-card__lede { font-family: var(--font-body); font-size: 0.94rem; line-height: 1.55; color: var(--on-dark-dim); }
+
+    .service-card__blocks { display: flex; flex-direction: column; gap: 14px; padding: 18px 0; border-top: 1px solid var(--bronze-soft); border-bottom: 1px solid var(--bronze-soft); }
+    .service-card__block { display: flex; flex-direction: column; gap: 6px; }
+    .service-card__block-label { font-family: var(--font-body); font-size: 0.66rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--bronze); }
+    .service-card__block-text { font-family: var(--font-body); font-size: 0.88rem; line-height: 1.55; color: var(--on-dark-dim); }
+    .service-card__list { display: flex; flex-direction: column; gap: 8px; }
+    .service-card__list li { display: flex; align-items: flex-start; gap: 10px; font-family: var(--font-body); font-size: 0.85rem; color: var(--on-dark-dim); }
+    .service-card__list li::before { content: ''; width: 6px; height: 6px; margin-top: 7px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+
+    .service-card__quick { display: flex; flex-direction: column; gap: 4px; padding: 12px 14px; background: rgba(255,255,255,0.022); border: 1px solid var(--steel-line); border-radius: 12px; }
+    .service-card__quick-label { font-family: var(--font-body); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--bronze); }
+    .service-card__quick-text { font-family: var(--font-body); font-size: 0.84rem; line-height: 1.5; color: var(--on-dark-dim); }
+
+    .service-card__cta { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 999px; background: var(--accent); color: var(--accent-ink); font-family: var(--font-body); font-weight: 700; font-size: 0.85rem; letter-spacing: 0.005em; width: fit-content; transition: transform 0.25s, box-shadow 0.25s; }
+    .service-card__cta:hover { transform: translateY(-1px); box-shadow: 0 12px 28px rgba(200, 98, 42, 0.14); }
+    .service-card__cta svg { width: 14px; height: 14px; }
+    .service-card__cta--big { padding: 13px 22px; font-size: 0.92rem; font-family: var(--font-display); font-weight: 700; box-shadow: 0 12px 30px rgba(200, 98, 42, 0.14); }
+
+    .service-card__meta { margin-top: auto; padding-top: 16px; border-top: 1px solid var(--steel-soft); display: flex; justify-content: space-between; align-items: center; font-family: var(--font-body); font-size: 0.7rem; color: var(--steel); letter-spacing: 0.18em; text-transform: uppercase; font-weight: 600; }
+
+    .service-card--feature { grid-row: 1 / 3; background: radial-gradient(ellipse at top right, rgba(184,146,74,0.06) 0%, transparent 55%), linear-gradient(180deg, var(--graphite) 0%, var(--dark) 100%); }
+    .service-card__decor { position: absolute; right: -50px; bottom: -50px; width: 220px; height: 220px; border-radius: 50%; border: 1px solid var(--bronze-line); display: flex; align-items: center; justify-content: center; pointer-events: none; z-index: 1; }
+    .service-card__decor::before { content: ''; width: 70%; height: 70%; border-radius: 50%; border: 1px solid rgba(255,255,255,0.04); }
+    @media (max-width: 768px) {
+      .services__bento { grid-template-columns: 1fr; min-height: auto; }
+      .service-card--feature { grid-row: auto; }
+      .service-card__decor { display: none; }
+      .service-card[data-glow]::before, .service-card[data-glow]::after { opacity: 0.32; }
+    }
+    @media (hover: none), (pointer: coarse) {
+      .service-card[data-glow]::before, .service-card[data-glow]::after { opacity: 0.3; }
+    }
+
+    /* ==========================================================
+       ABOUT — bronze editorial details
+       ========================================================== */
+    .about { background: var(--cream-2); color: var(--on-light); padding: clamp(80px, 14vh, 140px) 0; position: relative; overflow: hidden; }
+    .about__inner { display: grid; grid-template-columns: 0.95fr 1.1fr; gap: clamp(40px, 6vw, 80px); align-items: center; }
+    .about__visual { position: relative; aspect-ratio: 4/5; max-height: 680px; border-radius: 28px; overflow: hidden; background: #ccc; box-shadow: 0 40px 80px rgba(0,0,0,0.18); border: 1px solid var(--bronze-line); will-change: transform, opacity; }
+    .about__visual::before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 30%, rgba(0,0,0,0.6) 100%); z-index: 2; }
+    .about__visual::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at top right, rgba(184,146,74,0.18), transparent 60%); z-index: 2; mix-blend-mode: screen; }
+    .about__visual img { width: 100%; height: 100%; object-fit: cover; filter: contrast(1.05); }
+    .about__visual-tag { position: absolute; bottom: 22px; left: 22px; z-index: 3; display: flex; flex-direction: column; gap: 4px; color: #fff; }
+    .about__visual-tag-name { font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; letter-spacing: -0.01em; }
+    .about__visual-tag-role { font-family: var(--font-body); font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.78); }
+    .about__visual-since {
+      position: absolute; top: 18px; right: 18px; z-index: 3;
+      font-family: var(--font-body); font-size: 0.66rem;
+      letter-spacing: 0.32em; text-transform: uppercase; font-weight: 700;
+      color: var(--bronze);
+      background: rgba(0,0,0,0.45);
+      padding: 6px 12px; border-radius: 999px;
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--bronze-line);
+    }
+    .about__content { display: flex; flex-direction: column; gap: clamp(18px, 2.5vh, 28px); }
+    .about__quote { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.9rem, 4.2vw, 3.4rem); line-height: 1.05; letter-spacing: -0.035em; color: var(--on-light); }
+    .about__quote .accent-dot { color: var(--bronze); }
+    .about__bio { font-family: var(--font-body); font-size: clamp(0.95rem, 1.1vw, 1.05rem); line-height: 1.7; color: var(--on-light-dim); display: flex; flex-direction: column; gap: 14px; }
+    .about__bio strong { color: var(--on-light); font-weight: 600; }
+    .about__creds { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; padding-top: 8px; }
+    .about__cred { display: flex; align-items: center; gap: 10px; padding: 12px 14px; background: #fff; border: 1px solid var(--bronze-soft); border-radius: 12px; font-family: var(--font-body); font-size: 0.85rem; color: var(--on-light); font-weight: 500; }
+    .about__cred-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--bronze); box-shadow: 0 0 0 3px rgba(184,146,74,0.25); flex-shrink: 0; }
+    @media (max-width: 980px) {
+      .about__inner { grid-template-columns: 1fr; }
+      .about__visual { max-width: 480px; margin: 0 auto; }
+      .about__creds { grid-template-columns: 1fr; }
+    }
+
+    /* ==========================================================
+       FINAL CTA
+       ========================================================== */
+    .final { position: relative; background: var(--dark); padding: clamp(120px, 18vh, 200px) 0 clamp(80px, 12vh, 140px); overflow: hidden; text-align: center; }
+    .final::before { content: ''; position: absolute; top: -40%; left: 50%; transform: translateX(-50%); width: 80%; height: 110%; background: radial-gradient(ellipse, var(--accent-glow) 0%, transparent 60%); filter: blur(60px); pointer-events: none; animation: ambient 12s ease-in-out infinite; }
+    @keyframes ambient { 0%, 100% { transform: translateX(-50%) scale(1); } 50% { transform: translateX(-50%) scale(1.08); } }
+    .final::after { content: ''; position: absolute; inset: 0; background-image: linear-gradient(to right, rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.025) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%); -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%); pointer-events: none; }
+    .final__inner { position: relative; z-index: 2; max-width: 920px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: clamp(24px, 4vh, 40px); }
+    .final__title { font-family: var(--font-display); font-weight: 700; font-size: clamp(2.2rem, 5.6vw, 5.2rem); line-height: 0.98; letter-spacing: -0.04em; color: var(--on-dark); }
+    .final__title .dim { color: var(--on-dark-mute); }
+    .final__title .accent-dot { color: var(--accent); }
+    .final__lede { font-family: var(--font-body); font-size: clamp(1rem, 1.2vw, 1.15rem); color: var(--on-dark-dim); line-height: 1.6; max-width: 580px; }
+    .final__cta { background: var(--accent); color: var(--accent-ink); font-family: var(--font-display); font-weight: 700; font-size: clamp(1.05rem, 1.4vw, 1.25rem); padding: 22px 40px; border-radius: 999px; display: inline-flex; align-items: center; gap: 14px; transition: transform 0.3s, box-shadow 0.3s; }
+    .final__cta:hover { transform: translateY(-3px); box-shadow: 0 25px 60px rgba(200, 98, 42, 0.14); }
+    .final__cta svg { width: 22px; height: 22px; }
+    .final__hint { font-family: var(--font-body); font-size: 0.82rem; color: var(--bronze); letter-spacing: 0.04em; }
+
+    /* ==========================================================
+       AGRESIF PARALAKS
+       ========================================================== */
+    .parallax-layer { will-change: transform; }
+    .hero__atmosphere-glow {
+      transform: translateZ(0);
+      transition: transform 0.1s linear;
+    }
+    .parallax-deep  { --px-speed: 0.55; }
+    .parallax-mid   { --px-speed: 0.30; }
+    .parallax-slow  { --px-speed: 0.12; }
+
+    /* Floating orbs for depth */
+    .px-orb {
+      position: absolute; border-radius: 50%;
+      pointer-events: none; will-change: transform;
+      filter: blur(80px); mix-blend-mode: screen;
+    }
+    .px-orb-1 {
+      width: 500px; height: 500px; top: 10%; left: -10%;
+      background: radial-gradient(circle, rgba(200,98,42,0.12), transparent 70%);
+    }
+    .px-orb-2 {
+      width: 400px; height: 400px; top: 40%; right: -8%;
+      background: radial-gradient(circle, rgba(184,146,74,0.10), transparent 70%);
+    }
+    .px-orb-3 {
+      width: 350px; height: 350px; bottom: 5%; left: 30%;
+      background: radial-gradient(circle, rgba(122,144,128,0.09), transparent 70%);
+    }
+
+    /* Section entrance parallax */
+    .section-px { overflow: hidden; position: relative; }
+    .section-px__bg {
+      position: absolute; inset: -20%; pointer-events: none;
+      will-change: transform; background-attachment: fixed;
+    }
+
+    /* ==========================================================
+       QUIZ — "Hangi Program Sana Uygun?"
+       ========================================================== */
+    .quiz {
+      background: var(--dark);
+      padding: clamp(80px,12vh,130px) 0;
+      position: relative; overflow: hidden;
+    }
+    .quiz::before {
+      content:''; position:absolute; inset:0;
+      background: radial-gradient(ellipse at 60% 40%, rgba(200,98,42,0.07), transparent 60%);
+      pointer-events:none;
+    }
+    .quiz__head { text-align:center; max-width:640px; margin:0 auto clamp(40px,6vh,60px);
+      display:flex; flex-direction:column; gap:14px; align-items:center; }
+    .quiz__title { font-family:var(--font-display); font-weight:700;
+      font-size:clamp(2rem,4.6vw,3.8rem); line-height:1.04; letter-spacing:-0.04em; color:var(--on-dark); }
+    .quiz__title .dim { color:var(--on-dark-mute); }
+    .quiz__lede { font-family:var(--font-body); font-size:clamp(0.95rem,1.1vw,1.05rem);
+      color:var(--on-dark-dim); line-height:1.6; }
+
+    .quiz__card {
+      max-width:680px; margin:0 auto;
+      background:var(--dark-2); border:1px solid var(--border-dark);
+      border-radius:28px; overflow:hidden;
+      box-shadow:0 40px 100px rgba(0,0,0,0.5);
+    }
+
+    /* Progress */
+    .quiz__prog { padding:24px 32px 0; display:flex; flex-direction:column; gap:10px; }
+    .quiz__prog-bar { height:3px; background:var(--dark-3); border-radius:99px; overflow:hidden; }
+    .quiz__prog-fill { height:100%; background:linear-gradient(90deg,var(--accent),var(--bronze)); border-radius:99px;
+      transition:width 0.5s cubic-bezier(0.22,1,0.36,1); }
+    .quiz__prog-label { font-family:var(--font-body); font-size:0.68rem; font-weight:600;
+      letter-spacing:0.22em; text-transform:uppercase; color:var(--on-dark-mute); }
+
+    /* Steps */
+    .quiz__step { display:none; padding:28px 32px 36px; flex-direction:column; gap:22px;
+      animation:qStepIn 0.4s cubic-bezier(0.22,1,0.36,1); }
+    .quiz__step.is-active { display:flex; }
+    @keyframes qStepIn { from{opacity:0;transform:translateX(24px)} to{opacity:1;transform:translateX(0)} }
+    @keyframes qStepBack { from{opacity:0;transform:translateX(-24px)} to{opacity:1;transform:translateX(0)} }
+
+    .quiz__q { font-family:var(--font-display); font-weight:700;
+      font-size:clamp(1.3rem,2.4vw,1.75rem); letter-spacing:-0.025em; color:var(--on-dark); }
+
+    .quiz__options { display:flex; flex-direction:column; gap:10px; }
+    .quiz__opt {
+      display:flex; align-items:center; gap:14px; padding:14px 18px;
+      border-radius:14px; border:1px solid var(--border-dark);
+      background:var(--dark-3); cursor:pointer;
+      transition:all 0.2s; text-align:left;
+    }
+    .quiz__opt:hover { border-color:rgba(200,98,42,0.4); background:rgba(200,98,42,0.06); }
+    .quiz__opt.is-selected { border-color:var(--accent); background:rgba(200,98,42,0.10); }
+    .quiz__opt-dot {
+      width:20px; height:20px; border-radius:50%; flex-shrink:0;
+      border:2px solid var(--on-dark-mute);
+      display:inline-flex; align-items:center; justify-content:center;
+      transition:all 0.2s;
+    }
+    .quiz__opt.is-selected .quiz__opt-dot { background:var(--accent); border-color:var(--accent); }
+    .quiz__opt.is-selected .quiz__opt-dot::after { content:'✓'; font-size:0.6rem; color:#fff; font-weight:800; }
+    .quiz__opt-emoji { font-size:1.2rem; flex-shrink:0; }
+    .quiz__opt-text { font-family:var(--font-body); font-size:0.95rem; color:var(--on-dark); font-weight:500; line-height:1.3; }
+    .quiz__opt-sub { font-family:var(--font-body); font-size:0.75rem; color:var(--on-dark-dim); }
+
+    .quiz__nav { display:flex; align-items:center; gap:10px; }
+    .quiz__next {
+      flex:1; padding:14px; border-radius:12px;
+      background:var(--accent); color:var(--accent-ink);
+      font-family:var(--font-display); font-weight:700; font-size:0.95rem;
+      cursor:pointer; transition:transform 0.3s,box-shadow 0.3s;
+    }
+    .quiz__next:hover { transform:translateY(-2px); box-shadow:0 14px 36px rgba(200,98,42,0.35); }
+    .quiz__back {
+      padding:14px 18px; border-radius:12px;
+      border:1px solid var(--border-dark); background:transparent;
+      font-family:var(--font-body); font-weight:600; font-size:0.85rem;
+      color:var(--on-dark-dim); cursor:pointer; transition:all 0.2s;
+    }
+    .quiz__back:hover { border-color:var(--accent); color:var(--accent); }
+
+    /* Result */
+    .quiz__result { padding:32px; display:flex; flex-direction:column; gap:24px;
+      animation:qStepIn 0.5s cubic-bezier(0.22,1,0.36,1); }
+    .quiz__result-badge {
+      display:inline-flex; align-items:center; gap:8px; align-self:center;
+      padding:7px 18px; background:rgba(200,98,42,0.12); color:var(--accent);
+      border-radius:99px; border:1px solid rgba(200,98,42,0.3);
+      font-family:var(--font-body); font-size:0.72rem; font-weight:600; letter-spacing:0.12em;
+    }
+    .quiz__result-program {
+      background:linear-gradient(135deg,var(--dark-3),var(--dark-2));
+      border:1px solid var(--bronze-line); border-radius:20px; padding:28px;
+      display:flex; flex-direction:column; gap:12px; position:relative; overflow:hidden;
+    }
+    .quiz__result-program::before { content:''; position:absolute; top:0; left:0; right:0; height:3px;
+      background:linear-gradient(90deg,var(--accent),var(--bronze)); }
+    .quiz__result-tag { font-family:var(--font-body); font-size:0.68rem; font-weight:700;
+      letter-spacing:0.3em; text-transform:uppercase; color:var(--bronze); }
+    .quiz__result-name { font-family:var(--font-display); font-weight:800;
+      font-size:clamp(1.6rem,3vw,2.2rem); letter-spacing:-0.03em; color:var(--on-dark); }
+    .quiz__result-desc { font-family:var(--font-body); font-size:0.95rem; color:var(--on-dark-dim); line-height:1.6; }
+    .quiz__result-features { display:flex; flex-direction:column; gap:8px; }
+    .quiz__result-feat { display:flex; align-items:center; gap:10px;
+      font-family:var(--font-body); font-size:0.88rem; color:var(--on-dark); }
+    .quiz__result-feat::before { content:'✦'; color:var(--accent); font-size:0.7rem; flex-shrink:0; }
+    .quiz__result-cta {
+      display:flex; align-items:center; justify-content:center; gap:8px; padding:15px;
+      background:var(--accent); color:var(--accent-ink); border-radius:12px;
+      font-family:var(--font-display); font-weight:700; font-size:0.95rem;
+      transition:transform 0.3s,box-shadow 0.3s;
+    }
+    .quiz__result-cta:hover { transform:translateY(-2px); box-shadow:0 14px 36px rgba(200,98,42,0.35); }
+    .quiz__restart {
+      text-align:center; font-family:var(--font-body); font-size:0.8rem; color:var(--on-dark-mute);
+      cursor:pointer; transition:color 0.2s;
+    }
+    .quiz__restart:hover { color:var(--accent); }
+
+    /* ==========================================================
+       BOOKING WIDGET
+       ========================================================== */
+    .booking {
+      background:var(--cream); color:var(--on-light);
+      padding:clamp(80px,12vh,130px) 0; position:relative; overflow:hidden;
+    }
+    .booking::before { content:''; position:absolute; top:-10%; left:50%;
+      transform:translateX(-50%); width:50%; height:60%;
+      background:radial-gradient(ellipse,rgba(200,98,42,0.06),transparent 65%);
+      filter:blur(60px); pointer-events:none; }
+
+    .booking__head { text-align:center; max-width:620px; margin:0 auto clamp(40px,6vh,60px);
+      display:flex; flex-direction:column; gap:14px; align-items:center; }
+    .booking__title { font-family:var(--font-display); font-weight:700;
+      font-size:clamp(2rem,4.6vw,3.8rem); line-height:1.04; letter-spacing:-0.04em; color:var(--on-light); }
+    .booking__title .dim { color:var(--on-light-mute); }
+    .booking__free-badge {
+      display:inline-flex; align-items:center; gap:8px; padding:8px 18px;
+      background:rgba(200,98,42,0.10); color:var(--accent);
+      border:1px solid rgba(200,98,42,0.25); border-radius:99px;
+      font-family:var(--font-body); font-size:0.75rem; font-weight:700; letter-spacing:0.12em;
+    }
+    .booking__lede { font-family:var(--font-body); font-size:clamp(0.95rem,1.1vw,1.05rem);
+      color:var(--on-light-dim); line-height:1.6; }
+
+    .booking__card {
+      max-width:860px; margin:0 auto;
+      background:#fff; border:1px solid var(--bronze-line);
+      border-radius:28px; overflow:hidden;
+      box-shadow:0 24px 80px rgba(100,60,20,0.10);
+      display:grid; grid-template-columns:1fr 1fr;
+    }
+
+    /* Calendar side */
+    .booking__cal { padding:clamp(24px,3.5vw,40px); border-right:1px solid var(--bronze-line); }
+    .booking__cal-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:20px; }
+    .booking__cal-month { font-family:var(--font-display); font-weight:700; font-size:1.1rem;
+      letter-spacing:-0.02em; color:var(--on-light); }
+    .booking__cal-nav { display:flex; gap:6px; }
+    .booking__cal-nav button { width:32px; height:32px; border-radius:8px;
+      border:1px solid var(--cream-3); background:var(--cream);
+      color:var(--on-light-dim); font-size:0.9rem; cursor:pointer; transition:all 0.2s; }
+    .booking__cal-nav button:hover { border-color:var(--accent); color:var(--accent); }
+    .booking__cal-days-head { display:grid; grid-template-columns:repeat(7,1fr);
+      gap:4px; margin-bottom:8px; }
+    .booking__cal-day-name { font-family:var(--font-body); font-size:0.65rem; font-weight:600;
+      letter-spacing:0.15em; text-transform:uppercase; text-align:center; color:var(--on-light-mute); padding:4px 0; }
+    .booking__cal-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:4px; }
+    .booking__cal-day {
+      aspect-ratio:1; display:flex; align-items:center; justify-content:center;
+      border-radius:8px; font-family:var(--font-body); font-size:0.82rem; font-weight:500;
+      color:var(--on-light-dim); cursor:pointer; transition:all 0.18s; position:relative;
+    }
+    .booking__cal-day.is-today { font-weight:700; color:var(--on-light); }
+    .booking__cal-day.is-today::after { content:''; position:absolute; bottom:3px; left:50%;
+      transform:translateX(-50%); width:4px; height:4px; border-radius:50%; background:var(--accent); }
+    .booking__cal-day.has-slot { color:var(--on-light); font-weight:600; }
+    .booking__cal-day.has-slot:hover { background:rgba(200,98,42,0.10); color:var(--accent); }
+    .booking__cal-day.is-selected { background:var(--accent); color:#fff; font-weight:700; }
+    .booking__cal-day.is-past { color:var(--on-light-mute); opacity:0.4; pointer-events:none; }
+    .booking__cal-day.is-empty { pointer-events:none; }
+
+    /* Slot side */
+    .booking__slots { padding:clamp(24px,3.5vw,40px); display:flex; flex-direction:column; gap:20px; }
+    .booking__slots-title { font-family:var(--font-display); font-weight:700; font-size:1rem;
+      letter-spacing:-0.01em; color:var(--on-light); }
+    .booking__slots-date { font-family:var(--font-body); font-size:0.78rem; color:var(--accent);
+      font-weight:600; letter-spacing:0.08em; min-height:18px; }
+    .booking__slot-list { display:flex; flex-direction:column; gap:8px; flex:1; }
+    .booking__slot {
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      padding:12px 16px; border-radius:12px;
+      border:1px solid var(--cream-3); background:var(--cream);
+      cursor:pointer; transition:all 0.2s;
+    }
+    .booking__slot:hover { border-color:var(--accent); background:rgba(200,98,42,0.04); }
+    .booking__slot.is-selected { border-color:var(--accent); background:rgba(200,98,42,0.08); }
+    .booking__slot-time { font-family:var(--font-display); font-weight:700; font-size:0.95rem; color:var(--on-light); }
+    .booking__slot-type { font-family:var(--font-body); font-size:0.72rem; color:var(--on-light-dim); }
+    .booking__slot-avail { font-family:var(--font-body); font-size:0.68rem; font-weight:600;
+      padding:3px 10px; border-radius:99px; background:rgba(122,144,128,0.12); color:var(--steel); }
+    .booking__slot.is-selected .booking__slot-avail { background:rgba(200,98,42,0.12); color:var(--accent); }
+
+    .booking__slots-empty { font-family:var(--font-body); font-size:0.88rem; color:var(--on-light-mute);
+      text-align:center; padding:24px 0; }
+
+    .booking__confirm {
+      display:flex; align-items:center; justify-content:center; gap:8px; padding:14px;
+      background:var(--accent); color:var(--accent-ink); border-radius:12px;
+      font-family:var(--font-display); font-weight:700; font-size:0.92rem;
+      cursor:pointer; transition:transform 0.3s,box-shadow 0.3s;
+      opacity:0.45; pointer-events:none;
+    }
+    .booking__confirm.is-ready { opacity:1; pointer-events:all; }
+    .booking__confirm.is-ready:hover { transform:translateY(-2px); box-shadow:0 14px 36px rgba(200,98,42,0.35); }
+
+    .booking__success {
+      display:none; flex-direction:column; align-items:center; gap:16px;
+      padding:40px 32px; text-align:center;
+    }
+    .booking__success-icon { font-size:3rem; }
+    .booking__success-title { font-family:var(--font-display); font-weight:700; font-size:1.6rem;
+      letter-spacing:-0.03em; color:var(--on-light); }
+    .booking__success-sub { font-family:var(--font-body); font-size:0.9rem; color:var(--on-light-dim); line-height:1.6; }
+    .booking__success-detail { font-family:var(--font-body); font-size:0.82rem; color:var(--accent);
+      font-weight:600; padding:10px 20px; background:rgba(200,98,42,0.08);
+      border-radius:10px; border:1px solid rgba(200,98,42,0.2); }
+
+    @media (max-width:700px) {
+      .booking__card { grid-template-columns:1fr; }
+      .booking__cal { border-right:0; border-bottom:1px solid var(--bronze-line); }
+    }
+
+    /* ==========================================================
+       PROGRESS TRACKER
+       ========================================================== */
+    .tracker {
+      background:var(--dark-1);
+      padding:clamp(80px,12vh,130px) 0; position:relative; overflow:hidden;
+    }
+    .tracker::before { content:''; position:absolute; bottom:0; left:0; right:0; height:1px;
+      background:linear-gradient(90deg,transparent,var(--bronze-line),transparent); }
+
+    .tracker__head { text-align:center; max-width:640px; margin:0 auto clamp(40px,6vh,60px);
+      display:flex; flex-direction:column; gap:14px; align-items:center; }
+    .tracker__title { font-family:var(--font-display); font-weight:700;
+      font-size:clamp(2rem,4.6vw,3.8rem); line-height:1.04; letter-spacing:-0.04em; color:var(--on-dark); }
+    .tracker__title .dim { color:var(--on-dark-mute); }
+    .tracker__lede { font-family:var(--font-body); font-size:clamp(0.95rem,1.1vw,1.05rem);
+      color:var(--on-dark-dim); line-height:1.6; }
+
+    .tracker__dashboard {
+      max-width:960px; margin:0 auto;
+      display:grid; grid-template-columns:1fr 1fr; gap:16px;
+    }
+
+    .tracker__panel {
+      background:var(--dark-2); border:1px solid var(--border-dark);
+      border-radius:20px; padding:clamp(20px,2.5vw,28px);
+      display:flex; flex-direction:column; gap:16px;
+    }
+    .tracker__panel--wide { grid-column:span 2; }
+    .tracker__panel-head { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+    .tracker__panel-title { font-family:var(--font-body); font-size:0.68rem; font-weight:700;
+      letter-spacing:0.28em; text-transform:uppercase; color:var(--steel); }
+    .tracker__panel-badge { font-family:var(--font-body); font-size:0.65rem; font-weight:600;
+      padding:3px 10px; border-radius:99px; background:rgba(200,98,42,0.1); color:var(--accent);
+      border:1px solid rgba(200,98,42,0.2); }
+
+    /* Weekly chart */
+    .tracker__chart { display:flex; align-items:flex-end; gap:8px; height:80px; }
+    .tracker__bar-wrap { flex:1; display:flex; flex-direction:column; align-items:center; gap:6px; }
+    .tracker__bar {
+      width:100%; border-radius:6px 6px 0 0;
+      background:var(--dark-3); position:relative; overflow:hidden;
+      transition:height 1s cubic-bezier(0.22,1,0.36,1);
+    }
+    .tracker__bar-fill {
+      position:absolute; bottom:0; left:0; right:0;
+      background:linear-gradient(180deg,var(--accent),rgba(200,98,42,0.5));
+      border-radius:6px 6px 0 0;
+      transition:height 1.2s cubic-bezier(0.22,1,0.36,1);
+    }
+    .tracker__bar-day { font-family:var(--font-body); font-size:0.58rem; font-weight:600;
+      letter-spacing:0.1em; color:var(--on-dark-mute); text-transform:uppercase; }
+    .tracker__bar-val { font-family:var(--font-body); font-size:0.68rem; font-weight:700; color:var(--on-dark-dim); }
+
+    /* Streak */
+    .tracker__streak-num { font-family:var(--font-display); font-weight:800;
+      font-size:3.5rem; letter-spacing:-0.05em; color:var(--accent); line-height:1; }
+    .tracker__streak-label { font-family:var(--font-body); font-size:0.8rem; color:var(--on-dark-dim); }
+    .tracker__streak-dots { display:flex; gap:6px; flex-wrap:wrap; }
+    .tracker__streak-dot { width:10px; height:10px; border-radius:50%; background:var(--dark-3); }
+    .tracker__streak-dot.done { background:var(--accent); box-shadow:0 0 6px rgba(200,98,42,0.4); }
+    .tracker__streak-dot.today { background:var(--bronze); box-shadow:0 0 8px rgba(184,146,74,0.5); }
+
+    /* Goals */
+    .tracker__goals { display:flex; flex-direction:column; gap:12px; }
+    .tracker__goal { display:flex; flex-direction:column; gap:6px; }
+    .tracker__goal-head { display:flex; align-items:center; justify-content:space-between; }
+    .tracker__goal-name { font-family:var(--font-body); font-size:0.82rem; font-weight:600; color:var(--on-dark); }
+    .tracker__goal-val { font-family:var(--font-body); font-size:0.75rem; color:var(--on-dark-dim); }
+    .tracker__goal-track { height:5px; background:var(--dark-3); border-radius:99px; overflow:hidden; }
+    .tracker__goal-fill { height:100%; border-radius:99px;
+      transition:width 1.4s cubic-bezier(0.22,1,0.36,1); }
+
+    /* Stats */
+    .tracker__stats { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+    .tracker__stat { display:flex; flex-direction:column; gap:4px; padding:14px 12px;
+      background:var(--dark-3); border-radius:12px; border:1px solid var(--border-dark); }
+    .tracker__stat-num { font-family:var(--font-display); font-weight:700; font-size:1.4rem;
+      letter-spacing:-0.03em; color:var(--on-dark); }
+    .tracker__stat-num .unit { font-size:0.5em; font-weight:600; color:var(--bronze); }
+    .tracker__stat-label { font-family:var(--font-body); font-size:0.65rem; color:var(--on-dark-mute);
+      letter-spacing:0.1em; text-transform:uppercase; }
+    .tracker__stat-delta { font-family:var(--font-body); font-size:0.68rem; font-weight:600; }
+    .tracker__stat-delta.up { color:var(--steel); }
+    .tracker__stat-delta.down { color:var(--accent); }
+
+    /* Input row */
+    .tracker__log { display:flex; gap:8px; }
+    .tracker__log-input {
+      flex:1; padding:11px 14px;
+      background:var(--dark-3); border:1px solid var(--border-dark);
+      border-radius:10px; color:var(--on-dark);
+      font-family:var(--font-body); font-size:0.9rem; outline:none;
+      transition:border-color 0.2s;
+    }
+    .tracker__log-input:focus { border-color:rgba(200,98,42,0.5); }
+    .tracker__log-btn {
+      padding:11px 18px; border-radius:10px;
+      background:var(--accent); color:var(--accent-ink);
+      font-family:var(--font-body); font-weight:700; font-size:0.85rem;
+      cursor:pointer; transition:transform 0.2s,box-shadow 0.2s; white-space:nowrap;
+    }
+    .tracker__log-btn:hover { transform:translateY(-1px); box-shadow:0 8px 24px rgba(200,98,42,0.3); }
+    .tracker__log-entries { display:flex; flex-direction:column; gap:6px; max-height:120px; overflow-y:auto; }
+    .tracker__log-entry { display:flex; align-items:center; justify-content:space-between;
+      padding:8px 12px; border-radius:8px; background:var(--dark-3);
+      font-family:var(--font-body); font-size:0.78rem; color:var(--on-dark-dim);
+      animation:entryIn 0.3s ease; }
+    @keyframes entryIn { from{opacity:0;transform:translateY(-6px)} to{opacity:1;transform:translateY(0)} }
+    .tracker__log-entry-time { color:var(--on-dark-mute); font-size:0.68rem; }
+
+    @media (max-width:700px) {
+      .tracker__dashboard { grid-template-columns:1fr; }
+      .tracker__panel--wide { grid-column:span 1; }
+      .tracker__stats { grid-template-columns:repeat(3,1fr); }
+    }
+
+    /* ==========================================================
+       SHAKE
+       ========================================================== */
+    @keyframes shake {
+      0%,100%{transform:translateX(0)} 20%{transform:translateX(-8px)}
+      40%{transform:translateX(8px)} 60%{transform:translateX(-5px)} 80%{transform:translateX(5px)}
+    }
+
+    /* FOOTER */
+    .footer { background: var(--dark); border-top: 1px solid var(--border-dark); padding: 30px 0; }
+    .footer__inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .footer__brand { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; color: var(--on-dark); display: inline-flex; align-items: baseline; }
+    .footer__brand .dot { color: var(--accent); margin: 0 1px; }
+    .footer__copy { font-family: var(--font-body); font-size: 0.78rem; color: var(--on-dark-mute); }
+    .footer__links { display: flex; gap: 18px; }
+    .footer__link { font-family: var(--font-body); font-size: 0.82rem; color: var(--on-dark-dim); transition: color 0.2s; }
+    .footer__link:hover { color: var(--on-dark); }
+  </style>
+</head>
+<body>
+
+  <div class="cursor" aria-hidden="true"></div>
+
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="#hero" class="nav__brand">E<span class="dot">.</span>YILDIZ</a>
+      <ul class="nav__links">
+        <li><a class="nav__link" href="#problem">Neden</a></li>
+        <li><a class="nav__link" href="#method">Metod</a></li>
+        <li><a class="nav__link" href="#quiz">Program Bul</a></li>
+        <li><a class="nav__link" href="#booking">Randevu</a></li>
+        <li><a class="nav__link" href="#about">Hakkımda</a></li>
+      </ul>
+      <a href="https://wa.me/905001234567?text=Merhaba,%20pilates%20programı%20hakkında%20bilgi%20almak%20istiyorum"
+         class="nav__cta" target="_blank" rel="noopener">Başvur</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ========== HERO — 3-phase scroll-scrub ========== -->
+    <section class="hero" id="hero">
+      <div class="hero__stage" id="hero-stage">
+
+        <div class="hero__atmosphere" aria-hidden="true">
+          <div class="hero__atmosphere-glow"></div>
+          <div class="hero__atmosphere-grid"></div>
+          <div class="hero__atmosphere-ring"></div>
+          <div class="hero__atmosphere-ring hero__atmosphere-ring--inner"></div>
+        </div>
+
+        <!-- Phase 1: Brand intro overlay -->
+        <div class="hero__brand-intro" id="hero-brand-intro" aria-hidden="true">
+          <div class="hero__brand-rings">
+            <div class="hero__brand-ring hero__brand-ring--inner"></div>
+            <div class="hero__brand-ring"></div>
+          </div>
+          <h1 class="hero__brand-word" id="hero-brand-word">E<span class="dot">.</span>YILDIZ</h1>
+          <p class="hero__brand-tag" id="hero-brand-tag">Reformer &amp; Mat Pilates Studio</p>
+        </div>
+
+        <!-- Phase 2 + 3: Composition layout -->
+        <div class="hero__layout" id="hero-layout">
+          <div class="container hero__inner">
+
+            <div class="hero__content" id="hero-content">
+              <span class="hero__badge">
+                <span class="pulse" aria-hidden="true"></span>
+                Reformer &amp; Mat Pilates
+              </span>
+              <h2 class="hero__title">
+                Vücudunu değil,<br>
+                <span class="dim">sistemini</span> değiştir<span class="accent-dot">.</span>
+              </h2>
+              <p class="hero__lede">
+                <strong>E.YILDIZ</strong> ile pilates, beslenme ve takip tek planda birleşir. Rastgele program değil, hafta hafta yönetilen dönüşüm.
+              </p>
+              <div class="hero__actions">
+                <a href="https://wa.me/905001234567?text=Merhaba,%20pilates%20programı%20hakkında%20bilgi%20almak%20istiyorum"
+                   class="btn btn--primary" target="_blank" rel="noopener">
+                  Programa Başvur
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+                    <path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </a>
+                <a href="#method" class="btn btn--ghost">Sisteme Bak</a>
+              </div>
+              <div class="hero__metrics">
+                <div class="hero__metric"><span class="hero__metric-num">10+</span><span class="hero__metric-label">Yıl deneyim</span></div>
+                <div class="hero__metric"><span class="hero__metric-num">200+</span><span class="hero__metric-label">Aktif danışan</span></div>
+                <div class="hero__metric"><span class="hero__metric-num">%96</span><span class="hero__metric-label">Devamlılık</span></div>
+              </div>
+            </div>
+
+            <div class="hero__visual" id="hero-visual">
+
+              <div class="hero__visual-ghost-ring" aria-hidden="true"></div>
+
+              <div class="hero__visual-aux" aria-hidden="true">
+                <img src="assets/images/plates-premium-v1/plates-hero-aux.webp" alt="Reformer pilates hareket detayı" loading="lazy">
+              </div>
+
+              <div class="hero__image-slot">
+                <img src="assets/images/plates-premium-v1/plates-hero-main.webp"
+                     alt="Reformer Pilates stüdyo seansı" loading="eager">
+                <span class="hero__image-tag">[ E<span class="accent-mark">.</span>YILDIZ · STÜDYO ]</span>
+              </div>
+
+              <div class="hero__floats" aria-hidden="true">
+                <span class="float-card float-card--analiz"><span class="dot"></span> Analiz</span>
+                <span class="float-card float-card--takip"><span class="dot"></span> Haftalık Takip</span>
+                <span class="float-card float-card--beslenme"><span class="dot"></span> Beslenme</span>
+                <span class="float-card float-card--disiplin"><span class="dot"></span> Disiplin</span>
+              </div>
+
+              <!-- Form analysis pill (TL, bronze) -->
+              <div class="hero__panel hero__panel--form" aria-hidden="true">
+                <span class="hero__panel-form-dot"></span>
+                <div class="hero__panel-form-text">
+                  <span class="hero__panel-form-label">FORM ANALYSIS</span>
+                  <span class="hero__panel-form-time">Pzt · 19:00</span>
+                </div>
+              </div>
+
+              <!-- Tracking dashboard (TR) -->
+              <div class="hero__panel hero__panel--track" aria-hidden="true">
+                <div class="hero__panel-label">Bu hafta · ilerleme</div>
+                <div class="hero__panel-row"><span>Pilates</span><span class="v">3 / 4</span></div>
+                <div class="hero__panel-row"><span>Beslenme</span><span class="v">6 / 7</span></div>
+                <div class="hero__panel-spark">
+                  <span style="height: 30%"></span><span style="height: 55%"></span><span style="height: 42%"></span>
+                  <span style="height: 70%"></span><span style="height: 60%"></span><span style="height: 88%"></span>
+                  <span style="height: 78%"></span>
+                </div>
+                <div class="hero__panel-foot">
+                  <span>Pzt → Paz</span><span>+12%</span>
+                </div>
+              </div>
+
+              <!-- Progress mini (mid-left) -->
+              <div class="hero__panel hero__panel--progress" aria-hidden="true">
+                <div class="hero__panel-label">Hedefe ilerleme</div>
+                <div class="hero__panel-bigval"><span class="pct">%58</span></div>
+                <div class="hero__panel-bar"><span></span></div>
+                <div class="hero__panel-prog-meta">8 / 12 hafta</div>
+              </div>
+
+              <!-- Weekly check-in (BR) -->
+              <div class="hero__panel hero__panel--checkin" aria-hidden="true">
+                <div class="hero__panel-label">Haftalık Check-in · Sue K.</div>
+                <div class="hero__panel-row">
+                  <span>Pilates</span>
+                  <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                </div>
+                <div class="hero__panel-row">
+                  <span>Beslenme</span>
+                  <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                </div>
+                <div class="hero__panel-row">
+                  <span>Form Analizi</span>
+                  <span class="pending">Pzt 18:00</span>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========== PROBLEM ========== -->
+    <section class="problem" id="problem">
+      <div class="container">
+        <div class="problem__head">
+          <span class="eyebrow reveal">Sorun</span>
+          <h2 class="problem__title reveal">
+            Sorun motivasyon değil.<br>
+            <span class="dim">Sistem eksikliği</span><span class="accent-dot">.</span>
+          </h2>
+          <p class="problem__lede reveal">
+            Çoğu insan ne yapacağını biliyor. Eksik olan plan değil — onu sürdürecek yapı.
+          </p>
+        </div>
+        <div class="problem__cards reveal-stagger">
+          <article class="problem-card">
+            <div class="problem-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 7h7v7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <div class="problem-card__num">01 · Süreklilik</div>
+              <h3 class="problem-card__title">Başlıyorsun ama sürdüremiyorsun.</h3>
+            </div>
+            <p class="problem-card__desc">İlk hafta enerji, ikinci hafta mazeret, üçüncü hafta bırakış. Tanıdık bir döngü.</p>
+          </article>
+          <article class="problem-card">
+            <div class="problem-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="5" width="16" height="14" rx="2"/><path d="M8 9h8M8 13h8M8 17h5" stroke-linecap="round"/></svg>
+            </div>
+            <div>
+              <div class="problem-card__num">02 · Kontrol</div>
+              <h3 class="problem-card__title">Program var, takip yok.</h3>
+            </div>
+            <p class="problem-card__desc">Plan yapılır, dosya verilir, sonra yalnız kalırsın. Süreç yönetilmediğinde plan kâğıtta kalır.</p>
+          </article>
+          <article class="problem-card">
+            <div class="problem-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M6 12h12M8 17h8" stroke-linecap="round"/><path d="M3 4l18 16" stroke-linecap="round" opacity=".5"/></svg>
+            </div>
+            <div>
+              <div class="problem-card__num">03 · Düzen</div>
+              <h3 class="problem-card__title">Ne yapacağını biliyorsun ama düzen kuramıyorsun.</h3>
+            </div>
+            <p class="problem-card__desc">Bilgi eksikliği değil bu. Hayatına entegre olan bir sistem eksikliği.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== METHOD ========== -->
+    <section class="method" id="method" data-bg="light">
+      <div class="container">
+        <div class="method__head">
+          <span class="eyebrow reveal">Sistem</span>
+          <h2 class="method__title reveal">4 Katmanlı Dönüşüm Sistemi<span class="accent-dot">.</span></h2>
+          <p class="method__lede reveal">Program değil, motor. Her katman bir öncekinin üstüne kurulur — eksik katman, eksik sonuç.</p>
+        </div>
+
+        <div class="method__layout">
+          <div class="method__sticky">
+            <div class="engine">
+              <div class="engine__head">
+                <div class="engine__brand">
+                  <span class="engine__brand-name">E<span class="dot">.</span>YILDIZ <em>SYSTEM</em></span>
+                  <span class="engine__brand-tag">Managed Coaching Engine</span>
+                </div>
+                <span class="engine__status"><span class="live-dot"></span> Live</span>
+              </div>
+
+              <div class="engine__orbital">
+                <div class="orbital orbital--engine" id="orbital-engine">
+                  <div class="orbital__rings"></div>
+                  <svg class="orbital__lines" viewBox="0 0 200 200" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+                    <line class="orbital__line" data-step="1" x1="100" y1="100" x2="100" y2="22" />
+                    <line class="orbital__line" data-step="2" x1="100" y1="100" x2="178" y2="100" />
+                    <line class="orbital__line" data-step="3" x1="100" y1="100" x2="100" y2="178" />
+                    <line class="orbital__line" data-step="4" x1="100" y1="100" x2="22" y2="100" />
+                  </svg>
+                  <div class="orbital__core">
+                    <div class="orbital__core-pulse"></div>
+                    <span class="orbital__core-brand">E<span class="dot">.</span>YILDIZ</span>
+                  </div>
+                  <div class="orbital__node" data-step="1"><span class="orbital__node-label">Analiz</span></div>
+                  <div class="orbital__node" data-step="2"><span class="orbital__node-label">Pilates</span></div>
+                  <div class="orbital__node" data-step="3"><span class="orbital__node-label">Beslenme</span></div>
+                  <div class="orbital__node" data-step="4"><span class="orbital__node-label">Takip</span></div>
+                </div>
+              </div>
+
+              <div class="engine__detail">
+                <div class="detail is-active" data-step="1">
+                  <div class="detail__top">
+                    <span class="detail__num">01</span>
+                    <span class="detail__title">Analiz</span>
+                  </div>
+                  <p class="detail__sub">Başlangıç noktası ölçülür. Vücut kompozisyonu, alışkanlık ve hedef netleşir.</p>
+                  <div class="detail__visual">
+                    <div class="vis-analiz">
+                      <svg viewBox="0 0 200 160" preserveAspectRatio="xMidYMid meet">
+                        <path class="body" d="M100 18 q-14 0 -14 16 q0 11 7 17 q-19 7 -19 26 v40 q0 8 6 8 h40 q6 0 6 -8 v-40 q0 -19 -19 -26 q7 -6 7 -17 q0 -16 -14 -16Z"/>
+                        <line class="scan" x1="20" y1="40"  x2="180" y2="40"/>
+                        <line class="scan" x1="20" y1="76"  x2="180" y2="76"/>
+                        <line class="scan" x1="20" y1="112" x2="180" y2="112"/>
+                        <text class="lab" x="14" y="36">CHEST</text>
+                        <text class="lab" x="14" y="72">WAIST</text>
+                        <text class="lab" x="14" y="108">HIPS</text>
+                        <circle class="pt" cx="135" cy="40"  r="4"/>
+                        <circle class="pt" cx="135" cy="76"  r="4"/>
+                        <circle class="pt" cx="135" cy="112" r="4"/>
+                        <circle class="pt-ring" cx="135" cy="40"  r="7"/>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="detail__chips">
+                    <span class="detail__chip is-accent">Vücut analizi</span>
+                    <span class="detail__chip">Hedef netleştirme</span>
+                    <span class="detail__chip">Rutin haritası</span>
+                  </div>
+                </div>
+
+                <div class="detail" data-step="2">
+                  <div class="detail__top">
+                    <span class="detail__num">02</span>
+                    <span class="detail__title">Pilates</span>
+                  </div>
+                  <p class="detail__sub">Akış, direnç ve hareket kalitesi kişiye özel yönetilir. Her seans kontrollü şekilde ilerler.</p>
+                  <div class="detail__visual">
+                    <div class="vis-train">
+                      <div class="train-row"><span class="train-row__name">Reformer Flow</span><span class="train-row__sets">45 dk</span><span class="train-row__bar"><span style="width: 82%"></span></span></div>
+                      <div class="train-row"><span class="train-row__name">Core &amp; Denge</span><span class="train-row__sets">18 dk</span><span class="train-row__bar"><span style="width: 68%"></span></span></div>
+                      <div class="train-row"><span class="train-row__name">Esneme &amp; Mobilite</span><span class="train-row__sets">12 dk</span><span class="train-row__bar"><span style="width: 74%"></span></span></div>
+                    </div>
+                  </div>
+                  <div class="detail__chips">
+                    <span class="detail__chip is-accent">Akış planı</span>
+                    <span class="detail__chip">Direnç</span>
+                    <span class="detail__chip">Hareket kalitesi</span>
+                  </div>
+                </div>
+
+                <div class="detail" data-step="3">
+                  <div class="detail__top">
+                    <span class="detail__num">03</span>
+                    <span class="detail__title">Beslenme</span>
+                  </div>
+                  <p class="detail__sub">Plan gerçek hayata uyar. Sürdürülebilir, hedefe yönlü ve esnek.</p>
+                  <div class="detail__visual">
+                    <div class="vis-macro">
+                      <div class="macro"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="16" fill="none" stroke="rgba(0,0,0,0.08)" stroke-width="3"/><circle cx="20" cy="20" r="16" fill="none" stroke="var(--accent)" stroke-width="3" stroke-dasharray="100" stroke-dashoffset="22" stroke-linecap="round" transform="rotate(-90 20 20)"/></svg><span class="macro__name">Protein</span><span class="macro__val">78%</span></div>
+                      <div class="macro"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="16" fill="none" stroke="rgba(0,0,0,0.08)" stroke-width="3"/><circle cx="20" cy="20" r="16" fill="none" stroke="var(--accent)" stroke-width="3" stroke-dasharray="100" stroke-dashoffset="38" stroke-linecap="round" transform="rotate(-90 20 20)"/></svg><span class="macro__name">Karb</span><span class="macro__val">62%</span></div>
+                      <div class="macro"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="16" fill="none" stroke="rgba(0,0,0,0.08)" stroke-width="3"/><circle cx="20" cy="20" r="16" fill="none" stroke="var(--accent)" stroke-width="3" stroke-dasharray="100" stroke-dashoffset="55" stroke-linecap="round" transform="rotate(-90 20 20)"/></svg><span class="macro__name">Yağ</span><span class="macro__val">45%</span></div>
+                      <div class="macro"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="16" fill="none" stroke="rgba(0,0,0,0.08)" stroke-width="3"/><circle cx="20" cy="20" r="16" fill="none" stroke="var(--accent)" stroke-width="3" stroke-dasharray="100" stroke-dashoffset="32" stroke-linecap="round" transform="rotate(-90 20 20)"/></svg><span class="macro__name">Lif</span><span class="macro__val">68%</span></div>
+                    </div>
+                  </div>
+                  <div class="detail__chips">
+                    <span class="detail__chip is-accent">Protein</span>
+                    <span class="detail__chip">Öğün planı</span>
+                    <span class="detail__chip">Sürdürülebilirlik</span>
+                  </div>
+                </div>
+
+                <div class="detail" data-step="4">
+                  <div class="detail__top">
+                    <span class="detail__num">04</span>
+                    <span class="detail__title">Takip</span>
+                  </div>
+                  <p class="detail__sub">Haftalık ölçüm ve revizyon. Sistem burada ayağa kalkar.</p>
+                  <div class="detail__visual">
+                    <div class="vis-track">
+                      <div class="vis-track__week">
+                        <span class="vis-track__day is-done">P</span>
+                        <span class="vis-track__day is-done">S</span>
+                        <span class="vis-track__day is-done">Ç</span>
+                        <span class="vis-track__day is-today">P</span>
+                        <span class="vis-track__day">C</span>
+                        <span class="vis-track__day">C</span>
+                        <span class="vis-track__day">P</span>
+                      </div>
+                      <div class="vis-track__chart">
+                        <svg viewBox="0 0 200 60" preserveAspectRatio="none">
+                          <path class="area" d="M0 50 L30 40 L60 42 L90 32 L120 28 L150 18 L180 14 L200 10 L200 60 L0 60 Z"/>
+                          <polyline class="line" points="0,50 30,40 60,42 90,32 120,28 150,18 180,14 200,10"/>
+                          <text class="lab" x="2" y="56">H1</text>
+                          <text class="lab" x="186" y="56">H8</text>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="detail__chips">
+                    <span class="detail__chip is-accent">Check-in</span>
+                    <span class="detail__chip">Ölçüm</span>
+                    <span class="detail__chip">Revizyon</span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="method__steps">
+            <article class="method-step" data-step="1">
+              <div class="method-step__head">
+                <span class="method-step__num">01</span>
+                <h3 class="method-step__title">Analiz</h3>
+                <span class="method-step__hint">Hafta 0</span>
+              </div>
+              <p class="method-step__desc">Vücut kompozisyonu, alışkanlık ve hedef analizi. Sonraki katmanların temeli buradan kurulur.</p>
+              <ul class="method-step__list">
+                <li>Postür, hareket kalitesi ve esneklik seviyesi</li>
+                <li>Günlük rutin, enerji düzeyi ve yaşam temposu</li>
+                <li>Net hedef ve gerçekçi zaman çizelgesi</li>
+              </ul>
+              <div class="method-step__strip">
+                <span class="method-step__strip-label">Süreç</span>
+                <span class="method-step__strip-bar"><span style="width: 18%"></span></span>
+                <span class="method-step__strip-val">%18</span>
+              </div>
+            </article>
+
+            <article class="method-step" data-step="2">
+              <div class="method-step__head">
+                <span class="method-step__num">02</span>
+                <h3 class="method-step__title">Pilates</h3>
+                <span class="method-step__hint">Sürekli</span>
+              </div>
+              <p class="method-step__desc">Kişiye özel kurgulanmış ders akışı. Hareket kalitesi, direnç seviyesi ve ilerleme gözlemlenerek yönetilir.</p>
+              <ul class="method-step__list">
+                <li>Hedefe yönlü, periyotlanmış program</li>
+                <li>Stüdyoda anlık form düzeltmesi ya da online video geri bildirimi</li>
+                <li>Seans yoğunluğu, akış ve ilerleme — haftalık güncel</li>
+              </ul>
+              <div class="method-step__strip">
+                <span class="method-step__strip-label">Süreç</span>
+                <span class="method-step__strip-bar"><span style="width: 42%"></span></span>
+                <span class="method-step__strip-val">%42</span>
+              </div>
+            </article>
+
+            <article class="method-step" data-step="3">
+              <div class="method-step__head">
+                <span class="method-step__num">03</span>
+                <h3 class="method-step__title">Beslenme</h3>
+                <span class="method-step__hint">Haftalık plan</span>
+              </div>
+              <p class="method-step__desc">Hedefe hizmet eden, sürdürülebilir ve gerçek hayata uygun beslenme planı. Diyet değil — yapı.</p>
+              <ul class="method-step__list">
+                <li>Makro hedefler ve pratik öğün şablonları</li>
+                <li>Tek tip menü değil, alışkanlığa göre esneklik</li>
+                <li>Pilates planıyla birebir senkron</li>
+              </ul>
+              <div class="method-step__strip">
+                <span class="method-step__strip-label">Süreç</span>
+                <span class="method-step__strip-bar"><span style="width: 70%"></span></span>
+                <span class="method-step__strip-val">%70</span>
+              </div>
+            </article>
+
+            <article class="method-step" data-step="4">
+              <div class="method-step__head">
+                <span class="method-step__num">04</span>
+                <h3 class="method-step__title">Takip</h3>
+                <span class="method-step__hint">Haftalık check-in</span>
+              </div>
+              <p class="method-step__desc">Haftalık ölçüm, revizyon ve sorumluluk. Bu sistemi diğer her şeyden ayıran katman tam burası.</p>
+              <ul class="method-step__list">
+                <li>Haftalık check-in (ölçüm + form + ilerleme)</li>
+                <li>Plan revizyonu, ihtiyaç olduğu kadar</li>
+                <li>Sorumluluk ortağı — yalnız bırakılmazsın</li>
+              </ul>
+              <div class="method-step__strip">
+                <span class="method-step__strip-label">Süreç</span>
+                <span class="method-step__strip-bar"><span style="width: 96%"></span></span>
+                <span class="method-step__strip-val">%96</span>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="method__mobile">
+          <div class="method__mobile-orbital">
+            <div class="orbital orbital--mini" id="orbital-mobile">
+              <div class="orbital__rings"></div>
+              <div class="orbital__core"><span class="orbital__core-brand">E<span class="dot">.</span>YILDIZ</span></div>
+              <div class="orbital__node" data-step="1"><span class="orbital__node-label">Analiz</span></div>
+              <div class="orbital__node" data-step="2"><span class="orbital__node-label">Pilates</span></div>
+              <div class="orbital__node" data-step="3"><span class="orbital__node-label">Beslenme</span></div>
+              <div class="orbital__node" data-step="4"><span class="orbital__node-label">Takip</span></div>
+            </div>
+          </div>
+          <div class="method__cards">
+            <article class="method-card-m" data-step="1">
+              <div class="method-card-m__head"><span class="method-card-m__num">01</span><h3 class="method-card-m__title">Analiz</h3></div>
+              <p class="method-card-m__desc">Vücut kompozisyonu, alışkanlık ve hedef analizi. Başlangıç noktan netleşir.</p>
+              <div class="method-card-m__chips"><span class="method-card-m__chip">Vücut analizi</span><span class="method-card-m__chip">Hedef</span><span class="method-card-m__chip">Rutin</span></div>
+            </article>
+            <article class="method-card-m" data-step="2">
+              <div class="method-card-m__head"><span class="method-card-m__num">02</span><h3 class="method-card-m__title">Pilates</h3></div>
+              <p class="method-card-m__desc">Kişiye özel reformer akışı. Hareket kalitesi, direnç ve ilerleme yönetimi.</p>
+              <div class="method-card-m__chips"><span class="method-card-m__chip">Akış</span><span class="method-card-m__chip">Direnç</span><span class="method-card-m__chip">Hareket kalitesi</span></div>
+            </article>
+            <article class="method-card-m" data-step="3">
+              <div class="method-card-m__head"><span class="method-card-m__num">03</span><h3 class="method-card-m__title">Beslenme</h3></div>
+              <p class="method-card-m__desc">Sürdürülebilir, hedefe yönlü beslenme planı.</p>
+              <div class="method-card-m__chips"><span class="method-card-m__chip">Protein</span><span class="method-card-m__chip">Öğün</span><span class="method-card-m__chip">Sürdürülebilir</span></div>
+            </article>
+            <article class="method-card-m" data-step="4">
+              <div class="method-card-m__head"><span class="method-card-m__num">04</span><h3 class="method-card-m__title">Takip</h3></div>
+              <p class="method-card-m__desc">Haftalık ölçüm, revizyon ve sorumluluk.</p>
+              <div class="method-card-m__chips"><span class="method-card-m__chip">Check-in</span><span class="method-card-m__chip">Ölçüm</span><span class="method-card-m__chip">Revizyon</span></div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== MARQUEE ========== -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span class="marquee__item">Analiz <span class="marquee__dot"></span> <span class="marquee__item--dim">Pilates</span> <span class="marquee__dot"></span> Beslenme <span class="marquee__dot"></span> <span class="marquee__item--dim">Takip</span> <span class="marquee__dot"></span> Revizyon <span class="marquee__dot"></span> <span class="marquee__item--dim">Sistem</span> <span class="marquee__dot"></span> Dönüşüm <span class="marquee__dot"></span></span>
+        <span class="marquee__item">Analiz <span class="marquee__dot"></span> <span class="marquee__item--dim">Pilates</span> <span class="marquee__dot"></span> Beslenme <span class="marquee__dot"></span> <span class="marquee__item--dim">Takip</span> <span class="marquee__dot"></span> Revizyon <span class="marquee__dot"></span> <span class="marquee__item--dim">Sistem</span> <span class="marquee__dot"></span> Dönüşüm <span class="marquee__dot"></span></span>
+      </div>
+    </div>
+
+    <!-- ========== WHY DIFFERENT ========== -->
+    <section class="why" id="why">
+      <div class="container">
+        <div class="why__head">
+          <span class="eyebrow reveal">Neden Farklı</span>
+          <h2 class="why__title reveal"><span class="dim">Sıradan yaklaşım değil,</span><br>yönetilen sistem<span class="accent-dot">.</span></h2>
+          <p class="why__lede reveal">Aradaki fark sadece egzersiz listesi değil. Sürecin ne kadar düzenli yönetildiği.</p>
+        </div>
+        <div class="why__compare reveal">
+          <div class="why__col why__col--negative">
+            <div class="why__col-head">
+              <span class="why__col-tag">Tipik yaklaşım</span>
+              <span class="why__col-name">Sıradan Sistem</span>
+            </div>
+            <ul class="why__list">
+              <li class="why__item"><span class="why__icon why__icon--x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/></svg></span><span>Ders önerir, sonrasında takibi gevşetir.</span></li>
+              <li class="why__item"><span class="why__icon why__icon--x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/></svg></span><span>Devamlılığı düzenli olarak desteklemez.</span></li>
+              <li class="why__item"><span class="why__icon why__icon--x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/></svg></span><span>Tek tip plan verir, kişiye göre inceltmez.</span></li>
+              <li class="why__item"><span class="why__icon why__icon--x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/></svg></span><span>Süreci yönetmez. “Sen devam et yeter.”</span></li>
+            </ul>
+          </div>
+          <div class="why__col why__col--positive">
+            <div class="why__col-head">
+              <span class="why__col-tag">E.YILDIZ</span>
+              <span class="why__col-name">Yönetilen Sistem</span>
+            </div>
+            <ul class="why__list">
+              <li class="why__item"><span class="why__icon why__icon--check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Süreci yönetir, planı haftalık günceller.</span></li>
+              <li class="why__item"><span class="why__icon why__icon--check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Haftalık takip, ölçüm ve revizyon.</span></li>
+              <li class="why__item"><span class="why__icon why__icon--check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Kişiye özel plan, kişiye özel revizyon.</span></li>
+              <li class="why__item"><span class="why__icon why__icon--check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Pilates + beslenme + takip — tek planda.</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== TRANSFORMATION ========== -->
+    <section class="transformation" id="transformation" data-bg="light">
+      <div class="container">
+        <div class="transformation__head">
+          <span class="eyebrow reveal">Dönüşümler</span>
+          <h2 class="transformation__title reveal">Sistem sonuç üretir<span class="accent-dot">.</span></h2>
+          <p class="transformation__lede reveal">10+ yıllık saha deneyimi, yüzlerce dönüşüm. Hepsi aynı sistem üzerinden.</p>
+        </div>
+        <div class="transformation__metrics reveal-stagger">
+          <div class="metric-card">
+            <div class="metric-card__num"><span data-count="200" data-suffix="+">0</span></div>
+            <div class="metric-card__label">Aktif danışan</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-card__num"><span class="prefix">%</span><span data-count="96">0</span></div>
+            <div class="metric-card__label">Program devamlılığı</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-card__num"><span data-count="10" data-suffix="+">0</span><span class="suffix">YIL</span></div>
+            <div class="metric-card__label">Saha deneyimi</div>
+          </div>
+        </div>
+
+        <div class="ba reveal">
+          <div class="ba__top">
+            <div class="ba__badge">
+              <span class="ba__badge-result">−7 kg</span>
+              <span class="ba__badge-meta">12 hafta · Reformer + Beslenme · Zeynep K.</span>
+            </div>
+            <span class="ba__hint">sürükle</span>
+          </div>
+          <div class="ba__stage" id="ba-stage">
+            <div class="ba__pane ba__pane--after">
+              <img src="assets/images/plates-premium-v1/plates-after.webp" alt="Pilates dönüşüm sonrası" loading="lazy">
+              <span class="ba__tag">SONRA</span>
+            </div>
+            <div class="ba__pane ba__pane--before" id="ba-before">
+              <img src="assets/images/plates-premium-v1/plates-before.webp" alt="Pilates dönüşüm öncesi" loading="lazy">
+              <span class="ba__tag">ÖNCE</span>
+            </div>
+            <div class="ba__handle" id="ba-handle">
+              <div class="ba__line"></div>
+              <div class="ba__grip" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6L4 12l5 6M15 6l5 6-5 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </div>
+          </div>
+          <p class="ba__story">12 haftada sadece kilo değil — <em>düzen, beslenme ve disiplin</em> de yerine oturdu.</p>
+        </div>
+
+        <div class="testimonials">
+          <p class="testimonials__title reveal">Müşteriler ne diyor<span class="accent-dot">.</span></p>
+          <div class="t-stack" id="t-stack">
+            <article class="t-card" data-i="0" data-pos="0">
+              <div class="t-card__top">
+                <span class="t-card__program">Birebir Reformer · 12 Hafta</span>
+                <span class="t-card__id">#A-001</span>
+              </div>
+              <div class="t-card__result">
+                <span class="t-card__result-value">−7 kg</span>
+                <span class="t-card__result-label"><span class="pill">SONUÇ</span>weekly tracked</span>
+              </div>
+              <p class="t-card__quote">İlk defa gerçekten sürdürebildim. Çünkü her hafta takip edilip yönlendirildiğimi hissettim.</p>
+              <div class="t-card__bottom">
+                <div class="t-card__avatar">M</div>
+                <div class="t-card__person"><strong>Zeynep K.</strong><span>Birebir Reformer · 12 hafta · İstanbul</span></div>
+                <span class="t-card__verified">Verified</span>
+              </div>
+            </article>
+            <article class="t-card" data-i="1" data-pos="1">
+              <div class="t-card__top">
+                <span class="t-card__program">Online Pilates Takibi · 8 Hafta</span>
+                <span class="t-card__id">#A-014</span>
+              </div>
+              <div class="t-card__result">
+                <span class="t-card__result-value">Düzen</span>
+                <span class="t-card__result-label"><span class="pill">SONUÇ</span>haftalık güncellendi</span>
+              </div>
+              <p class="t-card__quote">Ne yapacağımı biliyordum ama sürdüremiyordum. Sistem bunu çözdü.</p>
+              <div class="t-card__bottom">
+                <div class="t-card__avatar">S</div>
+                <div class="t-card__person"><strong>Derya A.</strong><span>Online Pilates Takibi · 8 hafta · Ankara</span></div>
+                <span class="t-card__verified">Verified</span>
+              </div>
+            </article>
+            <article class="t-card" data-i="2" data-pos="2">
+              <div class="t-card__top">
+                <span class="t-card__program">Pilates + Beslenme · 16 Hafta</span>
+                <span class="t-card__id">#A-027</span>
+              </div>
+              <div class="t-card__result">
+                <span class="t-card__result-value">−6 cm</span>
+                <span class="t-card__result-label"><span class="pill">SONUÇ</span>incelme · 16 hafta</span>
+              </div>
+              <p class="t-card__quote">En büyük fark, haftalık küçük revizyonlarla düzenin korunması oldu.</p>
+              <div class="t-card__bottom">
+                <div class="t-card__avatar">E</div>
+                <div class="t-card__person"><strong>Merve T.</strong><span>Beslenme + Pilates · 16 hafta</span></div>
+                <span class="t-card__verified">Verified</span>
+              </div>
+            </article>
+          </div>
+          <div class="t-controls">
+            <button class="t-btn" id="t-prev" aria-label="Önceki"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 6l-6 6 6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <button class="t-btn" id="t-next" aria-label="Sıradaki"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
+          <p class="t-hint">Kartı sürükle veya butonlarla gez</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SERVICES ========== -->
+    <section class="services" id="services">
+      <div class="container">
+        <div class="services__head">
+          <span class="eyebrow reveal">Programlar</span>
+          <h2 class="services__title reveal"><span class="dim">Sana özel</span><br>program seçenekleri<span class="accent-dot">.</span></h2>
+        </div>
+        <div class="services__bento reveal-stagger">
+
+          <article class="service-card service-card--feature" data-glow="strong">
+            <div class="service-card__top">
+              <span class="service-card__premium-tag"><span class="dot"></span> Flagship · Birebir Kontrol</span>
+              <div class="service-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" stroke-linecap="round"/></svg>
+              </div>
+            </div>
+            <div class="service-card__heading">
+              <span class="service-card__num">01 · Premium</span>
+              <h3 class="service-card__title">Birebir Reformer</h3>
+              <p class="service-card__lede">Stüdyoda, birebir dikkat ve net yönlendirme. Her seans E.YILDIZ sistemi içinde ilerler.</p>
+            </div>
+            <div class="service-card__blocks">
+              <div class="service-card__block">
+                <span class="service-card__block-label">Kime uygun?</span>
+                <p class="service-card__block-text">Daha önce başlayıp bırakanlara, ciddi sonuç isteyenlere, anlık kontrol arayanlara.</p>
+              </div>
+              <div class="service-card__block">
+                <span class="service-card__block-label">Ne içerir?</span>
+                <ul class="service-card__list">
+                  <li>Stüdyoda haftalık 2-3 birebir reformer seansı</li>
+                  <li>Anlık form düzeltmesi + hareket kalitesi takibi</li>
+                  <li>Beslenme yönlendirmesi + haftalık takip dahil</li>
+                  <li>Direkt WhatsApp iletişim</li>
+                </ul>
+              </div>
+              <div class="service-card__block">
+                <span class="service-card__block-label">Nasıl başlar?</span>
+                <p class="service-card__block-text">Ön görüşme → değerlendirme seansı → kişiye özel planlı başlangıç.</p>
+              </div>
+            </div>
+            <a href="https://wa.me/905001234567?text=Merhaba,%20Birebir%20Reformer%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum" class="service-card__cta service-card__cta--big" target="_blank" rel="noopener">
+              Birebir Reformer için yaz
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <div class="service-card__meta"><span>Stüdyoda · 1:1</span><span>En premium</span></div>
+            <div class="service-card__decor" aria-hidden="true"></div>
+          </article>
+
+          <article class="service-card" data-glow="soft">
+            <div class="service-card__top">
+              <span class="service-card__core-tag">Core Package</span>
+              <div class="service-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M8 21h8M12 17v4" stroke-linecap="round"/></svg>
+              </div>
+            </div>
+            <div class="service-card__heading">
+              <span class="service-card__num">02</span>
+              <h3 class="service-card__title">Online Pilates Takibi</h3>
+              <p class="service-card__lede">Stüdyoya gelemeyenler için uzaktan sürdürülebilir pilates takibi.</p>
+            </div>
+            <div class="service-card__quick">
+              <span class="service-card__quick-label">Kime uygun?</span>
+              <span class="service-card__quick-text">Stüdyoya gelemeyene, kendi tempo özgürlüğünü isteyene ama haftalık takip arayana.</span>
+            </div>
+            <ul class="service-card__list">
+              <li>Haftalık check-in + hareket geri bildirimi</li>
+              <li>Video form analizi + plan revizyonu</li>
+              <li>WhatsApp iletişim</li>
+            </ul>
+            <div class="service-card__meta"><span>Uzaktan</span><span>Haftalık check-in</span></div>
+          </article>
+
+          <article class="service-card" data-glow="soft">
+            <div class="service-card__top">
+              <span class="service-card__core-tag">Starter Package</span>
+              <div class="service-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9v6M9 7v10M15 7v10M18 9v6" stroke-linecap="round"/><path d="M3 12h2M19 12h2" stroke-linecap="round"/><path d="M21 4l-2 2M3 4l2 2" stroke-linecap="round" opacity=".6"/></svg>
+              </div>
+            </div>
+            <div class="service-card__heading">
+              <span class="service-card__num">03</span>
+              <h3 class="service-card__title">Beslenme + Pilates</h3>
+              <p class="service-card__lede">Pilates ve beslenmeyi birlikte toparlayan dengeli başlangıç paketi.</p>
+            </div>
+            <div class="service-card__quick">
+              <span class="service-card__quick-label">Kime uygun?</span>
+              <span class="service-card__quick-text">Pilates rutinine düzenli başlamak isteyene, plan ve hafif yönlendirme arayana.</span>
+            </div>
+            <ul class="service-card__list">
+              <li>Pilates ve beslenme tek yapıda</li>
+              <li>Plan revizyonu — sürdürülebilir düzen</li>
+              <li>4-12 hafta arası özelleştirme</li>
+            </ul>
+            <div class="service-card__meta"><span>Tek paket</span><span>4-12 hafta</span></div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== ABOUT ========== -->
+    <section class="about" id="about" data-bg="light">
+      <div class="container">
+        <div class="about__inner">
+          <div class="about__visual reveal">
+            <img src="assets/images/plates-premium-v1/plates-about.webp" alt="E.YILDIZ — Reformer Pilates eğitmeni" loading="lazy">
+            <span class="about__visual-since">Since 2014</span>
+            <div class="about__visual-tag">
+              <span class="about__visual-tag-name">Elif Yıldız</span>
+              <span class="about__visual-tag-role">Reformer Pilates Eğitmeni</span>
+            </div>
+          </div>
+          <div class="about__content">
+            <span class="eyebrow reveal">Hakkımda</span>
+            <h2 class="about__quote reveal">"Ben program satmıyorum. Süreci yönetiyorum<span class="accent-dot">."</span></h2>
+            <div class="about__bio reveal">
+              <p>8+ yıldır reformer ve mat pilates alanında çalışıyorum. Bu süreçte gördüğüm en net şey şu: en iyi program bile <strong>sürdürülebilir sistem</strong> olmadığında yarım kalıyor.</p>
+              <p>Bu yüzden sistemi sadece ders planı olarak değil; düzen, revizyon ve devamlılık üzerine kuruyorum. Haftalık check-in, kişiye özel uyarlama ve sürekli iletişim — gerçek farkı burada oluşturuyor.</p>
+            </div>
+            <div class="about__creds reveal">
+              <div class="about__cred"><span class="about__cred-dot"></span> Pilates eğitmenliği sertifikası</div>
+              <div class="about__cred"><span class="about__cred-dot"></span> Postür ve hareket odaklı çalışma</div>
+              <div class="about__cred"><span class="about__cred-dot"></span> 200+ aktif danışan</div>
+              <div class="about__cred"><span class="about__cred-dot"></span> Reformer & mat odaklı stüdyo deneyimi</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== QUIZ ========== -->
+    <section class="quiz" id="quiz">
+      <div class="container">
+        <div class="quiz__head reveal">
+          <span class="eyebrow">Ücretsiz Analiz</span>
+          <h2 class="quiz__title">Hangi program<br><span class="dim">sana uygun</span><span class="accent-dot">?</span></h2>
+          <p class="quiz__lede">4 soruyla sana en uygun pilates programını belirleyelim.</p>
+        </div>
+        <div class="quiz__card reveal">
+          <div class="quiz__prog">
+            <div class="quiz__prog-bar"><div class="quiz__prog-fill" id="quiz-prog-fill" style="width:25%"></div></div>
+            <div class="quiz__prog-label" id="quiz-prog-label">Soru 1 / 4</div>
+          </div>
+
+          <div class="quiz__step is-active" id="qs-1">
+            <div class="quiz__q">Pilates deneyimin nasıl?</div>
+            <div class="quiz__options">
+              <button class="quiz__opt" data-val="beginner"><div class="quiz__opt-dot"></div><span class="quiz__opt-emoji">🌱</span><div><div class="quiz__opt-text">Hiç denememiştim</div><div class="quiz__opt-sub">Pilates dünyasına yeni adım atıyorum</div></div></button>
+              <button class="quiz__opt" data-val="some"><div class="quiz__opt-dot"></div><span class="quiz__opt-emoji">🌿</span><div><div class="quiz__opt-text">Birkaç kez denedim</div><div class="quiz__opt-sub">Temel hareketleri biliyorum ama düzensizim</div></div></button>
+              <button class="quiz__opt" data-val="regular"><div class="quiz__opt-dot"></div><span class="quiz__opt-emoji">🌳</span><div><div class="quiz__opt-text">Düzenli yapıyorum</div><div class="quiz__opt-sub">6+ aydır aktif olarak katılıyorum</div></div></button>
+            </div>
+            <div class="quiz__nav"><button class="quiz__next" data-next="2">Devam Et →</button></div>
+          </div>
+
+          <div class="quiz__step" id="qs-2">
+            <div class="quiz__q">Öncelikli hedefin ne?</div>
+            <div class="quiz__options">
+              <button class="quiz__opt" data-val="posture"><div class="quiz__opt-dot"></div><span class="quiz__opt-emoji">🧘</span><div><div class="quiz__opt-text">Postür ve esneklik</div><div class="quiz__opt-sub">Sırt ağrısı, duruş bozukluğu, genel esneme</div></div></button>
+              <button class="quiz__opt" data-val="strength"><div class="quiz__opt-dot"></div><span class="quiz__opt-emoji">💪</span><div><div class="quiz__opt-text">Kas gücü ve ton</div><div class="quiz__opt-sub">Core, bacak ve üst vücut güçlendirme</div></div></button>
+              <button class="quiz__opt" data-val="weightloss"><div class="quiz__opt-dot"></div><span class="quiz__opt-emoji">🔥</span><div><div class="quiz__opt-text">Zayıflama ve şekillenme</div><div class="quiz__opt-sub">Yağ kaybı ile birlikte form kazanmak</div></div></button>
+              <button class="quiz__opt" data-val="rehab"><div class="quiz__opt-dot"></div><span class="quiz__opt-emoji">🌸</span><div><div class="quiz__opt-text">Rehabilitasyon</div><div class="quiz__opt-sub">Sakatlık sonrası, gebelik, özel durum</div></div></button>
+            </div>
+            <div class="quiz__nav"><button class="quiz__back" data-back="1">← Geri</button><button class="quiz__next" data-next="3">Devam Et →</button></div>
+          </div>
+
+          <div class="quiz__step" id="qs-3">
+            <div class="quiz__q">Haftada kaç gün ayırabilirsin?</div>
+            <div class="quiz__options">
+              <button class="quiz__opt" data-val="1"><div class="quiz__opt-dot"></div><span class="quiz__opt-emoji">📅</span><div><div class="quiz__opt-text">Haftada 1 gün</div><div class="quiz__opt-sub">Yoğun tempoda minimum, etkili seans</div></div></button>
+              <button class="quiz__opt" data-val="2-3"><div class="quiz__opt-dot"></div><span class="quiz__opt-emoji">📆</span><div><div class="quiz__opt-text">Haftada 2-3 gün</div><div class="quiz__opt-sub">İdeal ilerleme temposu</div></div></button>
+              <button class="quiz__opt" data-val="4+"><div class="quiz__opt-dot"></div><span class="quiz__opt-emoji">🗓️</span><div><div class="quiz__opt-text">Haftada 4+ gün</div><div class="quiz__opt-sub">Yoğun programa hazırım</div></div></button>
+            </div>
+            <div class="quiz__nav"><button class="quiz__back" data-back="2">← Geri</button><button class="quiz__next" data-next="4">Devam Et →</button></div>
+          </div>
+
+          <div class="quiz__step" id="qs-4">
+            <div class="quiz__q">Tercih ettiğin seans türü?</div>
+            <div class="quiz__options">
+              <button class="quiz__opt" data-val="reformer"><div class="quiz__opt-dot"></div><span class="quiz__opt-emoji">🛏️</span><div><div class="quiz__opt-text">Reformer makinesi</div><div class="quiz__opt-sub">Yay direnciyle dinamik, etkili çalışma</div></div></button>
+              <button class="quiz__opt" data-val="mat"><div class="quiz__opt-dot"></div><span class="quiz__opt-emoji">🧘‍♀️</span><div><div class="quiz__opt-text">Mat pilates</div><div class="quiz__opt-sub">Zemin üzeri, nefes ve kontrol odaklı</div></div></button>
+              <button class="quiz__opt" data-val="mixed"><div class="quiz__opt-dot"></div><span class="quiz__opt-emoji">✨</span><div><div class="quiz__opt-text">Karma (ikisi de)</div><div class="quiz__opt-sub">En kapsamlı ve bütüncül yaklaşım</div></div></button>
+            </div>
+            <div class="quiz__nav"><button class="quiz__back" data-back="3">← Geri</button><button class="quiz__next quiz__next--final" id="quiz-submit">Programımı Göster ✦</button></div>
+          </div>
+
+          <div class="quiz__result" id="quiz-result" style="display:none">
+            <div class="quiz__result-badge">✦ Senin için önerilen program</div>
+            <div class="quiz__result-program">
+              <div class="quiz__result-tag" id="qr-tag">Program</div>
+              <div class="quiz__result-name" id="qr-name">—</div>
+              <div class="quiz__result-desc" id="qr-desc">—</div>
+              <div class="quiz__result-features" id="qr-feats"></div>
+            </div>
+            <a href="https://wa.me/905001234567?text=Quiz%20sonucum%20geldi,%20program%20hakkında%20bilgi%20almak%20istiyorum"
+               class="quiz__result-cta" target="_blank" rel="noopener">Bu Programı Başlat →</a>
+            <div class="quiz__restart" id="quiz-restart">↺ Testi yeniden yap</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== BOOKING ========== -->
+    <section class="booking" id="booking">
+      <div class="container">
+        <div class="booking__head reveal">
+          <span class="eyebrow">Randevu</span>
+          <div class="booking__free-badge">🎁 İlk Seans Ücretsiz</div>
+          <h2 class="booking__title">Seansını<br><span class="dim">hemen ayırt</span><span class="accent-dot">.</span></h2>
+          <p class="booking__lede">Takvimden uygun gün ve saati seç, ilk tanışma seansın tamamen ücretsiz.</p>
+        </div>
+        <div class="booking__card reveal">
+          <div class="booking__cal">
+            <div class="booking__cal-header">
+              <div class="booking__cal-month" id="cal-month-label">Mayıs 2025</div>
+              <div class="booking__cal-nav">
+                <button id="cal-prev">‹</button>
+                <button id="cal-next">›</button>
+              </div>
+            </div>
+            <div class="booking__cal-days-head">
+              <div class="booking__cal-day-name">Pzt</div>
+              <div class="booking__cal-day-name">Sal</div>
+              <div class="booking__cal-day-name">Çar</div>
+              <div class="booking__cal-day-name">Per</div>
+              <div class="booking__cal-day-name">Cum</div>
+              <div class="booking__cal-day-name">Cmt</div>
+              <div class="booking__cal-day-name">Paz</div>
+            </div>
+            <div class="booking__cal-grid" id="cal-grid"></div>
+          </div>
+          <div class="booking__slots" id="booking-slots-panel">
+            <div class="booking__slots-title">Müsait Saatler</div>
+            <div class="booking__slots-date" id="slots-date-label">Bir gün seçin</div>
+            <div class="booking__slot-list" id="slot-list">
+              <div class="booking__slots-empty">Takvimden bir gün seçerek müsait saatleri görün.</div>
+            </div>
+            <button class="booking__confirm" id="booking-confirm">Randevu Onayla →</button>
+          </div>
+          <div class="booking__success" id="booking-success">
+            <div class="booking__success-icon">🌿</div>
+            <div class="booking__success-title">Randevun alındı!</div>
+            <div class="booking__success-sub">İlk seansın ücretsiz. Onay için WhatsApp üzerinden sana ulaşacağız.</div>
+            <div class="booking__success-detail" id="booking-success-detail">—</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PROGRESS TRACKER ========== -->
+    <section class="tracker" id="tracker">
+      <div class="container">
+        <div class="tracker__head reveal">
+          <span class="eyebrow">Gelişim Takibi</span>
+          <h2 class="tracker__title">Haftalık<br><span class="dim">ilerleme</span><span class="accent-dot">.</span></h2>
+          <p class="tracker__lede">Müşterilerimiz gelişimlerini bu dashboard üzerinden takip ediyor. Demo verileriyle çalışmaktadır.</p>
+        </div>
+        <div class="tracker__dashboard reveal">
+
+          <!-- Weekly activity chart -->
+          <div class="tracker__panel tracker__panel--wide">
+            <div class="tracker__panel-head">
+              <div class="tracker__panel-title">Haftalık Aktivite</div>
+              <div class="tracker__panel-badge">Bu Hafta</div>
+            </div>
+            <div class="tracker__chart" id="tracker-chart">
+              <div class="tracker__bar-wrap"><div class="tracker__bar" style="height:80px"><div class="tracker__bar-fill" style="height:0%"></div></div><div class="tracker__bar-day">Pzt</div><div class="tracker__bar-val">45dk</div></div>
+              <div class="tracker__bar-wrap"><div class="tracker__bar" style="height:80px"><div class="tracker__bar-fill" style="height:0%"></div></div><div class="tracker__bar-day">Sal</div><div class="tracker__bar-val">—</div></div>
+              <div class="tracker__bar-wrap"><div class="tracker__bar" style="height:80px"><div class="tracker__bar-fill" style="height:0%"></div></div><div class="tracker__bar-day">Çar</div><div class="tracker__bar-val">60dk</div></div>
+              <div class="tracker__bar-wrap"><div class="tracker__bar" style="height:80px"><div class="tracker__bar-fill" style="height:0%"></div></div><div class="tracker__bar-day">Per</div><div class="tracker__bar-val">45dk</div></div>
+              <div class="tracker__bar-wrap"><div class="tracker__bar" style="height:80px"><div class="tracker__bar-fill" style="height:0%"></div></div><div class="tracker__bar-day">Cum</div><div class="tracker__bar-val">—</div></div>
+              <div class="tracker__bar-wrap"><div class="tracker__bar" style="height:80px"><div class="tracker__bar-fill" style="height:0%"></div></div><div class="tracker__bar-day">Cmt</div><div class="tracker__bar-val">30dk</div></div>
+              <div class="tracker__bar-wrap"><div class="tracker__bar" style="height:80px"><div class="tracker__bar-fill" style="height:0%"></div></div><div class="tracker__bar-day">Paz</div><div class="tracker__bar-val">—</div></div>
+            </div>
+          </div>
+
+          <!-- Streak -->
+          <div class="tracker__panel">
+            <div class="tracker__panel-head">
+              <div class="tracker__panel-title">Seri</div>
+              <div class="tracker__panel-badge">🔥 Aktif</div>
+            </div>
+            <div class="tracker__streak-num">12</div>
+            <div class="tracker__streak-label">gün üst üste</div>
+            <div class="tracker__streak-dots" id="streak-dots"></div>
+          </div>
+
+          <!-- Goals -->
+          <div class="tracker__panel">
+            <div class="tracker__panel-head">
+              <div class="tracker__panel-title">Hedefler</div>
+              <div class="tracker__panel-badge">Bu Ay</div>
+            </div>
+            <div class="tracker__goals">
+              <div class="tracker__goal">
+                <div class="tracker__goal-head"><span class="tracker__goal-name">Seans Sayısı</span><span class="tracker__goal-val">14 / 20</span></div>
+                <div class="tracker__goal-track"><div class="tracker__goal-fill" style="width:0%;background:linear-gradient(90deg,var(--accent),var(--bronze))"></div></div>
+              </div>
+              <div class="tracker__goal">
+                <div class="tracker__goal-head"><span class="tracker__goal-name">Core Dayanıklılık</span><span class="tracker__goal-val">78 / 100</span></div>
+                <div class="tracker__goal-track"><div class="tracker__goal-fill" style="width:0%;background:linear-gradient(90deg,var(--steel),var(--bronze))"></div></div>
+              </div>
+              <div class="tracker__goal">
+                <div class="tracker__goal-head"><span class="tracker__goal-name">Esneklik Skoru</span><span class="tracker__goal-val">65 / 100</span></div>
+                <div class="tracker__goal-track"><div class="tracker__goal-fill" style="width:0%;background:linear-gradient(90deg,var(--bronze),var(--accent))"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stats -->
+          <div class="tracker__panel tracker__panel--wide">
+            <div class="tracker__panel-head">
+              <div class="tracker__panel-title">Özet İstatistikler</div>
+              <div class="tracker__panel-badge">Son 30 Gün</div>
+            </div>
+            <div class="tracker__stats">
+              <div class="tracker__stat">
+                <div class="tracker__stat-num">14<span class="unit"> seans</span></div>
+                <div class="tracker__stat-label">Tamamlandı</div>
+                <div class="tracker__stat-delta up">↑ 3 geçen ay</div>
+              </div>
+              <div class="tracker__stat">
+                <div class="tracker__stat-num">11<span class="unit"> saat</span></div>
+                <div class="tracker__stat-label">Toplam süre</div>
+                <div class="tracker__stat-delta up">↑ %22</div>
+              </div>
+              <div class="tracker__stat">
+                <div class="tracker__stat-num">−2.4<span class="unit"> kg</span></div>
+                <div class="tracker__stat-label">Kilo değişimi</div>
+                <div class="tracker__stat-delta down">Hedef yolunda</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Log entry -->
+          <div class="tracker__panel tracker__panel--wide">
+            <div class="tracker__panel-head">
+              <div class="tracker__panel-title">Bugünün Notu</div>
+            </div>
+            <div class="tracker__log">
+              <input class="tracker__log-input" id="tracker-input" type="text" placeholder="Bugün nasıl hissettim, hangi hareketi yaptım...">
+              <button class="tracker__log-btn" id="tracker-log-btn">Kaydet</button>
+            </div>
+            <div class="tracker__log-entries" id="tracker-entries">
+              <div class="tracker__log-entry"><span>Reformer — ayak yayları serisi tamamlandı ✓</span><span class="tracker__log-entry-time">Pzt 09:30</span></div>
+              <div class="tracker__log-entry"><span>Sırt esneme ve nefes çalışması</span><span class="tracker__log-entry-time">Çar 18:00</span></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== FINAL CTA ========== -->
+    <section class="final" id="cta">
+      <div class="container">
+        <div class="final__inner">
+          <span class="eyebrow reveal">Başla</span>
+          <h2 class="final__title reveal"><span class="dim">Hedefin için rastgele değil,</span><br>sistemli başla<span class="accent-dot">.</span></h2>
+          <p class="final__lede reveal">WhatsApp'tan kısa bir mesaj at, hangi sistem sana uygun konuşalım. Genelde 24 saat içinde dönüş yapıyorum.</p>
+          <a href="https://wa.me/905001234567?text=Merhaba,%20pilates%20programı%20hakkında%20bilgi%20almak%20istiyorum" class="final__cta reveal" target="_blank" rel="noopener">
+            Programa Başvur
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <span class="final__hint">WhatsApp · genelde 24 saat içinde dönüş</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <a href="#hero" class="footer__brand">E<span class="dot">.</span>YILDIZ</a>
+      <span class="footer__copy">© 2026 E.YILDIZ Reformer &amp; Mat Pilates</span>
+      <ul class="footer__links">
+        <li><a class="footer__link" href="#method">Sistem</a></li>
+        <li><a class="footer__link" href="#services">Programlar</a></li>
+        <li><a class="footer__link" href="https://wa.me/905001234567" target="_blank" rel="noopener">WhatsApp</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <script>
+    /* Lenis + GSAP setup */
+    (function () {
+      'use strict';
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let lenis = null;
+      if (!reduceMotion && window.Lenis) {
+        lenis = new Lenis({ duration: 1.1, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smoothWheel: true, smoothTouch: false });
+      }
+      if (window.gsap && window.ScrollTrigger) {
+        gsap.registerPlugin(ScrollTrigger);
+        if (lenis) {
+          lenis.on('scroll', ScrollTrigger.update);
+          gsap.ticker.add((time) => lenis.raf(time * 1000));
+          gsap.ticker.lagSmoothing(0);
+        }
+      }
+      window.addEventListener('load', () => { if (window.ScrollTrigger) ScrollTrigger.refresh(); });
+    })();
+  </script>
+
+  <script>
+    /* Custom cursor */
+    (function () {
+      'use strict';
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const isCoarse = window.matchMedia('(pointer: coarse)').matches;
+      if (reduceMotion || isCoarse) return;
+      const cursor = document.querySelector('.cursor');
+      if (!cursor) return;
+      document.body.classList.add('cursor-ready');
+      let mx = window.innerWidth / 2, my = window.innerHeight / 2;
+      let cx = mx, cy = my;
+      const ease = 0.18;
+      window.addEventListener('mousemove', (e) => { mx = e.clientX; my = e.clientY; }, { passive: true });
+      function tick() { cx += (mx - cx) * ease; cy += (my - cy) * ease; cursor.style.transform = `translate3d(${cx - 4}px, ${cy - 4}px, 0)`; requestAnimationFrame(tick); }
+      tick();
+      const onEnter = () => cursor.classList.add('cursor--hover');
+      const onLeave = () => cursor.classList.remove('cursor--hover');
+      document.querySelectorAll('a, button, .interactive').forEach((el) => { el.addEventListener('mouseenter', onEnter); el.addEventListener('mouseleave', onLeave); });
+    })();
+  </script>
+
+  <script>
+    /* Nav scroll + light section */
+    (function () {
+      'use strict';
+      const nav = document.getElementById('nav');
+      if (!nav) return;
+      const update = () => { if (window.scrollY > 30) nav.classList.add('is-scrolled'); else nav.classList.remove('is-scrolled'); };
+      update();
+      window.addEventListener('scroll', update, { passive: true });
+      if (window.ScrollTrigger) {
+        document.querySelectorAll('[data-bg="light"]').forEach((sec) => {
+          ScrollTrigger.create({
+            trigger: sec, start: 'top 60px', end: 'bottom 60px',
+            onToggle: (self) => { if (self.isActive) nav.classList.add('is-on-light'); else nav.classList.remove('is-on-light'); }
+          });
+        });
+      }
+    })();
+  </script>
+
+  <script>
+    /* HERO — 3-phase scroll-scrub timeline (desktop)
+       Phase 1 (0.0-0.3): brand exits
+       Phase 2 (0.3-0.7): visual field enters
+       Phase 3 (0.7-1.0): left content settles */
+    (function () {
+      'use strict';
+      if (!window.gsap || !window.ScrollTrigger) return;
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // Pre-set hidden states for everything that scrubs in
+      gsap.set([
+        '.hero__visual', '.hero__visual-aux',
+        '.hero__panel--form', '.hero__panel--track', '.hero__panel--progress', '.hero__panel--checkin',
+        '.float-card',
+        '.hero__badge', '.hero__title', '.hero__lede', '.hero__actions', '.hero__metrics'
+      ], { opacity: 0 });
+
+      if (reduceMotion) {
+        // Skip animation: hide kinetic, show final
+        gsap.set('#hero-brand-intro', { display: 'none' });
+        gsap.set([
+          '.hero__visual', '.hero__visual-aux',
+          '.hero__panel--form', '.hero__panel--track', '.hero__panel--progress', '.hero__panel--checkin',
+          '.float-card',
+          '.hero__badge', '.hero__title', '.hero__lede', '.hero__actions', '.hero__metrics'
+        ], { opacity: 1, x: 0, y: 0, scale: 1, rotation: 0 });
+        return;
+      }
+
+      gsap.matchMedia().add('(min-width: 981px)', () => {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: '#hero',
+            start: 'top top',
+            end: '+=130%',
+            pin: '#hero-stage',
+            scrub: 1,
+            anticipatePin: 1,
+          }
+        });
+
+        // Phase 1: 0-0.3 — brand exits
+        tl.to('#hero-brand-word', { scale: 1.5, opacity: 0, duration: 0.3, ease: 'power2.in' }, 0);
+        tl.to('.hero__brand-ring', { scale: 1.4, opacity: 0, duration: 0.3, ease: 'power2.in' }, 0);
+        tl.to('#hero-brand-tag', { y: -20, opacity: 0, duration: 0.2 }, 0.05);
+
+        // Phase 2: 0.3-0.7 — visual field enters
+        tl.fromTo('.hero__visual', { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.18 }, 0.3);
+        tl.fromTo('.hero__visual-aux', { opacity: 0, x: -50, rotation: -25 }, { opacity: 1, x: 0, rotation: -7, duration: 0.16 }, 0.34);
+        tl.fromTo('.hero__panel--form', { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: 0.1 }, 0.4);
+        tl.fromTo('.hero__panel--track', { opacity: 0, x: 40, y: -20, rotation: 4 }, { opacity: 1, x: 0, y: 0, rotation: 0, duration: 0.12 }, 0.45);
+        tl.fromTo('.hero__panel--progress', { opacity: 0, x: -30, y: 20, rotation: -4 }, { opacity: 1, x: 0, y: 0, rotation: 0, duration: 0.12 }, 0.5);
+        tl.fromTo('.hero__panel--checkin', { opacity: 0, x: 30, y: 20, rotation: 4 }, { opacity: 1, x: 0, y: 0, rotation: 0, duration: 0.12 }, 0.55);
+        tl.fromTo('.float-card', { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.08, stagger: 0.025 }, 0.6);
+
+        // Phase 3: 0.7-1.0 — left content settles
+        tl.fromTo('.hero__badge',   { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.08 }, 0.72);
+        tl.fromTo('.hero__title',   { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.1 },  0.78);
+        tl.fromTo('.hero__lede',    { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.08 }, 0.85);
+        tl.fromTo('.hero__actions', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.08 }, 0.9);
+        tl.fromTo('.hero__metrics', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.08 }, 0.94);
+      });
+
+      // Mobile: simple autoplay reveal (no pin/scrub)
+      gsap.matchMedia().add('(max-width: 980px)', () => {
+        const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+        // Brand intro short, then exits
+        tl.fromTo('#hero-brand-word', { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.6 }, 0)
+          .fromTo('.hero__brand-ring', { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.6 }, 0.05)
+          .to(['#hero-brand-word', '.hero__brand-ring'], { scale: 1.2, opacity: 0, duration: 0.4, ease: 'power2.in' }, 1.0)
+          .set('#hero-brand-intro', { display: 'none' });
+        // Composition reveals
+        tl.to('.hero__visual', { opacity: 1, y: 0, duration: 0.5 }, 1.2)
+          .to('.float-card', { opacity: 1, scale: 1, duration: 0.4, stagger: 0.06 }, 1.4)
+          .to('.hero__badge',   { opacity: 1, y: 0, duration: 0.4 }, 1.5)
+          .to('.hero__title',   { opacity: 1, y: 0, duration: 0.5 }, 1.6)
+          .to('.hero__lede',    { opacity: 1, y: 0, duration: 0.4 }, 1.75)
+          .to('.hero__actions', { opacity: 1, y: 0, duration: 0.4 }, 1.85)
+          .to('.hero__metrics', { opacity: 1, y: 0, duration: 0.4 }, 1.95);
+      });
+    })();
+  </script>
+
+  <script>
+    /* Generic reveal for non-hero */
+    (function () {
+      'use strict';
+      if (!window.gsap || !window.ScrollTrigger) return;
+      gsap.utils.toArray('.reveal').forEach((el) => {
+        if (el.closest('.hero')) return;
+        gsap.to(el, { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out',
+          scrollTrigger: { trigger: el, start: 'top 88%', once: true } });
+      });
+      gsap.utils.toArray('.reveal-stagger').forEach((group) => {
+        gsap.to(group.children, { y: 0, opacity: 1, duration: 0.7, stagger: 0.1, ease: 'power3.out',
+          scrollTrigger: { trigger: group, start: 'top 80%', once: true } });
+      });
+    })();
+  </script>
+
+  <script>
+    /* METHOD orbital sync */
+    (function () {
+      'use strict';
+      if (!window.gsap || !window.ScrollTrigger) return;
+      function activate(step) {
+        document.querySelectorAll('.detail').forEach(d => d.classList.toggle('is-active', d.dataset.step === step));
+        document.querySelectorAll('.orbital__node').forEach(n => { n.classList.toggle('is-active', n.dataset.step === step); n.classList.toggle('is-dim', n.dataset.step !== step); });
+        document.querySelectorAll('.orbital__line').forEach(l => l.classList.toggle('is-active', l.dataset.step === step));
+        document.querySelectorAll('.method__steps .method-step').forEach(s => s.classList.toggle('is-active', s.dataset.step === step));
+        document.querySelectorAll('.method__mobile .method-card-m').forEach(s => s.classList.toggle('is-active', s.dataset.step === step));
+      }
+      activate('1');
+      document.querySelectorAll('.method__steps .method-step').forEach((step) => {
+        ScrollTrigger.create({ trigger: step, start: 'top 65%', end: 'bottom 35%', onToggle: (self) => { if (self.isActive) activate(step.dataset.step); } });
+      });
+      document.querySelectorAll('.method__mobile .method-card-m').forEach((card) => {
+        ScrollTrigger.create({ trigger: card, start: 'top 80%', end: 'bottom 20%', onToggle: (self) => { if (self.isActive) activate(card.dataset.step); } });
+      });
+    })();
+  </script>
+
+  <script>
+    /* Count-up */
+    (function () {
+      'use strict';
+      if (!window.gsap || !window.ScrollTrigger) return;
+      document.querySelectorAll('[data-count]').forEach((el) => {
+        const target = parseInt(el.dataset.count, 10);
+        const suffix = el.dataset.suffix || '';
+        ScrollTrigger.create({ trigger: el, start: 'top 85%', once: true,
+          onEnter: () => { const obj = { v: 0 }; gsap.to(obj, { v: target, duration: 1.6, ease: 'power2.out', onUpdate: () => { el.textContent = Math.round(obj.v) + suffix; } }); }
+        });
+      });
+    })();
+  </script>
+
+  <script>
+    /* Before/After drag */
+    (function () {
+      'use strict';
+      const stage = document.getElementById('ba-stage');
+      const before = document.getElementById('ba-before');
+      const handle = document.getElementById('ba-handle');
+      if (!stage || !before || !handle) return;
+      let dragging = false;
+      function setSplit(pct) { pct = Math.max(2, Math.min(98, pct)); before.style.width = pct + '%'; handle.style.left = pct + '%'; }
+      function pointerToPct(e) { const r = stage.getBoundingClientRect(); return ((e.clientX - r.left) / r.width) * 100; }
+      stage.addEventListener('pointerdown', (e) => { dragging = true; try { stage.setPointerCapture(e.pointerId); } catch(_) {} setSplit(pointerToPct(e)); });
+      stage.addEventListener('pointermove', (e) => { if (!dragging) return; setSplit(pointerToPct(e)); });
+      const stop = () => { dragging = false; };
+      stage.addEventListener('pointerup', stop);
+      stage.addEventListener('pointercancel', stop);
+      stage.addEventListener('pointerleave', stop);
+    })();
+  </script>
+
+  <script>
+    /* Testimonial stack */
+    (function () {
+      'use strict';
+      const stack = document.getElementById('t-stack');
+      if (!stack) return;
+      const cards = Array.from(stack.querySelectorAll('.t-card'));
+      let order = cards.map((_, i) => i);
+      function applyPositions() { order.forEach((cardIdx, pos) => { const card = cards[cardIdx]; card.dataset.pos = String(pos); card.style.transform = ''; card.style.opacity = ''; }); }
+      applyPositions();
+      function shuffleNext() { order.push(order.shift()); applyPositions(); }
+      function shufflePrev() { order.unshift(order.pop()); applyPositions(); }
+      let drag = null;
+      const onPointerDown = (e) => { const card = e.currentTarget; if (card.dataset.pos !== '0') return; drag = { startX: e.clientX, startY: e.clientY, dx: 0, dy: 0, card }; card.classList.add('is-dragging'); try { card.setPointerCapture(e.pointerId); } catch(_) {} };
+      const onPointerMove = (e) => { if (!drag) return; drag.dx = e.clientX - drag.startX; drag.dy = e.clientY - drag.startY; const rotateAdd = drag.dx * 0.05; drag.card.style.transform = `rotate(${-6 + rotateAdd}deg) translate(${drag.dx}px, ${drag.dy * 0.4}px)`; };
+      const onPointerEnd = (e) => {
+        if (!drag) return;
+        const { dx, card } = drag;
+        drag = null;
+        card.classList.remove('is-dragging');
+        if (Math.abs(dx) > 130) {
+          card.classList.add('is-flying');
+          const dir = dx > 0 ? 1 : -1;
+          card.style.transform = `rotate(${dir * 24}deg) translate(${dir * 600}px, 80px)`;
+          card.style.opacity = '0';
+          window.setTimeout(() => { shuffleNext(); window.setTimeout(() => card.classList.remove('is-flying'), 50); }, 420);
+        } else { card.style.transform = ''; }
+      };
+      cards.forEach(card => { card.addEventListener('pointerdown', onPointerDown); card.addEventListener('pointermove', onPointerMove); card.addEventListener('pointerup', onPointerEnd); card.addEventListener('pointercancel', onPointerEnd); });
+      const next = document.getElementById('t-next');
+      const prev = document.getElementById('t-prev');
+      if (next) next.addEventListener('click', shuffleNext);
+      if (prev) prev.addEventListener('click', shufflePrev);
+    })();
+  </script>
+
+  <script>
+  /* ── Agresif Paralaks ── */
+  (function(){
+    const orbs = [];
+    document.querySelectorAll('.px-orb').forEach(o => orbs.push(o));
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const sy = window.scrollY;
+          orbs.forEach((o, i) => {
+            const speeds = [0.18, 0.12, 0.08];
+            const dir = i % 2 === 0 ? 1 : -1;
+            o.style.transform = `translateY(${sy * speeds[i] * dir}px)`;
+          });
+          // Hero elements
+          const heroStage = document.getElementById('hero-stage');
+          if (heroStage) {
+            const rect = heroStage.getBoundingClientRect();
+            const prog = Math.max(0, -rect.top / window.innerHeight);
+            const glow = heroStage.querySelector('.hero__atmosphere-glow');
+            if (glow) glow.style.transform = `translateY(${prog * 80}px) scale(${1 + prog * 0.3})`;
+            const ring = heroStage.querySelector('.hero__atmosphere-ring');
+            if (ring) ring.style.transform = `translateY(${prog * 120}px)`;
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+    // Add orbs to hero
+    const hero = document.querySelector('.hero');
+    if (hero) {
+      ['px-orb-1','px-orb-2','px-orb-3'].forEach(cls => {
+        const d = document.createElement('div');
+        d.className = `px-orb ${cls}`;
+        hero.appendChild(d);
+      });
+    }
+  })();
+
+  /* ── Quiz ── */
+  (function(){
+    let step = 1;
+    const answers = {};
+    const total = 4;
+
+    function setProgress(s) {
+      document.getElementById('quiz-prog-fill').style.width = (s / total * 100) + '%';
+      document.getElementById('quiz-prog-label').textContent = s <= total ? `Soru ${s} / ${total}` : 'Sonuç';
+    }
+
+    function goStep(n, dir) {
+      const cur = document.getElementById('qs-' + step);
+      const next = document.getElementById('qs-' + n);
+      if (cur) cur.style.display = 'none', cur.classList.remove('is-active');
+      if (next) {
+        next.style.animation = 'none'; next.offsetHeight;
+        next.style.animation = dir === 'back' ? 'qStepBack 0.4s cubic-bezier(0.22,1,0.36,1)' : 'qStepIn 0.4s cubic-bezier(0.22,1,0.36,1)';
+        next.classList.add('is-active'); next.style.display = 'flex';
+      }
+      step = n; setProgress(n);
+    }
+
+    document.querySelectorAll('.quiz__opt').forEach(opt => {
+      opt.addEventListener('click', () => {
+        const parent = opt.closest('.quiz__step');
+        parent.querySelectorAll('.quiz__opt').forEach(o => o.classList.remove('is-selected'));
+        opt.classList.add('is-selected');
+        answers['q' + step] = opt.dataset.val;
+      });
+    });
+
+    document.querySelectorAll('.quiz__next[data-next]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (!answers['q' + step]) {
+          const opts = document.querySelector('#qs-' + step + ' .quiz__options');
+          opts.style.animation = 'none'; opts.offsetHeight; opts.style.animation = 'shake 0.4s ease';
+          setTimeout(() => opts.style.animation = '', 400); return;
+        }
+        goStep(parseInt(btn.dataset.next), 'forward');
+      });
+    });
+    document.querySelectorAll('.quiz__back').forEach(btn => {
+      btn.addEventListener('click', () => goStep(parseInt(btn.dataset.back), 'back'));
+    });
+
+    const programs = {
+      beginner_posture_reformer: { tag:'Başlangıç', name:'Foundations Reformer', desc:'Postür analizi ve temel reformer hareketleriyle güvenli bir başlangıç. Nefes, hizalama ve kontrol odaklı.', feats:['Haftalık postür değerlendirmesi','Temel 20 reformer hareketi','Nefes ve gevşeme teknikleri','8 haftalık ilerleme planı'] },
+      beginner_strength_mat: { tag:'Başlangıç', name:'Mat Basics', desc:'Mat zemin çalışmasıyla core güçlendirme ve vücut farkındalığı kazanma programı.', feats:['Core aktivasyon protokolü','Günlük 20 dk. ev pratiği','Video rehber erişimi','Aylık değerlendirme seansı'] },
+      regular_strength_reformer: { tag:'İleri', name:'Power Reformer', desc:'Güçlü bir core ve tam vücut tonu için yoğun reformer programı. Dinamik direnç antrenmanı.', feats:['Haftalık 3-4 seans reformer','Kişisel yük ve direnç planlaması','Performans takip paneli','Aylık fotoğraf değerlendirmesi'] },
+      default: { tag:'Özel Program', name:'Kişisel Pilates Paketi', desc:'Cevapların doğrultusunda sana özel bir program oluşturulacak. İlk seans ücretsiz danışma seansıdır.', feats:['İlk seans ücretsiz analiz','Kişisel hareket değerlendirmesi','Özel program tasarımı','Esnek seans takvimi'] }
+    };
+
+    document.getElementById('quiz-submit').addEventListener('click', () => {
+      if (!answers['q4']) {
+        const opts = document.querySelector('#qs-4 .quiz__options');
+        opts.style.animation = 'none'; opts.offsetHeight; opts.style.animation = 'shake 0.4s ease';
+        setTimeout(() => opts.style.animation = '', 400); return;
+      }
+      const key = `${answers.q1}_${answers.q2}_${answers.q4}`;
+      const prog = programs[key] || programs.default;
+      document.getElementById('qr-tag').textContent = prog.tag;
+      document.getElementById('qr-name').textContent = prog.name;
+      document.getElementById('qr-desc').textContent = prog.desc;
+      const featsEl = document.getElementById('qr-feats');
+      featsEl.innerHTML = prog.feats.map(f => `<div class="quiz__result-feat">${f}</div>`).join('');
+      document.querySelectorAll('.quiz__step').forEach(s => { s.classList.remove('is-active'); s.style.display = 'none'; });
+      const res = document.getElementById('quiz-result');
+      res.style.display = 'flex';
+      setProgress(5);
+    });
+
+    document.getElementById('quiz-restart').addEventListener('click', () => {
+      document.getElementById('quiz-result').style.display = 'none';
+      Object.keys(answers).forEach(k => delete answers[k]);
+      document.querySelectorAll('.quiz__opt').forEach(o => o.classList.remove('is-selected'));
+      step = 0; goStep(1, 'back');
+    });
+
+    setProgress(1);
+  })();
+
+  /* ── Booking ── */
+  (function(){
+    const SLOTS = { 'Mon': ['09:00','10:00','11:30','14:00','16:00'], 'Wed': ['08:30','10:00','13:00','17:00'], 'Thu': ['09:00','11:00','15:00','16:30'], 'Sat': ['10:00','11:00','12:00'] };
+    const SLOT_DAYS = [1, 3, 4, 6]; // Mon, Wed, Thu, Sat (0=Sun)
+    const TR_MONTHS = ['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'];
+    const SLOT_KEYS = ['Mon','Wed','Thu','Sat'];
+
+    let viewYear = 2025, viewMonth = 4; // May 2025
+    let selDay = null, selSlot = null, selDate = null;
+
+    function renderCal() {
+      const label = document.getElementById('cal-month-label');
+      label.textContent = TR_MONTHS[viewMonth] + ' ' + viewYear;
+      const grid = document.getElementById('cal-grid');
+      grid.innerHTML = '';
+      const first = new Date(viewYear, viewMonth, 1).getDay();
+      const offset = first === 0 ? 6 : first - 1;
+      const days = new Date(viewYear, viewMonth + 1, 0).getDate();
+      const today = new Date();
+      for (let i = 0; i < offset; i++) {
+        const d = document.createElement('div');
+        d.className = 'booking__cal-day is-empty'; grid.appendChild(d);
+      }
+      for (let d = 1; d <= days; d++) {
+        const date = new Date(viewYear, viewMonth, d);
+        const el = document.createElement('div');
+        el.className = 'booking__cal-day';
+        el.textContent = d;
+        const dow = date.getDay();
+        const isPast = date < new Date(today.getFullYear(), today.getMonth(), today.getDate());
+        if (isPast) el.classList.add('is-past');
+        else if (SLOT_DAYS.includes(dow)) el.classList.add('has-slot');
+        if (date.toDateString() === today.toDateString()) el.classList.add('is-today');
+        if (selDay === d && !isPast) el.classList.add('is-selected');
+        el.addEventListener('click', () => {
+          if (!SLOT_DAYS.includes(dow) || isPast) return;
+          selDay = d; selDate = date; selSlot = null;
+          document.getElementById('booking-confirm').classList.remove('is-ready');
+          renderCal(); renderSlots(dow);
+        });
+        grid.appendChild(el);
+      }
+    }
+
+    function renderSlots(dow) {
+      const key = SLOT_KEYS[SLOT_DAYS.indexOf(dow)];
+      const slots = SLOTS[key] || [];
+      const list = document.getElementById('slot-list');
+      const dateLabel = document.getElementById('slots-date-label');
+      const TR_DAYS = ['Pazar','Pazartesi','Salı','Çarşamba','Perşembe','Cuma','Cumartesi'];
+      dateLabel.textContent = TR_DAYS[dow] + ', ' + selDay + ' ' + TR_MONTHS[viewMonth];
+      list.innerHTML = slots.map(s => `
+        <button class="booking__slot" data-time="${s}">
+          <div><div class="booking__slot-time">${s}</div><div class="booking__slot-type">Birebir Reformer — 50 dk</div></div>
+          <div class="booking__slot-avail">Müsait</div>
+        </button>`).join('');
+      list.querySelectorAll('.booking__slot').forEach(btn => {
+        btn.addEventListener('click', () => {
+          list.querySelectorAll('.booking__slot').forEach(b => b.classList.remove('is-selected'));
+          btn.classList.add('is-selected');
+          selSlot = btn.dataset.time;
+          document.getElementById('booking-confirm').classList.add('is-ready');
+        });
+      });
+    }
+
+    document.getElementById('cal-prev').addEventListener('click', () => {
+      viewMonth--; if (viewMonth < 0) { viewMonth = 11; viewYear--; }
+      selDay = null; selSlot = null; renderCal();
+      document.getElementById('slot-list').innerHTML = '<div class="booking__slots-empty">Takvimden bir gün seçerek müsait saatleri görün.</div>';
+      document.getElementById('slots-date-label').textContent = 'Bir gün seçin';
+    });
+    document.getElementById('cal-next').addEventListener('click', () => {
+      viewMonth++; if (viewMonth > 11) { viewMonth = 0; viewYear++; }
+      selDay = null; selSlot = null; renderCal();
+      document.getElementById('slot-list').innerHTML = '<div class="booking__slots-empty">Takvimden bir gün seçerek müsait saatleri görün.</div>';
+      document.getElementById('slots-date-label').textContent = 'Bir gün seçin';
+    });
+
+    document.getElementById('booking-confirm').addEventListener('click', () => {
+      if (!selDay || !selSlot) return;
+      const TR_DAYS = ['Pazar','Pazartesi','Salı','Çarşamba','Perşembe','Cuma','Cumartesi'];
+      const dow = selDate.getDay();
+      document.getElementById('booking-success-detail').textContent = `${TR_DAYS[dow]}, ${selDay} ${TR_MONTHS[viewMonth]} — Saat ${selSlot}`;
+      document.getElementById('booking-slots-panel').style.display = 'none';
+      document.querySelector('.booking__cal').style.display = 'none';
+      const suc = document.getElementById('booking-success');
+      suc.style.display = 'flex';
+      document.querySelector('.booking__card').style.gridTemplateColumns = '1fr';
+    });
+
+    renderCal();
+  })();
+
+  /* ── Progress Tracker ── */
+  (function(){
+    // Streak dots
+    const dotsEl = document.getElementById('streak-dots');
+    for (let i = 0; i < 21; i++) {
+      const d = document.createElement('div');
+      d.className = 'tracker__streak-dot' + (i < 12 ? ' done' : i === 12 ? ' today' : '');
+      dotsEl.appendChild(d);
+    }
+
+    // Animate bars & goals on scroll
+    const chartData = [75, 0, 100, 75, 0, 50, 0];
+    const goalData = [70, 78, 65];
+    let animated = false;
+
+    function animateTracker() {
+      if (animated) return; animated = true;
+      const bars = document.querySelectorAll('.tracker__bar-fill');
+      bars.forEach((b, i) => { setTimeout(() => { b.style.height = chartData[i] + '%'; }, i * 80); });
+      const goals = document.querySelectorAll('.tracker__goal-fill');
+      goals.forEach((g, i) => { setTimeout(() => { g.style.width = goalData[i] + '%'; }, 300 + i * 100); });
+    }
+
+    const obs = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) animateTracker();
+    }, { threshold: 0.3 });
+    const tracker = document.getElementById('tracker');
+    if (tracker) obs.observe(tracker);
+
+    // Log entries
+    document.getElementById('tracker-log-btn').addEventListener('click', () => {
+      const input = document.getElementById('tracker-input');
+      const val = input.value.trim();
+      if (!val) return;
+      const now = new Date();
+      const time = now.toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' });
+      const day = ['Paz','Pzt','Sal','Çar','Per','Cum','Cmt'][now.getDay()];
+      const entries = document.getElementById('tracker-entries');
+      const entry = document.createElement('div');
+      entry.className = 'tracker__log-entry';
+      entry.innerHTML = `<span>${val}</span><span class="tracker__log-entry-time">${day} ${time}</span>`;
+      entries.prepend(entry);
+      input.value = '';
+    });
+    document.getElementById('tracker-input').addEventListener('keypress', e => {
+      if (e.key === 'Enter') document.getElementById('tracker-log-btn').click();
+    });
+  })();
+
+  </script>
+  <script>
+    /* Glow card cursor tracking */
+    (function () {
+      'use strict';
+      document.querySelectorAll('[data-glow]').forEach((card) => {
+        card.addEventListener('pointermove', (e) => { const r = card.getBoundingClientRect(); card.style.setProperty('--mx', `${e.clientX - r.left}px`); card.style.setProperty('--my', `${e.clientY - r.top}px`); }, { passive: true });
+        card.addEventListener('pointerleave', () => { card.style.setProperty('--mx', '50%'); card.style.setProperty('--my', '50%'); });
+      });
+    })();
+  </script>
+
+</body>
+</html>

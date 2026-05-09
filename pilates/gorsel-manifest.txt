@@ -1,0 +1,9 @@
+PLATES PREMIUM V1 — GÖRSEL MANIFEST
+
+1) Hero ana görsel: assets/images/plates-premium-v1/plates-hero-main.webp
+2) Hero destek görseli: assets/images/plates-premium-v1/plates-hero-aux.webp
+3) About / Hakkımda: assets/images/plates-premium-v1/plates-about.webp
+4) Before: assets/images/plates-premium-v1/plates-before.webp
+5) After: assets/images/plates-premium-v1/plates-after.webp
+
+V2 layout notu: hero küçük görsel öne alındı, before/after crop dengelendi, method bölümü 2x2 grid düzenine alındı.

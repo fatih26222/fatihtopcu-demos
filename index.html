@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fatih Topçu | Spor Hocası Web Site Demoları</title>
+  <meta name="description" content="PT, pilates hocası ve online koçlar için 1 günde ilk taslak kişisel web site demoları.">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+      background:#070707;
+      color:#fff;
+      overflow-x:hidden;
+    }
+    body:before{
+      content:"";
+      position:fixed;
+      inset:0;
+      background:
+        radial-gradient(circle at 20% 10%,rgba(212,175,55,.16),transparent 30%),
+        radial-gradient(circle at 80% 20%,rgba(37,211,102,.10),transparent 28%),
+        linear-gradient(180deg,#080808,#0d0d0d 45%,#050505);
+      pointer-events:none;
+      z-index:-2;
+    }
+    body:after{
+      content:"";
+      position:fixed;
+      inset:0;
+      background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+      background-size:54px 54px;
+      opacity:.25;
+      pointer-events:none;
+      z-index:-1;
+    }
+    .wrap{max-width:1180px;margin:0 auto;padding:42px 22px 70px}
+    .nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:72px}
+    .logo{font-weight:800;letter-spacing:-.03em;font-size:20px}
+    .logo span{color:#d4af37}
+    .nav a{
+      color:#080808;
+      background:#d4af37;
+      text-decoration:none;
+      padding:12px 18px;
+      border-radius:999px;
+      font-weight:800;
+      font-size:14px;
+    }
+    .hero{display:grid;grid-template-columns:1.08fr .92fr;gap:46px;align-items:center;margin-bottom:74px}
+    .eyebrow{
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      color:#d4af37;
+      border:1px solid rgba(212,175,55,.28);
+      background:rgba(212,175,55,.08);
+      padding:9px 14px;
+      border-radius:999px;
+      font-size:13px;
+      font-weight:800;
+      margin-bottom:24px;
+    }
+    .eyebrow:before{content:"";width:8px;height:8px;border-radius:50%;background:#25D366}
+    h1{
+      font-size:clamp(42px,6vw,74px);
+      line-height:.96;
+      letter-spacing:-.07em;
+      margin-bottom:24px;
+      max-width:760px;
+    }
+    h1 em{font-style:normal;color:#d4af37}
+    .sub{
+      color:#b7b7b7;
+      font-size:18px;
+      line-height:1.75;
+      max-width:660px;
+      margin-bottom:30px;
+    }
+    .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:30px}
+    .btn-main,.btn-ghost{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      text-decoration:none;
+      border-radius:999px;
+      padding:16px 22px;
+      font-weight:850;
+      font-size:15px;
+    }
+    .btn-main{background:#25D366;color:#05140a}
+    .btn-ghost{border:1px solid rgba(255,255,255,.18);color:#fff;background:rgba(255,255,255,.04)}
+    .price{
+      display:flex;
+      gap:16px;
+      align-items:center;
+      flex-wrap:wrap;
+      color:#dcdcdc;
+    }
+    .old{text-decoration:line-through;color:#777;font-size:24px;font-weight:800}
+    .new{font-size:38px;font-weight:950;color:#d4af37;letter-spacing:-.04em}
+    .campaign{
+      font-size:13px;
+      color:#111;
+      background:#d4af37;
+      padding:8px 12px;
+      border-radius:999px;
+      font-weight:900;
+    }
+    .hero-card{
+      border:1px solid rgba(212,175,55,.22);
+      background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.03));
+      border-radius:30px;
+      padding:24px;
+      box-shadow:0 28px 80px rgba(0,0,0,.34);
+      position:relative;
+      overflow:hidden;
+    }
+    .hero-card:before{
+      content:"";
+      position:absolute;
+      inset:-1px;
+      background:radial-gradient(circle at 80% 10%,rgba(212,175,55,.18),transparent 32%);
+      pointer-events:none;
+    }
+    .mock{
+      position:relative;
+      border-radius:22px;
+      min-height:360px;
+      background:
+        linear-gradient(180deg,rgba(0,0,0,.12),rgba(0,0,0,.55)),
+        url("gold/assets/images/pt-gold-v1/hero-main.png") center/cover;
+      border:1px solid rgba(255,255,255,.10);
+      overflow:hidden;
+    }
+    .mock-badge{
+      position:absolute;
+      left:18px;
+      bottom:18px;
+      right:18px;
+      background:rgba(0,0,0,.72);
+      border:1px solid rgba(212,175,55,.24);
+      border-radius:18px;
+      padding:18px;
+      backdrop-filter:blur(10px);
+    }
+    .mock-badge small{color:#d4af37;font-weight:900;letter-spacing:.12em}
+    .mock-badge div{font-size:24px;font-weight:950;margin-top:6px;letter-spacing:-.04em}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:24px}
+    .section-head h2{font-size:36px;letter-spacing:-.05em}
+    .section-head p{color:#999;max-width:470px;line-height:1.6}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:76px}
+    .demo{
+      min-height:240px;
+      border:1px solid rgba(255,255,255,.1);
+      border-radius:24px;
+      overflow:hidden;
+      background:#111;
+      color:#fff;
+      text-decoration:none;
+      position:relative;
+      transition:.25s;
+    }
+    .demo:hover{transform:translateY(-5px);border-color:rgba(212,175,55,.55)}
+    .demo .img{height:145px;background:#171717 center/cover}
+    .demo.gold .img{background-image:url("gold/assets/images/pt-gold-v1/hero-main.png")}
+    .demo.dark .img{background-image:url("dark/assets/images/pt-v1-dark/hero-main.webp")}
+    .demo.light .img{background-image:url("light/assets/images/pt-v1-light/about.webp")}
+    .demo.pilates .img{background-image:url("pilates/assets/images/pilates-premium-v1/hero-main.webp")}
+    .demo.classic .img{background-image:linear-gradient(135deg,#222,#444)}
+    .demo.feminine .img{background-image:linear-gradient(135deg,#2b1b24,#d8a6bd)}
+    .demo.neon .img{background-image:linear-gradient(135deg,#02060f,#00d4ff)}
+    .demo-body{padding:18px}
+    .demo-tag{font-size:11px;color:#d4af37;font-weight:900;letter-spacing:.16em;text-transform:uppercase;margin-bottom:8px}
+    .demo-title{font-size:22px;font-weight:950;letter-spacing:-.04em;margin-bottom:8px}
+    .demo-desc{color:#aaa;font-size:14px;line-height:1.55}
+    .steps,.includes{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+      margin-bottom:76px;
+    }
+    .box{
+      border:1px solid rgba(255,255,255,.1);
+      background:rgba(255,255,255,.045);
+      border-radius:22px;
+      padding:24px;
+    }
+    .num{color:#d4af37;font-weight:950;margin-bottom:14px}
+    .box h3{font-size:20px;margin-bottom:10px;letter-spacing:-.03em}
+    .box p,.box li{color:#aaa;line-height:1.65;font-size:15px}
+    .box ul{padding-left:18px}
+    .final{
+      text-align:center;
+      border:1px solid rgba(212,175,55,.22);
+      border-radius:32px;
+      padding:48px 24px;
+      background:linear-gradient(180deg,rgba(212,175,55,.10),rgba(255,255,255,.035));
+    }
+    .final h2{font-size:42px;letter-spacing:-.06em;margin-bottom:14px}
+    .final p{color:#aaa;margin:0 auto 24px;max-width:620px;line-height:1.7}
+    @media(max-width:900px){
+      .nav{margin-bottom:46px}
+      .hero{grid-template-columns:1fr}
+      .hero-card{order:-1}
+      .mock{min-height:280px}
+      .grid,.steps,.includes{grid-template-columns:1fr}
+      .section-head{display:block}
+      .section-head p{margin-top:10px}
+      .old{font-size:20px}
+      .new{font-size:32px}
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="nav">
+      <div class="logo">Fatih Topçu<span>.</span>Web</div>
+      <a href="https://wa.me/905457767603?text=Merhaba,%20kişisel%20web%20site%20demoları%20hakkında%20bilgi%20almak%20istiyorum." target="_blank">WhatsApp</a>
+    </header>
+
+    <section class="hero">
+      <div>
+        <div class="eyebrow">PT · Pilates · Online Koç Web Siteleri</div>
+        <h1>Spor hocasıysan, müşteriye sadece <em>Instagram profilini</em> göstermek zorunda değilsin.</h1>
+        <p class="sub">Hazır demo tarzlarından birini seçiyoruz. İsmini, hizmetlerini, fotoğraflarını ve WhatsApp başvuru akışını ekleyip kişisel web sitene çeviriyoruz.</p>
+
+        <div class="hero-actions">
+          <a class="btn-main" href="https://wa.me/905457767603?text=Merhaba,%20kişisel%20web%20site%20demoları%20hakkında%20bilgi%20almak%20istiyorum." target="_blank">WhatsApp’tan Demo Seçelim</a>
+          <a class="btn-ghost" href="#demos">Demoları İncele</a>
+        </div>
+
+        <div class="price">
+          <span class="old">8.990 TL</span>
+          <span class="new">4.900 TL</span>
+          <span class="campaign">Erken bayram kampanyası</span>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="mock">
+          <div class="mock-badge">
+            <small>CANLI DEMO</small>
+            <div>Gold Luxury PT</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="demos">
+      <div class="section-head">
+        <h2>Tarzını seç.</h2>
+        <p>Her demo; farklı hoca tipi, farklı müşteri algısı ve farklı satış dili için hazırlandı.</p>
+      </div>
+
+      <div class="grid">
+        <a class="demo gold" href="/gold">
+          <div class="img"></div>
+          <div class="demo-body">
+            <div class="demo-tag">Demo 01</div>
+            <div class="demo-title">Gold Luxury</div>
+            <div class="demo-desc">Premium algı, birebir PT ve üst segment koçluk için.</div>
+          </div>
+        </a>
+
+        <a class="demo dark" href="/dark">
+          <div class="img"></div>
+          <div class="demo-body">
+            <div class="demo-tag">Demo 02</div>
+            <div class="demo-title">Dark PT</div>
+            <div class="demo-desc">Enerjik, güçlü, modern fitness koçları için.</div>
+          </div>
+        </a>
+
+        <a class="demo pilates" href="/pilates">
+          <div class="img"></div>
+          <div class="demo-body">
+            <div class="demo-tag">Demo 03</div>
+            <div class="demo-title">Pilates Premium</div>
+            <div class="demo-desc">Pilates, yoga ve wellness eğitmenleri için daha yumuşak algı.</div>
+          </div>
+        </a>
+
+        <a class="demo light" href="/light">
+          <div class="img"></div>
+          <div class="demo-body">
+            <div class="demo-tag">Demo 04</div>
+            <div class="demo-title">Light PT</div>
+            <div class="demo-desc">Sade, temiz ve güven odaklı kişisel marka görünümü.</div>
+          </div>
+        </a>
+
+        <a class="demo classic" href="/classic">
+          <div class="img"></div>
+          <div class="demo-body">
+            <div class="demo-tag">Demo 05</div>
+            <div class="demo-title">Classic Coach</div>
+            <div class="demo-desc">Kurumsal ve net anlatımlı spor hocası vitrini.</div>
+          </div>
+        </a>
+
+        <a class="demo feminine" href="/feminine">
+          <div class="img"></div>
+          <div class="demo-body">
+            <div class="demo-tag">Demo 06</div>
+            <div class="demo-title">Feminine Coach</div>
+            <div class="demo-desc">Kadın koçlar, wellness ve zarif marka dili için.</div>
+          </div>
+        </a>
+
+        <a class="demo neon" href="/neon">
+          <div class="img"></div>
+          <div class="demo-body">
+            <div class="demo-tag">Demo 07</div>
+            <div class="demo-title">Neon Energy</div>
+            <div class="demo-desc">Daha genç, dinamik ve yüksek enerjili fitness algısı.</div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section class="steps">
+      <div class="box">
+        <div class="num">01</div>
+        <h3>Demo seç</h3>
+        <p>Tarzına en yakın web site demosunu belirliyoruz.</p>
+      </div>
+      <div class="box">
+        <div class="num">02</div>
+        <h3>Bilgilerini gönder</h3>
+        <p>İsim, hizmetler, fotoğraflar, WhatsApp numarası ve kısa hakkımda bilgisi.</p>
+      </div>
+      <div class="box">
+        <div class="num">03</div>
+        <h3>İlk taslak</h3>
+        <p>Tüm içerikler hazırsa 1 iş gününde ilk taslak, 2. gün teslim hedefi.</p>
+      </div>
+    </section>
+
+    <section class="includes">
+      <div class="box">
+        <h3>Dahil olanlar</h3>
+        <ul>
+          <li>Tek sayfa kişisel web site</li>
+          <li>Mobil uyumlu tasarım</li>
+          <li>Hizmetler ve hakkında alanı</li>
+          <li>WhatsApp başvuru butonu</li>
+        </ul>
+      </div>
+      <div class="box">
+        <h3>Ek avantajlar</h3>
+        <ul>
+          <li>Kalori hesaplayıcı / mini araç</li>
+          <li>Dönüşüm veya yorum alanı</li>
+          <li>Standart domain kurulumu</li>
+          <li>İlk 3 revizyon ücretsiz</li>
+        </ul>
+      </div>
+      <div class="box">
+        <h3>Net sınır</h3>
+        <ul>
+          <li>Logo tasarımı dahil değil</li>
+          <li>Profesyonel fotoğraf çekimi dahil değil</li>
+          <li>Premium domain hariç</li>
+          <li>Çok sayfalı site ayrı pakettir</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="final">
+      <h2>Hangi demo sana yakın?</h2>
+      <p>WhatsApp’tan yaz. Alanını ve tarzını söyle, sana en uygun demo üzerinden hızlıca ilerleyelim.</p>
+      <a class="btn-main" href="https://wa.me/905457767603?text=Merhaba,%20kişisel%20web%20site%20demoları%20hakkında%20bilgi%20almak%20istiyorum." target="_blank">WhatsApp’tan Demo Seçelim</a>
+    </section>
+  </main>
+</body>
+</html>

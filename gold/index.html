@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mert Yılmaz | Premium Personal Trainer İstanbul</title>
+<meta name="description" content="İstanbul'un en seçkin birebir antrenman ve online koçluk hizmeti. Mert Yılmaz ile gerçek dönüşümü yaşa.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --dark:#0A0A0A;
+  --dark2:#111111;
+  --dark3:#1A1A1A;
+  --light:#F5F2EE;
+  --light2:#EDE9E3;
+  --gold:#C9A84C;
+  --gold2:#E8C96A;
+  --white:#FFFFFF;
+  --text-dark:#1A1A1A;
+  --text-muted:#666666;
+  --border:#2A2A2A;
+  --serif:'Playfair Display',serif;
+  --sans:'DM Sans',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--dark);color:var(--white);overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:20px 60px;display:flex;align-items:center;justify-content:space-between;background:rgba(10,10,10,0.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,168,76,0.15);transition:all 0.3s}
+.nav-logo{font-family:var(--serif);font-size:20px;font-weight:700;color:var(--white);letter-spacing:1px}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.7);text-decoration:none;font-size:13px;font-weight:500;letter-spacing:0.5px;transition:color 0.3s}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{background:var(--gold);color:var(--dark);padding:10px 24px;border-radius:4px;font-size:13px;font-weight:600;text-decoration:none;transition:all 0.3s;letter-spacing:0.3px}
+.nav-cta:hover{background:var(--gold2);transform:translateY(-1px)}
+
+/* SCROLL PROGRESS BAR */
+.scroll-progress{position:fixed;top:0;left:0;right:0;z-index:1001;height:3px;background:transparent;pointer-events:none}
+.scroll-progress-bar{height:100%;width:0%;background:linear-gradient(to right,var(--gold),var(--gold2),var(--gold));box-shadow:0 0 12px rgba(201,168,76,0.8),0 0 24px rgba(201,168,76,0.4);transition:width 0.05s linear;position:relative}
+.scroll-progress-bar::after{content:'';position:absolute;right:0;top:50%;transform:translateY(-50%);width:8px;height:8px;background:var(--gold2);border-radius:50%;box-shadow:0 0 8px rgba(232,201,106,0.9)}
+
+/* HERO */
+.hero{min-height:100vh;background:var(--dark);display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:120px 60px 80px;position:relative;overflow:hidden}
+.hero-parallax-bg{position:absolute;inset:-20%;background:url('assets/images/pt-gold-v1/hero-bg.png') center/cover no-repeat;opacity:0.08;will-change:transform;transform:translateY(0);pointer-events:none;filter:grayscale(100%) contrast(1.2)}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none}
+.hero-grain{position:absolute;inset:0;opacity:0.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");pointer-events:none}
+.hero-left{z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.3);padding:8px 16px;border-radius:100px;margin-bottom:40px;opacity:0;transform:translateY(20px);animation:fadeUp 0.8s 0.2s forwards}
+.hero-badge::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--gold);animation:pulse-dot 2s infinite}
+.hero-badge span{font-size:12px;color:var(--gold);font-weight:500;letter-spacing:0.5px}
+.hero-title{font-family:var(--serif);font-size:clamp(52px,6vw,80px);line-height:1.05;font-weight:900;margin-bottom:24px}
+.hero-title .line{display:block;overflow:hidden}
+.hero-title .line span{display:block;opacity:0;transform:translateY(100%);animation:slideUp 0.8s forwards}
+.hero-title .line:nth-child(1) span{animation-delay:0.4s}
+.hero-title .line:nth-child(2) span{animation-delay:0.55s}
+.hero-title .line:nth-child(3) span{animation-delay:0.7s}
+.hero-title .line:nth-child(4) span{animation-delay:0.85s}
+.hero-title .gold{color:var(--gold);font-style:italic}
+.hero-sub{font-size:16px;color:rgba(255,255,255,0.6);line-height:1.7;max-width:400px;margin-bottom:40px;opacity:0;animation:fadeUp 0.8s 1s forwards}
+.hero-btns{display:flex;gap:16px;margin-bottom:60px;opacity:0;animation:fadeUp 0.8s 1.1s forwards}
+.btn-primary{background:var(--gold);color:var(--dark);padding:16px 32px;border-radius:6px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.3s;letter-spacing:0.3px;display:inline-flex;align-items:center;gap:8px}
+.btn-primary:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 8px 30px rgba(201,168,76,0.3)}
+.btn-secondary{border:1px solid rgba(255,255,255,0.2);color:var(--white);padding:16px 32px;border-radius:6px;font-size:14px;font-weight:500;text-decoration:none;transition:all 0.3s;display:inline-flex;align-items:center;gap:8px}
+.btn-secondary:hover{border-color:var(--gold);color:var(--gold)}
+.hero-metrics{display:flex;gap:40px;opacity:0;animation:fadeUp 0.8s 1.2s forwards}
+.hero-metric{border-left:2px solid var(--gold);padding-left:16px}
+.hero-metric-num{font-family:var(--serif);font-size:28px;font-weight:700;color:var(--white)}
+.hero-metric-label{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:0.5px;margin-top:2px}
+.hero-right{position:relative;z-index:1;display:flex;justify-content:flex-end;align-items:center}
+.hero-img-wrap{position:relative;width:100%;max-width:500px;opacity:0;animation:fadeUp 0.8s 0.6s forwards}
+.hero-img-bg{position:absolute;inset:-20px;background:radial-gradient(ellipse,rgba(201,168,76,0.15) 0%,transparent 70%);border-radius:20px}.hero-img-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(10,10,10,0.3) 0%,transparent 60%),linear-gradient(to top,rgba(10,10,10,0.5) 0%,transparent 50%);border-radius:12px;z-index:1;pointer-events:none}
+.hero-img{width:100%;height:600px;object-fit:cover;border-radius:12px;filter:grayscale(20%) contrast(1.05)}
+.hero-img-placeholder{width:100%;height:600px;background:linear-gradient(135deg,#1a1a1a 0%,#222 50%,#1a1a1a 100%);border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:1px solid var(--border);position:relative;overflow:hidden}
+.hero-img-placeholder::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent 40%,rgba(201,168,76,0.05) 100%)}
+.placeholder-icon{font-size:60px;margin-bottom:16px;opacity:0.3}
+.placeholder-text{color:rgba(255,255,255,0.2);font-size:13px;letter-spacing:1px}
+.hero-card{position:absolute;bottom:40px;left:-30px;background:rgba(10,10,10,0.95);border:1px solid rgba(201,168,76,0.2);padding:16px 20px;border-radius:10px;backdrop-filter:blur(20px);opacity:0;animation:fadeUp 0.8s 1.3s forwards}
+.hero-card-title{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:1px;margin-bottom:4px}
+.hero-card-val{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--gold)}
+
+/* TICKER */
+.ticker{background:var(--gold);padding:14px 0;overflow:hidden;position:relative}
+.ticker-inner{display:flex;gap:0;animation:ticker 20s linear infinite;width:max-content}
+.ticker-item{display:flex;align-items:center;gap:20px;padding:0 30px;white-space:nowrap;font-size:12px;font-weight:700;color:var(--dark);letter-spacing:2px}
+.ticker-dot{width:6px;height:6px;border-radius:50%;background:var(--dark);opacity:0.4}
+
+/* PROOF */
+.proof{background:var(--dark2);padding:80px 60px;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.proof-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-bottom:60px}
+.proof-item{text-align:center;padding:40px 20px;position:relative}
+.proof-item::after{content:'';position:absolute;right:0;top:20%;bottom:20%;width:1px;background:var(--border)}
+.proof-item:last-child::after{display:none}
+.proof-num{font-family:var(--serif);font-size:clamp(40px,4vw,60px);font-weight:900;color:var(--white);line-height:1}
+.proof-num .gold{color:var(--gold)}
+.proof-label{font-size:12px;color:rgba(255,255,255,0.4);letter-spacing:1px;margin-top:8px;text-transform:uppercase}
+.proof-certs{display:flex;justify-content:center;gap:20px;flex-wrap:wrap}
+.cert-badge{border:1px solid rgba(201,168,76,0.2);padding:10px 24px;border-radius:100px;font-size:12px;color:rgba(255,255,255,0.5);letter-spacing:1px;transition:all 0.3s}
+.cert-badge:hover{border-color:var(--gold);color:var(--gold)}
+
+/* SERVICES */
+.services{background:var(--light);padding:100px 60px}
+.section-tag{display:inline-block;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,168,76,0.3);padding:6px 16px;border-radius:100px;margin-bottom:20px;background:rgba(201,168,76,0.05)}
+.section-tag.dark{color:var(--gold);border-color:rgba(201,168,76,0.3)}
+.section-title{font-family:var(--serif);font-size:clamp(36px,4vw,52px);font-weight:700;color:var(--text-dark);line-height:1.2;margin-bottom:16px}
+.section-title .gold{color:var(--gold);font-style:italic}
+.section-title.white{color:var(--white)}
+.section-sub{font-size:16px;color:var(--text-muted);max-width:500px;line-height:1.7;margin-bottom:60px}
+.section-sub.white{color:rgba(255,255,255,0.5)}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.service-card{background:var(--white);border-radius:16px;overflow:hidden;transition:all 0.4s;cursor:pointer;box-shadow:0 2px 20px rgba(0,0,0,0.06)}
+.service-card:hover{transform:translateY(-8px);box-shadow:0 20px 60px rgba(201,168,76,0.15)}
+.service-card-img{height:220px;background:linear-gradient(135deg,#1a1a1a,#2a2a2a);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.service-card-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.4),transparent)}
+.service-card-icon{font-size:48px;opacity:0.3;z-index:1}
+.service-card-body{padding:28px}
+.service-card-num{font-size:11px;color:var(--gold);letter-spacing:2px;font-weight:600;margin-bottom:10px}
+.service-card-title{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--text-dark);margin-bottom:10px}
+.service-card-desc{font-size:14px;color:var(--text-muted);line-height:1.7;margin-bottom:20px}
+.service-card-link{font-size:13px;color:var(--gold);font-weight:600;display:flex;align-items:center;gap:6px;transition:gap 0.3s}
+.service-card:hover .service-card-link{gap:12px}
+
+/* PROCESS */
+.process{background:var(--light2);padding:100px 60px}
+
+/* SCROLL-DRIVEN PYRAMID / DUMBBELL CHART */
+.process-viz{margin:60px auto 40px;max-width:700px;position:relative;height:260px;display:flex;align-items:flex-end;justify-content:center;gap:0}
+.viz-bar-wrap{display:flex;flex-direction:column;align-items:center;flex:1;position:relative}
+.viz-bar{width:70%;background:linear-gradient(to top,var(--gold),var(--gold2));border-radius:6px 6px 0 0;transform-origin:bottom;transform:scaleY(0);transition:transform 0.8s cubic-bezier(0.34,1.56,0.64,1);box-shadow:0 -4px 20px rgba(201,168,76,0.3);position:relative;overflow:hidden}
+.viz-bar::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,transparent 0%,rgba(255,255,255,0.15) 50%,transparent 100%);animation:shimmer 2.5s infinite}
+.viz-bar-label{font-size:11px;font-weight:700;color:var(--gold);letter-spacing:1px;margin-bottom:8px;opacity:0;transform:translateY(6px);transition:all 0.5s 0.4s}
+.viz-bar-num{font-family:var(--serif);font-size:13px;font-weight:700;color:var(--text-dark);position:absolute;top:-28px;left:50%;transform:translateX(-50%);opacity:0;transition:opacity 0.5s 0.6s;white-space:nowrap}
+.viz-connector{width:2px;background:rgba(201,168,76,0.2);height:100%;align-self:stretch;flex-shrink:0}
+.process-viz.activated .viz-bar{transform:scaleY(1)}
+.process-viz.activated .viz-bar-label{opacity:1;transform:translateY(0)}
+.process-viz.activated .viz-bar-num{opacity:1}
+
+/* DUMBBELL SHAPE — ascending bars representing progress */
+.viz-bar-wrap:nth-child(1) .viz-bar{height:70px}
+.viz-bar-wrap:nth-child(3) .viz-bar{height:130px}
+.viz-bar-wrap:nth-child(5) .viz-bar{height:200px}
+.viz-bar-wrap:nth-child(7) .viz-bar{height:240px}
+.viz-bar-wrap:nth-child(1) .viz-bar{background:linear-gradient(to top,rgba(201,168,76,0.45),rgba(201,168,76,0.65));box-shadow:none}
+.viz-bar-wrap:nth-child(3) .viz-bar{background:linear-gradient(to top,rgba(201,168,76,0.6),rgba(232,201,106,0.75));box-shadow:0 -4px 16px rgba(201,168,76,0.2)}
+.viz-bar-wrap:nth-child(5) .viz-bar{background:linear-gradient(to top,var(--gold),rgba(232,201,106,0.9));box-shadow:0 -6px 24px rgba(201,168,76,0.35)}
+.viz-bar-wrap:nth-child(7) .viz-bar{background:linear-gradient(to top,var(--gold),var(--gold2));box-shadow:0 -8px 36px rgba(201,168,76,0.55)}
+.viz-center-label{position:absolute;top:0;left:50%;transform:translateX(-50%);font-size:10px;color:var(--gold);letter-spacing:2px;text-transform:uppercase;font-weight:700;white-space:nowrap;opacity:0;transition:opacity 0.5s 0.8s}
+.process-viz.activated .viz-center-label{opacity:0.6}
+
+@keyframes shimmer{0%{transform:translateX(-100%)}100%{transform:translateX(200%)}}
+.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:60px;position:relative}
+.process-steps::before{content:'';position:absolute;top:40px;left:10%;right:10%;height:1px;background:linear-gradient(to right,transparent,var(--gold),var(--gold),transparent);opacity:0.3}
+.process-step{text-align:center;padding:0 20px;position:relative}
+.process-num{width:80px;height:80px;border-radius:50%;border:1px solid rgba(201,168,76,0.3);background:var(--white);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;font-family:var(--serif);font-size:24px;font-weight:700;color:var(--gold);transition:all 0.4s;box-shadow:0 4px 20px rgba(0,0,0,0.06)}
+.process-step:hover .process-num{background:var(--gold);color:var(--white);border-color:var(--gold);transform:scale(1.1)}
+.process-step-title{font-family:var(--serif);font-size:18px;font-weight:700;color:var(--text-dark);margin-bottom:10px}
+.process-step-desc{font-size:13px;color:var(--text-muted);line-height:1.7}
+
+/* ABOUT */
+.about{background:var(--light);padding:100px 60px}
+.about-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-content{}
+.about-name{font-family:var(--serif);font-size:clamp(32px,3vw,48px);font-weight:900;color:var(--text-dark);margin-bottom:8px}
+.about-title{font-size:13px;color:var(--gold);letter-spacing:2px;text-transform:uppercase;font-weight:600;margin-bottom:28px}
+.about-text{font-size:15px;color:var(--text-muted);line-height:1.9;margin-bottom:28px}
+.about-mission-label{font-size:11px;color:var(--gold);letter-spacing:2px;text-transform:uppercase;font-weight:600;margin-bottom:8px}
+.about-mission{font-family:var(--serif);font-size:18px;font-style:italic;color:var(--text-dark);line-height:1.6;margin-bottom:32px;padding-left:20px;border-left:2px solid var(--gold)}
+.about-certs{display:flex;flex-direction:column;gap:10px}
+.about-cert{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--text-muted)}
+.about-cert::before{content:'✓';color:var(--gold);font-weight:700;font-size:14px}
+.about-img-wrap{position:relative}
+.about-img-frame{position:relative;border-radius:16px;overflow:hidden}
+.about-img-frame::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--gold),transparent);z-index:1}
+.about-img-frame::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(to left,var(--gold),transparent);z-index:1}
+.about-img-ph{width:100%;height:600px;background:linear-gradient(135deg,#e8e4de,#d5d0c8);border-radius:16px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px}
+.about-img-ph-icon{font-size:64px;opacity:0.2}
+.about-img-ph-text{font-size:12px;color:rgba(0,0,0,0.2);letter-spacing:2px}
+
+/* TESTIMONIALS */
+.testimonials{background:var(--dark);padding:100px 60px}
+.testimonials-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:60px}
+.testimonials-carousel{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:60px}
+.testi-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:16px;padding:32px;transition:all 0.4s}
+.testi-card:hover{border-color:rgba(201,168,76,0.2);transform:translateY(-4px)}
+.testi-header{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.testi-avatar{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#2a2a2a,#333);border:2px solid rgba(201,168,76,0.2);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:16px;font-weight:700;color:var(--gold)}
+.testi-name{font-size:15px;font-weight:600;color:var(--white)}
+.testi-date{font-size:11px;color:rgba(255,255,255,0.3);margin-top:2px}
+.testi-stars{color:var(--gold);font-size:14px;letter-spacing:2px;margin-bottom:14px}
+.testi-quote{font-size:14px;color:rgba(255,255,255,0.7);line-height:1.8;font-style:italic;margin-bottom:16px}
+.testi-result{font-size:13px;font-weight:600;color:var(--gold)}
+.testi-big{text-align:center;padding:40px 0}
+.testi-big-num{font-family:var(--serif);font-size:clamp(60px,8vw,100px);font-weight:900;color:var(--white);line-height:1}
+.testi-big-num span{color:var(--gold)}
+.testi-big-label{font-size:16px;color:rgba(255,255,255,0.4);margin-top:8px}
+
+/* FAQ */
+.faq{background:var(--light);padding:100px 60px}
+.faq-inner{max-width:800px;margin:0 auto}
+.faq-list{margin-top:60px;display:flex;flex-direction:column;gap:12px}
+.faq-item{background:var(--white);border-radius:12px;overflow:hidden;transition:all 0.3s;box-shadow:0 2px 10px rgba(0,0,0,0.04)}
+.faq-question{padding:24px 28px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;transition:all 0.3s}
+.faq-question:hover{background:rgba(201,168,76,0.03)}
+.faq-q-text{font-size:15px;font-weight:600;color:var(--text-dark)}
+.faq-icon{width:28px;height:28px;border-radius:50%;border:1.5px solid rgba(201,168,76,0.3);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:18px;flex-shrink:0;transition:all 0.3s;font-weight:300}
+.faq-item.open .faq-icon{background:var(--gold);color:var(--white);border-color:var(--gold);transform:rotate(45deg)}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s}
+.faq-answer-inner{padding:0 28px 24px;font-size:14px;color:var(--text-muted);line-height:1.8}
+.faq-item.open .faq-answer{max-height:200px}
+
+/* FINAL CTA */
+.final-cta{background:var(--dark);padding:100px 60px;text-align:center;position:relative;overflow:hidden}
+.final-cta-bg{position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(201,168,76,0.06) 0%,transparent 70%);pointer-events:none;animation:ambientPulse 6s ease-in-out infinite}
+.final-cta-logo{font-family:var(--serif);font-size:14px;color:var(--gold);letter-spacing:4px;text-transform:uppercase;margin-bottom:40px;opacity:0.6}
+.final-cta-title{font-family:var(--serif);font-size:clamp(36px,5vw,64px);font-weight:900;color:var(--white);line-height:1.1;margin-bottom:20px}
+.final-cta-title em{color:var(--gold);font-style:italic}
+.final-cta-sub{font-size:16px;color:rgba(255,255,255,0.5);margin-bottom:48px}
+.final-cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-gold-lg{background:var(--gold);color:var(--dark);padding:20px 48px;border-radius:8px;font-size:15px;font-weight:700;text-decoration:none;transition:all 0.3s;display:inline-flex;align-items:center;gap:10px;letter-spacing:0.3px}
+.btn-gold-lg:hover{background:var(--gold2);transform:translateY(-3px);box-shadow:0 12px 40px rgba(201,168,76,0.35)}
+.btn-outline-lg{border:1px solid rgba(255,255,255,0.15);color:var(--white);padding:20px 48px;border-radius:8px;font-size:15px;font-weight:500;text-decoration:none;transition:all 0.3s;display:inline-flex;align-items:center;gap:10px}
+.btn-outline-lg:hover{border-color:rgba(201,168,76,0.4);color:var(--gold)}
+
+/* FOOTER */
+footer{background:#050505;padding:40px 60px;border-top:1px solid var(--border)}
+.footer-inner{display:flex;align-items:center;justify-content:space-between}
+.footer-logo{font-family:var(--serif);font-size:18px;font-weight:700;color:var(--white)}
+.footer-logo span{color:var(--gold)}
+.footer-links{display:flex;gap:24px;list-style:none}
+.footer-links a{font-size:12px;color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.3s;letter-spacing:0.3px}
+.footer-links a:hover{color:var(--gold)}
+.footer-social{display:flex;gap:16px}
+.footer-social a{width:36px;height:36px;border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;color:rgba(255,255,255,0.3);text-decoration:none;transition:all 0.3s}
+.footer-social a:hover{border-color:var(--gold);color:var(--gold)}
+
+/* STICKY WA */
+.sticky-wa{position:fixed;bottom:32px;right:32px;z-index:999;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(37,211,102,0.35);animation:waPulse 2.5s infinite;text-decoration:none;transition:transform 0.3s}
+.sticky-wa:hover{transform:scale(1.1)}
+.sticky-wa svg{width:28px;height:28px;fill:white}
+
+/* REVEAL — enhanced */
+.reveal{opacity:0;transform:translateY(50px);transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1),transform 0.9s cubic-bezier(0.16,1,0.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:0.12s}
+.reveal-delay-2{transition-delay:0.24s}
+.reveal-delay-3{transition-delay:0.36s}
+.reveal-delay-4{transition-delay:0.48s}
+.reveal-left{opacity:0;transform:translateX(-60px);transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1),transform 0.9s cubic-bezier(0.16,1,0.3,1)}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-scale{opacity:0;transform:scale(0.88);transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1),transform 0.8s cubic-bezier(0.16,1,0.3,1)}
+.reveal-scale.visible{opacity:1;transform:scale(1)}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes slideUp{from{opacity:0;transform:translateY(110%)}to{opacity:1;transform:translateY(0)}}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.7)}}
+@keyframes waPulse{0%,100%{box-shadow:0 4px 24px rgba(37,211,102,0.35)}50%{box-shadow:0 4px 50px rgba(37,211,102,0.7)}}
+@keyframes ambientPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.6;transform:scale(1.15)}}
+@keyframes goldGlow{0%,100%{text-shadow:0 0 0 transparent}50%{text-shadow:0 0 30px rgba(201,168,76,0.4)}}
+
+
+
+/* BEFORE / AFTER */
+.before-after{background:var(--dark2);padding:100px 60px;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.before-after-head{text-align:center;margin-bottom:56px}
+.before-after-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:28px;align-items:stretch}
+.ba-card{background:rgba(255,255,255,0.03);border:1px solid rgba(201,168,76,0.14);border-radius:18px;overflow:hidden;position:relative;box-shadow:0 10px 40px rgba(0,0,0,0.18)}
+.ba-img{width:100%;height:560px;object-fit:cover;display:block}
+.ba-badge{position:absolute;top:20px;left:20px;background:rgba(10,10,10,0.82);backdrop-filter:blur(12px);border:1px solid rgba(201,168,76,0.28);color:var(--gold2);padding:8px 14px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;z-index:2}
+.ba-info{position:absolute;left:20px;right:20px;bottom:20px;background:rgba(10,10,10,0.88);backdrop-filter:blur(14px);border:1px solid rgba(201,168,76,0.15);border-radius:16px;padding:18px 18px 16px;z-index:2}
+.ba-label{font-size:11px;letter-spacing:1.6px;color:rgba(255,255,255,0.45);text-transform:uppercase;margin-bottom:8px}
+.ba-title{font-family:var(--serif);font-size:28px;color:var(--white);font-weight:700;line-height:1.1;margin-bottom:10px}
+.ba-meta{display:flex;gap:18px;flex-wrap:wrap}
+.ba-meta span{font-size:13px;color:rgba(255,255,255,0.76)}
+.ba-meta strong{color:var(--gold2);font-weight:700}
+.ba-center{display:flex;align-items:center;justify-content:center;min-width:150px}
+.ba-center-box{width:150px;height:150px;border-radius:50%;border:1px solid rgba(201,168,76,0.28);display:flex;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(circle at center,rgba(201,168,76,0.18) 0%,rgba(201,168,76,0.04) 55%,transparent 75%);box-shadow:inset 0 0 30px rgba(201,168,76,0.08)}
+.ba-center-top{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:8px}
+.ba-center-mid{font-family:var(--serif);font-size:38px;font-weight:900;color:var(--gold2);line-height:1}
+.ba-center-bot{font-size:12px;color:rgba(255,255,255,0.55);margin-top:8px;text-align:center;line-height:1.5;padding:0 14px}
+.ba-footnote{text-align:center;margin-top:28px;font-size:14px;color:rgba(255,255,255,0.5)}
+
+/* CALORIE */
+.calorie{background:var(--light);padding:100px 60px}
+.calorie-inner{display:grid;grid-template-columns:minmax(0,1fr) 560px;gap:38px;align-items:start}
+.calorie-copy{padding-top:10px}
+.calorie-list{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
+.calorie-pill{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:999px;border:1px solid rgba(201,168,76,0.22);background:rgba(201,168,76,0.06);font-size:13px;color:var(--text-dark)}
+.calorie-pill::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--gold)}
+.calorie-card{background:linear-gradient(180deg,#101010 0%,#0A0A0A 100%);border:1px solid rgba(201,168,76,0.18);border-radius:24px;padding:28px;box-shadow:0 20px 50px rgba(0,0,0,0.18);position:relative;overflow:hidden}
+.calorie-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 85% 20%,rgba(201,168,76,0.14),transparent 34%);pointer-events:none}
+.calorie-form{display:grid;grid-template-columns:1fr 1fr;gap:16px;position:relative;z-index:1}
+.calorie-field{display:flex;flex-direction:column;gap:8px}
+.calorie-field.full{grid-column:1/-1}
+.calorie-label{font-size:11px;color:rgba(255,255,255,0.48);letter-spacing:2px;text-transform:uppercase}
+.calorie-field input,.calorie-field select{width:100%;height:58px;border-radius:16px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);color:var(--white);padding:0 18px;font-size:16px;outline:none}
+.calorie-field input:focus,.calorie-field select:focus{border-color:rgba(201,168,76,0.65);box-shadow:0 0 0 3px rgba(201,168,76,0.14)}
+.calorie-field select option{background:#111;color:#fff}
+.calorie-note{grid-column:1/-1;font-size:14px;color:rgba(255,255,255,0.58);line-height:1.7;margin-top:4px}
+.calorie-actions{grid-column:1/-1;display:flex;justify-content:flex-end;margin-top:4px}
+.calorie-btn{background:var(--gold);color:var(--dark);border:0;border-radius:999px;padding:16px 32px;font-size:16px;font-weight:700;cursor:pointer;transition:all 0.25s}
+.calorie-btn:hover{background:var(--gold2);transform:translateY(-2px)}
+.calorie-results{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:22px;position:relative;z-index:1}
+.calorie-result{min-width:0;overflow:hidden;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.055);border-radius:20px;padding:16px 14px}
+.calorie-result small{display:block;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.44);margin-bottom:12px}
+.calorie-result strong{display:block;font-family:var(--serif);font-size:clamp(1.25rem,1.6vw,1.75rem);line-height:1;white-space:nowrap;color:var(--white);font-weight:800}
+.calorie-result p{color:#A6A6A6;font-size:13px;line-height:1.55;margin-top:10px}
+.calorie-summary{margin-top:18px;font-size:15px;color:rgba(255,255,255,0.72);line-height:1.8;position:relative;z-index:1}
+.calorie-summary strong{color:var(--gold2)}
+.calorie-summary span{color:rgba(255,255,255,0.42)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  nav{padding:16px 24px}
+  .nav-links{display:none}
+  .hero{grid-template-columns:1fr;padding:100px 24px 60px;gap:40px}
+  .hero-right{display:none}
+  .proof-grid{grid-template-columns:repeat(2,1fr)}
+  .services-grid{grid-template-columns:1fr}
+  .before-after-grid{grid-template-columns:1fr;gap:20px}
+  .ba-center{order:-1}
+  .ba-center-box{width:130px;height:130px}
+  .calorie-inner{grid-template-columns:1fr;gap:28px}
+  .calorie-form{grid-template-columns:1fr}
+  .calorie-results{grid-template-columns:1fr}
+  .calorie-actions{justify-content:stretch}
+  .calorie-btn{width:100%}
+  .process-steps{grid-template-columns:repeat(2,1fr);gap:40px}
+  .process-steps::before{display:none}
+  .about-inner{grid-template-columns:1fr;gap:40px}
+  .about-img-wrap{display:none}
+  .testimonials-carousel{grid-template-columns:1fr}
+  .testimonials-header{flex-direction:column;gap:20px;align-items:flex-start}
+  .services,.process,.about,.testimonials,.faq,.final-cta,.before-after,.calorie{padding:60px 24px}
+  .proof{padding:60px 24px}
+  .footer-inner{flex-direction:column;gap:24px;text-align:center}
+  .final-cta-btns{flex-direction:column;align-items:center}
+}
+</style>
+</head>
+<body>
+
+<!-- SCROLL PROGRESS BAR -->
+<div class="scroll-progress"><div class="scroll-progress-bar" id="scrollBar"></div></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">M<span>Y</span></div>
+  <ul class="nav-links">
+    <li><a href="#services">Hizmetler</a></li>
+    <li><a href="#process">Süreç</a></li>
+    <li><a href="#about">Hakkında</a></li>
+    <li><a href="#results">Dönüşüm</a></li>
+    <li><a href="#faq">SSS</a></li>
+    <li><a href="#faq">SSS</a></li>
+  </ul>
+  <a href="https://wa.me/905001234567?text=Merhaba, koçluk hakkında bilgi almak istiyorum." class="nav-cta" target="_blank">Ücretsiz Danışma</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-parallax-bg" id="heroBg"></div>
+  <div class="hero-bg"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-left">
+    <div class="hero-badge"><span>● 2026 kontenjanı dolmadan başvur</span></div>
+    <h1 class="hero-title">
+      <span class="line"><span>Vücudunu</span></span>
+      <span class="line"><span class="gold">Dönüştür.</span></span>
+      <span class="line"><span>Hayatını</span></span>
+      <span class="line"><span class="gold">Yeniden Yaz.</span></span>
+    </h1>
+    <p class="hero-sub">İstanbul'un en seçkin birebir antrenman ve online koçluk deneyimi. Sınırlı kontenjan, sınırsız sonuç.</p>
+    <div class="hero-btns">
+      <a href="https://wa.me/905001234567?text=Merhaba, koçluk hakkında bilgi almak istiyorum." class="btn-primary" target="_blank">Ücretsiz Danışma Al →</a>
+      <a href="#services" class="btn-secondary">Hizmetleri İncele</a>
+    </div>
+    <div class="hero-metrics">
+      <div class="hero-metric">
+        <div class="hero-metric-num">200+</div>
+        <div class="hero-metric-label">Dönüşüm</div>
+      </div>
+      <div class="hero-metric">
+        <div class="hero-metric-num">10 Yıl</div>
+        <div class="hero-metric-label">Deneyim</div>
+      </div>
+      <div class="hero-metric">
+        <div class="hero-metric-num">%96</div>
+        <div class="hero-metric-label">Başarı Oranı</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-wrap">
+      <div class="hero-img-bg"></div>
+      <div class="hero-img-overlay"></div>
+      <img src="assets/images/pt-gold-v1/hero-main.png" alt="Premium Personal Trainer" class="hero-img" style="width:100%;height:600px;object-fit:cover;object-position:top center;border-radius:12px;filter:grayscale(15%) contrast(1.05)">
+      <div class="hero-card">
+        <div class="hero-card-title">SON BAŞARISI</div>
+        <div class="hero-card-val">12 haftada 18 kg</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <div class="ticker-item">BİREBİR PT<span class="ticker-dot"></span></div>
+    <div class="ticker-item">ONLINE KOÇLUK<span class="ticker-dot"></span></div>
+    <div class="ticker-item">PREMIUM HİZMET<span class="ticker-dot"></span></div>
+    <div class="ticker-item">GERÇEK DÖNÜŞÜM<span class="ticker-dot"></span></div>
+    <div class="ticker-item">İSTANBUL<span class="ticker-dot"></span></div>
+    <div class="ticker-item">BESLENME DANIŞMANLIĞI<span class="ticker-dot"></span></div>
+    <div class="ticker-item">BİREBİR PT<span class="ticker-dot"></span></div>
+    <div class="ticker-item">ONLINE KOÇLUK<span class="ticker-dot"></span></div>
+    <div class="ticker-item">PREMIUM HİZMET<span class="ticker-dot"></span></div>
+    <div class="ticker-item">GERÇEK DÖNÜŞÜM<span class="ticker-dot"></span></div>
+    <div class="ticker-item">İSTANBUL<span class="ticker-dot"></span></div>
+    <div class="ticker-item">BESLENME DANIŞMANLIĞI<span class="ticker-dot"></span></div>
+  </div>
+</div>
+
+<!-- PROOF -->
+<section class="proof">
+  <div class="proof-grid">
+    <div class="proof-item reveal">
+      <div class="proof-num"><span class="counter gold" data-target="200">0</span><span class="gold">+</span></div>
+      <div class="proof-label">Başarılı Dönüşüm</div>
+    </div>
+    <div class="proof-item reveal reveal-delay-1">
+      <div class="proof-num"><span class="counter" data-target="10">0</span></div>
+      <div class="proof-label">Yıl Deneyim</div>
+    </div>
+    <div class="proof-item reveal reveal-delay-2">
+      <div class="proof-num"><span class="gold">%</span><span class="counter" data-target="96">0</span></div>
+      <div class="proof-label">Hedef Başarısı</div>
+    </div>
+    <div class="proof-item reveal reveal-delay-3">
+      <div class="proof-num"><span class="counter" data-target="49" data-decimal="true">0</span><span class="gold">★</span></div>
+      <div class="proof-label">Ortalama Puan</div>
+    </div>
+  </div>
+  <div class="proof-certs reveal">
+    <div class="cert-badge">NASM Sertifikalı</div>
+    <div class="cert-badge">ACE Sertifikalı</div>
+    <div class="cert-badge">Beslenme Uzmanlığı</div>
+    <div class="cert-badge">10+ Yıl Deneyim</div>
+    <div class="cert-badge">İstanbul Bazlı</div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-tag reveal">Hizmetler</div>
+  <h2 class="section-title reveal">Nasıl <em class="gold">Çalışabiliriz?</em></h2>
+  <p class="section-sub reveal">Her beden, her hedef farklıdır. Sana en uygun programı birlikte belirleriz.</p>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-card-img" style="padding:0;overflow:hidden"><img src="assets/images/pt-gold-v1/service-birebir.png" style="width:100%;height:100%;object-fit:cover;transition:transform 0.6s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"></div>
+      <div class="service-card-body">
+        <div class="service-card-num">01</div>
+        <div class="service-card-title">Birebir PT</div>
+        <div class="service-card-desc">Yüz yüze, tamamen sana özel antrenman programı. Her seansda yanındayım.</div>
+        <div class="service-card-link">Bilgi Al <span>→</span></div>
+      </div>
+    </div>
+    <div class="service-card reveal reveal-delay-1">
+      <div class="service-card-img" style="padding:0;overflow:hidden"><img src="assets/images/pt-gold-v1/service-online.png" style="width:100%;height:100%;object-fit:cover;transition:transform 0.6s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"></div>
+      <div class="service-card-body">
+        <div class="service-card-num">02</div>
+        <div class="service-card-title">Online Koçluk</div>
+        <div class="service-card-desc">Nerede olursan ol, seninle birlikteyim. Haftalık program ve sürekli destek.</div>
+        <div class="service-card-link">Bilgi Al <span>→</span></div>
+      </div>
+    </div>
+    <div class="service-card reveal reveal-delay-2">
+      <div class="service-card-img" style="padding:0;overflow:hidden"><img src="assets/images/pt-gold-v1/service-nutrition.png" style="width:100%;height:100%;object-fit:cover;transition:transform 0.6s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"></div>
+      <div class="service-card-body">
+        <div class="service-card-num">03</div>
+        <div class="service-card-title">Beslenme + PT</div>
+        <div class="service-card-desc">Antrenman ve beslenme bir arada. Bütüncül yaklaşımla kalıcı dönüşüm.</div>
+        <div class="service-card-link">Bilgi Al <span>→</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div style="text-align:center">
+    <div class="section-tag reveal">Süreç</div>
+    <h2 class="section-title reveal">4 Adımda <em class="gold">Dönüşüm</em></h2>
+    <p class="section-sub reveal" style="margin:0 auto">Başlamak sandığından çok daha kolay. İlk adımı sen at, gerisi bende.</p>
+  </div>
+
+  <!-- SCROLL-DRIVEN DUMBBELL CHART -->
+  <div class="process-viz" id="processViz">
+    <div class="viz-bar-wrap">
+      <div class="viz-bar-label">BAŞVUR</div>
+      <div class="viz-bar" style="transition-delay:0s">
+        <div class="viz-bar-num">01</div>
+      </div>
+    </div>
+    <div class="viz-connector"></div>
+    <div class="viz-bar-wrap">
+      <div class="viz-bar-label">ANALİZ</div>
+      <div class="viz-bar" style="transition-delay:0.15s">
+        <div class="viz-bar-num">02</div>
+      </div>
+    </div>
+    <div class="viz-connector"></div>
+    <div class="viz-bar-wrap">
+      <div class="viz-bar-label">PROGRAM</div>
+      <div class="viz-bar" style="transition-delay:0.3s">
+        <div class="viz-bar-num">03</div>
+      </div>
+    </div>
+    <div class="viz-connector"></div>
+    <div class="viz-bar-wrap">
+      <div class="viz-bar-label">DÖNÜŞÜM</div>
+      <div class="viz-bar" style="transition-delay:0.45s;background:linear-gradient(to top,var(--gold),var(--gold2))">
+        <div class="viz-bar-num">04</div>
+      </div>
+    </div>
+    <div class="viz-center-label">↑ İLERLEME GRAFİĞİ ↑</div>
+  </div>
+
+  <div class="process-steps">
+    <div class="process-step reveal">
+      <div class="process-num">01</div>
+      <div class="process-step-title">Başvur</div>
+      <div class="process-step-desc">WhatsApp veya form üzerinden ücretsiz danışma için yazıyorsun.</div>
+    </div>
+    <div class="process-step reveal reveal-delay-1">
+      <div class="process-num">02</div>
+      <div class="process-step-title">Analiz</div>
+      <div class="process-step-desc">Hedeflerini, geçmişini ve beklentilerini birlikte değerlendiriyoruz.</div>
+    </div>
+    <div class="process-step reveal reveal-delay-2">
+      <div class="process-num">03</div>
+      <div class="process-step-title">Program</div>
+      <div class="process-step-desc">Tamamen sana özel antrenman ve beslenme programı hazırlanıyor.</div>
+    </div>
+    <div class="process-step reveal reveal-delay-3">
+      <div class="process-num">04</div>
+      <div class="process-step-title">Dönüşüm</div>
+      <div class="process-step-desc">Sürekli takip ve destek ile hedefine ulaşıyorsun.</div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- BEFORE / AFTER -->
+<section class="before-after" id="results">
+  <div class="before-after-head">
+    <div class="section-tag dark reveal">Dönüşüm</div>
+    <h2 class="section-title white reveal">Söz Değil, <em class="gold">Görünür Sonuç</em></h2>
+    <p class="section-sub white reveal" style="margin:0 auto;max-width:720px">Aynı kişi. Aynı koçluk sistemi. Doğru takip, sürdürülebilir beslenme ve düzenli uygulama birleştiğinde değişim netleşir.</p>
+  </div>
+  <div class="before-after-grid">
+    <div class="ba-card reveal reveal-delay-1">
+      <div class="ba-badge">Before</div>
+      <img src="assets/images/pt-gold-v1/before.png" alt="Program öncesi danışan görüntüsü" class="ba-img">
+      <div class="ba-info">
+        <div class="ba-label">Başlangıç Noktası</div>
+        <div class="ba-title">Kontrolsüz Rutin</div>
+        <div class="ba-meta">
+          <span><strong>Hafta 0</strong></span>
+          <span><strong>97 kg</strong> başlangıç</span>
+          <span>Düşük enerji</span>
+        </div>
+      </div>
+    </div>
+    <div class="ba-center reveal reveal-delay-2">
+      <div class="ba-center-box">
+        <div class="ba-center-top">16 Hafta</div>
+        <div class="ba-center-mid">-18 kg</div>
+        <div class="ba-center-bot">Takip + plan + uygulama</div>
+      </div>
+    </div>
+    <div class="ba-card reveal reveal-delay-3">
+      <div class="ba-badge">After</div>
+      <img src="assets/images/pt-gold-v1/after.png" alt="Program sonrası danışan görüntüsü" class="ba-img">
+      <div class="ba-info">
+        <div class="ba-label">Program Sonrası</div>
+        <div class="ba-title">Net Dönüşüm</div>
+        <div class="ba-meta">
+          <span><strong>Hafta 16</strong></span>
+          <span><strong>79 kg</strong> final</span>
+          <span>Güç + kondisyon artışı</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ba-footnote reveal">Bu bölüm ilham içindir. Gerçek sonuç; yaş, başlangıç noktası, süreklilik ve uyuma göre değişir.</div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-content reveal">
+      <div class="section-tag">Hakkında</div>
+      <div class="about-name">Mert Yılmaz</div>
+      <div class="about-title">Premium Personal Trainer · İstanbul</div>
+      <p class="about-text">10 yılı aşkın deneyimimle İstanbul'da yüzlerce kişinin hayatını ve vücudunu dönüştürdüm. Her müşterimi bir birey olarak görür, ona özel bir yol haritası çizerim.</p>
+      <div class="about-mission-label">Misyon</div>
+      <p class="about-mission">"Sadece vücut değiştirmiyorum — yaşam tarzı inşa ediyorum. Kalıcı sonuçlar için kalıcı alışkanlıklar."</p>
+      <div class="about-certs">
+        <div class="about-cert">NASM Sertifikalı Kişisel Antrenör</div>
+        <div class="about-cert">ACE Fitness Eğitmeni</div>
+        <div class="about-cert">Beslenme ve Diyet Uzmanlığı</div>
+        <div class="about-cert">10+ Yıl Aktif Sektör Deneyimi</div>
+      </div>
+    </div>
+    <div class="about-img-wrap reveal reveal-delay-1">
+      <div class="about-img-frame">
+        <img src="assets/images/pt-gold-v1/about.png" alt="Mert Yılmaz PT" style="width:100%;height:600px;object-fit:cover;object-position:top;border-radius:16px">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- CALORIE CALCULATOR -->
+<section class="calorie" id="calorie">
+  <div class="calorie-inner">
+    <div class="calorie-copy reveal">
+      <div class="section-tag">Kalori Hesaplayıcı</div>
+      <h2 class="section-title">Rastgele Değil, <em class="gold">Veriyle Başla</em></h2>
+      <p class="section-sub">Yağ kaybı, koruma veya kas kazanımı için yaklaşık günlük kalori hedefini çıkar. Bu araç bir başlangıç noktasıdır; asıl sonuç haftalık takip, ölçüm ve revizyonla gelir.</p>
+      <div class="calorie-list">
+        <div class="calorie-pill">BMR + aktivite çarpanı</div>
+        <div class="calorie-pill">Hedefe göre kalori</div>
+        <div class="calorie-pill">Başlangıç referansı</div>
+      </div>
+    </div>
+
+    <div class="calorie-card reveal reveal-delay-1">
+      <form class="calorie-form" id="calorieForm">
+        <div class="calorie-field">
+          <label class="calorie-label" for="gender">Cinsiyet</label>
+          <select id="gender" name="gender">
+            <option value="male">Erkek</option>
+            <option value="female">Kadın</option>
+          </select>
+        </div>
+        <div class="calorie-field">
+          <label class="calorie-label" for="age">Yaş</label>
+          <input type="number" id="age" name="age" min="15" max="80" value="30">
+        </div>
+        <div class="calorie-field">
+          <label class="calorie-label" for="height">Boy / cm</label>
+          <input type="number" id="height" name="height" min="130" max="230" value="178">
+        </div>
+        <div class="calorie-field">
+          <label class="calorie-label" for="weight">Kilo / kg</label>
+          <input type="number" id="weight" name="weight" min="35" max="250" value="82">
+        </div>
+        <div class="calorie-field">
+          <label class="calorie-label" for="activity">Aktivite</label>
+          <select id="activity" name="activity">
+            <option value="1.2">Düşük</option>
+            <option value="1.375">Hafif</option>
+            <option value="1.55" selected>Orta</option>
+            <option value="1.725">Yüksek</option>
+            <option value="1.9">Atlet</option>
+          </select>
+        </div>
+        <div class="calorie-field">
+          <label class="calorie-label" for="goal">Hedef</label>
+          <select id="goal" name="goal">
+            <option value="fatloss" selected>Yağ kaybı</option>
+            <option value="maintain">Koruma</option>
+            <option value="muscle">Kas kazanımı</option>
+          </select>
+        </div>
+        <div class="calorie-note">Sayı tek başına çözüm değil. Başlangıcı verir; haftalık performans, açlık, ölçü ve uykuya göre plan revize edilir.</div>
+        <div class="calorie-actions"><button type="submit" class="calorie-btn">Hesapla</button></div>
+      </form>
+
+      <div class="calorie-results" id="calorieResults">
+        <div class="calorie-result">
+          <small>BMR</small>
+          <strong id="bmrOut">1788 kcal</strong>
+          <p>Dinlenme kalorisi</p>
+        </div>
+        <div class="calorie-result">
+          <small>Koruma</small>
+          <strong id="maintainOut">2771 kcal</strong>
+          <p>Bakım seviyesi</p>
+        </div>
+        <div class="calorie-result">
+          <small>Hedef</small>
+          <strong id="targetOut">2321 kcal</strong>
+          <p id="goalText">Yağ kaybı önerisi</p>
+        </div>
+      </div>
+      <div class="calorie-summary" id="calorieSummary"><strong>Yaklaşık 2321 kcal</strong> ile başla. <span>Kontrollü açıkla başla; güç düşüşü ve açlık durumuna göre revize et.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="testimonials-header">
+    <div>
+      <div class="section-tag dark reveal">Başarı Hikayeleri</div>
+      <h2 class="section-title white reveal">Gerçek İnsanlar, <em class="gold">Gerçek Sonuçlar</em></h2>
+    </div>
+    <p class="section-sub white reveal" style="max-width:300px;margin:0">Her biri farklı bir hedef, her biri gerçek bir dönüşüm.</p>
+  </div>
+  <div class="testimonials-carousel">
+    <div class="testi-card reveal">
+      <div class="testi-header">
+        <div class="testi-avatar">AK</div>
+        <div>
+          <div class="testi-name">Ayşe K.</div>
+          <div class="testi-date">Kasım 2025</div>
+        </div>
+      </div>
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-quote">"12 haftada hem fiziksel hem zihinsel olarak tamamen değiştim. Mert'in yaklaşımı gerçekten farklı — seni bir sayı olarak görmüyor."</div>
+      <div class="testi-result">→ 12 haftada 16 kg verdi</div>
+    </div>
+    <div class="testi-card reveal reveal-delay-1">
+      <div class="testi-header">
+        <div class="testi-avatar">KD</div>
+        <div>
+          <div class="testi-name">Kemal D.</div>
+          <div class="testi-date">Ocak 2026</div>
+        </div>
+      </div>
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-quote">"Online koçluk konusunda şüpheliydim ama 8 ay sonra hayatım değişti. Sürekli iletişim, haftalık takip, gerçek ilgi."</div>
+      <div class="testi-result">→ 8 ayda 22 kg kas kazandı</div>
+    </div>
+    <div class="testi-card reveal reveal-delay-2">
+      <div class="testi-header">
+        <div class="testi-avatar">SA</div>
+        <div>
+          <div class="testi-name">Selin A.</div>
+          <div class="testi-date">Şubat 2026</div>
+        </div>
+      </div>
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-quote">"Beslenme + PT paketi inanılmazdı. Hem ne yiyeceğimi hem nasıl antrenman yapacağımı öğrendim. Artık bağımsızım."</div>
+      <div class="testi-result">→ 6 ayda tamamen dönüştü</div>
+    </div>
+  </div>
+  <div class="testi-big reveal">
+    <div class="testi-big-num"><span class="counter-big" data-target="200">0</span><span>+</span></div>
+    <div class="testi-big-label">kişi hayatını dönüştürdü</div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="faq-inner">
+    <div style="text-align:center">
+      <div class="section-tag reveal">SSS</div>
+      <h2 class="section-title reveal">Sık Sorulan <em class="gold">Sorular</em></h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <div class="faq-question">
+          <span class="faq-q-text">Fiyatlar nasıl belirleniyor?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer"><div class="faq-answer-inner">Hizmet türüne, süreye ve programa göre fiyatlandırma yapılıyor. Ücretsiz danışma seansında ihtiyaçlarını değerlendirip sana özel bir teklif sunuyorum.</div></div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-question">
+          <span class="faq-q-text">Online antrenman nasıl işliyor?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer"><div class="faq-answer-inner">Haftalık program WhatsApp veya uygulama üzerinden iletiliyor. Video takip, haftalık check-in ve anlık soru-cevap desteği sunuyorum. Sanki yanındaymışım gibi.</div></div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-question">
+          <span class="faq-q-text">Ne kadar sürede sonuç alırım?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer"><div class="faq-answer-inner">Hedefe ve başlangıç noktana göre değişiyor. Çoğu müşterim 4-6. haftada fark edilir değişim yaşıyor. 12 haftalık programda ise ciddi dönüşümler gerçekleşiyor.</div></div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-question">
+          <span class="faq-q-text">Başlamak için ne yapmalıyım?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer"><div class="faq-answer-inner">WhatsApp'tan mesaj atman yeterli. Ücretsiz danışma seansı ayarlıyoruz, hedeflerini konuşuyoruz ve en uygun programı birlikte belirliyoruz.</div></div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-question">
+          <span class="faq-q-text">Beslenme desteği var mı?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer"><div class="faq-answer-inner">Evet. Hem sadece antrenman hem de beslenme + antrenman paketlerim var. Beslenme danışmanlığı ayrıca da alınabiliyor.</div></div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-question">
+          <span class="faq-q-text">Kontenjan ne zaman dolacak?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer"><div class="faq-answer-inner">Her dönem sınırlı sayıda müşteri alıyorum — kalite odaklı çalışmak için. 2026 kontenjanı dolmadan başvurmanı tavsiye ederim.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="final-cta-bg"></div>
+  <div class="final-cta-logo reveal">MERT YILMAZ · PREMIUM PT</div>
+  <h2 class="final-cta-title reveal">En İyi Versiyonun<br><em>Seni Bekliyor.</em></h2>
+  <p class="final-cta-sub reveal">Sınırlı kontenjan — şimdi başvur, fırsatı kaçırma.</p>
+  <div class="final-cta-btns reveal">
+    <a href="https://wa.me/905001234567?text=Merhaba, koçluk hakkında bilgi almak istiyorum." class="btn-gold-lg" target="_blank">Ücretsiz Danışma Al →</a>
+    <a href="https://wa.me/905001234567" class="btn-outline-lg" target="_blank">WhatsApp'tan Yaz</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Mert <span>Yılmaz</span> · PT</div>
+    <ul class="footer-links">
+      <li><a href="#services">Hizmetler</a></li>
+      <li><a href="#about">Hakkında</a></li>
+      <li><a href="#results">Dönüşüm</a></li>
+      <li><a href="#calorie">Kalori</a></li>
+      <li><a href="#faq">SSS</a></li>
+    </ul>
+    <div class="footer-social">
+      <a href="#" title="Instagram">IG</a>
+      <a href="#" title="WhatsApp">WA</a>
+    </div>
+  </div>
+</footer>
+
+<!-- STICKY WHATSAPP -->
+<a href="https://wa.me/905001234567?text=Merhaba, koçluk hakkında bilgi almak istiyorum." class="sticky-wa" target="_blank" title="WhatsApp'tan Yaz">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<script>
+// ── 1. SCROLL PROGRESS BAR ────────────────────────────────────────
+const scrollBar = document.getElementById('scrollBar');
+function updateScrollBar() {
+  const docH = document.documentElement.scrollHeight - window.innerHeight;
+  const pct  = docH > 0 ? (window.scrollY / docH) * 100 : 0;
+  scrollBar.style.width = pct + '%';
+}
+window.addEventListener('scroll', updateScrollBar, {passive:true});
+updateScrollBar();
+
+// ── 2. PARALLAX HERO BG ───────────────────────────────────────────
+const heroBg = document.getElementById('heroBg');
+function updateParallax() {
+  if (!heroBg) return;
+  const speed = 0.35;
+  const y = window.scrollY * speed;
+  heroBg.style.transform = `translateY(${y}px)`;
+}
+window.addEventListener('scroll', updateParallax, {passive:true});
+
+// ── 3. SCROLL-DRIVEN PROCESS PYRAMID ──────────────────────────────
+const processViz = document.getElementById('processViz');
+if (processViz) {
+  const vizObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        processViz.classList.add('activated');
+        vizObserver.unobserve(processViz);
+      }
+    });
+  }, {threshold: 0.3});
+  vizObserver.observe(processViz);
+}
+
+// ── 4. SERVICE CARD IMAGE HOVER ───────────────────────────────────
+document.querySelectorAll('.service-card').forEach(card => {
+  const img = card.querySelector('img');
+  if(img) {
+    card.addEventListener('mouseenter', () => img.style.transform = 'scale(1.07)');
+    card.addEventListener('mouseleave', () => img.style.transform = 'scale(1)');
+  }
+});
+
+// ── 5. SCROLL REVEAL — enhanced ───────────────────────────────────
+const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-scale');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, {threshold: 0.08, rootMargin: '0px 0px -40px 0px'});
+reveals.forEach(el => observer.observe(el));
+
+// ── 6. COUNT UP ───────────────────────────────────────────────────
+function countUp(el, target, decimal) {
+  let start = 0;
+  const isDecimal = !!decimal;
+  const realTarget = isDecimal ? target * 10 : target;
+  const duration = 2200;
+  const step = realTarget / (duration / 16);
+  const timer = setInterval(() => {
+    start += step;
+    if(start >= realTarget) {
+      start = realTarget;
+      clearInterval(timer);
+    }
+    el.textContent = isDecimal ? (start / 10).toFixed(1) : Math.floor(start);
+  }, 16);
+}
+
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting) {
+      entry.target.querySelectorAll('.counter').forEach(c => {
+        countUp(c, parseInt(c.dataset.target), c.dataset.decimal);
+      });
+      entry.target.querySelectorAll('.counter-big').forEach(c => {
+        countUp(c, parseInt(c.dataset.target), false);
+      });
+      counterObserver.unobserve(entry.target);
+    }
+  });
+}, {threshold: 0.3});
+document.querySelectorAll('.proof, .testi-big').forEach(el => counterObserver.observe(el));
+
+// ── 7. FAQ ACCORDION ──────────────────────────────────────────────
+document.querySelectorAll('.faq-question').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if(!isOpen) item.classList.add('open');
+  });
+});
+
+// ── 8. NAV SCROLL SHRINK ──────────────────────────────────────────
+const nav = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+  if(window.scrollY > 60) {
+    nav.style.padding = '10px 60px';
+    nav.style.background = 'rgba(10,10,10,0.97)';
+  } else {
+    nav.style.padding = '20px 60px';
+    nav.style.background = 'rgba(10,10,10,0.85)';
+  }
+}, {passive:true});
+
+// ── 9. MAGNETIC BUTTON EFFECT (subtle) ───────────────────────────
+document.querySelectorAll('.btn-primary, .btn-gold-lg, .nav-cta').forEach(btn => {
+  btn.addEventListener('mousemove', (e) => {
+    const rect = btn.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    btn.style.transform = `translate(${x * 0.12}px, ${y * 0.12}px) translateY(-2px)`;
+  });
+  btn.addEventListener('mouseleave', () => {
+    btn.style.transform = '';
+  });
+});
+
+// ── 10. TESTI CARD TILT ───────────────────────────────────────────
+document.querySelectorAll('.testi-card').forEach(card => {
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    card.style.transform = `perspective(800px) rotateX(${-y * 6}deg) rotateY(${x * 6}deg) translateY(-4px)`;
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = '';
+  });
+});
+
+
+// ── 11. CALORIE CALCULATOR ───────────────────────────────────────
+const calorieForm = document.getElementById('calorieForm');
+const bmrOut = document.getElementById('bmrOut');
+const maintainOut = document.getElementById('maintainOut');
+const targetOut = document.getElementById('targetOut');
+const goalText = document.getElementById('goalText');
+const calorieSummary = document.getElementById('calorieSummary');
+
+function roundKcal(value){
+  return Math.round(value / 10) * 10;
+}
+
+function updateCalories(){
+  if(!calorieForm) return;
+  const gender = calorieForm.gender.value;
+  const age = parseFloat(calorieForm.age.value) || 0;
+  const height = parseFloat(calorieForm.height.value) || 0;
+  const weight = parseFloat(calorieForm.weight.value) || 0;
+  const activity = parseFloat(calorieForm.activity.value) || 1.2;
+  const goal = calorieForm.goal.value;
+
+  let bmr = 10 * weight + 6.25 * height - 5 * age + (gender === 'male' ? 5 : -161);
+  bmr = Math.max(bmr, 0);
+  const maintenance = bmr * activity;
+
+  let target = maintenance;
+  let goalLabel = 'Koruma önerisi';
+  let summary = 'Mevcut kiloyu korumak için bu seviyeyi referans al ve haftalık takiple ince ayar yap.';
+
+  if(goal === 'fatloss'){
+    target = maintenance - 450;
+    goalLabel = 'Yağ kaybı önerisi';
+    summary = 'Kontrollü açıkla başla; performans çok düşerse veya açlık artarsa kaloriyi küçük adımlarla yukarı çek.';
+  } else if(goal === 'muscle'){
+    target = maintenance + 250;
+    goalLabel = 'Kas kazanımı önerisi';
+    summary = 'Temiz fazlalıkla başla; haftalık kilo artışı aşırı hızlanırsa artışı düşür.';
+  }
+
+  const bmrRounded = roundKcal(bmr);
+  const maintenanceRounded = roundKcal(maintenance);
+  const targetRounded = roundKcal(target);
+
+  bmrOut.textContent = `${bmrRounded} kcal`;
+  maintainOut.textContent = `${maintenanceRounded} kcal`;
+  targetOut.textContent = `${targetRounded} kcal`;
+  goalText.textContent = goalLabel;
+  calorieSummary.innerHTML = `<strong>Yaklaşık ${targetRounded} kcal</strong> ile başla. <span>${summary}</span>`;
+}
+
+if(calorieForm){
+  calorieForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    updateCalories();
+  });
+  ['change','input'].forEach(evt => calorieForm.addEventListener(evt, updateCalories));
+  updateCalories();
+}
+
+</script>
+</body>
+</html>

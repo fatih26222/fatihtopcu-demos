@@ -1,0 +1,13 @@
+DEMO 5 — PT V1 LIGHT GORSEL MANIFEST
+
+Hero ana: assets/images/pt-v1-light/hero-main.webp
+Hero küçük aksiyon: assets/images/pt-v1-light/hero-action.webp
+Hizmet 1 / Birebir PT: assets/images/pt-v1-light/service-birebir.webp
+Hizmet 2 / Online Koçluk: assets/images/pt-v1-light/service-online.webp
+Hizmet 3 / Beslenme + Antrenman: assets/images/pt-v1-light/service-nutrition.webp
+Before: assets/images/pt-v1-light/before.webp
+After: assets/images/pt-v1-light/after.webp
+About: assets/images/pt-v1-light/about.webp
+Kalori UI referans görseli (pakette): assets/images/pt-v1-light/calorie-ui-ref.webp
+
+Not: Kalori hesaplayıcı görsel değil, gerçek interaktif HTML/CSS/JS section olarak eklendi.
