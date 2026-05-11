@@ -3,14 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fatih Topçu | Spor Hocası Web Site Demoları</title>
-  <meta name="description" content="PT, pilates hocası ve online koçlar için 1 günde ilk taslak kişisel web site demoları.">
+  <title>Fatih Topçu Web Studio | Canlı Demo Kataloğu</title>
+  <meta name="description" content="PT, pilates hocası, online koç, diyetisyen ve yaşam koçları için canlı web site demo kataloğu.">
   <style>
     *{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#050607;
+      --panel:#0d0f12;
+      --gold:#d8ad45;
+      --gold2:#f4d383;
+      --text:#f7f2e8;
+      --muted:#a6adb8;
+      --line:rgba(255,255,255,.12);
+      --green:#25D366;
+    }
+    html{scroll-behavior:smooth}
     body{
       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
-      background:#070707;
-      color:#fff;
+      background:var(--bg);
+      color:var(--text);
       overflow-x:hidden;
     }
     body:before{
@@ -18,9 +29,10 @@
       position:fixed;
       inset:0;
       background:
-        radial-gradient(circle at 20% 10%,rgba(212,175,55,.16),transparent 30%),
-        radial-gradient(circle at 80% 20%,rgba(37,211,102,.10),transparent 28%),
-        linear-gradient(180deg,#080808,#0d0d0d 45%,#050505);
+        radial-gradient(circle at 18% 8%,rgba(216,173,69,.22),transparent 28%),
+        radial-gradient(circle at 82% 12%,rgba(37,211,102,.10),transparent 26%),
+        radial-gradient(circle at 50% 55%,rgba(216,173,69,.08),transparent 38%),
+        linear-gradient(180deg,#050607,#0a0b0d 48%,#050607);
       pointer-events:none;
       z-index:-2;
     }
@@ -28,350 +40,811 @@
       content:"";
       position:fixed;
       inset:0;
-      background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
-      background-size:54px 54px;
-      opacity:.25;
+      background-image:
+        linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+      background-size:56px 56px;
+      opacity:.16;
       pointer-events:none;
       z-index:-1;
     }
-    .wrap{max-width:1180px;margin:0 auto;padding:42px 22px 70px}
-    .nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:72px}
-    .logo{font-weight:800;letter-spacing:-.03em;font-size:20px}
-    .logo span{color:#d4af37}
-    .nav a{
-      color:#080808;
-      background:#d4af37;
-      text-decoration:none;
-      padding:12px 18px;
-      border-radius:999px;
-      font-weight:800;
-      font-size:14px;
+    .wrap{max-width:1260px;margin:0 auto;padding:0 24px}
+    .nav{
+      position:sticky;top:0;z-index:50;
+      background:rgba(5,6,7,.76);
+      backdrop-filter:blur(18px);
+      border-bottom:1px solid rgba(255,255,255,.07);
     }
-    .hero{display:grid;grid-template-columns:1.08fr .92fr;gap:46px;align-items:center;margin-bottom:74px}
-    .eyebrow{
-      display:inline-flex;
-      gap:10px;
-      align-items:center;
-      color:#d4af37;
-      border:1px solid rgba(212,175,55,.28);
-      background:rgba(212,175,55,.08);
-      padding:9px 14px;
-      border-radius:999px;
-      font-size:13px;
-      font-weight:800;
-      margin-bottom:24px;
+    .nav-inner{
+      max-width:1260px;margin:0 auto;padding:16px 24px;
+      display:flex;align-items:center;justify-content:space-between;gap:18px;
     }
-    .eyebrow:before{content:"";width:8px;height:8px;border-radius:50%;background:#25D366}
-    h1{
-      font-size:clamp(42px,6vw,74px);
-      line-height:.96;
-      letter-spacing:-.07em;
-      margin-bottom:24px;
-      max-width:760px;
-    }
-    h1 em{font-style:normal;color:#d4af37}
-    .sub{
-      color:#b7b7b7;
-      font-size:18px;
-      line-height:1.75;
-      max-width:660px;
-      margin-bottom:30px;
-    }
-    .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:30px}
-    .btn-main,.btn-ghost{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
+    .brand{font-weight:950;letter-spacing:-.04em}
+    .brand span{color:var(--gold)}
+    .nav-links{display:flex;gap:24px}
+    .nav-links a{color:#ddd;text-decoration:none;font-size:13px;font-weight:850}
+    .wa,.btn-primary{
+      background:var(--green);
+      color:#06140b;
       text-decoration:none;
       border-radius:999px;
-      padding:16px 22px;
-      font-weight:850;
-      font-size:15px;
+      padding:13px 18px;
+      font-weight:950;
+      display:inline-flex;align-items:center;justify-content:center;
     }
-    .btn-main{background:#25D366;color:#05140a}
-    .btn-ghost{border:1px solid rgba(255,255,255,.18);color:#fff;background:rgba(255,255,255,.04)}
-    .price{
-      display:flex;
-      gap:16px;
-      align-items:center;
-      flex-wrap:wrap;
-      color:#dcdcdc;
-    }
-    .old{text-decoration:line-through;color:#777;font-size:24px;font-weight:800}
-    .new{font-size:38px;font-weight:950;color:#d4af37;letter-spacing:-.04em}
-    .campaign{
-      font-size:13px;
-      color:#111;
-      background:#d4af37;
-      padding:8px 12px;
-      border-radius:999px;
-      font-weight:900;
-    }
-    .hero-card{
-      border:1px solid rgba(212,175,55,.22);
-      background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.03));
-      border-radius:30px;
-      padding:24px;
-      box-shadow:0 28px 80px rgba(0,0,0,.34);
-      position:relative;
-      overflow:hidden;
-    }
-    .hero-card:before{
-      content:"";
-      position:absolute;
-      inset:-1px;
-      background:radial-gradient(circle at 80% 10%,rgba(212,175,55,.18),transparent 32%);
-      pointer-events:none;
-    }
-    .mock{
-      position:relative;
-      border-radius:22px;
-      min-height:360px;
-      background:
-        linear-gradient(180deg,rgba(0,0,0,.12),rgba(0,0,0,.55)),
-        url("gold/assets/images/pt-gold-v1/hero-main.png") center/cover;
-      border:1px solid rgba(255,255,255,.10);
-      overflow:hidden;
-    }
-    .mock-badge{
-      position:absolute;
-      left:18px;
-      bottom:18px;
-      right:18px;
-      background:rgba(0,0,0,.72);
-      border:1px solid rgba(212,175,55,.24);
-      border-radius:18px;
-      padding:18px;
-      backdrop-filter:blur(10px);
-    }
-    .mock-badge small{color:#d4af37;font-weight:900;letter-spacing:.12em}
-    .mock-badge div{font-size:24px;font-weight:950;margin-top:6px;letter-spacing:-.04em}
-    .section-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:24px}
-    .section-head h2{font-size:36px;letter-spacing:-.05em}
-    .section-head p{color:#999;max-width:470px;line-height:1.6}
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:76px}
-    .demo{
-      min-height:240px;
-      border:1px solid rgba(255,255,255,.1);
-      border-radius:24px;
-      overflow:hidden;
-      background:#111;
+    .btn-secondary{
+      border:1px solid var(--line);
       color:#fff;
       text-decoration:none;
+      border-radius:999px;
+      padding:13px 18px;
+      font-weight:900;
+      background:rgba(255,255,255,.04);
+    }
+    .hero{
+      min-height:72vh;
+      padding:74px 0 50px;
+      display:grid;
+      grid-template-columns:1.02fr .98fr;
+      gap:44px;
+      align-items:center;
+    }
+    .kicker{
+      display:inline-flex;
+      color:var(--gold2);
+      border:1px solid rgba(216,173,69,.34);
+      background:rgba(216,173,69,.08);
+      padding:9px 14px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:950;
+      letter-spacing:.09em;
+      text-transform:uppercase;
+      margin-bottom:22px;
+    }
+    h1{
+      font-size:clamp(42px,6vw,82px);
+      line-height:.94;
+      letter-spacing:-.075em;
+      margin-bottom:24px;
+    }
+    h1 span{color:var(--gold)}
+    .sub{
+      color:#c9cbd0;
+      font-size:18px;
+      line-height:1.7;
+      max-width:690px;
+      margin-bottom:28px;
+    }
+    .tags{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px}
+    .tags span{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.045);
+      border-radius:14px;
+      padding:10px 13px;
+      color:#eee;
+      font-size:13px;
+      font-weight:800;
+    }
+    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px}
+    .offer{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:10px;
+      max-width:680px;
+    }
+    .offer div{
+      border:1px solid rgba(216,173,69,.24);
+      background:rgba(255,255,255,.045);
+      border-radius:18px;
+      padding:15px;
+      min-height:86px;
+    }
+    .offer strong{display:block;color:#fff;font-size:15px}
+    .offer small{display:block;color:#999;text-transform:uppercase;font-size:11px;margin-top:6px;letter-spacing:.08em}
+    .price{
+      margin-top:14px;
+      max-width:680px;
+      border:1px solid rgba(216,173,69,.32);
+      border-radius:20px;
+      padding:18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+      background:linear-gradient(90deg,rgba(216,173,69,.1),rgba(255,255,255,.035));
+    }
+    .price b{color:var(--gold2)}
+    .old{text-decoration:line-through;color:#777;font-size:20px;font-weight:900}
+    .new{font-size:34px;color:#fff;font-weight:1000;letter-spacing:-.06em}
+    .hero-visual{
       position:relative;
+      min-height:520px;
+      display:grid;
+      place-items:center;
+    }
+    .hero-desktop{
+      width:min(650px,100%);
+      aspect-ratio:16/10;
+      border:1px solid rgba(216,173,69,.26);
+      border-radius:30px;
+      background:linear-gradient(145deg,#15181d,#07080a);
+      padding:14px;
+      box-shadow:0 38px 90px rgba(0,0,0,.55);
+      transform:perspective(1100px) rotateY(-7deg) rotateX(3deg);
+      overflow:hidden;
+    }
+    .hero-desktop iframe{
+      width:1440px;
+      height:900px;
+      border:0;
+      transform:scale(.42);
+      transform-origin:top left;
+      pointer-events:none;
+      border-radius:22px;
+      background:#111;
+    }
+    .hero-phone{
+      position:absolute;
+      width:180px;
+      height:370px;
+      right:-5px;
+      bottom:34px;
+      border-radius:34px;
+      border:8px solid #171a1f;
+      background:#050607;
+      box-shadow:0 25px 70px rgba(0,0,0,.55);
+      overflow:hidden;
+      transform:rotate(5deg);
+    }
+    .hero-phone iframe{
+      width:390px;
+      height:844px;
+      border:0;
+      transform:scale(.42);
+      transform-origin:top left;
+      pointer-events:none;
+      background:#111;
+    }
+    section{padding:70px 0}
+    .head{text-align:center;max-width:760px;margin:0 auto 32px}
+    .head h2{font-size:clamp(34px,4.5vw,56px);letter-spacing:-.065em;line-height:1}
+    .head p{color:var(--muted);line-height:1.7;margin-top:14px}
+    .demo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+    .demo-card{
+      border:1px solid var(--line);
+      border-radius:30px;
+      background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.025));
+      overflow:hidden;
+      min-height:560px;
       transition:.25s;
     }
-    .demo:hover{transform:translateY(-5px);border-color:rgba(212,175,55,.55)}
-    .demo .img{height:145px;background:#171717 center/cover}
-    .demo.gold .img{background-image:url("gold/assets/images/pt-gold-v1/hero-main.png")}
-    .demo.dark .img{background-image:url("dark/assets/images/pt-v1-dark/hero-main.webp")}
-    .demo.light .img{background-image:url("light/assets/images/pt-v1-light/about.webp")}
-    .demo.pilates .img{background-image:url("pilates/assets/images/plates-premium-v1/plates-hero-main.webp")}
-    .demo.classic .img{background-image:url("classic/assets/images/pt-premium-v1/pt-premium-hero_main.webp")}
-    .demo.feminine .img{background-image:url("feminine/assets/images/pt-premium-feminen-v1/pt-feminen-hero-main.webp")}
-    .demo.neon .img{background-image:url("neon/assets/images/pt-neon-mavi-v1/pt-neon-hero-coach.webp")}
-    .demo-body{padding:18px}
-    .demo-tag{font-size:11px;color:#d4af37;font-weight:900;letter-spacing:.16em;text-transform:uppercase;margin-bottom:8px}
-    .demo-title{font-size:22px;font-weight:950;letter-spacing:-.04em;margin-bottom:8px}
-    .demo-desc{color:#aaa;font-size:14px;line-height:1.55}
-    .steps,.includes{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:16px;
-      margin-bottom:76px;
+    .demo-card:hover{border-color:rgba(216,173,69,.55);box-shadow:0 26px 70px rgba(0,0,0,.28)}
+    .card-top{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:18px 18px 0;
+      gap:14px;
     }
-    .box{
-      border:1px solid rgba(255,255,255,.1);
-      background:rgba(255,255,255,.045);
-      border-radius:22px;
-      padding:24px;
+    .badge{
+      display:inline-flex;
+      padding:7px 10px;
+      border-radius:999px;
+      background:rgba(216,173,69,.14);
+      border:1px solid rgba(216,173,69,.25);
+      color:var(--gold2);
+      font-size:11px;
+      font-weight:950;
+      letter-spacing:.08em;
+      text-transform:uppercase;
     }
-    .num{color:#d4af37;font-weight:950;margin-bottom:14px}
-    .box h3{font-size:20px;margin-bottom:10px;letter-spacing:-.03em}
-    .box p,.box li{color:#aaa;line-height:1.65;font-size:15px}
-    .box ul{padding-left:18px}
+    .open-link{color:#fff;text-decoration:none;font-size:13px;font-weight:900;opacity:.9}
+    .preview-stage{
+      height:350px;
+      position:relative;
+      margin:18px;
+      border-radius:24px;
+      background:radial-gradient(circle at top,rgba(216,173,69,.15),transparent 45%),#07080a;
+      border:1px solid rgba(255,255,255,.08);
+      overflow:hidden;
+    }
+    .desktop-frame{
+      position:absolute;
+      left:22px;
+      top:42px;
+      width:76%;
+      height:240px;
+      border:1px solid rgba(255,255,255,.13);
+      border-radius:18px;
+      background:#101010;
+      overflow:hidden;
+      box-shadow:0 18px 50px rgba(0,0,0,.34);
+      transition:.25s;
+    }
+    .browser-bar{
+      height:24px;
+      display:flex;
+      align-items:center;
+      gap:6px;
+      padding:0 10px;
+      background:#15181d;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .browser-bar span{width:7px;height:7px;border-radius:50%;background:#777}
+    .browser-bar small{font-size:10px;color:#888;margin-left:5px}
+    .desktop-frame iframe{
+      width:1440px;
+      height:900px;
+      border:0;
+      transform:scale(.275);
+      transform-origin:top left;
+      pointer-events:none;
+      background:#111;
+    }
+    .phone-frame{
+      position:absolute;
+      right:28px;
+      bottom:24px;
+      width:108px;
+      height:218px;
+      border-radius:26px;
+      border:6px solid #1b1f25;
+      background:#050607;
+      overflow:hidden;
+      box-shadow:0 18px 45px rgba(0,0,0,.42);
+      transition:.25s;
+    }
+    .phone-notch{
+      position:absolute;
+      top:6px;
+      left:50%;
+      transform:translateX(-50%);
+      width:42px;
+      height:7px;
+      border-radius:999px;
+      background:#0b0c0e;
+      z-index:2;
+    }
+    .phone-frame iframe{
+      width:390px;
+      height:844px;
+      border:0;
+      transform:scale(.265);
+      transform-origin:top left;
+      pointer-events:none;
+      background:#111;
+    }
+    .demo-card.mobile-mode .desktop-frame{transform:translateX(-18%) scale(.78);opacity:.38}
+    .demo-card.mobile-mode .phone-frame{right:50%;bottom:32px;transform:translateX(50%) scale(1.28);z-index:3}
+    .demo-card.desktop-mode .phone-frame{transform:scale(.76);opacity:.55}
+    .demo-card.desktop-mode .desktop-frame{left:50%;transform:translateX(-50%) scale(1.08);z-index:3}
+    .card-body{padding:0 22px 24px}
+    .card-body h3{font-size:26px;letter-spacing:-.045em;margin-bottom:8px}
+    .card-body p{font-size:14px;color:var(--muted);line-height:1.65;margin-bottom:16px}
+    .view-actions{display:flex;gap:8px;flex-wrap:wrap}
+    .view-btn{
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+      color:#ddd;
+      border-radius:999px;
+      padding:9px 11px;
+      font-size:12px;
+      font-weight:900;
+      cursor:pointer;
+    }
+    .view-btn.active{background:var(--gold);color:#0a0a0a;border-color:var(--gold)}
+    .features{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .feature{border:1px solid var(--line);background:rgba(255,255,255,.04);border-radius:22px;padding:22px}
+    .feature i{font-style:normal;color:var(--gold);font-size:26px}
+    .feature h3{margin:14px 0 8px}
+    .feature p{color:var(--muted);font-size:14px;line-height:1.6}
     .final{
-      text-align:center;
-      border:1px solid rgba(212,175,55,.22);
+      border:1px solid rgba(216,173,69,.28);
+      background:linear-gradient(90deg,rgba(216,173,69,.10),rgba(255,255,255,.04));
       border-radius:32px;
-      padding:48px 24px;
-      background:linear-gradient(180deg,rgba(212,175,55,.10),rgba(255,255,255,.035));
+      padding:38px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+      margin-bottom:44px;
     }
-    .final h2{font-size:42px;letter-spacing:-.06em;margin-bottom:14px}
-    .final p{color:#aaa;margin:0 auto 24px;max-width:620px;line-height:1.7}
-    @media(max-width:900px){
-      .nav{margin-bottom:46px}
-      .hero{grid-template-columns:1fr}
-      .hero-card{order:-1}
-      .mock{min-height:280px}
-      .grid,.steps,.includes{grid-template-columns:1fr}
-      .section-head{display:block}
-      .section-head p{margin-top:10px}
-      .old{font-size:20px}
-      .new{font-size:32px}
+    .final h2{font-size:38px;letter-spacing:-.06em}
+    .final p{color:#b9bec6;line-height:1.65;margin-top:10px}
+    footer{padding:34px 0 44px;color:#818893;font-size:13px}
+    .foot{display:flex;justify-content:space-between;border-top:1px solid rgba(255,255,255,.08);padding-top:24px}
+    .sticky{
+      position:fixed;
+      right:22px;
+      bottom:22px;
+      z-index:60;
+      width:58px;
+      height:58px;
+      border-radius:50%;
+      background:var(--green);
+      display:grid;
+      place-items:center;
+      color:#06150b;
+      text-decoration:none;
+      font-size:26px;
+      box-shadow:0 18px 46px rgba(37,211,102,.35);
+    }
+
+    .phone-frame{z-index:4}
+    .desktop-frame{z-index:2}
+    .demo-card:not(.desktop-mode) .phone-frame{z-index:5}
+    .demo-card[data-demo="light"] .phone-frame{
+      border-color:#050607;
+      box-shadow:0 22px 55px rgba(0,0,0,.62),0 0 0 1px rgba(255,255,255,.18);
+    }
+    .play-preview{
+      border:1px solid rgba(216,173,69,.30);
+      background:rgba(216,173,69,.10);
+      color:var(--gold2);
+      border-radius:999px;
+      padding:9px 11px;
+      font-size:12px;
+      font-weight:950;
+      cursor:pointer;
+    }
+    .demo-card.is-playing .preview-stage:after{
+      content:"Önizleme oynuyor";
+      position:absolute;
+      left:16px;
+      bottom:16px;
+      z-index:9;
+      padding:8px 11px;
+      border-radius:999px;
+      color:#101010;
+      background:var(--gold);
+      font-size:11px;
+      font-weight:950;
+      letter-spacing:.04em;
+      box-shadow:0 12px 35px rgba(0,0,0,.24);
+    }
+    .demo-card.is-playing .desktop-frame,
+    .demo-card.is-playing .phone-frame{
+      border-color:rgba(216,173,69,.55);
+    }
+
+    @media(max-width:980px){
+      .nav-links{display:none}
+      .hero{grid-template-columns:1fr;padding-top:42px}
+      .hero-visual{order:-1;min-height:410px}
+      .hero-desktop{transform:none}
+      .hero-phone{width:135px;height:280px;right:8px}
+      .offer{grid-template-columns:repeat(2,1fr)}
+      .demo-grid{grid-template-columns:1fr}
+      .features{grid-template-columns:1fr 1fr}
+      .final{display:block}
+      .final .btn-primary{margin-top:20px}
+    }
+    @media(max-width:620px){
+      .wrap{padding:0 18px}
+      .nav-inner{padding:14px 18px}
+      .brand{font-size:14px}
+      .wa{padding:10px 12px}
+      .sub{font-size:16px}
+      .hero-visual{min-height:330px}
+      .hero-desktop iframe{transform:scale(.255)}
+      .hero-phone{width:112px;height:232px;border-width:6px}
+      .hero-phone iframe{transform:scale(.255)}
+      .preview-stage{height:315px;margin:14px}
+      .desktop-frame{left:14px;width:78%;height:210px}
+      .desktop-frame iframe{transform:scale(.235)}
+      .phone-frame{right:16px;width:94px;height:190px}
+      .phone-frame iframe{transform:scale(.23)}
+      .features{grid-template-columns:1fr}
+      .final{padding:28px 22px}
+      .final h2{font-size:32px}
+      .foot{display:block}
+      .foot div+div{margin-top:10px}
     }
   </style>
 </head>
 <body>
-  <main class="wrap">
-    <header class="nav">
-      <div class="logo">Fatih Topçu<span>.</span>Web</div>
-      <a href="https://wa.me/905457767603?text=Merhaba,%20kişisel%20web%20site%20demoları%20hakkında%20bilgi%20almak%20istiyorum." target="_blank">WhatsApp</a>
-    </header>
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand">fatihtopcu<span>.online</span></div>
+      <div class="nav-links">
+        <a href="#demos">Demolar</a>
+        <a href="#features">Özellikler</a>
+        <a href="#contact">İletişim</a>
+      </div>
+      <a class="wa" href="https://wa.me/905457767603?text=Merhaba,%20kişisel%20web%20site%20demoları%20hakkında%20bilgi%20almak%20istiyorum." target="_blank">WhatsApp'tan Yaz</a>
+    </div>
+  </nav>
 
+  <main class="wrap">
     <section class="hero">
       <div>
-        <div class="eyebrow">PT · Pilates · Online Koç Web Siteleri</div>
-        <h1>Spor hocasıysan, müşteriye sadece <em>Instagram profilini</em> göstermek zorunda değilsin.</h1>
-        <p class="sub">Hazır demo tarzlarından birini seçiyoruz. İsmini, hizmetlerini, fotoğraflarını ve WhatsApp başvuru akışını ekleyip kişisel web sitene çeviriyoruz.</p>
+        <div class="kicker">Kişisel Web Siteleri</div>
+        <h1>Kişisel markanı <span>bir üst seviyeye</span> taşı.</h1>
+        <p class="sub">PT, pilates hocası, online koç, diyetisyen ve yaşam koçları için hızlı, mobil uyumlu ve satışa dönük kişisel web siteleri.</p>
 
-        <div class="hero-actions">
-          <a class="btn-main" href="https://wa.me/905457767603?text=Merhaba,%20kişisel%20web%20site%20demoları%20hakkında%20bilgi%20almak%20istiyorum." target="_blank">WhatsApp’tan Demo Seçelim</a>
-          <a class="btn-ghost" href="#demos">Demoları İncele</a>
+        <div class="tags">
+          <span>PT & Fitness</span>
+          <span>Pilates</span>
+          <span>Online Koç</span>
+          <span>Diyetisyen</span>
+          <span>Yaşam Koçu</span>
+        </div>
+
+        <div class="actions">
+          <a class="btn-primary" href="https://wa.me/905457767603?text=Merhaba,%20kişisel%20web%20site%20demoları%20hakkında%20bilgi%20almak%20istiyorum." target="_blank">WhatsApp’tan Demo Seçelim</a>
+          <a class="btn-secondary" href="#demos">Canlı Demoları İncele</a>
+        </div>
+
+        <div class="offer">
+          <div><strong>1. Gün</strong><small>Taslak demo</small></div>
+          <div><strong>2. Gün</strong><small>Teslim hedefi</small></div>
+          <div><strong>Domain</strong><small>Bizden</small></div>
+          <div><strong>5 Küçük</strong><small>Revizyon ücretsiz</small></div>
         </div>
 
         <div class="price">
-          <span class="old">8.990 TL</span>
-          <span class="new">4.900 TL</span>
-          <span class="campaign">Erken bayram kampanyası</span>
+          <b>Erken Bayram Kampanyası</b>
+          <div><span class="old">8.990 TL</span> <span class="new">4.900 TL</span></div>
         </div>
       </div>
 
-      <div class="hero-card">
-        <div class="mock">
-          <div class="mock-badge">
-            <small>CANLI DEMO</small>
-            <div>Gold Luxury PT</div>
-          </div>
+      <div class="hero-visual">
+        <div class="hero-desktop">
+          <iframe src="https://www.fatihtopcu.online/gold/" title="Gold demo masaüstü"></iframe>
+        </div>
+        <div class="hero-phone">
+          <iframe src="https://www.fatihtopcu.online/gold/" title="Gold demo mobil"></iframe>
         </div>
       </div>
     </section>
 
     <section id="demos">
-      <div class="section-head">
-        <h2>Tarzını seç.</h2>
-        <p>Her demo; farklı hoca tipi, farklı müşteri algısı ve farklı satış dili için hazırlandı.</p>
+      <div class="head">
+        <div class="kicker">Canlı Demo Kataloğu</div>
+        <h2>Mobil ve masaüstü görünümü birlikte incele.</h2>
+        <p>Bu kartlar statik görsel değil; doğrudan canlı demo sayfalarından önizleme alır. Mobil kullanıcı da masaüstü kalitesini görebilir.</p>
       </div>
 
-      <div class="grid">
-        <a class="demo gold" href="/gold">
-          <div class="img"></div>
-          <div class="demo-body">
-            <div class="demo-tag">Demo 01</div>
-            <div class="demo-title">Gold Luxury</div>
-            <div class="demo-desc">Premium algı, birebir PT ve üst segment koçluk için.</div>
+      <div class="demo-grid">
+        
+        <article class="demo-card" data-demo="gold">
+          <div class="card-top">
+            <span class="badge">gold</span>
+            <a class="open-link" href="https://www.fatihtopcu.online/gold/" target="_blank" rel="noopener">Canlı aç ↗</a>
           </div>
-        </a>
 
-        <a class="demo dark" href="/dark">
-          <div class="img"></div>
-          <div class="demo-body">
-            <div class="demo-tag">Demo 02</div>
-            <div class="demo-title">Dark PT</div>
-            <div class="demo-desc">Enerjik, güçlü, modern fitness koçları için.</div>
-          </div>
-        </a>
+          <div class="preview-stage">
+            <div class="desktop-frame">
+              <div class="browser-bar"><span></span><span></span><span></span><small>gold.demo</small></div>
+              <iframe src="https://www.fatihtopcu.online/gold/" loading="lazy" title="Gold Luxury masaüstü demo"></iframe>
+            </div>
 
-        <a class="demo pilates" href="/pilates">
-          <div class="img"></div>
-          <div class="demo-body">
-            <div class="demo-tag">Demo 03</div>
-            <div class="demo-title">Pilates Premium</div>
-            <div class="demo-desc">Pilates, yoga ve wellness eğitmenleri için daha yumuşak algı.</div>
+            <div class="phone-frame">
+              <div class="phone-notch"></div>
+              <iframe src="https://www.fatihtopcu.online/gold/" loading="lazy" title="Gold Luxury mobil demo"></iframe>
+            </div>
           </div>
-        </a>
 
-        <a class="demo light" href="/light">
-          <div class="img"></div>
-          <div class="demo-body">
-            <div class="demo-tag">Demo 04</div>
-            <div class="demo-title">Light PT</div>
-            <div class="demo-desc">Sade, temiz ve güven odaklı kişisel marka görünümü.</div>
+          <div class="card-body">
+            <h3>Gold Luxury</h3>
+            <p>Lüks algı, güçlü ilk izlenim ve premium kişisel marka görünümü.</p>
+            <div class="view-actions">
+              <button type="button" class="view-btn active" data-mode="combo">Mobil + Masaüstü</button>
+              <button type="button" class="view-btn" data-mode="mobile">Mobil</button>
+              <button type="button" class="view-btn" data-mode="desktop">Masaüstü</button>
+              <button type="button" class="play-preview">Önizleme Oynat</button>
+            </div>
           </div>
-        </a>
+        </article>
 
-        <a class="demo classic" href="/classic">
-          <div class="img"></div>
-          <div class="demo-body">
-            <div class="demo-tag">Demo 05</div>
-            <div class="demo-title">Classic Coach</div>
-            <div class="demo-desc">Kurumsal ve net anlatımlı spor hocası vitrini.</div>
+        <article class="demo-card" data-demo="dark">
+          <div class="card-top">
+            <span class="badge">dark</span>
+            <a class="open-link" href="https://www.fatihtopcu.online/dark/" target="_blank" rel="noopener">Canlı aç ↗</a>
           </div>
-        </a>
 
-        <a class="demo feminine" href="/feminine">
-          <div class="img"></div>
-          <div class="demo-body">
-            <div class="demo-tag">Demo 06</div>
-            <div class="demo-title">Feminine Coach</div>
-            <div class="demo-desc">Kadın koçlar, wellness ve zarif marka dili için.</div>
-          </div>
-        </a>
+          <div class="preview-stage">
+            <div class="desktop-frame">
+              <div class="browser-bar"><span></span><span></span><span></span><small>dark.demo</small></div>
+              <iframe src="https://www.fatihtopcu.online/dark/" loading="lazy" title="Dark PT masaüstü demo"></iframe>
+            </div>
 
-        <a class="demo neon" href="/neon">
-          <div class="img"></div>
-          <div class="demo-body">
-            <div class="demo-tag">Demo 07</div>
-            <div class="demo-title">Neon Energy</div>
-            <div class="demo-desc">Daha genç, dinamik ve yüksek enerjili fitness algısı.</div>
+            <div class="phone-frame">
+              <div class="phone-notch"></div>
+              <iframe src="https://www.fatihtopcu.online/dark/" loading="lazy" title="Dark PT mobil demo"></iframe>
+            </div>
           </div>
-        </a>
+
+          <div class="card-body">
+            <h3>Dark PT</h3>
+            <p>Enerjik, güçlü ve modern fitness hocası görünümü.</p>
+            <div class="view-actions">
+              <button type="button" class="view-btn active" data-mode="combo">Mobil + Masaüstü</button>
+              <button type="button" class="view-btn" data-mode="mobile">Mobil</button>
+              <button type="button" class="view-btn" data-mode="desktop">Masaüstü</button>
+              <button type="button" class="play-preview">Önizleme Oynat</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="demo-card" data-demo="pilates">
+          <div class="card-top">
+            <span class="badge">pilates</span>
+            <a class="open-link" href="https://www.fatihtopcu.online/pilates/" target="_blank" rel="noopener">Canlı aç ↗</a>
+          </div>
+
+          <div class="preview-stage">
+            <div class="desktop-frame">
+              <div class="browser-bar"><span></span><span></span><span></span><small>pilates.demo</small></div>
+              <iframe src="https://www.fatihtopcu.online/pilates/" loading="lazy" title="Pilates Premium masaüstü demo"></iframe>
+            </div>
+
+            <div class="phone-frame">
+              <div class="phone-notch"></div>
+              <iframe src="https://www.fatihtopcu.online/pilates/" loading="lazy" title="Pilates Premium mobil demo"></iframe>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <h3>Pilates Premium</h3>
+            <p>Zarif, sakin ve güven veren pilates / wellness dili.</p>
+            <div class="view-actions">
+              <button type="button" class="view-btn active" data-mode="combo">Mobil + Masaüstü</button>
+              <button type="button" class="view-btn" data-mode="mobile">Mobil</button>
+              <button type="button" class="view-btn" data-mode="desktop">Masaüstü</button>
+              <button type="button" class="play-preview">Önizleme Oynat</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="demo-card" data-demo="light">
+          <div class="card-top">
+            <span class="badge">light</span>
+            <a class="open-link" href="https://www.fatihtopcu.online/light/" target="_blank" rel="noopener">Canlı aç ↗</a>
+          </div>
+
+          <div class="preview-stage">
+            <div class="desktop-frame">
+              <div class="browser-bar"><span></span><span></span><span></span><small>light.demo</small></div>
+              <iframe src="https://www.fatihtopcu.online/light/" loading="lazy" title="Light PT masaüstü demo"></iframe>
+            </div>
+
+            <div class="phone-frame">
+              <div class="phone-notch"></div>
+              <iframe src="https://www.fatihtopcu.online/light/" loading="lazy" title="Light PT mobil demo"></iframe>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <h3>Light PT</h3>
+            <p>Sade, temiz ve güven odaklı kişisel marka vitrini.</p>
+            <div class="view-actions">
+              <button type="button" class="view-btn active" data-mode="combo">Mobil + Masaüstü</button>
+              <button type="button" class="view-btn" data-mode="mobile">Mobil</button>
+              <button type="button" class="view-btn" data-mode="desktop">Masaüstü</button>
+              <button type="button" class="play-preview">Önizleme Oynat</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="demo-card" data-demo="classic">
+          <div class="card-top">
+            <span class="badge">classic</span>
+            <a class="open-link" href="https://www.fatihtopcu.online/classic/" target="_blank" rel="noopener">Canlı aç ↗</a>
+          </div>
+
+          <div class="preview-stage">
+            <div class="desktop-frame">
+              <div class="browser-bar"><span></span><span></span><span></span><small>classic.demo</small></div>
+              <iframe src="https://www.fatihtopcu.online/classic/" loading="lazy" title="Classic Coach masaüstü demo"></iframe>
+            </div>
+
+            <div class="phone-frame">
+              <div class="phone-notch"></div>
+              <iframe src="https://www.fatihtopcu.online/classic/" loading="lazy" title="Classic Coach mobil demo"></iframe>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <h3>Classic Coach</h3>
+            <p>Net, kurumsal ve anlaşılır koçluk sunumu.</p>
+            <div class="view-actions">
+              <button type="button" class="view-btn active" data-mode="combo">Mobil + Masaüstü</button>
+              <button type="button" class="view-btn" data-mode="mobile">Mobil</button>
+              <button type="button" class="view-btn" data-mode="desktop">Masaüstü</button>
+              <button type="button" class="play-preview">Önizleme Oynat</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="demo-card" data-demo="feminine">
+          <div class="card-top">
+            <span class="badge">feminine</span>
+            <a class="open-link" href="https://www.fatihtopcu.online/feminine/" target="_blank" rel="noopener">Canlı aç ↗</a>
+          </div>
+
+          <div class="preview-stage">
+            <div class="desktop-frame">
+              <div class="browser-bar"><span></span><span></span><span></span><small>feminine.demo</small></div>
+              <iframe src="https://www.fatihtopcu.online/feminine/" loading="lazy" title="Feminine Coach masaüstü demo"></iframe>
+            </div>
+
+            <div class="phone-frame">
+              <div class="phone-notch"></div>
+              <iframe src="https://www.fatihtopcu.online/feminine/" loading="lazy" title="Feminine Coach mobil demo"></iframe>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <h3>Feminine Coach</h3>
+            <p>Kadın koçlar, wellness ve yumuşak marka dili için.</p>
+            <div class="view-actions">
+              <button type="button" class="view-btn active" data-mode="combo">Mobil + Masaüstü</button>
+              <button type="button" class="view-btn" data-mode="mobile">Mobil</button>
+              <button type="button" class="view-btn" data-mode="desktop">Masaüstü</button>
+              <button type="button" class="play-preview">Önizleme Oynat</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="demo-card" data-demo="neon">
+          <div class="card-top">
+            <span class="badge">neon</span>
+            <a class="open-link" href="https://www.fatihtopcu.online/neon/" target="_blank" rel="noopener">Canlı aç ↗</a>
+          </div>
+
+          <div class="preview-stage">
+            <div class="desktop-frame">
+              <div class="browser-bar"><span></span><span></span><span></span><small>neon.demo</small></div>
+              <iframe src="https://www.fatihtopcu.online/neon/" loading="lazy" title="Neon Energy masaüstü demo"></iframe>
+            </div>
+
+            <div class="phone-frame">
+              <div class="phone-notch"></div>
+              <iframe src="https://www.fatihtopcu.online/neon/" loading="lazy" title="Neon Energy mobil demo"></iframe>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <h3>Neon Energy</h3>
+            <p>Genç, dinamik ve dikkat çekici fitness marka görünümü.</p>
+            <div class="view-actions">
+              <button type="button" class="view-btn active" data-mode="combo">Mobil + Masaüstü</button>
+              <button type="button" class="view-btn" data-mode="mobile">Mobil</button>
+              <button type="button" class="view-btn" data-mode="desktop">Masaüstü</button>
+              <button type="button" class="play-preview">Önizleme Oynat</button>
+            </div>
+          </div>
+        </article>
+
       </div>
     </section>
 
-    <section class="steps">
-      <div class="box">
-        <div class="num">01</div>
-        <h3>Demo seç</h3>
-        <p>Tarzına en yakın web site demosunu belirliyoruz.</p>
+    <section id="features">
+      <div class="head">
+        <div class="kicker">Neler Dahil?</div>
+        <h2>Sadece güzel görünüm değil, satışa dönük yapı.</h2>
+        <p>Her bölümün amacı var: güven vermek, hizmetleri anlatmak ve ziyaretçiyi WhatsApp başvurusuna taşımak.</p>
       </div>
-      <div class="box">
-        <div class="num">02</div>
-        <h3>Bilgilerini gönder</h3>
-        <p>İsim, hizmetler, fotoğraflar, WhatsApp numarası ve kısa hakkımda bilgisi.</p>
-      </div>
-      <div class="box">
-        <div class="num">03</div>
-        <h3>İlk taslak</h3>
-        <p>Tüm içerikler hazırsa 1 iş gününde ilk taslak, 2. gün teslim hedefi.</p>
+
+      <div class="features">
+        <div class="feature"><i>▣</i><h3>Mobil Uyumlu</h3><p>Telefon ekranında hızlı, okunur ve modern görünüm.</p></div>
+        <div class="feature"><i>↗</i><h3>Müşteri Çeken Akış</h3><p>Hakkında, hizmetler, dönüşüm ve CTA sıralaması.</p></div>
+        <div class="feature"><i>◎</i><h3>Mini Araçlar</h3><p>Kalori hesaplayıcı gibi değer katan bölümler eklenebilir.</p></div>
+        <div class="feature"><i>☏</i><h3>WhatsApp CTA</h3><p>Ziyaretçi tek tıkla doğrudan mesaj başlatabilir.</p></div>
       </div>
     </section>
 
-    <section class="includes">
-      <div class="box">
-        <h3>Dahil olanlar</h3>
-        <ul>
-          <li>Tek sayfa kişisel web site</li>
-          <li>Mobil uyumlu tasarım</li>
-          <li>Hizmetler ve hakkında alanı</li>
-          <li>WhatsApp başvuru butonu</li>
-        </ul>
+    <section class="final" id="contact">
+      <div>
+        <h2>Hangi demo sana yakın?</h2>
+        <p>WhatsApp’tan yaz. Alanını ve istediğin görünümü söyle, sana en uygun demo üzerinden ilerleyelim.</p>
       </div>
-      <div class="box">
-        <h3>Ek avantajlar</h3>
-        <ul>
-          <li>Kalori hesaplayıcı / mini araç</li>
-          <li>Dönüşüm veya yorum alanı</li>
-          <li>Standart domain kurulumu</li>
-          <li>İlk 3 revizyon ücretsiz</li>
-        </ul>
-      </div>
-      <div class="box">
-        <h3>Net sınır</h3>
-        <ul>
-          <li>Logo tasarımı dahil değil</li>
-          <li>Profesyonel fotoğraf çekimi dahil değil</li>
-          <li>Premium domain hariç</li>
-          <li>Çok sayfalı site ayrı pakettir</li>
-        </ul>
-      </div>
+      <a class="btn-primary" href="https://wa.me/905457767603?text=Merhaba,%20kişisel%20web%20site%20demoları%20hakkında%20bilgi%20almak%20istiyorum." target="_blank">WhatsApp’tan Yaz</a>
     </section>
 
-    <section class="final">
-      <h2>Hangi demo sana yakın?</h2>
-      <p>WhatsApp’tan yaz. Alanını ve tarzını söyle, sana en uygun demo üzerinden hızlıca ilerleyelim.</p>
-      <a class="btn-main" href="https://wa.me/905457767603?text=Merhaba,%20kişisel%20web%20site%20demoları%20hakkında%20bilgi%20almak%20istiyorum." target="_blank">WhatsApp’tan Demo Seçelim</a>
-    </section>
+    <footer>
+      <div class="foot">
+        <div>© fatihtopcu.online</div>
+        <div>PT · Pilates · Online Koç · Diyetisyen · Yaşam Koçu</div>
+      </div>
+    </footer>
   </main>
+
+  <a class="sticky" href="https://wa.me/905457767603?text=Merhaba,%20kişisel%20web%20site%20demoları%20hakkında%20bilgi%20almak%20istiyorum." target="_blank">☏</a>
+  <script>
+    function getFrames(card) {
+      return Array.from(card.querySelectorAll('iframe'));
+    }
+
+    function scrollFrame(frame, y, behavior = 'smooth') {
+      try {
+        const win = frame.contentWindow;
+        if (!win) return false;
+        win.scrollTo({ top: y, behavior });
+        return true;
+      } catch (error) {
+        return false;
+      }
+    }
+
+    function getTargetScroll(frame) {
+      try {
+        const doc = frame.contentDocument || frame.contentWindow.document;
+        const root = doc.documentElement;
+        const body = doc.body;
+        const scrollHeight = Math.max(
+          root ? root.scrollHeight : 0,
+          body ? body.scrollHeight : 0,
+          1600
+        );
+        const viewport = Math.max(
+          root ? root.clientHeight : 0,
+          frame.clientHeight || 400
+        );
+        return Math.min(Math.max(viewport * 1.15, 520), scrollHeight * 0.38);
+      } catch (error) {
+        return 720;
+      }
+    }
+
+    function playPreview(card) {
+      card.classList.add('is-playing');
+      const frames = getFrames(card);
+      frames.forEach(frame => scrollFrame(frame, 0, 'auto'));
+
+      setTimeout(() => {
+        frames.forEach(frame => {
+          const target = getTargetScroll(frame);
+          scrollFrame(frame, target, 'smooth');
+        });
+      }, 160);
+    }
+
+    function resetPreview(card) {
+      card.classList.remove('is-playing');
+      getFrames(card).forEach(frame => scrollFrame(frame, 0, 'smooth'));
+    }
+
+    document.querySelectorAll('.demo-card').forEach(card => {
+      const buttons = card.querySelectorAll('.view-btn');
+      const playButton = card.querySelector('.play-preview');
+
+      buttons.forEach(btn => {
+        btn.addEventListener('click', event => {
+          event.preventDefault();
+          event.stopPropagation();
+          buttons.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          card.classList.remove('mobile-mode', 'desktop-mode');
+          if (btn.dataset.mode === 'mobile') card.classList.add('mobile-mode');
+          if (btn.dataset.mode === 'desktop') card.classList.add('desktop-mode');
+          resetPreview(card);
+        });
+      });
+
+      if (playButton) {
+        playButton.addEventListener('click', event => {
+          event.preventDefault();
+          event.stopPropagation();
+          playPreview(card);
+          clearTimeout(card.previewTimer);
+          card.previewTimer = setTimeout(() => resetPreview(card), 4200);
+        });
+      }
+
+      card.addEventListener('mouseenter', () => {
+        if (!window.matchMedia('(hover:hover)').matches) return;
+        playPreview(card);
+      });
+
+      card.addEventListener('mouseleave', () => {
+        if (!window.matchMedia('(hover:hover)').matches) return;
+        resetPreview(card);
+      });
+    });
+  </script>
 </body>
 </html>
