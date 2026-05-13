@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>A.KOÇ — Premium Personal Training</title>
-  <meta name="description" content="Antrenman, beslenme ve takip tek planda birleşir. A.KOÇ ile sistemli dönüşüm.">
+  <title>Classic Coach | Premium Personal Training Website Demo</title>
+  <meta name="description" content="Klasik, kurumsal ve güven veren premium personal training dijital vitrin demosu.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1559,6 +1559,88 @@
     .footer__link { font-family: var(--font-body); font-size: 0.82rem; color: var(--on-dark-dim); transition: color 0.2s; }
     .footer__link:hover { color: var(--on-dark); }
   </style>
+
+<link rel="canonical" href="https://www.fatihtopcu.online/classic/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Classic Coach | Premium Personal Training Website Demo">
+<meta property="og:description" content="Klasik, kurumsal ve güven veren premium personal training dijital vitrin demosu.">
+<meta property="og:url" content="https://www.fatihtopcu.online/classic/">
+<meta property="og:image" content="https://www.fatihtopcu.online/og/classic-og.jpg">
+<meta property="og:image:secure_url" content="https://www.fatihtopcu.online/og/classic-og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Classic Coach | Premium Personal Training Website Demo preview">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Classic Coach | Premium Personal Training Website Demo">
+<meta name="twitter:description" content="Klasik, kurumsal ve güven veren premium personal training dijital vitrin demosu.">
+<meta name="twitter:image" content="https://www.fatihtopcu.online/og/classic-og.jpg">
+
+<!-- OG Capture Mode: deterministic screenshot state for social preview generation -->
+<script id="og-capture-early">
+  (function(){
+    if (new URLSearchParams(window.location.search).get('og') === '1') {
+      document.documentElement.setAttribute('data-og-capture','1');
+    }
+  })();
+</script>
+<style id="og-capture-style">
+  html[data-og-capture="1"],
+  html[data-og-capture="1"] body { scroll-behavior: auto !important; }
+  html[data-og-capture="1"] *,
+  html[data-og-capture="1"] *::before,
+  html[data-og-capture="1"] *::after {
+    animation-duration: 0.001s !important;
+    animation-delay: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+    scroll-behavior: auto !important;
+  }
+  html[data-og-capture="1"] .hero__brand-intro,
+  html[data-og-capture="1"] #hero-brand-intro,
+  html[data-og-capture="1"] .kinetic,
+  html[data-og-capture="1"] #kinetic,
+  html[data-og-capture="1"] .scroll-progress,
+  html[data-og-capture="1"] .sticky,
+  html[data-og-capture="1"] .cursor,
+  html[data-og-capture="1"] .custom-cursor,
+  html[data-og-capture="1"] .hero-loader,
+  html[data-og-capture="1"] .preloader {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+  html[data-og-capture="1"] .hero__layout,
+  html[data-og-capture="1"] #hero-layout,
+  html[data-og-capture="1"] .hero__visual,
+  html[data-og-capture="1"] .hero__visual-aux,
+  html[data-og-capture="1"] .hero__panel,
+  html[data-og-capture="1"] .hero__panel--form,
+  html[data-og-capture="1"] .hero__panel--track,
+  html[data-og-capture="1"] .hero__panel--progress,
+  html[data-og-capture="1"] .hero__panel--checkin,
+  html[data-og-capture="1"] .float-card,
+  html[data-og-capture="1"] .hero__badge,
+  html[data-og-capture="1"] .hero__title,
+  html[data-og-capture="1"] .hero__lede,
+  html[data-og-capture="1"] .hero__actions,
+  html[data-og-capture="1"] .hero__metrics,
+  html[data-og-capture="1"] .reveal,
+  html[data-og-capture="1"] [class*="reveal"],
+  html[data-og-capture="1"] [style*="opacity: 0"] {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+    filter: none !important;
+    clip-path: none !important;
+  }
+  html[data-og-capture="1"] #hero-stage {
+    transform: none !important;
+  }
+  html[data-og-capture="1"] iframe { pointer-events: none !important; }
+</style>
+
 </head>
 <body>
 
@@ -1582,7 +1664,7 @@
   <main>
 
     <!-- ========== HERO (preserved) ========== -->
-    <section class="hero" id="hero">
+    <section class="hero" id="hero" data-og-target="primary">
       <div class="hero__atmosphere" aria-hidden="true"></div>
       <div class="kinetic" id="kinetic" aria-hidden="true">
         <div class="kinetic__ring kinetic__ring--inner"></div>
@@ -2619,7 +2701,7 @@
     /* Lenis + GSAP */
     (function () {
       'use strict';
-      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches || document.documentElement.getAttribute('data-og-capture') === '1';
       let lenis = null;
       if (!reduceMotion && window.Lenis) {
         lenis = new Lenis({
@@ -2644,7 +2726,7 @@
     /* Custom cursor */
     (function () {
       'use strict';
-      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches || document.documentElement.getAttribute('data-og-capture') === '1';
       const isCoarse = window.matchMedia('(pointer: coarse)').matches;
       if (reduceMotion || isCoarse) return;
       const cursor = document.querySelector('.cursor');
@@ -2962,6 +3044,103 @@
       el && el.addEventListener('change', compute);
     });
     compute();
+  })();
+</script>
+
+
+<script id="og-capture-controller">
+  (function(){
+    if (new URLSearchParams(window.location.search).get('og') !== '1') return;
+    var path = window.location.pathname.replace(/\/$/, '').split('/').pop() || 'index';
+
+    // Deterministic capture rules. These are not aesthetic guesses; they bind capture to a known DOM target.
+    var rules = {
+      index:    { target: '[data-og-target="primary"], #demos', offset: 0, iframes: true },
+      gold:     { target: '[data-og-target="primary"], .hero', offset: 0 },
+      dark:     { target: '[data-og-target="primary"], #root, main, .hero', offset: 180 },
+      pilates:  { target: '[data-og-target="primary"], #hero, .hero', offset: 0 },
+      light:    { target: '[data-og-target="primary"], #root, main, .hero', offset: 180 },
+      classic:  { target: '[data-og-target="primary"], #hero, .hero', offset: 0 },
+      feminine: { target: '[data-og-target="primary"], #hero, .hero', offset: 0 },
+      neon:     { target: '[data-og-target="primary"], #hero, .hero', offset: 0 }
+    };
+
+    function forceFinalHeroState(){
+      // For scroll-scrub / GSAP pages: force the final hero composition visible.
+      var finalVisible = [
+        '.hero__layout', '#hero-layout', '.hero__content', '#hero-content', '.hero__visual', '#hero-visual',
+        '.hero__visual-aux', '.hero__panel', '.hero__panel--form', '.hero__panel--track',
+        '.hero__panel--progress', '.hero__panel--checkin', '.float-card',
+        '.hero__badge', '.hero__title', '.hero__lede', '.hero__actions', '.hero__metrics',
+        '.reveal', '[class*="reveal"]'
+      ].join(',');
+      document.querySelectorAll(finalVisible).forEach(function(el){
+        el.style.opacity = '1';
+        el.style.visibility = 'visible';
+        el.style.transform = 'none';
+        el.style.filter = 'none';
+        el.style.clipPath = 'none';
+      });
+      document.querySelectorAll('#hero-brand-intro, .hero__brand-intro, .cursor, .scroll-progress, .preloader, .hero-loader').forEach(function(el){
+        el.style.display = 'none';
+        el.style.opacity = '0';
+        el.style.visibility = 'hidden';
+      });
+      var stage = document.querySelector('#hero-stage');
+      if (stage) stage.style.transform = 'none';
+      if (window.gsap) {
+        try {
+          window.gsap.set(finalVisible, {opacity:1, visibility:'visible', x:0, y:0, scale:1, rotation:0, clearProps:'filter,clipPath'});
+          window.gsap.set('#hero-brand-intro, .hero__brand-intro', {display:'none', opacity:0});
+        } catch(e) {}
+      }
+      if (window.ScrollTrigger) {
+        try { window.ScrollTrigger.getAll().forEach(function(st){ st.disable(false); }); } catch(e) {}
+      }
+    }
+
+    function stabilize(){
+      document.documentElement.setAttribute('data-og-capture','1');
+      if (document.body) document.body.setAttribute('data-og-capture','1');
+      var rule = rules[path] || rules.index;
+
+      if (rule.iframes) {
+        document.querySelectorAll('iframe').forEach(function(frame){
+          try {
+            var src = frame.getAttribute('src') || '';
+            var match = src.match(/fatihtopcu\.online\/(gold|dark|pilates|light|classic|feminine|neon)\//);
+            if (match) frame.setAttribute('src', '/' + match[1] + '/?og=1');
+          } catch(e) {}
+        });
+      }
+
+      forceFinalHeroState();
+      var el = document.querySelector(rule.target);
+      if (el) {
+        try { el.setAttribute('data-og-selected','true'); } catch(e) {}
+        if (path === 'index') {
+          el.scrollIntoView({block:'start', inline:'nearest'});
+        } else {
+          window.scrollTo(0, rule.offset || 0);
+        }
+      } else {
+        window.scrollTo(0, rule.offset || 0);
+      }
+
+      setTimeout(function(){
+        forceFinalHeroState();
+        if (path === 'index' && el) el.scrollIntoView({block:'start', inline:'nearest'});
+        else window.scrollTo(0, rule.offset || 0);
+        document.documentElement.setAttribute('data-og-ready','1');
+      }, 500);
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function(){ setTimeout(stabilize, 300); });
+    } else {
+      setTimeout(stabilize, 300);
+    }
+    window.addEventListener('load', function(){ setTimeout(stabilize, 800); });
   })();
 </script>
 
