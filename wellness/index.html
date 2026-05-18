@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO -->
+  <title>Seren Wellness | Yaşam Koçları İçin Premium Dijital Vitrin</title>
+  <meta name="description" content="Wellness, nefes ve yaşam koçları için seansları, programları ve WhatsApp başvuru akışını sakin ve premium gösteren demo." />
+  <link rel="canonical" href="https://www.fatihtopcu.online/wellness/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.fatihtopcu.online/wellness/" />
+  <meta property="og:title" content="Wellness Markanı Sakin ve Premium Göster" />
+  <meta property="og:description" content="Wellness, nefes ve yaşam koçları için seansları, programları ve WhatsApp başvuru akışını sakin ve premium gösteren demo." />
+  <meta property="og:image" content="https://www.fatihtopcu.online/og/wellness-og.jpg" />
+  <meta property="og:image:secure_url" content="https://www.fatihtopcu.online/og/wellness-og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Seren Wellness – Yaşam Koçları İçin Premium Dijital Vitrin" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Wellness Markanı Sakin ve Premium Göster" />
+  <meta name="twitter:description" content="Wellness, nefes ve yaşam koçları için seansları, programları ve WhatsApp başvuru akışını sakin ve premium gösteren demo." />
+  <meta name="twitter:image" content="https://www.fatihtopcu.online/og/wellness-og.jpg" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --ivory:      #F6F1E9;
+      --ivory-d:    #EDE6D5;
+      --sand:       #D8CEBB;
+      --sage:       #7A9E7E;
+      --sage-l:     #A8C5AC;
+      --sage-p:     #EBF2EC;
+      --gold:       #C9A96E;
+      --gold-l:     #E2C99A;
+      --terra:      #C47A5A;
+      --esp:        #1E1A14;
+      --esp-m:      #2B2519;
+      --esp-s:      #38301F;
+      --t:          #1E1A14;
+      --t-m:        #4A4035;
+      --t-mu:       #8A7E70;
+      --t-l:        #B5A898;
+      --fd:         'Cormorant Garamond', serif;
+      --fb:         'DM Sans', sans-serif;
+      --r:          20px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--ivory);
+      color: var(--t);
+      font-family: var(--fb);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.03'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 9999;
+    }
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: var(--ivory); }
+    ::-webkit-scrollbar-thumb { background: var(--sand); border-radius: 2px; }
+
+    /* NAV */
+    #nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      padding: 22px 52px;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: background .4s, backdrop-filter .4s, padding .3s, border-color .3s;
+      border-bottom: 1px solid transparent;
+    }
+    #nav.scrolled {
+      background: rgba(246,241,233,.92);
+      backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+      padding: 14px 52px;
+      border-color: rgba(201,169,110,.12);
+    }
+    .nav-logo { font-family: var(--fd); font-size: 22px; font-weight: 500; letter-spacing: .04em; color: var(--esp); text-decoration: none; }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a { font-size: 12px; font-weight: 400; letter-spacing: .1em; text-transform: uppercase; color: var(--t-m); text-decoration: none; transition: color .2s; }
+    .nav-links a:hover { color: var(--sage); }
+    .nav-cta { font-size: 12px; font-weight: 500; letter-spacing: .08em; padding: 10px 22px; border: 1px solid var(--gold); border-radius: 100px; color: var(--gold); text-decoration: none; transition: background .25s, color .25s; }
+    .nav-cta:hover { background: var(--gold); color: var(--ivory); }
+    .nav-ham { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+    .nav-ham span { display: block; width: 22px; height: 1.5px; background: var(--esp); transition: .3s; }
+    .nav-ham.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-ham.open span:nth-child(2) { opacity: 0; }
+    .nav-ham.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* Mobile drawer */
+    #mob-menu {
+      display: none; position: fixed; top: 0; left: 0; right: 0;
+      background: rgba(246,241,233,.97); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      z-index: 199; padding: 88px 32px 48px;
+      flex-direction: column;
+      border-bottom: 1px solid var(--sand);
+    }
+    #mob-menu.open { display: flex; }
+    #mob-menu a { font-size: 26px; font-family: var(--fd); font-weight: 300; color: var(--esp); text-decoration: none; padding: 13px 0; border-bottom: 1px solid rgba(216,206,187,.4); transition: color .2s; }
+    #mob-menu a:last-child { border-bottom: none; margin-top: 16px; color: var(--sage); }
+    #mob-menu a:hover { color: var(--sage); }
+
+    /* HERO */
+    #hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 128px 52px 80px; position: relative; overflow: hidden; }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 55% 65% at 72% 52%, rgba(122,158,126,.1) 0%, transparent 55%),
+                  radial-gradient(ellipse 35% 45% at 18% 78%, rgba(201,169,110,.07) 0%, transparent 50%),
+                  linear-gradient(168deg, var(--ivory) 0%, var(--ivory-d) 100%);
+    }
+    .hero-content { position: relative; z-index: 2; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: var(--sage); margin-bottom: 28px; opacity: 0; animation: fadeUp .8s .2s forwards; }
+    .hero-badge::before { content: ''; width: 28px; height: 1px; background: var(--sage); }
+    h1.ht { font-family: var(--fd); font-size: clamp(46px, 5.2vw, 78px); font-weight: 300; line-height: 1.08; letter-spacing: -.015em; color: var(--esp); margin-bottom: 26px; opacity: 0; animation: fadeUp .9s .4s forwards; }
+    h1.ht em { font-style: italic; color: var(--sage); }
+    .hero-sub { font-size: 15px; font-weight: 300; color: var(--t-m); line-height: 1.78; max-width: 400px; margin-bottom: 40px; opacity: 0; animation: fadeUp .9s .6s forwards; }
+    .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; opacity: 0; animation: fadeUp .9s .75s forwards; }
+    .bp { display: inline-flex; align-items: center; gap: 9px; padding: 14px 26px; background: var(--esp); color: var(--ivory); font-size: 13px; font-weight: 400; letter-spacing: .05em; border-radius: 100px; text-decoration: none; transition: background .25s, transform .2s; }
+    .bp:hover { background: var(--esp-s); transform: translateY(-2px); }
+    .bs { display: inline-flex; align-items: center; gap: 9px; padding: 14px 26px; border: 1px solid var(--sand); color: var(--t-m); font-size: 13px; font-weight: 400; letter-spacing: .05em; border-radius: 100px; text-decoration: none; transition: border-color .25s, color .25s, transform .2s; }
+    .bs:hover { border-color: var(--sage); color: var(--sage); transform: translateY(-2px); }
+    .hero-metrics { display: flex; gap: 36px; margin-top: 52px; padding-top: 36px; border-top: 1px solid rgba(201,169,110,.18); opacity: 0; animation: fadeUp .9s .95s forwards; }
+    .m-num { font-family: var(--fd); font-size: 30px; font-weight: 400; color: var(--esp); line-height: 1; }
+    .m-num sup { font-size: 16px; color: var(--gold); vertical-align: super; }
+    .m-lbl { font-size: 11px; font-weight: 300; color: var(--t-mu); letter-spacing: .06em; margin-top: 3px; }
+
+    /* Hero Visual */
+    .hero-visual { position: relative; z-index: 2; display: flex; align-items: center; justify-content: center; height: 560px; opacity: 0; animation: fadeIn 1.2s .5s forwards; }
+
+    /* Editorial card */
+    .hero-card {
+      position: relative; width: 300px; height: 400px; border-radius: 28px; overflow: hidden;
+      background: linear-gradient(155deg, #C2D5C0 0%, #9AB89E 30%, #7A9E7E 60%, #5A7E5E 100%);
+      box-shadow: 0 40px 80px rgba(30,26,20,.18), 0 8px 32px rgba(30,26,20,.1), inset 0 1px 0 rgba(255,255,255,.22);
+      transform: rotate(-2.5deg) translateY(6px);
+      transition: transform .7s ease;
+      /* AI image slot: add <img> inside and remove data-slot attr */
+    }
+    .hero-card:hover { transform: rotate(-1.5deg) translateY(2px); }
+    .hero-card::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 50% at 28% 28%, rgba(255,255,255,.22) 0%, transparent 50%),
+                  radial-gradient(ellipse 50% 60% at 72% 72%, rgba(0,0,0,.14) 0%, transparent 50%);
+    }
+    /* AI image slot — no placeholder text shown; add <img> inside .hero-card and remove data-ai-slot attr to activate */
+    .hero-card[data-ai-slot]::after { content: none; }
+    .hcs { position: absolute; border-radius: 50%; opacity: .22; }
+    .hcs-1 { width: 180px; height: 180px; top: -40px; right: -40px; background: radial-gradient(circle, rgba(255,255,255,.65) 0%, transparent 70%); }
+    .hcs-2 { width: 110px; height: 110px; bottom: 50px; left: -20px; background: radial-gradient(circle, rgba(201,169,110,.9) 0%, transparent 70%); }
+    .hcs-3 { width: 70px; height: 70px; top: 40%; right: 15%; background: radial-gradient(circle, rgba(255,255,255,.4) 0%, transparent 70%); animation: jvFloat 5s ease-in-out infinite; }
+    .hero-card-foot { position: absolute; bottom: 0; left: 0; right: 0; padding: 24px 22px; background: linear-gradient(to top, rgba(20,30,20,.4), transparent); }
+    .hero-card-lbl { font-size: 9.5px; font-weight: 400; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.65); }
+
+    /* Accent card */
+    .hero-card-2 {
+      position: absolute; width: 168px; height: 210px; border-radius: 20px;
+      right: 28px; bottom: 36px;
+      background: linear-gradient(150deg, var(--ivory-d), var(--sand));
+      box-shadow: 0 20px 48px rgba(30,26,20,.13);
+      transform: rotate(3.5deg);
+      overflow: hidden; display: flex; align-items: center; justify-content: center;
+    }
+    .hc2-inner { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 22px; }
+    .hc2-stat { font-family: var(--fd); font-size: 36px; font-weight: 300; color: var(--esp); line-height: 1; }
+    .hc2-stat span { font-size: 17px; color: var(--gold); }
+    .hc2-div { width: 28px; height: 1px; background: var(--sand); }
+    .hc2-lbl { font-size: 10px; font-weight: 400; letter-spacing: .14em; text-transform: uppercase; color: var(--t-mu); text-align: center; }
+
+    /* Orb */
+    .orb-wrap { position: absolute; width: 420px; height: 420px; left: 50%; top: 50%; transform: translate(-50%, -50%); pointer-events: none; }
+    .orb-ring { position: absolute; border-radius: 50%; border: 1px solid; animation: orbP 9s ease-in-out infinite; }
+    .or1 { inset: 0; border-color: rgba(122,158,126,.14); }
+    .or2 { inset: 10%; border-color: rgba(122,158,126,.17); animation-delay: 1s; }
+    .or3 { inset: 22%; border-color: rgba(201,169,110,.12); animation-delay: 2s; }
+    .orb-core { position: absolute; inset: 30%; border-radius: 50%; background: radial-gradient(circle at 38% 36%, rgba(168,197,172,.65) 0%, rgba(122,158,126,.45) 40%, rgba(80,110,84,.22) 100%); box-shadow: 0 0 80px rgba(122,158,126,.18), 0 0 160px rgba(122,158,126,.09); animation: orbB 13s ease-in-out infinite; }
+    @keyframes orbP { 0%, 100% { transform: scale(1); opacity: .8; } 50% { transform: scale(1.06); opacity: 1; } }
+    @keyframes orbB { 0%, 100% { transform: scale(1); } 40% { transform: scale(1.1); } 60% { transform: scale(1.07); } }
+
+    .hf { position: absolute; border-radius: 50%; pointer-events: none; }
+    .hf1 { width: 90px; height: 90px; top: 8%; right: 2%; background: radial-gradient(circle, rgba(201,169,110,.13), transparent 70%); animation: floatA 7s ease-in-out infinite; }
+    .hf2 { width: 50px; height: 50px; bottom: 12%; left: 4%; background: radial-gradient(circle, rgba(196,122,90,.1), transparent 70%); animation: floatB 9s ease-in-out infinite; }
+    @keyframes floatA { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+    @keyframes floatB { 0%, 100% { transform: translateY(0) translateX(0); } 50% { transform: translateY(-9px) translateX(6px); } }
+    @keyframes jvFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+    /* SECTION BASE */
+    .sec { padding: 110px 52px; }
+    .sl { display: flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+    .sl::before { content: ''; width: 22px; height: 1px; background: var(--gold); }
+    .sl.lt { color: var(--sage-l); }
+    .sl.lt::before { background: var(--sage-l); }
+    .st { font-family: var(--fd); font-size: clamp(34px, 3.8vw, 56px); font-weight: 300; line-height: 1.13; color: var(--esp); margin-bottom: 18px; }
+    .st em { font-style: italic; color: var(--sage); }
+    .st.lt { color: var(--ivory); }
+    .st.lt em { color: var(--gold-l); }
+    .ss { font-size: 15px; font-weight: 300; color: var(--t-m); max-width: 500px; line-height: 1.8; }
+    .ss.lt { color: rgba(246,241,233,.55); }
+
+    /* REVEAL */
+    .rv { opacity: 0; transform: translateY(28px); transition: opacity .75s ease, transform .75s ease; }
+    .rv.in { opacity: 1; transform: translateY(0); }
+    .d1 { transition-delay: .1s; } .d2 { transition-delay: .2s; } .d3 { transition-delay: .3s; } .d4 { transition-delay: .4s; }
+
+    /* PROBLEM */
+    #problem { background: var(--esp); position: relative; overflow: hidden; }
+    #problem::before { content: ''; position: absolute; top: -120px; right: -120px; width: 560px; height: 560px; border-radius: 50%; background: radial-gradient(circle, rgba(122,158,126,.07) 0%, transparent 60%); }
+
+    .prob-layout { display: grid; grid-template-columns: 1.4fr 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 16px; margin-top: 52px; min-height: 460px; }
+    .pc { border-radius: var(--r); padding: 30px 26px; border: 1px solid rgba(255,255,255,.07); transition: border-color .3s, transform .3s; }
+    .pc:hover { border-color: rgba(122,158,126,.2); transform: translateY(-3px); }
+    .pc-main { grid-row: 1 / 3; background: rgba(122,158,126,.1); border-color: rgba(122,158,126,.18); padding: 38px 34px; display: flex; flex-direction: column; justify-content: space-between; }
+    .pc-main:hover { border-color: rgba(122,158,126,.3); }
+    .pc-sm { background: rgba(255,255,255,.03); }
+    .pc-quote { font-family: var(--fd); font-size: clamp(24px, 2.6vw, 38px); font-weight: 300; font-style: italic; color: var(--ivory); line-height: 1.3; margin-bottom: 22px; }
+    .pc-quote em { font-style: normal; color: var(--gold-l); }
+    .pc-body { font-size: 13.5px; font-weight: 300; color: rgba(246,241,233,.52); line-height: 1.75; }
+    .pc-tag { display: inline-block; margin-top: 28px; padding: 7px 16px; border-radius: 100px; border: 1px solid rgba(122,158,126,.28); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--sage-l); }
+    .pc-icon { width: 36px; height: 36px; border-radius: 10px; background: rgba(122,158,126,.12); display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+    .pc-icon svg { width: 16px; height: 16px; stroke: var(--sage-l); fill: none; stroke-width: 1.5; stroke-linecap: round; }
+    .pc h3 { font-family: var(--fd); font-size: 19px; font-weight: 400; color: var(--ivory); margin-bottom: 7px; line-height: 1.2; }
+    .pc p { font-size: 12.5px; font-weight: 300; color: rgba(246,241,233,.43); line-height: 1.6; }
+
+    /* PROGRAMS */
+    #programs { background: var(--ivory); }
+    .prog-hd { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: end; margin-bottom: 48px; }
+    .prog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .pgc { border-radius: 22px; padding: 34px 28px; display: flex; flex-direction: column; min-height: 420px; position: relative; overflow: hidden; transition: transform .4s ease; }
+    .pgc:hover { transform: translateY(-7px); }
+    .pg1 { background: linear-gradient(150deg, var(--esp) 0%, var(--esp-m) 100%); border: 1px solid rgba(255,255,255,.06); }
+    .pg2 { background: linear-gradient(150deg, #354A38 0%, #243328 100%); border: 1px solid rgba(122,158,126,.18); }
+    .pg3 { background: linear-gradient(150deg, var(--ivory-d) 0%, var(--sand) 100%); border: 1px solid rgba(201,169,110,.22); }
+    .pg-num { font-family: var(--fd); font-size: 58px; font-weight: 300; line-height: 1; margin-bottom: 18px; opacity: .11; }
+    .pg1 .pg-num, .pg2 .pg-num { color: var(--ivory); }
+    .pg3 .pg-num { color: var(--esp); }
+    .pg-tag { font-size: 10px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; margin-bottom: 10px; }
+    .pg1 .pg-tag { color: var(--sage-l); } .pg2 .pg-tag { color: var(--gold-l); } .pg3 .pg-tag { color: var(--terra); }
+    .pgc h3 { font-family: var(--fd); font-size: 23px; font-weight: 400; line-height: 1.2; margin-bottom: 11px; }
+    .pg1 h3, .pg2 h3 { color: var(--ivory); } .pg3 h3 { color: var(--esp); }
+    .pg-desc { font-size: 13px; font-weight: 300; line-height: 1.72; flex: 1; }
+    .pg1 .pg-desc, .pg2 .pg-desc { color: rgba(246,241,233,.55); } .pg3 .pg-desc { color: var(--t-m); }
+    .pg-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+    .pg-mi { display: flex; align-items: center; gap: 5px; font-size: 10.5px; font-weight: 300; letter-spacing: .05em; }
+    .pg1 .pg-mi, .pg2 .pg-mi { color: rgba(246,241,233,.38); } .pg3 .pg-mi { color: var(--t-mu); }
+    .pg-dot { width: 3px; height: 3px; border-radius: 50%; }
+    .pg1 .pg-dot { background: var(--sage-l); opacity: .5; } .pg2 .pg-dot { background: var(--gold-l); opacity: .5; } .pg3 .pg-dot { background: var(--terra); opacity: .5; }
+    .pg-out { margin-top: 12px; padding: 7px 12px; border-radius: 9px; font-size: 11.5px; font-weight: 300; line-height: 1.4; }
+    .pg1 .pg-out { background: rgba(122,158,126,.12); color: var(--sage-l); }
+    .pg2 .pg-out { background: rgba(201,169,110,.12); color: var(--gold-l); }
+    .pg3 .pg-out { background: rgba(196,122,90,.1); color: var(--terra); }
+    .pg-cta { display: inline-flex; align-items: center; gap: 7px; margin-top: 20px; font-size: 12.5px; font-weight: 400; letter-spacing: .06em; text-decoration: none; transition: gap .25s; }
+    .pg-cta:hover { gap: 13px; }
+    .pg1 .pg-cta, .pg2 .pg-cta { color: var(--gold-l); } .pg3 .pg-cta { color: var(--esp); }
+
+    /* JOURNEY STICKY */
+    #journey { background: var(--ivory-d); padding: 0; position: relative; }
+    #journey::after { content: ''; position: absolute; bottom: 0; left: 52px; right: 52px; height: 1px; background: linear-gradient(90deg, transparent, var(--sand), transparent); }
+    .j-outer { display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh; }
+    .j-sticky-col { position: sticky; top: 0; height: 100vh; display: flex; align-items: center; padding: 52px 56px 52px 52px; overflow: hidden; }
+    .j-panel { width: 100%; }
+    .j-panel-ct { transition: opacity .45s ease, transform .45s ease; }
+    .j-panel-ct.fade { opacity: 0; transform: translateY(10px); }
+    .j-big-num { font-family: var(--fd); font-size: 96px; font-weight: 300; color: var(--sand); line-height: 1; margin-bottom: -8px; transition: color .5s ease; user-select: none; }
+    .j-big-num.lit { color: rgba(122,158,126,.22); }
+    .j-panel-lbl { font-size: 11px; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+    .j-panel-title { font-family: var(--fd); font-size: clamp(28px, 2.8vw, 42px); font-weight: 300; line-height: 1.18; color: var(--esp); margin-bottom: 14px; }
+    .j-panel-title em { font-style: italic; color: var(--sage); }
+    .j-panel-desc { font-size: 14px; font-weight: 300; color: var(--t-m); line-height: 1.78; max-width: 360px; }
+    .j-visual { margin-top: 32px; height: 130px; border-radius: 16px; position: relative; overflow: hidden; }
+    .jv { position: absolute; inset: 0; opacity: 0; transition: opacity .5s ease; display: flex; align-items: center; padding: 0 20px; gap: 10px; }
+    .jv.on { opacity: 1; }
+    .jv-0 { background: linear-gradient(135deg, rgba(122,158,126,.14) 0%, rgba(201,169,110,.07) 100%); }
+    .jv-1 { background: linear-gradient(135deg, rgba(201,169,110,.14) 0%, rgba(122,158,126,.07) 100%); }
+    .jv-2 { background: linear-gradient(135deg, rgba(90,126,94,.17) 0%, rgba(168,197,172,.09) 100%); }
+    .jv-3 { background: linear-gradient(135deg, rgba(201,169,110,.17) 0%, rgba(196,122,90,.07) 100%); }
+    .jv-circ { width: 48px; height: 48px; border-radius: 50%; background: rgba(255,255,255,.3); animation: jvFloat 4s ease-in-out infinite; flex-shrink: 0; }
+    .jv-circ.s { width: 28px; height: 28px; animation-delay: 1s; }
+    .jv-circ.xs { width: 18px; height: 18px; animation-delay: 2s; }
+    .j-dots { display: flex; gap: 7px; margin-top: 26px; }
+    .j-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--sand); transition: background .4s, width .4s; }
+    .j-dot.on { background: var(--sage); width: 22px; border-radius: 3px; }
+    .j-scroll-col { padding: 80px 52px 80px 36px; display: flex; flex-direction: column; }
+    .j-step { min-height: 38vh; display: flex; flex-direction: column; justify-content: center; padding: 44px 0; border-bottom: 1px solid rgba(216,206,187,.4); opacity: .33; transition: opacity .4s ease; }
+    .j-step:last-child { border-bottom: none; }
+    .j-step.on { opacity: 1; }
+    .j-step-n { font-size: 11px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+    .j-n-badge { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; border: 1.5px solid var(--sand); font-size: 10.5px; color: var(--t-mu); transition: background .3s, border-color .3s, color .3s; }
+    .j-step.on .j-n-badge { background: var(--sage); border-color: var(--sage); color: var(--ivory); }
+    .j-step h3 { font-family: var(--fd); font-size: 28px; font-weight: 400; color: var(--esp); margin-bottom: 10px; line-height: 1.2; }
+    .j-step p { font-size: 13.5px; font-weight: 300; color: var(--t-m); line-height: 1.75; max-width: 400px; }
+
+    /* WELLNESS CHECK */
+    #check { background: var(--ivory); position: relative; overflow: hidden; }
+    #check::before { content: ''; position: absolute; top: -60px; left: 50%; transform: translateX(-50%); width: 700px; height: 700px; border-radius: 50%; background: radial-gradient(circle, rgba(122,158,126,.05) 0%, transparent 60%); pointer-events: none; }
+    .ck-wrap { max-width: 660px; margin: 0 auto; text-align: center; }
+    .ck-wrap .sl { justify-content: center; }
+    .ck-wrap .sl::before { display: none; }
+    .ck-wrap .ss { margin: 0 auto; }
+    .ck-qs { margin-top: 46px; display: flex; flex-direction: column; gap: 22px; }
+    .ck-q { text-align: left; }
+    .ck-q-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 11px; }
+    .ck-ql { font-size: 14.5px; font-weight: 400; color: var(--esp); }
+    .ck-qv { font-size: 12px; font-weight: 300; color: var(--t-mu); }
+    .ck-opts { display: flex; gap: 8px; }
+    .co { flex: 1; padding: 10px 5px; text-align: center; border: 1px solid var(--sand); border-radius: 11px; font-size: 12px; font-weight: 300; color: var(--t-m); background: transparent; cursor: pointer; transition: border-color .2s, background .2s, color .2s, transform .15s; font-family: var(--fb); }
+    .co:hover { border-color: var(--sage); color: var(--sage); transform: translateY(-1px); }
+    .co.sel { border-color: var(--sage); background: var(--sage-p); color: var(--sage); }
+    .ck-submit { margin-top: 30px; padding: 14px 38px; background: var(--esp); color: var(--ivory); font-family: var(--fb); font-size: 13px; font-weight: 400; letter-spacing: .06em; border: none; border-radius: 100px; cursor: pointer; transition: background .25s, transform .2s, opacity .3s; }
+    .ck-submit:disabled { opacity: .4; cursor: default; }
+    .ck-submit:not(:disabled):hover { background: var(--esp-s); transform: translateY(-2px); }
+    .ck-result { display: none; margin-top: 48px; border-radius: 26px; overflow: hidden; animation: fadeUp .7s forwards; }
+    .ck-result.show { display: block; }
+    .cr-top { padding: 40px 38px 32px; background: var(--esp); }
+    .cr-sl { font-size: 11px; font-weight: 400; letter-spacing: .16em; text-transform: uppercase; color: var(--sage-l); margin-bottom: 10px; }
+    .cr-num { font-family: var(--fd); font-size: 84px; font-weight: 300; line-height: 1; margin-bottom: 14px; }
+    .cr-num span { font-size: 28px; color: var(--t-l); }
+    .cr-bar { height: 3px; background: rgba(255,255,255,.1); border-radius: 2px; margin-bottom: 26px; overflow: hidden; }
+    .cr-fill { height: 100%; border-radius: 2px; background: linear-gradient(90deg, var(--sage-l), var(--gold-l)); transition: width 1.4s cubic-bezier(.4,0,.2,1); width: 0; }
+    .cr-title { font-family: var(--fd); font-size: 24px; font-weight: 300; color: var(--ivory); margin-bottom: 9px; }
+    .cr-text { font-size: 13px; font-weight: 300; color: rgba(246,241,233,.55); line-height: 1.75; }
+    .cr-bot { padding: 26px 38px 32px; background: var(--esp-m); }
+    .cr-rl { font-size: 10px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: rgba(246,241,233,.32); margin-bottom: 12px; }
+    .cr-recs { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 26px; }
+    .cr-rec { padding: 6px 13px; border-radius: 100px; border: 1px solid rgba(122,158,126,.26); font-size: 11.5px; font-weight: 300; color: var(--sage-l); }
+    .cr-cta { display: flex; align-items: center; justify-content: center; gap: 9px; width: 100%; padding: 15px; background: var(--sage); color: var(--ivory); font-family: var(--fb); font-size: 13.5px; font-weight: 400; letter-spacing: .05em; border: none; border-radius: 13px; cursor: pointer; text-decoration: none; transition: background .25s, transform .2s; }
+    .cr-cta:hover { background: #6B9170; transform: translateY(-2px); }
+    .cr-retry { display: block; margin: 12px auto 0; background: none; border: none; cursor: pointer; font-size: 11.5px; font-weight: 300; color: rgba(246,241,233,.3); font-family: var(--fb); letter-spacing: .06em; transition: color .2s; }
+    .cr-retry:hover { color: rgba(246,241,233,.55); }
+
+    /* TESTIMONIALS */
+    #testimonials { background: var(--esp-m); position: relative; overflow: hidden; }
+    #testimonials::before { content: ''; position: absolute; bottom: -100px; left: -100px; width: 480px; height: 480px; border-radius: 50%; background: radial-gradient(circle, rgba(201,169,110,.05) 0%, transparent 60%); }
+    .t-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 48px; }
+    .t-card { background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.07); border-radius: var(--r); padding: 32px 28px; transition: background .3s, border-color .3s, transform .3s; }
+    .t-card:hover { background: rgba(255,255,255,.05); border-color: rgba(122,158,126,.17); transform: translateY(-4px); }
+    .t-q { font-family: var(--fd); font-size: 46px; font-weight: 300; color: var(--sage-l); line-height: .7; margin-bottom: 16px; opacity: .33; }
+    .t-text { font-family: var(--fd); font-size: 18px; font-weight: 300; font-style: italic; color: var(--ivory); line-height: 1.55; margin-bottom: 24px; }
+    .t-auth { display: flex; align-items: center; gap: 11px; }
+    .t-av { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, var(--sage-l), var(--sage)); display: flex; align-items: center; justify-content: center; font-family: var(--fd); font-size: 15px; font-weight: 400; color: var(--ivory); }
+    .t-name { font-size: 13px; font-weight: 400; color: var(--ivory); }
+    .t-meta { font-size: 11px; font-weight: 300; color: rgba(246,241,233,.34); margin-top: 1px; }
+
+    /* APPLY */
+    #apply { background: var(--ivory); }
+    .ap-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 68px; align-items: start; }
+    .ap-feats { margin-top: 32px; display: flex; flex-direction: column; gap: 0; }
+    .af { display: flex; align-items: flex-start; gap: 13px; padding: 15px 0; border-bottom: 1px solid rgba(216,206,187,.5); }
+    .af:last-child { border-bottom: none; }
+    .af-ic { width: 32px; height: 32px; border-radius: 9px; background: var(--sage-p); border: 1px solid rgba(122,158,126,.17); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .af-ic svg { width: 14px; height: 14px; stroke: var(--sage); fill: none; stroke-width: 1.5; stroke-linecap: round; }
+    .af h4 { font-size: 13px; font-weight: 400; color: var(--esp); margin-bottom: 2px; }
+    .af p { font-size: 12px; font-weight: 300; color: var(--t-mu); line-height: 1.5; }
+    .ap-form { background: var(--esp); border-radius: 26px; padding: 42px 36px; }
+    .apf-title { font-family: var(--fd); font-size: 27px; font-weight: 300; color: var(--ivory); margin-bottom: 5px; }
+    .apf-sub { font-size: 12.5px; font-weight: 300; color: rgba(246,241,233,.42); margin-bottom: 30px; }
+    .fg { margin-bottom: 14px; }
+    .fg label { display: block; font-size: 10.5px; font-weight: 400; letter-spacing: .1em; text-transform: uppercase; color: rgba(246,241,233,.36); margin-bottom: 6px; }
+    .fg input, .fg select { width: 100%; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); border-radius: 11px; padding: 12px 15px; color: var(--ivory); font-family: var(--fb); font-size: 13px; font-weight: 300; outline: none; transition: border-color .2s, background .2s; -webkit-appearance: none; appearance: none; }
+    .fg input::placeholder { color: rgba(246,241,233,.2); }
+    .fg input:focus, .fg select:focus { border-color: rgba(122,158,126,.42); background: rgba(255,255,255,.07); }
+    .fg select option { background: var(--esp); }
+    .fg-err { font-size: 11px; color: #E07A5A; margin-top: 4px; display: none; }
+    .ap-btn { width: 100%; margin-top: 22px; padding: 14px; background: var(--sage); color: var(--ivory); font-family: var(--fb); font-size: 13px; font-weight: 400; letter-spacing: .06em; border: none; border-radius: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: background .25s, transform .2s; }
+    .ap-btn:hover { background: #6B9170; transform: translateY(-2px); }
+    .ap-btn svg { width: 15px; height: 15px; fill: var(--ivory); flex-shrink: 0; }
+
+    /* FOOTER */
+    footer { background: var(--esp); padding: 48px 52px 34px; border-top: 1px solid rgba(255,255,255,.05); }
+    .f-row { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .f-logo { font-family: var(--fd); font-size: 20px; font-weight: 400; color: var(--ivory); text-decoration: none; }
+    .f-logo span { color: var(--gold); }
+    .f-tag { font-size: 11px; font-weight: 300; color: rgba(246,241,233,.28); margin-top: 2px; letter-spacing: .05em; }
+    .f-links { display: flex; gap: 24px; list-style: none; }
+    .f-links a { font-size: 11px; font-weight: 300; letter-spacing: .08em; text-transform: uppercase; color: rgba(246,241,233,.34); text-decoration: none; transition: color .2s; }
+    .f-links a:hover { color: var(--sage-l); }
+    .f-copy { font-size: 11px; font-weight: 300; color: rgba(246,241,233,.2); }
+
+
+    /* REAL WELLNESS IMAGE LAYER */
+    .hero-card img,
+    .jv img,
+    .apply-image-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .hero-card img {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .hero-card::before {
+      z-index: 1;
+      background:
+        linear-gradient(to top, rgba(30,26,20,.20), transparent 44%),
+        radial-gradient(ellipse 70% 50% at 28% 28%, rgba(255,255,255,.10) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .hero-card .hcs,
+    .hero-card-foot {
+      z-index: 2;
+    }
+    .jv {
+      padding: 0;
+      gap: 0;
+    }
+    .jv::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(30,26,20,.22), transparent 52%),
+        radial-gradient(ellipse 60% 80% at 88% 50%, rgba(246,241,233,.10), transparent 55%);
+      pointer-events: none;
+    }
+    .jv img {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .jv-circ {
+      position: relative;
+      z-index: 1;
+      margin-left: 20px;
+      backdrop-filter: blur(2px);
+    }
+    .apply-image-card {
+      margin-top: 34px;
+      height: 280px;
+      border-radius: 26px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 24px 60px rgba(30,26,20,.12);
+      border: 1px solid rgba(201,169,110,.18);
+      background: var(--ivory-d);
+    }
+    .apply-image-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to top, rgba(30,26,20,.38), transparent 52%),
+        radial-gradient(ellipse 70% 50% at 24% 12%, rgba(246,241,233,.24), transparent 58%);
+    }
+    .apply-image-label {
+      position: absolute;
+      left: 22px;
+      right: 22px;
+      bottom: 20px;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      color: var(--ivory);
+    }
+    .apply-image-label span:first-child {
+      font-family: var(--fd);
+      font-size: 22px;
+      font-weight: 300;
+      line-height: 1.15;
+    }
+    .apply-image-label span:last-child {
+      font-size: 10px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: rgba(246,241,233,.72);
+      white-space: nowrap;
+    }
+    @media (max-width: 1024px) {
+      .apply-image-card { height: 240px; }
+    }
+    @media (max-width: 768px) {
+      .apply-image-card { height: 220px; margin-top: 28px; }
+      .apply-image-label { align-items: flex-start; flex-direction: column; gap: 4px; }
+      .apply-image-label span:first-child { font-size: 20px; }
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    /* MOBILE */
+    @media (max-width: 1024px) {
+      #hero { grid-template-columns: 1fr; padding: 100px 32px 60px; }
+      .hero-visual { height: 340px; margin-top: 40px; }
+      .hero-card { width: 230px; height: 290px; }
+      .hero-card-2 { width: 135px; height: 165px; right: 16px; bottom: 16px; }
+      .orb-wrap { width: 300px; height: 300px; }
+      .prob-layout { grid-template-columns: 1fr 1fr; }
+      .pc-main { grid-row: auto; grid-column: 1 / -1; }
+      .prog-hd { grid-template-columns: 1fr; gap: 14px; }
+      .prog-grid { grid-template-columns: 1fr; }
+      .j-outer { grid-template-columns: 1fr; }
+      .j-sticky-col { display: none; }
+      .j-scroll-col { padding: 60px 32px; }
+      .j-step { min-height: auto; opacity: 1; padding: 30px 0; }
+      .t-grid { grid-template-columns: 1fr; }
+      .ap-inner { grid-template-columns: 1fr; gap: 36px; }
+      .sec { padding: 70px 32px; }
+      footer { padding: 38px 32px 26px; }
+      .f-links { display: none; }
+    }
+    @media (max-width: 768px) {
+      #nav { padding: 16px 24px; }
+      #nav.scrolled { padding: 12px 24px; }
+      .nav-links, .nav-cta { display: none; }
+      .nav-ham { display: flex; }
+      #hero { padding: 84px 24px 46px; }
+      h1.ht { font-size: 38px; }
+      .hero-metrics { gap: 22px; flex-wrap: wrap; }
+      /* Prevent hero visual overflow on narrow screens */
+      .hero-visual { height: 300px; overflow: hidden; }
+      .hero-card { width: 200px; height: 260px; transform: rotate(-2deg) translateY(4px); }
+      .hero-card-2 { width: 118px; height: 148px; right: 8px; bottom: 8px; }
+      .orb-wrap { width: 260px; height: 260px; }
+      .hf1, .hf2 { display: none; }
+      .prob-layout { grid-template-columns: 1fr; }
+      .pc-main { grid-column: auto; }
+      .sec { padding: 58px 24px; }
+      footer { padding: 34px 24px 22px; }
+      .f-row { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .ap-form { padding: 28px 20px; }
+      .ck-opts { flex-wrap: wrap; }
+      .co { min-width: calc(50% - 4px); flex: unset; }
+      .cr-top, .cr-bot { padding: 26px 22px; }
+    }
+
+
+
+    /* SECTION WIDTH BALANCE */
+    .ap-inner, .prog-hd, .prog-grid, .prob-layout, .t-grid {
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .ap-inner { grid-template-columns: minmax(0, 1fr) minmax(360px, .92fr); }
+    @media (max-width: 1024px) {
+      .ap-inner { grid-template-columns: 1fr; max-width: 720px; }
+    }
+
+    /* POLISH FIXES: image framing + mobile metrics */
+    .metric-card { min-width: 0; }
+    .m-num { display: inline-flex; align-items: flex-start; gap: 2px; white-space: nowrap; }
+    .m-num sup { line-height: 1; transform: translateY(-2px); }
+    .m-sub { font-size: 10px; font-weight: 300; color: var(--t-mu); letter-spacing: .035em; margin-top: 2px; line-height: 1.35; }
+    .hero-card img { object-position: 58% 50%; }
+    .j-visual {
+      height: 240px;
+      border-radius: 22px;
+      box-shadow: 0 22px 52px rgba(30,26,20,.10);
+      border: 1px solid rgba(201,169,110,.14);
+    }
+    .jv img { object-position: center 42%; }
+    #jv0 img { object-position: center 42%; }
+    #jv1 img { object-position: center 44%; }
+    #jv2 img { object-position: center 43%; }
+    #jv3 img { object-position: center 42%; }
+    .apply-image-card {
+      height: auto;
+      aspect-ratio: 16 / 9;
+      min-height: 320px;
+      max-height: 430px;
+    }
+    .apply-image-card img { object-position: center 42%; }
+    @media (max-width: 1024px) {
+      .j-visual { height: 210px; }
+      .apply-image-card { min-height: 300px; max-height: 390px; }
+    }
+    @media (max-width: 768px) {
+      .hero-metrics {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0;
+        margin-top: 42px;
+        padding-top: 28px;
+      }
+      .metric-card { padding-right: 12px; }
+      .m-num { font-size: 28px; }
+      .m-num sup { font-size: 13px; transform: translateY(-1px); }
+      .m-lbl { font-size: 10px; line-height: 1.2; }
+      .m-sub { display: none; }
+      .apply-image-card { aspect-ratio: 4 / 3; min-height: 0; max-height: none; }
+      .apply-image-card img { object-position: center 35%; }
+    }
+    @media (max-width: 420px) {
+      .hero-metrics { gap: 0; }
+      .m-num { font-size: 25px; }
+      .metric-card { padding-right: 8px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo">Seren <span>Wellness</span></a>
+  <ul class="nav-links">
+    <li><a href="#programs">Programlar</a></li>
+    <li><a href="#journey">Süreç</a></li>
+    <li><a href="#check">Wellness Check</a></li>
+    <li><a href="#apply">Başvuru</a></li>
+  </ul>
+  <a href="#apply" class="nav-cta">Başvur</a>
+  <button class="nav-ham" id="hamBtn" aria-label="Menü" onclick="toggleHam()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile Menu -->
+<nav id="mob-menu">
+  <a href="#programs" onclick="closeMob()">Programlar</a>
+  <a href="#journey" onclick="closeMob()">Süreç</a>
+  <a href="#check" onclick="closeMob()">Wellness Check</a>
+  <a href="#testimonials" onclick="closeMob()">Deneyimler</a>
+  <a href="#apply" onclick="closeMob()">Başvuru →</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Wellness &amp; Yaşam Koçu</div>
+    <h1 class="ht">Daha Sakin Bir<br><em>Zihin,</em> Daha<br>Dengeli Bir Yaşam.</h1>
+    <p class="hero-sub">Nefes, mindfulness ve kişisel dönüşüm seanslarını tek yerde anlatan; başvuru akışını sade, güven veren ve premium bir deneyime dönüştüren dijital vitrin.</p>
+    <div class="hero-ctas">
+      <a href="#apply" class="bp">İlk Görüşme İçin Başvur <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
+      <a href="#programs" class="bs">Programları İncele <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M7 2v10M2 7l5 5 5-5"/></svg></a>
+    </div>
+    <div class="hero-metrics">
+      <div class="metric-card"><div class="m-num">7<sup>+</sup></div><div class="m-lbl">Yıl Deneyim</div></div>
+      <div class="metric-card"><div class="m-num">120<sup>+</sup></div><div class="m-lbl">Danışan</div></div>
+      <div class="metric-card"><div class="m-num">3</div><div class="m-lbl">Program</div><div class="m-sub">Nefes · Mindfulness · Mentorluk</div></div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hf hf1"></div>
+    <div class="hf hf2"></div>
+    <div class="orb-wrap">
+      <div class="orb-ring or1"></div>
+      <div class="orb-ring or2"></div>
+      <div class="orb-ring or3"></div>
+      <div class="orb-core"></div>
+    </div>
+    <div class="hero-card ai-image-slot">
+      <img src="../assets/wellness/hero.png" alt="Seren Wellness premium yaşam koçu portre görseli" loading="eager" />
+      <div class="hcs hcs-1"></div>
+      <div class="hcs hcs-2"></div>
+      <div class="hcs hcs-3"></div>
+      <div class="hero-card-foot">
+        <div class="hero-card-lbl">Wellness · Denge · İç Ritim</div>
+      </div>
+    </div>
+    <div class="hero-card-2">
+      <div class="hc2-inner">
+        <div class="hc2-stat">7<span>+</span></div>
+        <div class="hc2-div"></div>
+        <div class="hc2-lbl">Yıl<br>Deneyim</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section id="problem" class="sec">
+  <div class="sl lt rv">Neden Şimdi?</div>
+  <h2 class="st lt rv d1">Bazen ihtiyacın olan şey<br>daha fazla yapmak değil,<br><em>yavaşlamaktır.</em></h2>
+  <div class="prob-layout">
+    <div class="pc pc-main rv">
+      <div>
+        <p class="pc-quote">Zihin yorulduğunda beden de<br><em>yük taşımaya</em> başlar.</p>
+        <p class="pc-body">Sürekli üretim baskısı, dikkat dağınıklığı ve içsel yorgunluk — bunlar ihmal edildiğinde birikiyor. Enerji değil, netlik kaybedilir. Denge, dışarıdan değil içeriden kurulur.</p>
+      </div>
+      <span class="pc-tag">Farkındalık Buradan Başlar</span>
+    </div>
+    <div class="pc pc-sm rv d1">
+      <div class="pc-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+      <h3>Zihinsel Yorgunluk</h3>
+      <p>Sürekli aktif bir zihin, fark edilmeden tükenmişliğe dönüşür.</p>
+    </div>
+    <div class="pc pc-sm rv d2">
+      <div class="pc-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M3 12h2M19 12h2M12 3v2M12 19v2"/></svg></div>
+      <h3>Odak Kaybı</h3>
+      <p>Dağılan dikkat, zamanı ve enerjiyi birlikte eritir.</p>
+    </div>
+    <div class="pc pc-sm rv d1">
+      <div class="pc-icon"><svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg></div>
+      <h3>Beden Gerginliği</h3>
+      <p>Stres bedende tutulur. Nefes onu serbest bırakır.</p>
+    </div>
+    <div class="pc pc-sm rv d2">
+      <div class="pc-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+      <h3>Kendine Zaman Yok</h3>
+      <p>Başkaları için yer kaldı, kendin için kalmadı.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section id="programs" class="sec">
+  <div class="prog-hd">
+    <div>
+      <div class="sl rv">Programlar</div>
+      <h2 class="st rv d1">Senin ritmine<br>göre <em>tasarlanmış.</em></h2>
+    </div>
+    <p class="ss rv d2">Her program, kişisel ihtiyaç ve yaşam temposuna göre şekillenir. Online veya yüz yüze sürdürülebilir.</p>
+  </div>
+  <div class="prog-grid">
+    <div class="pgc pg1 rv">
+      <div class="pg-num">01</div>
+      <div class="pg-tag">Nefes &amp; Regülasyon</div>
+      <h3>Nefes Seansları</h3>
+      <p class="pg-desc">Stres, gerginlik ve zihinsel yoğunluğu azaltmak için yapılandırılmış birebir nefes seansları. Sinir sistemi dengesi odaklı.</p>
+      <div class="pg-meta">
+        <div class="pg-mi"><div class="pg-dot"></div>Stres yönetimi, burnout</div>
+        <div class="pg-mi"><div class="pg-dot"></div>50 dk · Online / Yüz Yüze</div>
+      </div>
+      <div class="pg-out">✦ Sinir sistemi regülasyonu ve nefes pratiği</div>
+      <a href="#apply" class="pg-cta">Bu Programı İncele →</a>
+    </div>
+    <div class="pgc pg2 rv d1">
+      <div class="pg-num">02</div>
+      <div class="pg-tag">4 Haftalık Program</div>
+      <h3>Mindfulness Journey</h3>
+      <p class="pg-desc">Günlük farkındalık, odak ve iç denge için rehberli program. Her hafta belirli bir pratik üzerine derinleşilir.</p>
+      <div class="pg-meta">
+        <div class="pg-mi"><div class="pg-dot"></div>Mindfulness, odak arttırma</div>
+        <div class="pg-mi"><div class="pg-dot"></div>4 Hafta · Haftalık Seans</div>
+      </div>
+      <div class="pg-out">✦ Günlük farkındalık ve iç denge rutini</div>
+      <a href="#apply" class="pg-cta">Bu Programı İncele →</a>
+    </div>
+    <div class="pgc pg3 rv d2">
+      <div class="pg-num">03</div>
+      <div class="pg-tag">Mentörlük &amp; Koçluk</div>
+      <h3>Yaşam Dengesi Mentorluğu</h3>
+      <p class="pg-desc">Rutin, sınır koyma, enerji yönetimi ve kişisel dönüşüm odaklı seans paketi. Sürdürülebilir değişim için yapı.</p>
+      <div class="pg-meta">
+        <div class="pg-mi"><div class="pg-dot"></div>Yaşam koçu, girişimci</div>
+        <div class="pg-mi"><div class="pg-dot"></div>3 Ay · Aylık 4 Seans</div>
+      </div>
+      <div class="pg-out">✦ Kişisel enerji ve rutin yönetim sistemi</div>
+      <a href="#apply" class="pg-cta">Bu Programı İncele →</a>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY STICKY STORYTELLING -->
+<section id="journey">
+  <div class="j-outer">
+    <div class="j-sticky-col">
+      <div class="j-panel">
+        <div class="sl">Süreç</div>
+        <div class="j-big-num" id="jNum">01</div>
+        <div class="j-panel-ct" id="jCt">
+          <div class="j-panel-lbl" id="jLbl">Başlangıç</div>
+          <h3 class="j-panel-title" id="jTitle">Tanışma<br><em>Görüşmesi</em></h3>
+          <p class="j-panel-desc" id="jDesc">İhtiyaç, hedef ve yaşam ritmi derinlemesine anlaşılır. Beklentiler netleştirilir. İlk görüşme ücretsiz ve bağlayıcı değildir.</p>
+        </div>
+        <div class="j-visual">
+          <div class="jv jv-0 on" id="jv0"><img src="../assets/wellness/journey-step-1-consultation.png" alt="Seren Wellness tanışma görüşmesi görseli" loading="lazy" /><div class="jv-circ"></div><div class="jv-circ s"></div><div class="jv-circ xs"></div></div>
+          <div class="jv jv-1" id="jv1"><img src="../assets/wellness/journey-step-2-roadmap.png" alt="Seren Wellness kişisel yol haritası planlama görseli" loading="lazy" /><div class="jv-circ" style="width:44px;height:44px"></div><div class="jv-circ s" style="animation-delay:.8s"></div></div>
+          <div class="jv jv-2" id="jv2"><img src="../assets/wellness/journey-step-3-practice.png" alt="Seren Wellness haftalık nefes ve mindfulness pratiği görseli" loading="lazy" /><div class="jv-circ" style="width:56px;height:56px"></div><div class="jv-circ xs" style="animation-delay:1.5s"></div></div>
+          <div class="jv jv-3" id="jv3"><img src="../assets/wellness/journey-step-4-reflection.png" alt="Seren Wellness değerlendirme ve içsel netlik görseli" loading="lazy" /><div class="jv-circ" style="width:64px;height:64px"></div><div class="jv-circ s" style="animation-delay:.5s"></div><div class="jv-circ xs" style="animation-delay:2s"></div></div>
+        </div>
+        <div class="j-dots">
+          <div class="j-dot on" data-i="0"></div>
+          <div class="j-dot" data-i="1"></div>
+          <div class="j-dot" data-i="2"></div>
+          <div class="j-dot" data-i="3"></div>
+        </div>
+      </div>
+    </div>
+    <div class="j-scroll-col">
+      <div class="j-step on" data-s="0">
+        <div class="j-step-n"><span class="j-n-badge">01</span>Başlangıç</div>
+        <h3>Tanışma Görüşmesi</h3>
+        <p>İhtiyaç, hedef ve yaşam ritmi derinlemesine anlaşılır. Beklentiler ve uygun seans modeli netleştirilir. İlk görüşme ücretsiz ve bağlayıcı değildir.</p>
+      </div>
+      <div class="j-step" data-s="1">
+        <div class="j-step-n"><span class="j-n-badge">02</span>Planlama</div>
+        <h3>Kişisel Yol Haritası</h3>
+        <p>Seans tipi, frekans ve takip planı belirlenir. Kişiye özel ritüel çerçevesi oluşturulur. Standart paket yok — her süreç farklı yapılandırılır.</p>
+      </div>
+      <div class="j-step" data-s="2">
+        <div class="j-step-n"><span class="j-n-badge">03</span>Uygulama</div>
+        <h3>Haftalık Pratik</h3>
+        <p>Nefes teknikleri, farkındalık egzersizleri ve küçük alışkanlık değişimleri sistematik biçimde işlenir. Seans aralarında destek devam eder.</p>
+      </div>
+      <div class="j-step" data-s="3">
+        <div class="j-step-n"><span class="j-n-badge">04</span>Değerlendirme</div>
+        <h3>Sürdürülebilir Denge</h3>
+        <p>Enerji, uyku kalitesi ve içsel netlik düzenli gözlemlenir. Süreç ihtiyaca göre adapte edilir. Hedef: bağımsız denge kurabiliyor olmak.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WELLNESS CHECK -->
+<section id="check" class="sec">
+  <div class="ck-wrap">
+    <div class="sl rv">Mini Araç</div>
+    <h2 class="st rv d1">Mini Wellness Check</h2>
+    <p class="ss rv d2">Bugünkü enerjini ve iç dengeyi birkaç soruda keşfet.</p>
+    <div class="ck-qs" id="ckQs">
+      <div class="ck-q rv"><div class="ck-q-top"><span class="ck-ql">Bugün enerjin nasıl?</span><span class="ck-qv" id="qv1">—</span></div><div class="ck-opts"><button class="co" data-q="1" data-v="20" onclick="pick(this)">Tükenmişim</button><button class="co" data-q="1" data-v="50" onclick="pick(this)">Orta</button><button class="co" data-q="1" data-v="80" onclick="pick(this)">İyi</button><button class="co" data-q="1" data-v="100" onclick="pick(this)">Harika</button></div></div>
+      <div class="ck-q rv d1"><div class="ck-q-top"><span class="ck-ql">Zihnin ne kadar yoğun?</span><span class="ck-qv" id="qv2">—</span></div><div class="ck-opts"><button class="co" data-q="2" data-v="20" onclick="pick(this)">Çok yoğun</button><button class="co" data-q="2" data-v="50" onclick="pick(this)">Biraz</button><button class="co" data-q="2" data-v="75" onclick="pick(this)">Az</button><button class="co" data-q="2" data-v="100" onclick="pick(this)">Sakin</button></div></div>
+      <div class="ck-q rv d2"><div class="ck-q-top"><span class="ck-ql">Uyku kaliten nasıl?</span><span class="ck-qv" id="qv3">—</span></div><div class="ck-opts"><button class="co" data-q="3" data-v="15" onclick="pick(this)">Çok kötü</button><button class="co" data-q="3" data-v="45" onclick="pick(this)">Kötü</button><button class="co" data-q="3" data-v="75" onclick="pick(this)">İyi</button><button class="co" data-q="3" data-v="100" onclick="pick(this)">Çok iyi</button></div></div>
+      <div class="ck-q rv d3"><div class="ck-q-top"><span class="ck-ql">Stres seviyeni nasıl hissediyorsun?</span><span class="ck-qv" id="qv4">—</span></div><div class="ck-opts"><button class="co" data-q="4" data-v="15" onclick="pick(this)">Çok yüksek</button><button class="co" data-q="4" data-v="45" onclick="pick(this)">Yüksek</button><button class="co" data-q="4" data-v="75" onclick="pick(this)">Orta</button><button class="co" data-q="4" data-v="100" onclick="pick(this)">Düşük</button></div></div>
+      <div class="ck-q rv d4"><div class="ck-q-top"><span class="ck-ql">Bugün kendine zaman ayırdın mı?</span><span class="ck-qv" id="qv5">—</span></div><div class="ck-opts"><button class="co" data-q="5" data-v="10" onclick="pick(this)">Hiç</button><button class="co" data-q="5" data-v="40" onclick="pick(this)">Az</button><button class="co" data-q="5" data-v="70" onclick="pick(this)">Biraz</button><button class="co" data-q="5" data-v="100" onclick="pick(this)">Yeterince</button></div></div>
+      <button class="ck-submit" id="ckBtn" onclick="calcCheck()" disabled>Wellness Skorumu Hesapla</button>
+    </div>
+    <div class="ck-result" id="ckResult">
+      <div class="cr-top">
+        <div class="cr-sl">Bugünkü Wellness Skorum</div>
+        <div class="cr-num" id="crNum">—<span> / 100</span></div>
+        <div class="cr-bar"><div class="cr-fill" id="crFill"></div></div>
+        <div class="cr-title" id="crTitle"></div>
+        <div class="cr-text" id="crText"></div>
+      </div>
+      <div class="cr-bot">
+        <div class="cr-rl">Bugün için öneriler</div>
+        <div class="cr-recs" id="crRecs"></div>
+        <a href="#apply" class="cr-cta" id="crCta">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          <span id="crCtaText">Bir Seans Planla</span>
+        </a>
+        <button class="cr-retry" onclick="resetCheck()">Tekrar dene</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="sec">
+  <div class="sl lt rv">Deneyimler</div>
+  <h2 class="st lt rv d1">Hedef sadece rahatlamak değil,<br><em>sürdürülebilir denge</em> kurmak.</h2>
+  <div class="t-grid">
+    <div class="t-card rv"><div class="t-q">"</div><p class="t-text">Zihnimi ilk kez bu kadar net hissettim. Süreç düşündüğümden çok daha derin bir etki bıraktı.</p><div class="t-auth"><div class="t-av">A</div><div><div class="t-name">Ayşe K.</div><div class="t-meta">Mindfulness Journey · 4 Hafta</div></div></div></div>
+    <div class="t-card rv d1"><div class="t-q">"</div><p class="t-text">Günlük rutinim daha sakin ve yönetilebilir hale geldi. Küçük değişiklikler, büyük fark yaratıyor.</p><div class="t-auth"><div class="t-av">M</div><div><div class="t-name">Merve T.</div><div class="t-meta">Yaşam Dengesi Mentorluğu</div></div></div></div>
+    <div class="t-card rv d2"><div class="t-q">"</div><p class="t-text">Nefes pratikleri zor anlarda daha sakin kalmama yardımcı oldu. Artık kendimi düzenleyebildiğimi fark ediyorum.</p><div class="t-auth"><div class="t-av">Z</div><div><div class="t-name">Zeynep D.</div><div class="t-meta">Nefes Seansları · 6 Ay</div></div></div></div>
+  </div>
+</section>
+
+<!-- APPLY -->
+<section id="apply" class="sec">
+  <div class="ap-inner">
+    <div>
+      <div class="sl rv">Başvuru</div>
+      <h2 class="st rv d1">İlk adım sade:<br>kısa bir <em>tanışma</em><br>formu.</h2>
+      <p class="ss rv d2">Formu doldur, WhatsApp üzerinden 24 saat içinde geri döneceğim. İlk görüşme ücretsiz ve bağlayıcı değildir.</p>
+      <div class="ap-feats rv d3">
+        <div class="af"><div class="af-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><div><h4>24 Saatte Yanıt</h4><p>WhatsApp üzerinden kısa sürede iletişime geçilir.</p></div></div>
+        <div class="af"><div class="af-ic"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><div><h4>Birebir &amp; Kişisel</h4><p>Standart paket yok. Her danışan için özel yaklaşım.</p></div></div>
+        <div class="af"><div class="af-ic"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><div><h4>Online veya Yüz Yüze</h4><p>Türkiye'nin her yerinden online seans imkânı.</p></div></div>
+      </div>
+      <div class="apply-image-card rv d4">
+        <img src="../assets/wellness/journey-step-1-consultation.png" alt="Seren Wellness ilk görüşme ve başvuru görseli" loading="lazy" />
+        <div class="apply-image-label">
+          <span>İlk adım sakin ve net.</span>
+          <span>Başvuru · Görüşme · Plan</span>
+        </div>
+      </div>
+    </div>
+    <div class="ap-form rv d2">
+      <div class="apf-title">Tanışma Formu</div>
+      <div class="apf-sub">Birkaç saniye — en kısa sürede ulaşayım.</div>
+      <div class="fg"><label>Ad Soyad</label><input id="fn" type="text" placeholder="Adın ve soyadın" /><div class="fg-err" id="en">Ad soyad gerekli.</div></div>
+      <div class="fg"><label>Hedefin</label><input id="fg2" type="text" placeholder="Stres azaltmak, uyku düzeni, odak…" /><div class="fg-err" id="eg">Hedefini belirt.</div></div>
+      <div class="fg"><label>Seans Tercihi</label><select id="fp"><option value="" disabled selected>Bir program seç</option><option>Nefes &amp; Regülasyon Seansı</option><option>Mindfulness Journey (4 Hafta)</option><option>Yaşam Dengesi Mentorluğu</option><option>Henüz karar vermedim</option></select><div class="fg-err" id="ep">Seans tercihini seç.</div></div>
+      <div class="fg"><label>WhatsApp Numarası</label><input id="fph" type="tel" placeholder="+90 5XX XXX XX XX" /><div class="fg-err" id="eph">WhatsApp numaranı gir.</div></div>
+      <button class="ap-btn" onclick="submitForm()">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2.05 21.95l4.91-1.37A9.935 9.935 0 0 0 12 22c5.523 0 10-4.477 10-10S17.522 2 12 2h-.001z"/></svg>
+        WhatsApp'tan Görüşme Talep Et
+      </button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-row">
+    <div><a href="#" class="f-logo">Seren <span>Wellness</span></a><div class="f-tag">Yaşam Koçları İçin Premium Dijital Vitrin · Demo</div></div>
+    <ul class="f-links"><li><a href="#programs">Programlar</a></li><li><a href="#journey">Süreç</a></li><li><a href="#check">Check</a></li><li><a href="#apply">Başvuru</a></li></ul>
+    <div class="f-copy">© 2025 Seren Wellness</div>
+  </div>
+</footer>
+
+<script>
+/* NAV */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40), { passive: true });
+
+function toggleHam() {
+  document.getElementById('hamBtn').classList.toggle('open');
+  document.getElementById('mob-menu').classList.toggle('open');
+}
+function closeMob() {
+  document.getElementById('hamBtn').classList.remove('open');
+  document.getElementById('mob-menu').classList.remove('open');
+}
+
+/* REVEAL */
+const rvObs = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); rvObs.unobserve(e.target); } }), { threshold: 0.1 });
+document.querySelectorAll('.rv').forEach(el => rvObs.observe(el));
+
+/* PARALLAX */
+window.addEventListener('scroll', () => {
+  if (window.innerWidth <= 768) return;
+  const sy = window.scrollY, hh = document.getElementById('hero').offsetHeight;
+  if (sy < hh) {
+    const ow = document.querySelector('.orb-wrap');
+    if (ow) ow.style.transform = `translate(-50%, calc(-50% + ${sy * .07}px))`;
+  }
+}, { passive: true });
+
+/* JOURNEY STICKY */
+const STEPS = [
+  { num: '01', lbl: 'Başlangıç',     title: 'Tanışma<br><em>Görüşmesi</em>',    desc: 'İhtiyaç, hedef ve yaşam ritmi derinlemesine anlaşılır. Beklentiler netleştirilir. İlk görüşme ücretsiz.' },
+  { num: '02', lbl: 'Planlama',      title: 'Kişisel Yol<br><em>Haritası</em>', desc: 'Seans tipi, frekans ve takip planı belirlenir. Kişiye özel ritüel çerçevesi oluşturulur.' },
+  { num: '03', lbl: 'Uygulama',      title: 'Haftalık<br><em>Pratik</em>',      desc: 'Nefes, farkındalık ve küçük alışkanlık değişimleri sistematik biçimde işlenir.' },
+  { num: '04', lbl: 'Değerlendirme', title: 'Sürdürülebilir<br><em>Denge</em>', desc: 'Enerji ve içsel netlik düzenli gözlemlenir. Hedef: bağımsız denge kurabiliyor olmak.' }
+];
+let curStep = 0;
+
+function setStep(idx, animate) {
+  if (idx === curStep && !animate) return;
+  curStep = idx;
+  const ct = document.getElementById('jCt');
+  const numEl = document.getElementById('jNum');
+  if (animate) {
+    ct.classList.add('fade');
+    setTimeout(() => { applyStep(idx); ct.classList.remove('fade'); }, 260);
+  } else { applyStep(idx); }
+  document.querySelectorAll('.j-dot').forEach((d, i) => d.classList.toggle('on', i === idx));
+  document.querySelectorAll('.jv').forEach((v, i) => v.classList.toggle('on', i === idx));
+  numEl.classList.toggle('lit', idx > 0);
+  document.querySelectorAll('.j-step').forEach((s, i) => s.classList.toggle('on', i === idx));
+}
+function applyStep(idx) {
+  const s = STEPS[idx];
+  document.getElementById('jNum').textContent = s.num;
+  document.getElementById('jLbl').textContent = s.lbl;
+  document.getElementById('jTitle').innerHTML = s.title;
+  document.getElementById('jDesc').textContent = s.desc;
+}
+
+const stepObs = new IntersectionObserver(es => {
+  es.forEach(e => { if (e.isIntersecting) setStep(parseInt(e.target.dataset.s), true); });
+}, { threshold: 0.55, rootMargin: '-8% 0px -8% 0px' });
+document.querySelectorAll('.j-step').forEach(s => stepObs.observe(s));
+
+/* WELLNESS CHECK */
+const ans = {};
+function pick(btn) {
+  const q = btn.dataset.q, v = parseInt(btn.dataset.v);
+  btn.closest('.ck-opts').querySelectorAll('.co').forEach(b => b.classList.remove('sel'));
+  btn.classList.add('sel');
+  ans[q] = v;
+  const lmap = { 10:'Hiç', 15:'Düşük', 20:'Düşük', 40:'Az', 45:'Orta', 50:'Orta', 70:'Biraz', 75:'İyi', 80:'İyi', 100:'Harika' };
+  const sp = document.getElementById('qv' + q);
+  if (sp) { sp.textContent = lmap[v] || '—'; sp.style.color = v >= 75 ? 'var(--sage)' : v >= 45 ? 'var(--gold)' : 'var(--terra)'; }
+  document.getElementById('ckBtn').disabled = Object.keys(ans).length < 5;
+}
+function calcCheck() {
+  if (Object.keys(ans).length < 5) return;
+  const score = Math.round(Object.values(ans).reduce((a, b) => a + b, 0) / 5);
+  const tiers = {
+    high: { col: 'var(--sage-l)', title: 'Bugün dengede görünüyorsun.', text: 'Enerjin ve zihinsel netliğin iyi bir noktada. Bu ritmi korumak için küçük günlük pratikler uzun vadede fark yaratır.', recs: ['5 dk nefes farkındalığı', 'Akşam yürüyüşü', 'Dijital mola', 'Günlük tutma'] },
+    mid:  { col: 'var(--gold-l)', title: 'Biraz daha dinlenmeye ihtiyacın var.', text: 'Enerjinde bir dalgalanma fark ediyorum. Basit bir nefes pratiği veya kısa bir yürüyüş zihni sıfırlayabilir.', recs: ['10 dk nefes pratiği', 'Ekran molası', 'Hafif yürüyüş', 'Kısa meditasyon'] },
+    low:  { col: '#E2A080', title: 'Bugün kendine nazik ol.', text: 'Enerji düşük, zihin yorgun görünüyor. Bu tam olarak bir dur-dinle anıdır. Yavaşlamak, zorlamaktan güçlüdür.', recs: ['4-7-8 nefes tekniği', 'Ekrandan uzak dur', 'Beden tarama', 'Destek almayı düşün'] }
+  };
+  const tier = score >= 70 ? 'high' : score >= 45 ? 'mid' : 'low';
+  const d = tiers[tier];
+  document.getElementById('crNum').innerHTML = `${score}<span> / 100</span>`;
+  document.getElementById('crNum').style.color = d.col;
+  document.getElementById('crTitle').textContent = d.title;
+  document.getElementById('crText').textContent = d.text;
+  document.getElementById('crRecs').innerHTML = d.recs.map(r => `<span class="cr-rec">${r}</span>`).join('');
+  const ctaLabels = { high: 'Ritmini Koruyacak Programı Seç', mid: 'Rutinini Birlikte Netleştirelim', low: 'Denge Görüşmesi Planla' };
+  document.getElementById('crCtaText').textContent = ctaLabels[tier];
+  const res = document.getElementById('ckResult');
+  res.classList.add('show');
+  setTimeout(() => { document.getElementById('crFill').style.width = score + '%'; }, 100);
+  res.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+function resetCheck() {
+  Object.keys(ans).forEach(k => delete ans[k]);
+  document.querySelectorAll('.co').forEach(b => b.classList.remove('sel'));
+  document.querySelectorAll('[id^=qv]').forEach(s => { s.textContent = '—'; s.style.color = ''; });
+  document.getElementById('ckBtn').disabled = true;
+  document.getElementById('ckResult').classList.remove('show');
+  document.getElementById('crFill').style.width = '0';
+  document.getElementById('check').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+/* WHATSAPP FORM */
+function submitForm() {
+  const name  = document.getElementById('fn').value.trim();
+  const goal  = document.getElementById('fg2').value.trim();
+  const pref  = document.getElementById('fp').value;
+  const phone = document.getElementById('fph').value.trim();
+  const show = (id, v) => document.getElementById(id).style.display = v ? 'block' : 'none';
+  show('en', !name); show('eg', !goal); show('ep', !pref); show('eph', !phone);
+  if (!name || !goal || !pref || !phone) return;
+  const msg = encodeURIComponent(`Merhaba, Seren Wellness demo üzerinden geliyorum.\n\nAd Soyad: ${name}\nHedefim: ${goal}\nSeans tercihim: ${pref}\nWhatsApp numaram: ${phone}`);
+  window.open(`https://wa.me/905457767603?text=${msg}`, '_blank');
+}
+</script>
+<!-- Extra atmosphere asset available: ../assets/wellness/detail-still-life.png -->
+</body>
+</html>
