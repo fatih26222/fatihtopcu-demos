@@ -3,23 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Premium Dijital Vitrin Kataloğu | fatihtopcu.online</title>
-  <meta name="description" content="PT, pilates hocası, online koç, diyetisyen ve yaşam koçları için 7+ premium dijital vitrin demosunu tek yerde gösteren showcase ana sayfası.">
-  <link rel="canonical" href="https://www.fatihtopcu.online/">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Premium Dijital Vitrin Kataloğu">
-<meta property="og:description" content="PT, pilates hocası, online koç, diyetisyen ve yaşam koçları için 7+ premium dijital vitrin demosunu tek yerde gösteren showcase ana sayfası.">
-<meta property="og:url" content="https://www.fatihtopcu.online/">
-<meta property="og:image" content="https://www.fatihtopcu.online/og/showcase-og-v3.jpg">
-<meta property="og:image:secure_url" content="https://www.fatihtopcu.online/og/showcase-og-v3.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="fatihtopcu.online premium dijital vitrin showcase önizleme görseli">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Premium Dijital Vitrin Kataloğu">
-<meta name="twitter:description" content="PT, pilates hocası, online koç, diyetisyen ve yaşam koçları için 7+ premium dijital vitrin demosunu tek yerde gösteren showcase ana sayfası.">
-<meta name="twitter:image" content="https://www.fatihtopcu.online/og/showcase-og-v3.jpg">
-<style>
+  <title>Fatih Topçu Web Studio | Premium Dijital Vitrin Kataloğu</title>
+  <meta name="description" content="PT, pilates hocası, online koç, diyetisyen, wellness ve yaşam koçları için 8+ premium dijital vitrin demosunu tek yerde gösteren showcase ana sayfası.">
+  <style>
     *{box-sizing:border-box;margin:0;padding:0}
     :root{
       --bg:#050607;
@@ -332,13 +318,8 @@
     }
     .demo-card.mobile-mode .desktop-frame{transform:translateX(-18%) scale(.78);opacity:.38}
     .demo-card.mobile-mode .phone-frame{right:50%;bottom:32px;transform:translateX(50%) scale(1.28);z-index:3}
-    .demo-card.desktop-mode .phone-frame{
-      opacity:0;
-      visibility:hidden;
-      pointer-events:none;
-      transform:translateY(12px) scale(.72);
-    }
-    .demo-card.desktop-mode .desktop-frame{left:50%;transform:translateX(-50%) scale(1.08);z-index:4}
+    .demo-card.desktop-mode .phone-frame{transform:scale(.76);opacity:.55}
+    .demo-card.desktop-mode .desktop-frame{left:50%;transform:translateX(-50%) scale(1.08);z-index:3}
     .card-body{padding:0 22px 24px}
     .card-body h3{font-size:26px;letter-spacing:-.045em;margin-bottom:8px}
     .card-body p{font-size:14px;color:var(--muted);line-height:1.65;margin-bottom:16px}
@@ -354,6 +335,178 @@
       cursor:pointer;
     }
     .view-btn.active{background:var(--gold);color:#0a0a0a;border-color:var(--gold)}
+
+    .photo-service{
+      border:1px solid rgba(216,173,69,.24);
+      background:
+        radial-gradient(circle at 16% 14%,rgba(216,173,69,.14),transparent 32%),
+        radial-gradient(circle at 88% 10%,rgba(37,211,102,.07),transparent 30%),
+        linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.025));
+      border-radius:32px;
+      padding:34px;
+      margin-top:26px;
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:24px;
+      align-items:stretch;
+      overflow:hidden;
+    }
+    .photo-service h3{
+      font-size:clamp(30px,3.5vw,48px);
+      line-height:1;
+      letter-spacing:-.06em;
+      margin-bottom:14px;
+    }
+    .photo-service h3 span{color:var(--gold2)}
+    .photo-service p{
+      color:#b9bec6;
+      line-height:1.7;
+      max-width:660px;
+      margin-bottom:18px;
+    }
+    .photo-service-list{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:10px;
+      margin-top:18px;
+    }
+    .photo-service-list div{
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.04);
+      border-radius:18px;
+      padding:15px;
+    }
+    .photo-service-list strong{
+      display:block;
+      font-size:14px;
+      margin-bottom:5px;
+      color:#fff;
+    }
+    .photo-service-list small{
+      color:#9ca3ad;
+      line-height:1.5;
+      font-size:12px;
+    }
+    .photo-service-visual{
+      border:1px solid rgba(216,173,69,.22);
+      border-radius:26px;
+      background:
+        linear-gradient(145deg,rgba(216,173,69,.12),rgba(255,255,255,.035)),
+        #07080a;
+      min-height:310px;
+      position:relative;
+      overflow:hidden;
+      padding:20px;
+    }
+    .photo-stack{position:absolute;inset:22px}
+    .photo-card{
+      position:absolute;
+      border-radius:22px;
+      border:1px solid rgba(255,255,255,.13);
+      background:linear-gradient(145deg,#1b1d20,#0b0c0e);
+      box-shadow:0 24px 70px rgba(0,0,0,.38);
+      overflow:hidden;
+    }
+    .photo-card:before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 32% 22%,rgba(216,173,69,.28),transparent 34%),
+        radial-gradient(circle at 72% 80%,rgba(37,211,102,.11),transparent 38%),
+        linear-gradient(160deg,rgba(255,255,255,.12),rgba(255,255,255,.02));
+    }
+    .photo-card.before{
+      width:52%;
+      height:68%;
+      left:0;
+      bottom:18px;
+      transform:rotate(-5deg);
+      opacity:.62;
+      filter:saturate(.72);
+    }
+    .photo-card.after{
+      width:62%;
+      height:82%;
+      right:0;
+      top:0;
+      transform:rotate(4deg);
+      border-color:rgba(216,173,69,.36);
+    }
+    .photo-label{
+      position:absolute;
+      z-index:2;
+      left:16px;
+      bottom:15px;
+      padding:8px 11px;
+      border-radius:999px;
+      background:rgba(5,6,7,.62);
+      color:#fff;
+      font-size:11px;
+      font-weight:950;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      backdrop-filter:blur(10px);
+    }
+    
+    .photo-card img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      position:relative;
+      z-index:1;
+    }
+    .photo-card.before img{
+      filter:grayscale(.18) saturate(.82) brightness(.88);
+      transform:scale(1.03);
+      object-position:center 35%;
+    }
+    .photo-card.after img{
+      object-position:center 28%;
+      transform:scale(1.02);
+    }
+    .photo-card.before::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg,rgba(15,17,20,.12),rgba(15,17,20,.28));
+      z-index:2;
+    }
+    .photo-card.after::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg,rgba(216,173,69,.06),rgba(10,12,13,.08));
+      z-index:2;
+    }
+    .photo-label{z-index:3}
+
+    .photo-service-note{
+      position:absolute;
+      right:20px;
+      bottom:18px;
+      left:20px;
+      z-index:3;
+      color:#d8dece;
+      font-size:12px;
+      line-height:1.55;
+      background:rgba(5,6,7,.58);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:18px;
+      padding:13px 14px;
+      backdrop-filter:blur(14px);
+    }
+    @media(max-width:980px){
+      .photo-service{grid-template-columns:1fr;padding:26px}
+      .photo-service-visual{min-height:270px}
+    }
+    @media(max-width:620px){
+      .photo-service{padding:22px;margin-top:18px}
+      .photo-service-list{grid-template-columns:1fr}
+      .photo-service-visual{min-height:245px}
+    }
+
     .features{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
     .feature{border:1px solid var(--line);background:rgba(255,255,255,.04);border-radius:22px;padding:22px}
     .feature i{font-style:normal;color:var(--gold);font-size:26px}
@@ -398,6 +551,22 @@
       border-color:#050607;
       box-shadow:0 22px 55px rgba(0,0,0,.62),0 0 0 1px rgba(255,255,255,.18);
     }
+
+    .demo-card[data-demo="wellness"] .preview-stage{
+      background:
+        radial-gradient(circle at 18% 8%,rgba(168,197,172,.22),transparent 34%),
+        radial-gradient(circle at 82% 20%,rgba(244,211,131,.12),transparent 36%),
+        linear-gradient(145deg,#17140f,#090807);
+    }
+    .demo-card[data-demo="wellness"] .badge{
+      background:rgba(168,197,172,.14);
+      border-color:rgba(168,197,172,.30);
+      color:#cfe4d1;
+    }
+    .demo-card[data-demo="wellness"]:hover{
+      border-color:rgba(168,197,172,.55);
+    }
+
     .play-preview{
       border:1px solid rgba(216,173,69,.30);
       background:rgba(216,173,69,.10);
@@ -426,6 +595,22 @@
     .demo-card.is-playing .desktop-frame,
     .demo-card.is-playing .phone-frame{
       border-color:rgba(216,173,69,.55);
+    }
+
+
+    /* Final catalogue desktop-mode fix: hide mobile mockup completely */
+    .demo-card.desktop-mode .phone-frame,
+    .demo-card.desktop-mode:not(.mobile-mode) .phone-frame{
+      opacity:0 !important;
+      visibility:hidden !important;
+      pointer-events:none !important;
+      transform:translateY(12px) scale(.72) !important;
+      display:none !important;
+    }
+    .demo-card.desktop-mode .desktop-frame{
+      left:50% !important;
+      transform:translateX(-50%) scale(1.08) !important;
+      z-index:6 !important;
     }
 
     @media(max-width:980px){
@@ -462,6 +647,21 @@
       .foot div+div{margin-top:10px}
     }
   </style>
+
+<link rel="canonical" href="https://www.fatihtopcu.online/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Fatih Topçu Web Studio | Premium Dijital Vitrin Kataloğu">
+<meta property="og:description" content="PT, pilates hocası, online koç ve kişisel markalar için premium, mobil uyumlu ve satışa dönük dijital vitrin demo kataloğu.">
+<meta property="og:url" content="https://www.fatihtopcu.online/">
+<meta property="og:image" content="https://www.fatihtopcu.online/og/showcase-og.jpg">
+<meta property="og:image:secure_url" content="https://www.fatihtopcu.online/og/showcase-og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Fatih Topçu Web Studio | Premium Dijital Vitrin Kataloğu preview">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Fatih Topçu Web Studio | Premium Dijital Vitrin Kataloğu">
+<meta name="twitter:description" content="PT, pilates hocası, online koç ve kişisel markalar için premium, mobil uyumlu ve satışa dönük dijital vitrin demo kataloğu.">
+<meta name="twitter:image" content="https://www.fatihtopcu.online/og/showcase-og.jpg">
 
 <!-- OG Capture Mode: deterministic screenshot state for social preview generation -->
 <script id="og-capture-early">
@@ -548,7 +748,7 @@
       <div>
         <div class="kicker">Kişisel Web Siteleri</div>
         <h1>Kişisel markanı <span>bir üst seviyeye</span> taşı.</h1>
-        <p class="sub">PT, pilates hocası, online koç, diyetisyen ve yaşam koçları için hızlı, mobil uyumlu ve satışa dönük kişisel web siteleri.</p>
+        <p class="sub">PT, pilates hocası, online koç, diyetisyen, wellness ve yaşam koçları için hızlı, mobil uyumlu ve satışa dönük kişisel web siteleri.</p>
 
         <div class="tags">
           <span>PT & Fitness</span>
@@ -556,6 +756,7 @@
           <span>Online Koç</span>
           <span>Diyetisyen</span>
           <span>Yaşam Koçu</span>
+          <span>Wellness</span>
         </div>
 
         <div class="actions">
@@ -586,6 +787,35 @@
       </div>
     </section>
 
+    <section id="photo-service">
+      <div class="head">
+        <div class="kicker">AI Destekli Görsel Uyumlandırma</div>
+        <h2>Fotoğrafların site kalitesini düşürmesin.</h2>
+        <p>Elindeki fotoğraflar yeterince güçlü değilse, onları sitenin tasarım diliyle uyumlu hale getiriyor; gerekirse daha premium bir görsel atmosfere taşıyoruz.</p>
+      </div>
+
+      <div class="photo-service">
+        <div>
+          <h3>Mevcut fotoğraflarını <span>premium vitrine</span> uygun hale getiriyoruz.</h3>
+          <p>Siteyi sadece kurmakla kalmıyoruz. Fotoğraflarını da renk, ışık, kadraj, arka plan ve konsept açısından dijital vitrinin tasarım diline uyarlıyoruz.</p>
+          <div class="photo-service-list">
+            <div><strong>Fotoğraf iyileştirme</strong><small>Işık, renk, kadraj ve premium görünüm düzenlemesi.</small></div>
+            <div><strong>Arka plan uyarlama</strong><small>Dağınık veya zayıf arka planları site konseptine uygun hale getirme.</small></div>
+            <div><strong>Konsept eşleştirme</strong><small>Demo tasarımındaki görsel dünyaya uygun editorial atmosfer.</small></div>
+            <div><strong>Marka bütünlüğü</strong><small>Site, OG kart ve sosyal medya görünümünde aynı kalite hissi.</small></div>
+          </div>
+        </div>
+
+        <div class="photo-service-visual" aria-label="AI destekli fotoğraf uyumlandırma görseli">
+          <div class="photo-stack">
+            <div class="photo-card before"><img src="assets/catalog-photo-service/before-photo.png" alt="Düzenleme öncesi örnek portre" loading="lazy"><div class="photo-label">Önce</div></div>
+            <div class="photo-card after"><img src="assets/catalog-photo-service/after-photo.png" alt="Yapay zeka destekli düzenleme sonrası premium portre" loading="lazy"><div class="photo-label">Siteye Uyumlu</div></div>
+          </div>
+          <div class="photo-service-note">Amaç kişiyi değiştirmek değil; mevcut imajı, markasına ve web sitesine daha uyumlu göstermek.</div>
+        </div>
+      </div>
+    </section>
+
     <section id="demos" data-og-target="primary">
       <div class="head">
         <div class="kicker">Canlı Demo Kataloğu</div>
@@ -598,7 +828,7 @@
         <article class="demo-card" data-demo="gold">
           <div class="card-top">
             <span class="badge">gold</span>
-            <a class="open-link" href="https://www.fatihtopcu.online/gold/" target="_blank" rel="noopener">Demo Siteyi Gör ↗</a>
+            <a class="open-link" href="https://www.fatihtopcu.online/gold/" target="_blank" rel="noopener">Canlı aç ↗</a>
           </div>
 
           <div class="preview-stage">
@@ -628,7 +858,7 @@
         <article class="demo-card" data-demo="dark">
           <div class="card-top">
             <span class="badge">dark</span>
-            <a class="open-link" href="https://www.fatihtopcu.online/dark/" target="_blank" rel="noopener">Demo Siteyi Gör ↗</a>
+            <a class="open-link" href="https://www.fatihtopcu.online/dark/" target="_blank" rel="noopener">Canlı aç ↗</a>
           </div>
 
           <div class="preview-stage">
@@ -658,7 +888,7 @@
         <article class="demo-card" data-demo="pilates">
           <div class="card-top">
             <span class="badge">pilates</span>
-            <a class="open-link" href="https://www.fatihtopcu.online/pilates/" target="_blank" rel="noopener">Demo Siteyi Gör ↗</a>
+            <a class="open-link" href="https://www.fatihtopcu.online/pilates/" target="_blank" rel="noopener">Canlı aç ↗</a>
           </div>
 
           <div class="preview-stage">
@@ -688,7 +918,7 @@
         <article class="demo-card" data-demo="light">
           <div class="card-top">
             <span class="badge">light</span>
-            <a class="open-link" href="https://www.fatihtopcu.online/light/" target="_blank" rel="noopener">Demo Siteyi Gör ↗</a>
+            <a class="open-link" href="https://www.fatihtopcu.online/light/" target="_blank" rel="noopener">Canlı aç ↗</a>
           </div>
 
           <div class="preview-stage">
@@ -718,7 +948,7 @@
         <article class="demo-card" data-demo="classic">
           <div class="card-top">
             <span class="badge">classic</span>
-            <a class="open-link" href="https://www.fatihtopcu.online/classic/" target="_blank" rel="noopener">Demo Siteyi Gör ↗</a>
+            <a class="open-link" href="https://www.fatihtopcu.online/classic/" target="_blank" rel="noopener">Canlı aç ↗</a>
           </div>
 
           <div class="preview-stage">
@@ -748,7 +978,7 @@
         <article class="demo-card" data-demo="feminine">
           <div class="card-top">
             <span class="badge">feminine</span>
-            <a class="open-link" href="https://www.fatihtopcu.online/feminine/" target="_blank" rel="noopener">Demo Siteyi Gör ↗</a>
+            <a class="open-link" href="https://www.fatihtopcu.online/feminine/" target="_blank" rel="noopener">Canlı aç ↗</a>
           </div>
 
           <div class="preview-stage">
@@ -778,7 +1008,7 @@
         <article class="demo-card" data-demo="neon">
           <div class="card-top">
             <span class="badge">neon</span>
-            <a class="open-link" href="https://www.fatihtopcu.online/neon/" target="_blank" rel="noopener">Demo Siteyi Gör ↗</a>
+            <a class="open-link" href="https://www.fatihtopcu.online/neon/" target="_blank" rel="noopener">Canlı aç ↗</a>
           </div>
 
           <div class="preview-stage">
@@ -805,6 +1035,37 @@
           </div>
         </article>
 
+        <article class="demo-card" data-demo="wellness">
+          <div class="card-top">
+            <span class="badge">wellness</span>
+            <a class="open-link" href="https://www.fatihtopcu.online/wellness/" target="_blank" rel="noopener">Demo Siteyi Gör ↗</a>
+          </div>
+
+          <div class="preview-stage">
+            <div class="desktop-frame">
+              <div class="browser-bar"><span></span><span></span><span></span><small>wellness.demo</small></div>
+              <iframe src="https://www.fatihtopcu.online/wellness/" loading="lazy" title="Seren Wellness masaüstü demo"></iframe>
+            </div>
+
+            <div class="phone-frame">
+              <div class="phone-notch"></div>
+              <iframe src="https://www.fatihtopcu.online/wellness/" loading="lazy" title="Seren Wellness mobil demo"></iframe>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <h3>Seren Wellness</h3>
+            <p>Yaşam koçu, nefes ve mindfulness eğitmenleri için sakin, premium ve güven veren dijital vitrin.</p>
+            <div class="view-actions">
+              <button type="button" class="view-btn active" data-mode="combo">Mobil + Masaüstü</button>
+              <button type="button" class="view-btn" data-mode="mobile">Mobil</button>
+              <button type="button" class="view-btn" data-mode="desktop">Masaüstü</button>
+              <button type="button" class="play-preview">Önizleme Oynat</button>
+            </div>
+          </div>
+        </article>
+
+
       </div>
     </section>
 
@@ -823,6 +1084,10 @@
       </div>
     </section>
 
+
+    
+
+
     <section class="final" id="contact">
       <div>
         <h2>Hangi demo sana yakın?</h2>
@@ -834,7 +1099,7 @@
     <footer>
       <div class="foot">
         <div>© fatihtopcu.online</div>
-        <div>PT · Pilates · Online Koç · Diyetisyen · Yaşam Koçu</div>
+        <div>PT · Pilates · Online Koç · Diyetisyen · Wellness · Yaşam Koçu</div>
       </div>
     </footer>
   </main>
@@ -921,7 +1186,15 @@
         });
       }
 
-      // Hover autoplay disabled: preview now plays only by button click to prevent scroll confusion.
+      card.addEventListener('mouseenter', () => {
+        if (!window.matchMedia('(hover:hover)').matches) return;
+        playPreview(card);
+      });
+
+      card.addEventListener('mouseleave', () => {
+        if (!window.matchMedia('(hover:hover)').matches) return;
+        resetPreview(card);
+      });
     });
   </script>
 
@@ -939,7 +1212,8 @@
       light:    { target: '[data-og-target="primary"], #root, main, .hero', offset: 180 },
       classic:  { target: '[data-og-target="primary"], #hero, .hero', offset: 0 },
       feminine: { target: '[data-og-target="primary"], #hero, .hero', offset: 0 },
-      neon:     { target: '[data-og-target="primary"], #hero, .hero', offset: 0 }
+      neon:     { target: '[data-og-target="primary"], #hero, .hero', offset: 0 },
+      wellness: { target: '[data-og-target="primary"], #hero, .hero', offset: 0 }
     };
 
     function forceFinalHeroState(){
@@ -985,7 +1259,7 @@
         document.querySelectorAll('iframe').forEach(function(frame){
           try {
             var src = frame.getAttribute('src') || '';
-            var match = src.match(/fatihtopcu\.online\/(gold|dark|pilates|light|classic|feminine|neon)\//);
+            var match = src.match(/fatihtopcu\.online\/(gold|dark|pilates|light|classic|feminine|neon|wellness)\//);
             if (match) frame.setAttribute('src', '/' + match[1] + '/?og=1');
           } catch(e) {}
         });
