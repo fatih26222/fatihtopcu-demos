@@ -390,6 +390,93 @@
       }
     }
 
+
+    /* FINAL JOURNEY DESKTOP FRAME SIZE FIX */
+    @media (min-width: 1025px) {
+      #journey .j-sticky-col {
+        overflow: visible !important;
+        align-items: center !important;
+      }
+
+      #journey .j-panel {
+        max-width: 520px !important;
+      }
+
+      #journey .j-big-num {
+        font-size: 72px !important;
+        margin-bottom: 0 !important;
+      }
+
+      #journey .j-panel-title {
+        font-size: clamp(26px, 2.4vw, 36px) !important;
+        margin-bottom: 10px !important;
+      }
+
+      #journey .j-panel-desc {
+        font-size: 13px !important;
+        line-height: 1.65 !important;
+        max-width: 430px !important;
+      }
+
+      #journey .j-visual {
+        margin-top: 24px !important;
+        width: 100% !important;
+        height: auto !important;
+        aspect-ratio: 3 / 2 !important;
+        max-height: none !important;
+        border-radius: 22px !important;
+        overflow: hidden !important;
+        background: rgba(246,241,233,.50) !important;
+        border: 1px solid rgba(201,169,110,.20) !important;
+        box-shadow: 0 24px 70px rgba(30,26,20,.12) !important;
+      }
+
+      #journey .jv {
+        padding: 0 !important;
+        display: block !important;
+      }
+
+      #journey .jv img {
+        position: absolute !important;
+        inset: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: contain !important;
+        object-position: center center !important;
+        border-radius: 0 !important;
+        background: rgba(246,241,233,.55) !important;
+        box-shadow: none !important;
+      }
+
+      #journey .jv::after {
+        background:
+          linear-gradient(to top, rgba(30,26,20,.08), transparent 42%),
+          radial-gradient(ellipse 70% 60% at 90% 15%, rgba(246,241,233,.16), transparent 60%) !important;
+      }
+
+      #journey .jv-circ {
+        position: absolute !important;
+        left: 24px !important;
+        bottom: 24px !important;
+        z-index: 2 !important;
+        margin-left: 0 !important;
+      }
+
+      #journey .jv-circ.s {
+        left: 78px !important;
+        bottom: 36px !important;
+      }
+
+      #journey .jv-circ.xs {
+        left: 116px !important;
+        bottom: 44px !important;
+      }
+
+      #journey .j-dots {
+        margin-top: 20px !important;
+      }
+    }
+
     /* WELLNESS CHECK */
     #check { background: var(--ivory); position: relative; overflow: hidden; }
     #check::before { content: ''; position: absolute; top: -60px; left: 50%; transform: translateX(-50%); width: 700px; height: 700px; border-radius: 50%; background: radial-gradient(circle, rgba(122,158,126,.05) 0%, transparent 60%); pointer-events: none; }
