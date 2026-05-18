@@ -279,7 +279,7 @@
     .j-panel-title { font-family: var(--fd); font-size: clamp(28px, 2.8vw, 42px); font-weight: 300; line-height: 1.18; color: var(--esp); margin-bottom: 14px; }
     .j-panel-title em { font-style: italic; color: var(--sage); }
     .j-panel-desc { font-size: 14px; font-weight: 300; color: var(--t-m); line-height: 1.78; max-width: 360px; }
-    .j-visual { margin-top: 32px; height: 130px; border-radius: 16px; position: relative; overflow: hidden; }
+    .j-visual { margin-top: 32px; height: 285px; border-radius: 16px; position: relative; overflow: hidden; }
     .jv { position: absolute; inset: 0; opacity: 0; transition: opacity .5s ease; display: flex; align-items: center; padding: 0 20px; gap: 10px; }
     .jv.on { opacity: 1; }
     .jv-0 { background: linear-gradient(135deg, rgba(122,158,126,.14) 0%, rgba(201,169,110,.07) 100%); }
@@ -301,6 +301,48 @@
     .j-step.on .j-n-badge { background: var(--sage); border-color: var(--sage); color: var(--ivory); }
     .j-step h3 { font-family: var(--fd); font-size: 28px; font-weight: 400; color: var(--esp); margin-bottom: 10px; line-height: 1.2; }
     .j-step p { font-size: 13.5px; font-weight: 300; color: var(--t-m); line-height: 1.75; max-width: 400px; }
+
+
+    /* JOURNEY IMAGE POLISH */
+    .jv img {
+      object-fit: cover;
+    }
+    #jv0 img { object-position: center 45%; }
+    #jv1 img { object-position: center 52%; }
+    #jv2 img { object-position: center 48%; }
+    #jv3 img { object-position: center 50%; }
+
+    .j-mobile-img {
+      display: none;
+      width: 100%;
+      height: 220px;
+      border-radius: 18px;
+      overflow: hidden;
+      margin: 18px 0 16px;
+      position: relative;
+      background: var(--ivory-d);
+      box-shadow: 0 18px 44px rgba(30,26,20,.10);
+      border: 1px solid rgba(201,169,110,.16);
+    }
+    .j-mobile-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to top, rgba(30,26,20,.18), transparent 58%),
+        radial-gradient(ellipse 70% 50% at 20% 10%, rgba(246,241,233,.18), transparent 60%);
+      pointer-events: none;
+    }
+    .j-mobile-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .j-mobile-img.step-1 img { object-position: center 45%; }
+    .j-mobile-img.step-2 img { object-position: center 52%; }
+    .j-mobile-img.step-3 img { object-position: center 48%; }
+    .j-mobile-img.step-4 img { object-position: center 50%; }
 
     /* WELLNESS CHECK */
     #check { background: var(--ivory); position: relative; overflow: hidden; }
@@ -509,6 +551,10 @@
       .j-sticky-col { display: none; }
       .j-scroll-col { padding: 60px 32px; }
       .j-step { min-height: auto; opacity: 1; padding: 30px 0; }
+
+      .j-mobile-img { display: block; }
+      .j-step { padding: 34px 0; }
+
       .t-grid { grid-template-columns: 1fr; }
       .ap-inner { grid-template-columns: 1fr; gap: 36px; }
       .sec { padding: 70px 32px; }
@@ -794,21 +840,25 @@
       <div class="j-step on" data-s="0">
         <div class="j-step-n"><span class="j-n-badge">01</span>Başlangıç</div>
         <h3>Tanışma Görüşmesi</h3>
+        <div class="j-mobile-img step-1"><img src="assets/wellness/journey-step-1-consultation.png" alt="Seren Wellness tanışma görüşmesi mobil görseli" loading="lazy" /></div>
         <p>İhtiyaç, hedef ve yaşam ritmi derinlemesine anlaşılır. Beklentiler ve uygun seans modeli netleştirilir. İlk görüşme ücretsiz ve bağlayıcı değildir.</p>
       </div>
       <div class="j-step" data-s="1">
         <div class="j-step-n"><span class="j-n-badge">02</span>Planlama</div>
         <h3>Kişisel Yol Haritası</h3>
+        <div class="j-mobile-img step-2"><img src="assets/wellness/journey-step-2-roadmap.png" alt="Seren Wellness kişisel yol haritası mobil görseli" loading="lazy" /></div>
         <p>Seans tipi, frekans ve takip planı belirlenir. Kişiye özel ritüel çerçevesi oluşturulur. Standart paket yok — her süreç farklı yapılandırılır.</p>
       </div>
       <div class="j-step" data-s="2">
         <div class="j-step-n"><span class="j-n-badge">03</span>Uygulama</div>
         <h3>Haftalık Pratik</h3>
+        <div class="j-mobile-img step-3"><img src="assets/wellness/journey-step-3-practice.png" alt="Seren Wellness haftalık pratik mobil görseli" loading="lazy" /></div>
         <p>Nefes teknikleri, farkındalık egzersizleri ve küçük alışkanlık değişimleri sistematik biçimde işlenir. Seans aralarında destek devam eder.</p>
       </div>
       <div class="j-step" data-s="3">
         <div class="j-step-n"><span class="j-n-badge">04</span>Değerlendirme</div>
         <h3>Sürdürülebilir Denge</h3>
+        <div class="j-mobile-img step-4"><img src="assets/wellness/journey-step-4-reflection.png" alt="Seren Wellness değerlendirme mobil görseli" loading="lazy" /></div>
         <p>Enerji, uyku kalitesi ve içsel netlik düzenli gözlemlenir. Süreç ihtiyaca göre adapte edilir. Hedef: bağımsız denge kurabiliyor olmak.</p>
       </div>
     </div>
