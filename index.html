@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fatih Topçu Web Studio | Premium Dijital Vitrin Kataloğu</title>
-  <meta name="description" content="PT, pilates hocası, online koç, diyetisyen, wellness ve yaşam koçları için 10+ premium dijital vitrin demosunu tek yerde gösteren showcase ana sayfası.">
+  <meta name="description" content="PT, pilates hocası, online koç, diyetisyen, wellness ve yaşam koçları için 11+ premium dijital vitrin demosunu tek yerde gösteren showcase ana sayfası.">
   <style>
     *{box-sizing:border-box;margin:0;padding:0}
     :root{
@@ -1323,6 +1323,37 @@
           </div>
         </article>
 
+
+        <article class="demo-card" data-demo="dietitian-earthy">
+          <div class="card-top">
+            <span class="badge">diyetisyen · earthy</span>
+            <a class="open-link" href="https://www.fatihtopcu.online/dietitian-earthy/" target="_blank" rel="noopener">Canlı aç ↗</a>
+          </div>
+
+          <div class="preview-stage">
+            <div class="desktop-frame">
+              <div class="browser-bar"><span></span><span></span><span></span><small>earthy.demo</small></div>
+              <iframe src="https://www.fatihtopcu.online/dietitian-earthy/" loading="lazy" title="Diyetisyen Earthy Premium masaüstü demo"></iframe>
+            </div>
+
+            <div class="phone-frame">
+              <div class="phone-notch"></div>
+              <iframe src="https://www.fatihtopcu.online/dietitian-earthy/" loading="lazy" title="Diyetisyen Earthy Premium mobil demo"></iframe>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <h3>Diyetisyen Earthy Premium</h3>
+            <p>Sıcak, butik ve Instagram kişisel marka dili isteyen diyetisyenler için earthy premium vitrin.</p>
+            <div class="view-actions">
+              <button type="button" class="view-btn active" data-mode="combo">Mobil + Masaüstü</button>
+              <button type="button" class="view-btn" data-mode="mobile">Mobil</button>
+              <button type="button" class="view-btn" data-mode="desktop">Masaüstü</button>
+              <button type="button" class="play-preview">Önizleme Oynat</button>
+            </div>
+          </div>
+        </article>
+
 <article class="demo-card" data-demo="light">
           <div class="card-top">
             <span class="badge">light</span>
@@ -1674,7 +1705,7 @@
         document.querySelectorAll('iframe').forEach(function(frame){
           try {
             var src = frame.getAttribute('src') || '';
-            var match = src.match(/fatihtopcu\.online\/(gold|dark|pilates|light|classic|feminine|neon|wellness|dietitian|dietitian-clinical)\//);
+            var match = src.match(/fatihtopcu\.online\/(gold|dark|pilates|light|classic|feminine|neon|wellness|dietitian|dietitian-clinical|dietitian-earthy)\//);
             if (match) frame.setAttribute('src', '/' + match[1] + '/?og=1');
           } catch(e) {}
         });
