@@ -531,6 +531,30 @@ html[data-og-mode="1"] [data-og-target="primary"]{scroll-margin-top:0!important;
   max-height: 320px !important;
 }
 
+
+/* === HARD FAQ FIX === */
+.faq-q{
+  cursor:pointer !important;
+  position:relative !important;
+  z-index:5 !important;
+  pointer-events:auto !important;
+  user-select:none;
+}
+
+.faq-q *{
+  pointer-events:none !important;
+}
+
+.faq-a{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height .35s ease;
+}
+
+.faq-item.open .faq-a{
+  max-height:420px !important;
+}
+
 </style>
 </head>
 <body>
@@ -781,6 +805,61 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAppt()});
     initMobileServiceCards();
     initFaqAccordion();
   }
+})();
+</script>
+
+
+<script>
+/* === HARD FAQ FIX: delegated click, capture phase === */
+(function(){
+  function toggleFaq(q){
+    var item = q.closest('.faq-item');
+    if (!item) return;
+
+    item.classList.toggle('open');
+
+    var answer = item.querySelector('.faq-a');
+    if (answer) {
+      if (item.classList.contains('open')) {
+        answer.style.maxHeight = answer.scrollHeight + 40 + 'px';
+      } else {
+        answer.style.maxHeight = '0px';
+      }
+    }
+
+    q.setAttribute('aria-expanded', item.classList.contains('open') ? 'true' : 'false');
+  }
+
+  document.addEventListener('click', function(e){
+    var q = e.target.closest('.faq-q');
+    if (!q) return;
+
+    e.preventDefault();
+    e.stopPropagation();
+
+    toggleFaq(q);
+  }, true);
+
+  document.addEventListener('DOMContentLoaded', function(){
+    document.querySelectorAll('.faq-q').forEach(function(q){
+      q.setAttribute('role', 'button');
+      q.setAttribute('tabindex', '0');
+      q.setAttribute('aria-expanded', 'false');
+
+      q.addEventListener('keydown', function(e){
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggleFaq(q);
+        }
+      });
+    });
+
+    document.querySelectorAll('.faq-a').forEach(function(a){
+      if (!a.closest('.faq-item.open')) {
+        a.style.maxHeight = '0px';
+      }
+    });
+  });
 })();
 </script>
 
