@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fatih Topçu Web Studio | Premium Dijital Vitrin Kataloğu</title>
-  <meta name="description" content="PT, pilates hocası, online koç, diyetisyen, wellness ve yaşam koçları için 9+ premium dijital vitrin demosunu tek yerde gösteren showcase ana sayfası.">
+  <meta name="description" content="PT, pilates hocası, online koç, diyetisyen, wellness ve yaşam koçları için 10+ premium dijital vitrin demosunu tek yerde gösteren showcase ana sayfası.">
   <style>
     *{box-sizing:border-box;margin:0;padding:0}
     :root{
@@ -1292,7 +1292,38 @@
           </div>
         </article>
 
-        <article class="demo-card" data-demo="light">
+        
+        <article class="demo-card" data-demo="dietitian-clinical">
+          <div class="card-top">
+            <span class="badge">clinical</span>
+            <a class="open-link" href="https://www.fatihtopcu.online/dietitian-clinical/" target="_blank" rel="noopener">Canlı aç ↗</a>
+          </div>
+
+          <div class="preview-stage">
+            <div class="desktop-frame">
+              <div class="browser-bar"><span></span><span></span><span></span><small>clinical.demo</small></div>
+              <iframe src="https://www.fatihtopcu.online/dietitian-clinical/" loading="lazy" title="Diyetisyen Clinical Blue masaüstü demo"></iframe>
+            </div>
+
+            <div class="phone-frame">
+              <div class="phone-notch"></div>
+              <iframe src="https://www.fatihtopcu.online/dietitian-clinical/" loading="lazy" title="Diyetisyen Clinical Blue mobil demo"></iframe>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <h3>Diyetisyen Clinical Blue</h3>
+            <p>Daha medikal, temiz ve uzman görünüm isteyen diyetisyenler için klinik premium vitrin.</p>
+            <div class="view-actions">
+              <button type="button" class="view-btn active" data-mode="combo">Mobil + Masaüstü</button>
+              <button type="button" class="view-btn" data-mode="mobile">Mobil</button>
+              <button type="button" class="view-btn" data-mode="desktop">Masaüstü</button>
+              <button type="button" class="play-preview">Önizleme Oynat</button>
+            </div>
+          </div>
+        </article>
+
+<article class="demo-card" data-demo="light">
           <div class="card-top">
             <span class="badge">light</span>
             <a class="open-link" href="https://www.fatihtopcu.online/light/" target="_blank" rel="noopener">Canlı aç ↗</a>
@@ -1643,7 +1674,7 @@
         document.querySelectorAll('iframe').forEach(function(frame){
           try {
             var src = frame.getAttribute('src') || '';
-            var match = src.match(/fatihtopcu\.online\/(gold|dark|pilates|light|classic|feminine|neon|wellness|dietitian)\//);
+            var match = src.match(/fatihtopcu\.online\/(gold|dark|pilates|light|classic|feminine|neon|wellness|dietitian|dietitian-clinical)\//);
             if (match) frame.setAttribute('src', '/' + match[1] + '/?og=1');
           } catch(e) {}
         });
