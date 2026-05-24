@@ -473,6 +473,64 @@ html[data-og-mode="1"] .scroll-word{display:none!important;}
 html[data-og-mode="1"] .floating{animation:none!important;transform:none!important;}
 html[data-og-mode="1"] body{overflow-x:hidden!important;}
 html[data-og-mode="1"] [data-og-target="primary"]{scroll-margin-top:0!important;}
+
+/* === MOBILE UX FIX: services accordion + about image ratio + FAQ accordion === */
+
+/* Mobilde hizmet kartı alt maddeleri görünür/açılır olsun */
+@media (max-width: 760px){
+  .services .service{
+    cursor: pointer;
+  }
+
+  .services .service .service-list{
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: max-height .45s ease, opacity .3s ease, transform .3s ease;
+  }
+
+  .services .service.open .service-list,
+  .services .service.in-view .service-list{
+    max-height: 220px !important;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .services .service.open,
+  .services .service.in-view{
+    transform: translateY(-4px);
+  }
+}
+
+/* Hakkımda görsel oranını toparla */
+.about-img{
+  overflow: hidden;
+  border-radius: 32px;
+}
+
+.about-img > img,
+.about-img img{
+  width: 100%;
+  height: 100%;
+  min-height: 520px;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+}
+
+@media (max-width: 760px){
+  .about-img > img,
+  .about-img img{
+    min-height: 390px;
+    object-position: center top;
+  }
+}
+
+/* FAQ cevaplarının gerçekten açılması */
+.faq-item.open .faq-a{
+  max-height: 320px !important;
+}
+
 </style>
 </head>
 <body>
@@ -615,7 +673,7 @@ html[data-og-mode="1"] [data-og-target="primary"]{scroll-margin-top:0!important;
 <section class="section packages" id="paketler"><div class="inner"><div class="section-top"><div><div class="pill" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.1);color:#f8efe4"><span class="dot"></span>Danışmanlık paketleri</div><h2 class="h2 rev" style="margin-top:18px">Sana uygun <em>programı seç.</em></h2></div><p class="lead rev" style="color:rgba(248,239,228,.58)">Fiyat kişisel değerlendirme sonrası paylaşılır. Burada amaç, hangi süreç yapısının size uygun olduğunu anlamaktır.</p></div><div class="pkg-grid"><article class="pkg rev"><small>2 hafta</small><h3>Başlangıç</h3><p>Beslenme düzeninizi anlamak ve ilk sistemi kurmak için kısa başlangıç programı.</p><ul><li>Ön değerlendirme</li><li>Kişisel beslenme analizi</li><li>2 haftalık plan</li><li>Kontrol görüşmesi</li></ul><a class="btn btn-ghost" href="https://wa.me/905550000000?text=Ba%C5%9Flang%C4%B1%C3%A7%20paketi%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank">WhatsApp'tan öğren</a></article><article class="pkg featured rev"><small>4 hafta · en çok tercih edilen</small><h3>Dönüşüm</h3><p>Sadece plan değil, alışkanlık değişimini de takip eden daha kapsamlı süreç.</p><ul><li>Kapsamlı sağlık değerlendirmesi</li><li>Haftalık plan güncellemeleri</li><li>WhatsApp takip</li><li>Tarif ve alışveriş önerileri</li></ul><a class="btn btn-main" href="https://wa.me/905550000000?text=D%C3%B6n%C3%BC%C5%9F%C3%BCm%20paketi%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank">WhatsApp'tan öğren</a></article></div></div></section>
 <section class="section calc" id="hesap"><div class="inner"><div class="section-top"><div><div class="pill"><span class="dot"></span>Hızlı ön değerlendirme</div><h2 class="h2 rev" style="margin-top:18px">Bir fikir edin, <em>sonra uzmanla değerlendirin.</em></h2></div><p class="lead rev">Kalori ve VKİ sonuçları tek başına tanı veya tedavi değildir. Yalnızca kişisel değerlendirme için başlangıç noktasıdır.</p></div><div class="calc-card rev"><div><div class="tabs"><button class="tab active" onclick="switchCalc('cal',this)">Kalori</button><button class="tab" onclick="switchCalc('bmi',this)">VKİ</button></div><div class="form" id="calForm"><div class="field"><label>Yaş</label><input id="age" placeholder="28" type="number"/></div><div class="field"><label>Cinsiyet</label><div class="gender"><button class="active" onclick="setGender(this,'Kadın')" type="button">Kadın</button><button onclick="setGender(this,'Erkek')" type="button">Erkek</button></div></div><div class="field"><label>Boy</label><input id="height" placeholder="165" type="number"/></div><div class="field"><label>Kilo</label><input id="weight" placeholder="65" type="number"/></div><div class="field"><label>Aktivite seviyesi</label><select id="act"><option value="1.2">Hareketsiz</option><option value="1.375">Az aktif</option><option selected="" value="1.55">Orta aktif</option><option value="1.725">Aktif</option></select></div><button class="btn btn-dark" onclick="calcCalories()" type="button">Hesapla</button></div><div class="form" id="bmiForm" style="display:none"><div class="field"><label>Boy</label><input id="bmiH" placeholder="165" type="number"/></div><div class="field"><label>Kilo</label><input id="bmiW" placeholder="65" type="number"/></div><button class="btn btn-dark" onclick="calcBMI()" type="button">Hesapla</button></div></div><div class="result" id="result"><p class="lead" style="margin:0">Bilgilerinizi girerek genel tahmini sonucu görün.</p></div></div></div></section>
 <section class="section content-mini"><div class="inner"><div class="section-top"><div><div class="pill"><span class="dot"></span>Bilgi köşesi</div><h2 class="h2 rev" style="margin-top:18px">Kısa, pratik, <em>güven veren içerikler.</em></h2></div><p class="lead rev">Tarif, video ve blog alanı ana satış yükünü taşımaz; yalnızca uzmanlığı ve yaşam rehberi hissini destekler.</p></div><div class="mini-grid"><article class="mini-card rev"><img src="assets/images/content-01.png"/><div class="mini-body"><small>Sağlıklı tarif</small><h3>10 dakikalık dengeli tabak</h3><p>Hızlı, pratik ve gerçek hayata uygun tarif örnekleri.</p></div></article><article class="mini-card rev"><img src="assets/images/content-02.png"/><div class="mini-body"><small>Video rehber</small><h3>Online diyet nasıl ilerler?</h3><p>Kısa videolarla sürecin belirsizliği azaltılır.</p></div></article><article class="mini-card rev"><img src="assets/images/content-03.png"/><div class="mini-body"><small>Blog</small><h3>Kalori hesabı neden yetmez?</h3><p>Bilimsel bilgiyi sade ve anlaşılır şekilde sunar.</p></div></article></div></div></section>
-<section class="section about"><div class="inner about-grid"><div class="about-img rev"><img src="assets/images/content-04.png"/><div class="about-badge"><b>5+</b><span>yıl klinik ve online deneyim</span></div></div><div class="rev"><div class="pill" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.1);color:#f8efe4"><span class="dot"></span>Hakkımda</div><h2 class="h2" style="margin:18px 0">Enerjik, bilimsel, <em>samimi uzman.</em></h2><p>Merhaba, ben Dyt. Ayşe Kaya. Danışanlarımla yasaklar üzerinden değil, sürdürülebilir sistemler üzerinden çalışıyorum. Her bedenin, her temponun ve her hedefin farklı olduğunu biliyorum. Bu yüzden süreç yalnızca liste hazırlamak değil; takip, değerlendirme ve birlikte ayarlama sürecidir.</p><div class="certs"><span class="cert">Beslenme ve Diyetetik</span><span class="cert">PCOS beslenmesi</span><span class="cert">Sporcu beslenmesi</span><span class="cert">Gebelik dönemi</span><span class="cert">Online takip sistemi</span></div></div></div></section>
+<section class="section about"><div class="inner about-grid"><div class="about-img rev"><img src="assets/images/service-gebelik-emzirme.png"/><div class="about-badge"><b>5+</b><span>yıl klinik ve online deneyim</span></div></div><div class="rev"><div class="pill" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.1);color:#f8efe4"><span class="dot"></span>Hakkımda</div><h2 class="h2" style="margin:18px 0">Enerjik, bilimsel, <em>samimi uzman.</em></h2><p>Merhaba, ben Dyt. Ayşe Kaya. Danışanlarımla yasaklar üzerinden değil, sürdürülebilir sistemler üzerinden çalışıyorum. Her bedenin, her temponun ve her hedefin farklı olduğunu biliyorum. Bu yüzden süreç yalnızca liste hazırlamak değil; takip, değerlendirme ve birlikte ayarlama sürecidir.</p><div class="certs"><span class="cert">Beslenme ve Diyetetik</span><span class="cert">PCOS beslenmesi</span><span class="cert">Sporcu beslenmesi</span><span class="cert">Gebelik dönemi</span><span class="cert">Online takip sistemi</span></div></div></div></section>
 <section class="section faq" id="sss"><div class="inner"><div class="pill" style="margin:0 auto;display:flex;width:max-content;background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.1);color:#f8efe4"><span class="dot"></span>SSS</div><h2 class="h2 rev" style="margin-top:18px">Aklınızdaki <em>sorular.</em></h2><div class="faq-list"><div class="faq-item"><div class="faq-q" onclick="faq(this)">Online danışmanlık nasıl ilerliyor?<svg viewbox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg></div><div class="faq-a"><div>Görüşme, plan ve takip süreci dijital olarak yürütülür. Haftalık değerlendirme ile plan gerektiğinde güncellenir.</div></div></div><div class="faq-item"><div class="faq-q" onclick="faq(this)">Kaç kilo veririm?<svg viewbox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg></div><div class="faq-a"><div>Bu kişiye göre değişir. Garanti kilo vaadi yoktur; hedef sağlıklı ve sürdürülebilir ilerlemedir.</div></div></div><div class="faq-item"><div class="faq-q" onclick="faq(this)">Ücret bilgisi nasıl paylaşılır?<svg viewbox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg></div><div class="faq-a"><div>Program türü, hedef ve takip kapsamı belirlendikten sonra WhatsApp üzerinden kişiye özel paylaşılır.</div></div></div><div class="faq-item"><div class="faq-q" onclick="faq(this)">Özel sağlık durumum varsa uygun mu?<svg viewbox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg></div><div class="faq-a"><div>PCOS, diyabet, tiroid, gebelik gibi durumlarda doktorunuzla uyumlu şekilde beslenme danışmanlığı planlanabilir.</div></div></div></div></div></section>
 <section class="section final"><div class="inner"><div class="pill"><span class="dot"></span>Şu an ön görüşme açık</div><h2 class="h2 rev">İlk adım için <em>tek mesaj yeterli.</em></h2><p class="lead rev">Ücretsiz ön değerlendirme için WhatsApp'tan yazın. Uygunsa birlikte size özel süreci planlayalım.</p><div class="hero-actions" style="justify-content:center;opacity:1;transform:none"><a class="btn btn-main" href="https://wa.me/905550000000?text=Merhaba%2C%20%C3%B6n%20g%C3%B6r%C3%BC%C5%9Fme%20talebi%20olu%C5%9Fturmak%20istiyorum." target="_blank">WhatsApp'tan başla</a><a class="btn btn-ghost" href="tel:+905550000000">Ara: +90 555 000 00 00</a></div><p class="micro" style="margin-top:26px">Beslenme danışmanlığı tıbbi tanı veya tedavinin yerini tutmaz. Sonuçlar kişiye göre değişebilir.</p></div></section>
 </main><footer class="footer"><div class="foot"><div><div class="logo" style="color:#f8efe4;margin-bottom:14px"><div class="mark"></div><span>Dyt. Ayşe Kaya</span></div><p>Diyet değil, sürdürülebilir beslenme sistemi. Online ve yüz yüze danışmanlık.</p></div><div class="footlinks"><a href="#yaklasim">Yaklaşım</a><a href="#hizmetler">Hizmetler</a><a href="#hikayeler">Yolculuklar</a><a href="#sss">SSS</a></div></div></footer>
@@ -668,5 +726,63 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAppt()});
     else prepareOg();
   }
 })();
-</script></body>
+</script>
+<script>
+/* === MOBILE UX FIX: services open on scroll/tap + FAQ accordion === */
+(function(){
+  function initMobileServiceCards(){
+    var cards = document.querySelectorAll('.services .service');
+    if (!cards.length) return;
+
+    cards.forEach(function(card){
+      card.addEventListener('click', function(){
+        if (window.matchMedia('(max-width: 760px)').matches) {
+          card.classList.toggle('open');
+        }
+      });
+    });
+
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if (!window.matchMedia('(max-width: 760px)').matches) return;
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+          } else {
+            entry.target.classList.remove('in-view');
+          }
+        });
+      }, { threshold: 0.55 });
+
+      cards.forEach(function(card){ observer.observe(card); });
+    }
+  }
+
+  function initFaqAccordion(){
+    var items = document.querySelectorAll('.faq-item');
+    if (!items.length) return;
+
+    items.forEach(function(item){
+      var question = item.querySelector('.faq-q');
+      if (!question) return;
+
+      question.addEventListener('click', function(){
+        item.classList.toggle('open');
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function(){
+      initMobileServiceCards();
+      initFaqAccordion();
+    });
+  } else {
+    initMobileServiceCards();
+    initFaqAccordion();
+  }
+})();
+</script>
+
+</body>
 </html>
