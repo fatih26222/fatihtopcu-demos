@@ -992,7 +992,42 @@
       }
     }
 
-  </style>
+  
+
+
+
+/* === CATALOGUE STRUCTURE CLEANUP ONLY === */
+.hero.hero-clean{
+  grid-template-columns:minmax(0, 980px) !important;
+  justify-content:center !important;
+  min-height:auto !important;
+  padding-top:clamp(96px, 12vw, 150px) !important;
+  padding-bottom:clamp(72px, 10vw, 120px) !important;
+}
+
+.hero.hero-clean > div:first-child{
+  max-width:920px !important;
+}
+
+.hero.hero-clean h1{
+  max-width:900px !important;
+}
+
+.hero.hero-clean .sub{
+  max-width:760px !important;
+}
+
+.hero.hero-clean .offer{
+  max-width:720px !important;
+}
+
+@media(max-width:760px){
+  .hero.hero-clean{
+    padding-top:92px !important;
+  }
+}
+
+</style>
 
 <link rel="canonical" href="https://www.fatihtopcu.online/">
 <meta property="og:type" content="website">
@@ -1073,6 +1108,41 @@
     transform: none !important;
   }
   html[data-og-capture="1"] iframe { pointer-events: none !important; }
+
+
+
+
+/* === CATALOGUE STRUCTURE CLEANUP ONLY === */
+.hero.hero-clean{
+  grid-template-columns:minmax(0, 980px) !important;
+  justify-content:center !important;
+  min-height:auto !important;
+  padding-top:clamp(96px, 12vw, 150px) !important;
+  padding-bottom:clamp(72px, 10vw, 120px) !important;
+}
+
+.hero.hero-clean > div:first-child{
+  max-width:920px !important;
+}
+
+.hero.hero-clean h1{
+  max-width:900px !important;
+}
+
+.hero.hero-clean .sub{
+  max-width:760px !important;
+}
+
+.hero.hero-clean .offer{
+  max-width:720px !important;
+}
+
+@media(max-width:760px){
+  .hero.hero-clean{
+    padding-top:92px !important;
+  }
+}
+
 </style>
 
 </head>
@@ -1090,7 +1160,7 @@
   </nav>
 
   <main class="wrap">
-    <section class="hero" data-og-target="hero">
+    <section class="hero hero-clean" data-og-target="hero">
       <div>
         <div class="kicker">Kişisel Web Siteleri</div>
         <h1>Kişisel markanı <span>bir üst seviyeye</span> taşı.</h1>
@@ -1106,8 +1176,7 @@
         </div>
 
         <div class="actions">
-          <a class="btn-primary" href="https://wa.me/905457767603?text=Merhaba,%20kişisel%20web%20site%20demoları%20hakkında%20bilgi%20almak%20istiyorum." target="_blank">WhatsApp’tan Demo Seçelim</a>
-          <a class="btn-secondary" href="#demos">Canlı Demoları İncele</a>
+          <a class="btn-primary" href="#demos">Canlı Demoları İncele</a>
         </div>
 
         <div class="offer">
@@ -1123,14 +1192,7 @@
         </div>
       </div>
 
-      <div class="hero-visual">
-        <div class="hero-desktop">
-          <iframe src="https://www.fatihtopcu.online/gold/" title="Gold demo masaüstü"></iframe>
-        </div>
-        <div class="hero-phone">
-          <iframe src="https://www.fatihtopcu.online/gold/" title="Gold demo mobil"></iframe>
-        </div>
-      </div>
+
     </section>
 
     <section id="photo-service">
@@ -1171,10 +1233,100 @@
 
       <div class="demo-grid">
         
+                <article class="demo-card" data-demo="dietitian">
+          <div class="card-top">
+            <span class="badge">diyetisyen · natural</span>
+            <a class="open-link" href="https://www.fatihtopcu.online/dietitian/" target="_blank" rel="noopener">Demo siteyi gör ↗</a>
+          </div>
+
+          <div class="preview-stage">
+            <div class="desktop-frame">
+              <div class="browser-bar"><span></span><span></span><span></span><small>dietitian.demo</small></div>
+              <iframe src="https://www.fatihtopcu.online/dietitian/" loading="lazy" title="Diyetisyen Premium masaüstü demo"></iframe>
+            </div>
+
+            <div class="phone-frame">
+              <div class="phone-notch"></div>
+              <iframe src="https://www.fatihtopcu.online/dietitian/" loading="lazy" title="Diyetisyen Premium mobil demo"></iframe>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <h3>Diyetisyen Natural Sage</h3>
+            <p>Doğal, sakin ve wellness premium dili isteyen diyetisyenler için başvuru odaklı dijital vitrin.</p>
+            <div class="view-actions">
+              <button type="button" class="view-btn active" data-mode="combo">Mobil + Masaüstü</button>
+              <button type="button" class="view-btn" data-mode="mobile">Mobil</button>
+              <button type="button" class="view-btn" data-mode="desktop">Masaüstü</button>
+              <button type="button" class="play-preview">Önizleme Oynat</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="demo-card" data-demo="dietitian-clinical">
+          <div class="card-top">
+            <span class="badge">diyetisyen · clinical</span>
+            <a class="open-link" href="https://www.fatihtopcu.online/dietitian-clinical/" target="_blank" rel="noopener">Demo siteyi gör ↗</a>
+          </div>
+
+          <div class="preview-stage">
+            <div class="desktop-frame">
+              <div class="browser-bar"><span></span><span></span><span></span><small>clinical.demo</small></div>
+              <iframe src="https://www.fatihtopcu.online/dietitian-clinical/" loading="lazy" title="Diyetisyen Clinical Blue masaüstü demo"></iframe>
+            </div>
+
+            <div class="phone-frame">
+              <div class="phone-notch"></div>
+              <iframe src="https://www.fatihtopcu.online/dietitian-clinical/" loading="lazy" title="Diyetisyen Clinical Blue mobil demo"></iframe>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <h3>Diyetisyen Clinical Blue</h3>
+            <p>Medikal, temiz ve uzman görünüm isteyen diyetisyenler için clinical blue premium vitrin.</p>
+            <div class="view-actions">
+              <button type="button" class="view-btn active" data-mode="combo">Mobil + Masaüstü</button>
+              <button type="button" class="view-btn" data-mode="mobile">Mobil</button>
+              <button type="button" class="view-btn" data-mode="desktop">Masaüstü</button>
+              <button type="button" class="play-preview">Önizleme Oynat</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="demo-card" data-demo="dietitian-earthy">
+          <div class="card-top">
+            <span class="badge">diyetisyen · earthy</span>
+            <a class="open-link" href="https://www.fatihtopcu.online/dietitian-earthy/" target="_blank" rel="noopener">Demo siteyi gör ↗</a>
+          </div>
+
+          <div class="preview-stage">
+            <div class="desktop-frame">
+              <div class="browser-bar"><span></span><span></span><span></span><small>earthy.demo</small></div>
+              <iframe src="https://www.fatihtopcu.online/dietitian-earthy/" loading="lazy" title="Diyetisyen Earthy Premium masaüstü demo"></iframe>
+            </div>
+
+            <div class="phone-frame">
+              <div class="phone-notch"></div>
+              <iframe src="https://www.fatihtopcu.online/dietitian-earthy/" loading="lazy" title="Diyetisyen Earthy Premium mobil demo"></iframe>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <h3>Diyetisyen Earthy Premium</h3>
+            <p>Sıcak, butik ve Instagram kişisel marka dili isteyen diyetisyenler için earthy premium vitrin.</p>
+            <div class="view-actions">
+              <button type="button" class="view-btn active" data-mode="combo">Mobil + Masaüstü</button>
+              <button type="button" class="view-btn" data-mode="mobile">Mobil</button>
+              <button type="button" class="view-btn" data-mode="desktop">Masaüstü</button>
+              <button type="button" class="play-preview">Önizleme Oynat</button>
+            </div>
+          </div>
+        </article>
+
         <article class="demo-card" data-demo="gold">
           <div class="card-top">
             <span class="badge">gold</span>
-            <a class="open-link" href="https://www.fatihtopcu.online/gold/" target="_blank" rel="noopener">Canlı aç ↗</a>
+            <a class="open-link" href="https://www.fatihtopcu.online/gold/" target="_blank" rel="noopener">Demo siteyi gör ↗</a>
           </div>
 
           <div class="preview-stage">
@@ -1204,7 +1356,7 @@
         <article class="demo-card" data-demo="dark">
           <div class="card-top">
             <span class="badge">dark</span>
-            <a class="open-link" href="https://www.fatihtopcu.online/dark/" target="_blank" rel="noopener">Canlı aç ↗</a>
+            <a class="open-link" href="https://www.fatihtopcu.online/dark/" target="_blank" rel="noopener">Demo siteyi gör ↗</a>
           </div>
 
           <div class="preview-stage">
@@ -1234,7 +1386,7 @@
         <article class="demo-card" data-demo="pilates">
           <div class="card-top">
             <span class="badge">pilates</span>
-            <a class="open-link" href="https://www.fatihtopcu.online/pilates/" target="_blank" rel="noopener">Canlı aç ↗</a>
+            <a class="open-link" href="https://www.fatihtopcu.online/pilates/" target="_blank" rel="noopener">Demo siteyi gör ↗</a>
           </div>
 
           <div class="preview-stage">
@@ -1261,103 +1413,10 @@
           </div>
         </article>
 
-
-        <article class="demo-card" data-demo="dietitian">
-          <div class="card-top">
-            <span class="badge">diyetisyen · natural</span>
-            <a class="open-link" href="https://www.fatihtopcu.online/dietitian/" target="_blank" rel="noopener">Canlı aç ↗</a>
-          </div>
-
-          <div class="preview-stage">
-            <div class="desktop-frame">
-              <div class="browser-bar"><span></span><span></span><span></span><small>dietitian.demo</small></div>
-              <iframe src="https://www.fatihtopcu.online/dietitian/" loading="lazy" title="Diyetisyen Premium masaüstü demo"></iframe>
-            </div>
-
-            <div class="phone-frame">
-              <div class="phone-notch"></div>
-              <iframe src="https://www.fatihtopcu.online/dietitian/" loading="lazy" title="Diyetisyen Premium mobil demo"></iframe>
-            </div>
-          </div>
-
-          <div class="card-body">
-            <h3>Diyetisyen Natural Sage</h3>
-            <p>Doğal, sakin ve wellness premium dili isteyen diyetisyenler için başvuru odaklı dijital vitrin.</p>
-            <div class="view-actions">
-              <button type="button" class="view-btn active" data-mode="combo">Mobil + Masaüstü</button>
-              <button type="button" class="view-btn" data-mode="mobile">Mobil</button>
-              <button type="button" class="view-btn" data-mode="desktop">Masaüstü</button>
-              <button type="button" class="play-preview">Önizleme Oynat</button>
-            </div>
-          </div>
-        </article>
-
-        
-        <article class="demo-card" data-demo="dietitian-clinical">
-          <div class="card-top">
-            <span class="badge">diyetisyen · clinical</span>
-            <a class="open-link" href="https://www.fatihtopcu.online/dietitian-clinical/" target="_blank" rel="noopener">Canlı aç ↗</a>
-          </div>
-
-          <div class="preview-stage">
-            <div class="desktop-frame">
-              <div class="browser-bar"><span></span><span></span><span></span><small>clinical.demo</small></div>
-              <iframe src="https://www.fatihtopcu.online/dietitian-clinical/" loading="lazy" title="Diyetisyen Clinical Blue masaüstü demo"></iframe>
-            </div>
-
-            <div class="phone-frame">
-              <div class="phone-notch"></div>
-              <iframe src="https://www.fatihtopcu.online/dietitian-clinical/" loading="lazy" title="Diyetisyen Clinical Blue mobil demo"></iframe>
-            </div>
-          </div>
-
-          <div class="card-body">
-            <h3>Diyetisyen Clinical Blue</h3>
-            <p>Medikal, temiz ve uzman görünüm isteyen diyetisyenler için clinical blue premium vitrin.</p>
-            <div class="view-actions">
-              <button type="button" class="view-btn active" data-mode="combo">Mobil + Masaüstü</button>
-              <button type="button" class="view-btn" data-mode="mobile">Mobil</button>
-              <button type="button" class="view-btn" data-mode="desktop">Masaüstü</button>
-              <button type="button" class="play-preview">Önizleme Oynat</button>
-            </div>
-          </div>
-        </article>
-
-
-        <article class="demo-card" data-demo="dietitian-earthy">
-          <div class="card-top">
-            <span class="badge">diyetisyen · earthy</span>
-            <a class="open-link" href="https://www.fatihtopcu.online/dietitian-earthy/" target="_blank" rel="noopener">Canlı aç ↗</a>
-          </div>
-
-          <div class="preview-stage">
-            <div class="desktop-frame">
-              <div class="browser-bar"><span></span><span></span><span></span><small>earthy.demo</small></div>
-              <iframe src="https://www.fatihtopcu.online/dietitian-earthy/" loading="lazy" title="Diyetisyen Earthy Premium masaüstü demo"></iframe>
-            </div>
-
-            <div class="phone-frame">
-              <div class="phone-notch"></div>
-              <iframe src="https://www.fatihtopcu.online/dietitian-earthy/" loading="lazy" title="Diyetisyen Earthy Premium mobil demo"></iframe>
-            </div>
-          </div>
-
-          <div class="card-body">
-            <h3>Diyetisyen Earthy Premium</h3>
-            <p>Sıcak, butik ve Instagram kişisel marka dili isteyen diyetisyenler için earthy premium vitrin.</p>
-            <div class="view-actions">
-              <button type="button" class="view-btn active" data-mode="combo">Mobil + Masaüstü</button>
-              <button type="button" class="view-btn" data-mode="mobile">Mobil</button>
-              <button type="button" class="view-btn" data-mode="desktop">Masaüstü</button>
-              <button type="button" class="play-preview">Önizleme Oynat</button>
-            </div>
-          </div>
-        </article>
-
-<article class="demo-card" data-demo="light">
+        <article class="demo-card" data-demo="light">
           <div class="card-top">
             <span class="badge">light</span>
-            <a class="open-link" href="https://www.fatihtopcu.online/light/" target="_blank" rel="noopener">Canlı aç ↗</a>
+            <a class="open-link" href="https://www.fatihtopcu.online/light/" target="_blank" rel="noopener">Demo siteyi gör ↗</a>
           </div>
 
           <div class="preview-stage">
@@ -1387,7 +1446,7 @@
         <article class="demo-card" data-demo="classic">
           <div class="card-top">
             <span class="badge">classic</span>
-            <a class="open-link" href="https://www.fatihtopcu.online/classic/" target="_blank" rel="noopener">Canlı aç ↗</a>
+            <a class="open-link" href="https://www.fatihtopcu.online/classic/" target="_blank" rel="noopener">Demo siteyi gör ↗</a>
           </div>
 
           <div class="preview-stage">
@@ -1417,7 +1476,7 @@
         <article class="demo-card" data-demo="feminine">
           <div class="card-top">
             <span class="badge">feminine</span>
-            <a class="open-link" href="https://www.fatihtopcu.online/feminine/" target="_blank" rel="noopener">Canlı aç ↗</a>
+            <a class="open-link" href="https://www.fatihtopcu.online/feminine/" target="_blank" rel="noopener">Demo siteyi gör ↗</a>
           </div>
 
           <div class="preview-stage">
@@ -1447,7 +1506,7 @@
         <article class="demo-card" data-demo="neon">
           <div class="card-top">
             <span class="badge">neon</span>
-            <a class="open-link" href="https://www.fatihtopcu.online/neon/" target="_blank" rel="noopener">Canlı aç ↗</a>
+            <a class="open-link" href="https://www.fatihtopcu.online/neon/" target="_blank" rel="noopener">Demo siteyi gör ↗</a>
           </div>
 
           <div class="preview-stage">
