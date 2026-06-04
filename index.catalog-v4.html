@@ -12055,6 +12055,110 @@ h1,h2,h3,h4,
 
 /* === HERO MOBILE FORCE SMALL FINAL 09 END === */
 
+
+
+
+
+/* === LIVE PREVIEW ONLY FINAL FIX 02 === */
+
+/*
+  Sadece canlı önizleme alanı.
+  Üstte çalışan sektör grid/akış filtresine dokunmaz.
+*/
+
+/* Canlı önizleme demo seçimlerinde gizlenenler gerçekten kaybolsun */
+#catalogPreviewPicks .v4-demo-pick.live-preview-hidden{
+  display:none !important;
+}
+
+/* Masaüstü önizleme: iframe gerçek desktop genişliğinde render edilir, sonra çerçeveye ölçeklenir */
+#live-preview .v4-preview-shell.desktop{
+  min-height:auto !important;
+}
+
+#live-preview .v4-preview-shell.desktop .v4-preview-stage{
+  height:660px !important;
+  min-height:660px !important;
+  padding:12px !important;
+  overflow:hidden !important;
+  background:
+    radial-gradient(circle at 80% 10%,rgba(166,183,116,.06),transparent 24%),
+    linear-gradient(180deg,rgba(5,9,5,.96),rgba(3,7,3,.98)) !important;
+}
+
+#live-preview .v4-preview-shell.desktop #catalogPreviewFrame{
+  width:1440px !important;
+  max-width:none !important;
+  height:900px !important;
+  min-height:900px !important;
+  border:0 !important;
+  border-radius:14px !important;
+  display:block !important;
+  transform:scale(.74) !important;
+  transform-origin:top left !important;
+  background:#071007 !important;
+}
+
+/* Mobil görünüm aynı telefon çerçevesinde kalsın */
+#live-preview .v4-preview-shell.mobile .v4-preview-stage{
+  height:700px !important;
+  min-height:700px !important;
+  padding:12px !important;
+  overflow:hidden !important;
+}
+
+#live-preview .v4-preview-shell.mobile #catalogPreviewFrame{
+  width:390px !important;
+  max-width:100% !important;
+  height:760px !important;
+  min-height:760px !important;
+  transform:none !important;
+  margin:0 auto !important;
+}
+
+/* Orta ekran güvenli ölçek */
+@media (max-width:1180px){
+  #live-preview .v4-preview-shell.desktop .v4-preview-stage{
+    height:560px !important;
+    min-height:560px !important;
+  }
+
+  #live-preview .v4-preview-shell.desktop #catalogPreviewFrame{
+    width:1366px !important;
+    height:860px !important;
+    min-height:860px !important;
+    transform:scale(.62) !important;
+  }
+}
+
+/* Mobil sayfada preview alanı patlamasın */
+@media (max-width:760px){
+  #live-preview .v4-preview-shell.desktop .v4-preview-stage{
+    height:390px !important;
+    min-height:390px !important;
+  }
+
+  #live-preview .v4-preview-shell.desktop #catalogPreviewFrame{
+    width:1200px !important;
+    height:820px !important;
+    min-height:820px !important;
+    transform:scale(.31) !important;
+  }
+
+  #live-preview .v4-preview-shell.mobile .v4-preview-stage{
+    height:620px !important;
+    min-height:620px !important;
+  }
+
+  #live-preview .v4-preview-shell.mobile #catalogPreviewFrame{
+    width:100% !important;
+    height:680px !important;
+    min-height:680px !important;
+  }
+}
+
+/* === LIVE PREVIEW ONLY FINAL FIX 02 END === */
+
 </style>
 </head>
 
@@ -13184,6 +13288,120 @@ h1,h2,h3,h4,
 
 
 
+
+
+
+
+
+<script>
+/* === LIVE PREVIEW ONLY FINAL FIX 02 === */
+(function(){
+  const filterRow = document.querySelector('.v4-demo-filter-row');
+  const picksWrap = document.getElementById('catalogPreviewPicks');
+  const frame = document.getElementById('catalogPreviewFrame');
+  const empty = document.getElementById('catalogPreviewEmpty');
+
+  if(!filterRow || !picksWrap || !frame) return;
+
+  const picks = Array.from(picksWrap.querySelectorAll('.v4-demo-pick'));
+
+  function sectorsOf(el){
+    return (el.dataset.sectors || '')
+      .toLowerCase()
+      .split(/\s+/)
+      .filter(Boolean);
+  }
+
+  function matchesSector(el, sector){
+    if(!sector || sector === 'all') return true;
+
+    const sectors = sectorsOf(el);
+
+    if(sector === 'pt'){
+      return sectors.includes('pt') || sectors.includes('fitness');
+    }
+
+    if(sector === 'dietitian'){
+      return sectors.includes('dietitian') || sectors.includes('diyetisyen');
+    }
+
+    if(sector === 'pilates'){
+      return sectors.includes('pilates');
+    }
+
+    if(sector === 'wellness'){
+      return sectors.includes('wellness');
+    }
+
+    return sectors.includes(sector);
+  }
+
+  function setPreviewFromPick(pick){
+    if(!pick) return;
+
+    picks.forEach(btn => btn.classList.remove('active'));
+    pick.classList.add('active');
+
+    if(empty) empty.classList.remove('is-hidden');
+    frame.src = pick.dataset.url;
+  }
+
+  function applyLivePreviewSector(sector){
+    let firstVisible = null;
+
+    picks.forEach(pick => {
+      const show = matchesSector(pick, sector);
+      pick.classList.toggle('live-preview-hidden', !show);
+
+      if(show && !firstVisible){
+        firstVisible = pick;
+      }
+    });
+
+    const currentActiveVisible = picks.find(pick => {
+      return pick.classList.contains('active') && !pick.classList.contains('live-preview-hidden');
+    });
+
+    setPreviewFromPick(currentActiveVisible || firstVisible);
+  }
+
+  /* 
+    Önemli:
+    Üst sektör grid script'i click'i capture aşamasında durduruyor.
+    Bu yüzden document capture'da, ondan önce sadece canlı preview listesini güncelliyoruz.
+  */
+  document.addEventListener('click', function(e){
+    const btn = e.target.closest('.v4-demo-filter');
+    if(!btn || !filterRow.contains(btn)) return;
+
+    applyLivePreviewSector(btn.dataset.filter || 'all');
+  }, true);
+
+  /* Canlı önizleme içindeki demo butonları */
+  picks.forEach(pick => {
+    pick.addEventListener('click', function(){
+      setPreviewFromPick(pick);
+    });
+  });
+
+  /* Canlı incele butonuna basılırsa doğru demo preview'a da geçsin */
+  document.addEventListener('click', function(e){
+    const openBtn = e.target.closest('.v4-demo-open');
+    if(!openBtn) return;
+
+    const key = openBtn.dataset.key;
+    const pick = picks.find(p => p.dataset.key === key);
+
+    if(pick){
+      setPreviewFromPick(pick);
+    }
+  }, true);
+
+  const activeFilter = filterRow.querySelector('.v4-demo-filter.active');
+  applyLivePreviewSector(activeFilter?.dataset.filter || 'all');
+})();
+/* === LIVE PREVIEW ONLY FINAL FIX 02 END === */
+</script>
 
 </body>
 </html>
