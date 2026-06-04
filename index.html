@@ -12159,6 +12159,48 @@ h1,h2,h3,h4,
 
 /* === LIVE PREVIEW ONLY FINAL FIX 02 END === */
 
+
+/* === LIVE PREVIEW MOBILE DESKTOP HEIGHT FIX 03 === */
+
+/*
+  Sadece mobilde canlı önizleme içindeki "Masaüstü" modu.
+  Amaç: iframe görüntüsünün altında kalan gereksiz siyah boşluğu kaldırmak.
+  Üst sektör filtresi ve demo seçim sistemiyle ilgisi yok.
+*/
+
+@media (max-width:760px){
+  #live-preview .v4-preview-shell.desktop{
+    height:auto !important;
+    min-height:auto !important;
+  }
+
+  #live-preview .v4-preview-shell.desktop .v4-preview-stage{
+    height:282px !important;
+    min-height:282px !important;
+    max-height:282px !important;
+    padding:12px !important;
+    overflow:hidden !important;
+  }
+
+  #live-preview .v4-preview-shell.desktop #catalogPreviewFrame{
+    width:1200px !important;
+    height:820px !important;
+    min-height:820px !important;
+    transform:scale(.31) !important;
+    transform-origin:top left !important;
+  }
+}
+
+@media (max-width:430px){
+  #live-preview .v4-preview-shell.desktop .v4-preview-stage{
+    height:270px !important;
+    min-height:270px !important;
+    max-height:270px !important;
+  }
+}
+
+/* === LIVE PREVIEW MOBILE DESKTOP HEIGHT FIX 03 END === */
+
 </style>
 </head>
 
