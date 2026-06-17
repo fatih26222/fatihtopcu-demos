@@ -12744,8 +12744,8 @@ h1,h2,h3,h4,
           </div>
           <iframe
             id="catalogPreviewFrame"
-            src="/dietitian/"
-            loading="eager"
+            data-current-url=""
+            loading="lazy"
             title="Canlı demo önizleme"
           ></iframe>
         </div>
@@ -12896,6 +12896,15 @@ h1,h2,h3,h4,
 
   if(!frame || !shell) return;
 
+  frame.removeAttribute('src');
+  frame.dataset.currentUrl = '';
+  requestAnimationFrame(() => {
+    if(!frame.dataset.currentUrl) frame.removeAttribute('src');
+  });
+  setTimeout(() => {
+    if(!frame.dataset.currentUrl) frame.removeAttribute('src');
+  }, 120);
+
   let activeFilter = 'all';
 
   function sectorsOf(el){
@@ -12915,11 +12924,18 @@ h1,h2,h3,h4,
     if(!url) return;
 
     picks.forEach(btn => btn.classList.toggle('active', btn.dataset.key === key));
+
+    if(frame.dataset.currentUrl === url){
+      empty.classList.add('is-hidden');
+      return;
+    }
+
     empty.classList.remove('is-hidden');
+    frame.dataset.currentUrl = url;
     frame.src = url;
   }
 
-  function applyFilter(filter){
+  function applyFilter(filter, shouldLoadPreview = true){
     activeFilter = filter;
 
     filters.forEach(btn => btn.classList.toggle('active', btn.dataset.filter === filter));
@@ -12937,7 +12953,10 @@ h1,h2,h3,h4,
     const nextPick = currentActive || firstVisiblePick();
 
     if(nextPick){
-      setPreview(nextPick.dataset.url, nextPick.dataset.key);
+      picks.forEach(btn => btn.classList.toggle('active', btn === nextPick));
+      if(shouldLoadPreview){
+        setPreview(nextPick.dataset.url, nextPick.dataset.key);
+      }
     }
   }
 
@@ -12979,7 +12998,9 @@ h1,h2,h3,h4,
   });
 
   frame.addEventListener('load', () => {
-    empty.classList.add('is-hidden');
+    if(frame.dataset.currentUrl){
+      empty.classList.add('is-hidden');
+    }
   });
 
   frame.addEventListener('error', () => {
@@ -12987,7 +13008,31 @@ h1,h2,h3,h4,
     empty.innerHTML = '<strong>Demo yüklenemedi</strong><span>Seçilen route kontrol edilmeli.</span>';
   });
 
-  applyFilter('all');
+  applyFilter('all', false);
+
+  let previewStarted = false;
+  function startPreviewOnce(){
+    if(previewStarted) return;
+    previewStarted = true;
+
+    const firstPick = picks.find(btn => btn.classList.contains('active') && btn.style.display !== 'none') || firstVisiblePick();
+    if(firstPick){
+      setPreview(firstPick.dataset.url, firstPick.dataset.key);
+    }
+  }
+
+  const livePreview = document.getElementById('live-preview');
+  if('IntersectionObserver' in window && livePreview){
+    const observer = new IntersectionObserver(entries => {
+      if(entries[0].isIntersecting){
+        startPreviewOnce();
+        observer.disconnect();
+      }
+    }, { rootMargin: '700px 0px', threshold: 0.01 });
+    observer.observe(livePreview);
+  } else {
+    startPreviewOnce();
+  }
 })();
 </script>
 
