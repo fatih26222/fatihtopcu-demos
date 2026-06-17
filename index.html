@@ -12202,9 +12202,49 @@ h1,h2,h3,h4,
 /* === LIVE PREVIEW MOBILE DESKTOP HEIGHT FIX 03 END === */
 
 </style>
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {
+            if (document.scripts[j].src === r) { return; }
+        }
+        k=e.createElement(t);
+        a=e.getElementsByTagName(t)[0];
+        k.async=1;
+        k.src=r;
+        a.parentNode.insertBefore(k,a);
+    })(window, document, 'script',
+       'https://mc.yandex.ru/metrika/tag.js?id=109911832', 'ym');
+
+    ym(109911832, 'init', {
+        ssr: true,
+        webvisor: true,
+        clickmap: true,
+        accurateTrackBounce: true,
+        trackLinks: true,
+        referrer: document.referrer,
+        url: location.href
+    });
+</script>
+<!-- /Yandex.Metrika counter -->
+
 </head>
 
 <body>
+
+<!-- Yandex.Metrika counter noscript -->
+<noscript>
+    <div>
+        <img src="https://mc.yandex.ru/watch/109911832"
+             style="position:absolute; left:-9999px;"
+             alt="">
+    </div>
+</noscript>
+<!-- /Yandex.Metrika counter noscript -->
+
   <header class="nav">
     <div class="nav-inner">
       <a class="brand" href="#top">fatihtopcu.<span>online</span></a>
@@ -12704,8 +12744,8 @@ h1,h2,h3,h4,
           </div>
           <iframe
             id="catalogPreviewFrame"
-            data-current-url=""
-            loading="lazy"
+            src="/dietitian/"
+            loading="eager"
             title="Canlı demo önizleme"
           ></iframe>
         </div>
@@ -12856,15 +12896,6 @@ h1,h2,h3,h4,
 
   if(!frame || !shell) return;
 
-  frame.removeAttribute('src');
-  frame.dataset.currentUrl = '';
-  requestAnimationFrame(() => {
-    if(!frame.dataset.currentUrl) frame.removeAttribute('src');
-  });
-  setTimeout(() => {
-    if(!frame.dataset.currentUrl) frame.removeAttribute('src');
-  }, 120);
-
   let activeFilter = 'all';
 
   function sectorsOf(el){
@@ -12884,18 +12915,11 @@ h1,h2,h3,h4,
     if(!url) return;
 
     picks.forEach(btn => btn.classList.toggle('active', btn.dataset.key === key));
-
-    if(frame.dataset.currentUrl === url){
-      empty.classList.add('is-hidden');
-      return;
-    }
-
     empty.classList.remove('is-hidden');
-    frame.dataset.currentUrl = url;
     frame.src = url;
   }
 
-  function applyFilter(filter, shouldLoadPreview = true){
+  function applyFilter(filter){
     activeFilter = filter;
 
     filters.forEach(btn => btn.classList.toggle('active', btn.dataset.filter === filter));
@@ -12913,10 +12937,7 @@ h1,h2,h3,h4,
     const nextPick = currentActive || firstVisiblePick();
 
     if(nextPick){
-      picks.forEach(btn => btn.classList.toggle('active', btn === nextPick));
-      if(shouldLoadPreview){
-        setPreview(nextPick.dataset.url, nextPick.dataset.key);
-      }
+      setPreview(nextPick.dataset.url, nextPick.dataset.key);
     }
   }
 
@@ -12958,9 +12979,7 @@ h1,h2,h3,h4,
   });
 
   frame.addEventListener('load', () => {
-    if(frame.dataset.currentUrl){
-      empty.classList.add('is-hidden');
-    }
+    empty.classList.add('is-hidden');
   });
 
   frame.addEventListener('error', () => {
@@ -12968,31 +12987,7 @@ h1,h2,h3,h4,
     empty.innerHTML = '<strong>Demo yüklenemedi</strong><span>Seçilen route kontrol edilmeli.</span>';
   });
 
-  applyFilter('all', false);
-
-  let previewStarted = false;
-  function startPreviewOnce(){
-    if(previewStarted) return;
-    previewStarted = true;
-
-    const firstPick = picks.find(btn => btn.classList.contains('active') && btn.style.display !== 'none') || firstVisiblePick();
-    if(firstPick){
-      setPreview(firstPick.dataset.url, firstPick.dataset.key);
-    }
-  }
-
-  const livePreview = document.getElementById('live-preview');
-  if('IntersectionObserver' in window && livePreview){
-    const observer = new IntersectionObserver(entries => {
-      if(entries[0].isIntersecting){
-        startPreviewOnce();
-        observer.disconnect();
-      }
-    }, { rootMargin: '700px 0px', threshold: 0.01 });
-    observer.observe(livePreview);
-  } else {
-    startPreviewOnce();
-  }
+  applyFilter('all');
 })();
 </script>
 
