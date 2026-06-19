@@ -4,8 +4,25 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>fatih topcu online — Katalog V4</title>
-  <meta name="description" content="Diyetisyen, PT, pilates ve wellness uzmanları için başvuruya yönlendiren premium dijital vitrinler." />
+  <title>Fatih Topçu | Danışan Kazanım Odaklı Dijital Vitrinler</title>
+  <meta name="description" content="Instagram’dan gelen danışan adayını WhatsApp’a daha hazır ulaştıran kişisel dijital vitrin demo kataloğu." />
+
+  <!-- WhatsApp / sosyal medya önizleme -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Fatih Topçu" />
+  <meta property="og:title" content="Instagram’dan WhatsApp’a Daha Hazır Danışan" />
+  <meta property="og:description" content="Diyetisyenler için güven, süreç, hizmetler, SSS ve başvuru akışını tek yerde toplayan kişisel dijital vitrinler." />
+  <meta property="og:url" content="https://www.fatihtopcu.online/" />
+  <meta property="og:image" content="https://www.fatihtopcu.online/og/fto-whatsapp-og-v1.jpg" />
+  <meta property="og:image:secure_url" content="https://www.fatihtopcu.online/og/fto-whatsapp-og-v1.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Diyetisyenler için Instagram’dan WhatsApp’a daha hazır danışan getiren dijital vitrin önizlemesi" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Instagram’dan WhatsApp’a Daha Hazır Danışan" />
+  <meta name="twitter:description" content="Diyetisyenler için danışan kazanım odaklı dijital vitrin demo kataloğu." />
+  <meta name="twitter:image" content="https://www.fatihtopcu.online/og/fto-whatsapp-og-v1.jpg" />
 
   <style>
     :root{
@@ -12200,6 +12217,57 @@ h1,h2,h3,h4,
 }
 
 /* === LIVE PREVIEW MOBILE DESKTOP HEIGHT FIX 03 END === */
+
+
+
+/* === CATALOG MOBILE HERO ALIGN FIX === */
+@media (max-width:768px){
+
+  /* Başlığın satırlarının düzgün oturması */
+  .hero-title{
+    line-height:.93 !important;
+    letter-spacing:-.045em !important;
+    max-width:100% !important;
+  }
+
+  .hero-title .olive-text{
+    display:inline !important;
+  }
+
+  /* Son sektör butonunun ekrandan kesilmemesi */
+  .chip-row{
+    padding-right:24px !important;
+    scroll-padding-right:24px !important;
+  }
+
+  /*
+    Birleşik hero görselinin gerçek oranını koru.
+    Eski yüzde 78 küçültmesini geçersiz kılar.
+  */
+  .hero .wrap.hero-grid .hero-visual{
+    display:block !important;
+    width:100% !important;
+    height:auto !important;
+    min-height:0 !important;
+    max-height:none !important;
+    aspect-ratio:1.87 / 1 !important;
+
+    margin:4px 0 10px !important;
+    padding:0 !important;
+
+    background-size:100% auto !important;
+    background-position:center center !important;
+    background-repeat:no-repeat !important;
+
+    transform:none !important;
+    overflow:hidden !important;
+  }
+
+  .hero-feature-row{
+    margin-top:4px !important;
+  }
+}
+/* === END CATALOG MOBILE HERO ALIGN FIX === */
 
 </style>
 
