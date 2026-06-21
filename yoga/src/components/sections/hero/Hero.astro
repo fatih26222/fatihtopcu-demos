@@ -1,0 +1,530 @@
+<section class="hero">
+  <div
+    class="hero__background"
+    data-intro-background
+    aria-hidden="true"
+  ></div>
+
+  <div class="hero__veil" aria-hidden="true"></div>
+
+  <div class="container hero__inner">
+    <div class="hero__content">
+      <p class="eyebrow" data-intro-eyebrow>
+        Beden · Zihin · Nefes
+      </p>
+
+      <h1>
+        <span data-intro-title-first>Dengeyi bul.</span>
+        <span data-intro-title-second>Kendinle buluş.</span>
+      </h1>
+
+      <p
+        class="hero__description"
+        data-intro-description
+      >
+        Kadim yoga geleneğini çağdaş yaşamla buluşturan,
+        bedenini güçlendirirken zihnine alan açan bütünsel bir
+        akademi deneyimi.
+      </p>
+
+      <div
+        class="hero__mobile-scene"
+        aria-hidden="true"
+      ></div>
+
+      <div
+        class="hero__actions"
+        data-intro-actions
+      >
+        <a
+          class="button button--primary"
+          href="#programlar"
+        >
+          Programları keşfet
+        </a>
+
+        <a
+          class="button button--secondary"
+          href="#iletisim"
+        >
+          Ücretsiz dene
+        </a>
+      </div>
+
+      <div class="hero__proof">
+        <div data-intro-proof>
+          <strong>15+</strong>
+          <span>Yıllık deneyim</span>
+        </div>
+
+        <div data-intro-proof>
+          <strong>25</strong>
+          <span>Uzman eğitmen</span>
+        </div>
+
+        <div data-intro-proof>
+          <strong>10K+</strong>
+          <span>Mutlu üye</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a
+    class="hero__scroll"
+    data-intro-scroll
+    href="#akademi"
+  >
+    <span>Keşfet</span>
+    <i aria-hidden="true"></i>
+  </a>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: max(760px, 100svh);
+    overflow: hidden;
+    background: var(--color-surface-soft);
+  }
+
+  .hero__background,
+  .hero__veil {
+    position: absolute;
+    inset: 0;
+  }
+
+  .hero__background {
+    background-image: url("/assets/yoga/hero-desktop.webp");
+    background-position: 70% center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .hero__veil {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(243, 238, 228, 0.97) 0%,
+        rgba(243, 238, 228, 0.86) 34%,
+        rgba(243, 238, 228, 0.36) 52%,
+        rgba(243, 238, 228, 0.08) 72%,
+        rgba(243, 238, 228, 0.02) 100%
+      );
+  }
+
+  .hero__inner {
+    position: relative;
+    z-index: 2;
+    min-height: max(760px, 100svh);
+    display: grid;
+    grid-template-columns: minmax(0, 620px) 1fr;
+    align-items: center;
+    padding-top: 136px;
+    padding-bottom: 84px;
+  }
+
+  .hero__content {
+    padding-top: 20px;
+  }
+
+  h1 {
+    max-width: 760px;
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(4rem, 7.2vw, 7.2rem);
+    font-weight: 400;
+    line-height: 0.91;
+    letter-spacing: -0.045em;
+  }
+
+  h1 span {
+    display: block;
+  }
+
+  h1 span:first-child {
+    color: var(--color-text);
+    font-style: normal;
+  }
+
+  h1 span:last-child {
+    color: var(--color-olive);
+    font-style: italic;
+  }
+
+  .hero__description {
+    max-width: 570px;
+    margin: 30px 0 0;
+    color: var(--color-text-soft);
+    font-size: clamp(1rem, 1.25vw, 1.12rem);
+    line-height: 1.75;
+  }
+
+  .hero__mobile-scene {
+    display: none;
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 34px;
+  }
+
+  .hero__proof {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 58px;
+  }
+
+  .hero__proof div {
+    min-width: 140px;
+    padding-right: 30px;
+  }
+
+  .hero__proof div + div {
+    padding-left: 30px;
+    border-left: 1px solid var(--color-line);
+  }
+
+  .hero__proof strong,
+  .hero__proof span {
+    display: block;
+  }
+
+  .hero__proof strong {
+    font-family: var(--font-display);
+    font-size: 1.7rem;
+    font-weight: 400;
+  }
+
+  .hero__proof span {
+    margin-top: 4px;
+    color: var(--color-text-soft);
+    font-size: 0.67rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .hero__scroll {
+    position: absolute;
+    z-index: 4;
+    bottom: 32px;
+    left: 50%;
+    display: grid;
+    justify-items: center;
+    gap: 9px;
+    color: var(--color-text-soft);
+    font-size: 0.58rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    transform: translateX(-50%);
+  }
+
+  .hero__scroll i {
+    width: 1px;
+    height: 34px;
+    display: block;
+    background:
+      linear-gradient(
+        var(--color-olive-dark),
+        transparent
+      );
+  }
+
+  @media (max-width: 930px) {
+    .hero__inner {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 760px) {
+    .hero {
+      min-height: auto;
+      background: var(--color-surface);
+    }
+
+    .hero__background {
+      background-image: url("/assets/yoga/hero-mobile.webp");
+      background-position: center 34%;
+      background-size: cover;
+    }
+
+    .hero__veil {
+      background:
+        linear-gradient(
+          180deg,
+          rgba(243, 238, 228, 1) 0%,
+          rgba(243, 238, 228, 0.99) 34%,
+          rgba(243, 238, 228, 0.88) 43%,
+          rgba(243, 238, 228, 0.28) 56%,
+          rgba(243, 238, 228, 0.02) 68%,
+          rgba(243, 238, 228, 0) 100%
+        );
+    }
+
+    .hero__inner {
+      min-height: 0;
+      display: block;
+      padding-top: 122px;
+      padding-bottom: 0;
+    }
+
+    .hero__content {
+      width: 100%;
+      padding-top: 0;
+    }
+
+    .hero__content .eyebrow {
+      margin-bottom: 12px;
+      font-size: 0.68rem;
+    }
+
+    h1 {
+      max-width: 100%;
+      font-size: clamp(3rem, 12.5vw, 4.05rem);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+    }
+
+    .hero__description {
+      max-width: 94%;
+      margin-top: 24px;
+      font-size: 0.96rem;
+      line-height: 1.55;
+    }
+
+    .hero__mobile-scene {
+      display: block;
+      height: clamp(210px, 29svh, 270px);
+    }
+
+    .hero__actions {
+      position: relative;
+      z-index: 4;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      width: min(70%, 290px);
+      margin: -22px auto 0;
+    }
+
+    .hero__actions .button {
+      width: 100%;
+      min-height: 46px;
+    }
+
+    .hero__actions .button--primary {
+      background:
+        linear-gradient(
+          135deg,
+          rgba(72, 92, 67, 0.94),
+          rgba(45, 65, 47, 0.88)
+        );
+      border-color: rgba(255, 255, 255, 0.16);
+      box-shadow:
+        0 12px 28px rgba(40, 58, 42, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero__proof {
+      position: relative;
+      z-index: 4;
+      width: calc(100% + (var(--page-gutter) * 2));
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      margin:
+        10px
+        calc(var(--page-gutter) * -1)
+        0;
+      padding: 24px var(--page-gutter);
+      background: rgba(250, 247, 240, 0.58);
+      box-shadow: 0 -16px 40px rgba(37, 41, 32, 0.08);
+      backdrop-filter: blur(12px);
+    }
+
+    .hero__proof div {
+      min-width: 0;
+      padding: 0 8px;
+      text-align: center;
+    }
+
+    .hero__proof div + div {
+      padding-left: 8px;
+    }
+
+    .hero__proof strong {
+      font-size: 1.35rem;
+    }
+
+    .hero__proof span {
+      margin-top: 5px;
+      font-size: 0.49rem;
+      line-height: 1.35;
+    }
+
+    .hero__scroll {
+      display: none;
+    }
+  }
+
+  @media (max-width: 390px) {
+    .hero__inner {
+      padding-top: 136px;
+    }
+
+    h1 {
+      font-size: 2.92rem;
+    }
+
+    .hero__description {
+      font-size: 0.92rem;
+    }
+
+    .hero__mobile-scene {
+      height: 420px;
+    }
+
+    .hero__actions {
+      width: 92%;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+
+  function runHeroIntro() {
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if (reduceMotion) return;
+
+    const isMobile = window.matchMedia(
+      "(max-width: 760px)"
+    ).matches;
+
+    const background = document.querySelector(
+      "[data-intro-background]"
+    );
+
+    const timeline = gsap.timeline({
+      defaults: {
+        ease: "power3.out",
+      },
+    });
+
+    if (background) {
+      gsap.set(background, {
+        scale: isMobile ? 1.03 : 1.07,
+        transformOrigin: "center center",
+      });
+    }
+
+    timeline
+      .from("[data-intro-announcement]", {
+        autoAlpha: 0,
+        y: -18,
+        duration: 0.55,
+      })
+      .from(
+        "[data-intro-navigation]",
+        {
+          autoAlpha: 0,
+          y: -22,
+          duration: 0.7,
+        },
+        "-=0.3"
+      )
+      .from(
+        "[data-intro-eyebrow]",
+        {
+          autoAlpha: 0,
+          y: 22,
+          duration: 0.55,
+        },
+        "-=0.25"
+      )
+      .from(
+        "[data-intro-title-first]",
+        {
+          autoAlpha: 0,
+          y: isMobile ? 36 : 58,
+          duration: isMobile ? 0.75 : 1,
+        },
+        "-=0.25"
+      )
+      .from(
+        "[data-intro-title-second]",
+        {
+          autoAlpha: 0,
+          y: isMobile ? 32 : 50,
+          duration: isMobile ? 0.75 : 1,
+        },
+        "-=0.65"
+      )
+      .from(
+        "[data-intro-description]",
+        {
+          autoAlpha: 0,
+          y: 25,
+          duration: 0.65,
+        },
+        "-=0.52"
+      )
+      .from(
+        "[data-intro-actions]",
+        {
+          autoAlpha: 0,
+          y: 22,
+          duration: 0.6,
+        },
+        "-=0.42"
+      )
+      .from(
+        "[data-intro-proof]",
+        {
+          autoAlpha: 0,
+          y: 20,
+          stagger: 0.12,
+          duration: 0.55,
+        },
+        "-=0.3"
+      )
+      .from(
+        "[data-intro-scroll]",
+        {
+          autoAlpha: 0,
+          y: -10,
+          duration: 0.5,
+        },
+        "-=0.15"
+      );
+
+    if (background) {
+      timeline.to(
+        background,
+        {
+          scale: 1,
+          duration: isMobile ? 1.7 : 2.4,
+          ease: "power2.out",
+        },
+        0.1
+      );
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener(
+      "DOMContentLoaded",
+      runHeroIntro,
+      { once: true }
+    );
+  } else {
+    runHeroIntro();
+  }
+</script>

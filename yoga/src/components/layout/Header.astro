@@ -1,0 +1,202 @@
+<header class="site-header">
+  <div class="announcement" data-intro-announcement>
+    <div class="container announcement__inner">
+      <span>Yeni dönem kayıtları başladı</span>
+      <a href="#programlar">Erken kayıt avantajlarını keşfet →</a>
+    </div>
+  </div>
+
+  <div class="container navigation" data-intro-navigation>
+    <a class="brand" href="/" aria-label="Nirvana Yoga Akademi ana sayfa">
+      <span class="brand__mark" aria-hidden="true">◉</span>
+
+      <span>
+        <strong>Nirvana</strong>
+        <small>Yoga Akademi</small>
+      </span>
+    </a>
+
+    <nav class="navigation__links" aria-label="Ana navigasyon">
+      <a href="#akademi">Akademi</a>
+      <a href="#programlar">Programlar</a>
+      <a href="#egitmenler">Eğitmenler</a>
+      <a href="#retreat">Retreat</a>
+      <a href="#blog">Blog</a>
+    </nav>
+
+    <div class="navigation__actions">
+      <a class="button button--primary" href="#iletisim">
+        Ücretsiz dene
+      </a>
+
+      <button
+        class="menu-button"
+        type="button"
+        aria-label="Menüyü aç"
+        aria-expanded="false"
+      >
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: absolute;
+    inset: 0 0 auto;
+    z-index: 20;
+  }
+
+  .announcement {
+    color: rgba(255, 253, 248, 0.9);
+    background: var(--color-olive-dark);
+  }
+
+  .announcement__inner {
+    min-height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    font-size: 0.68rem;
+    letter-spacing: 0.04em;
+  }
+
+  .announcement__inner a {
+    font-weight: 600;
+  }
+
+  .navigation {
+    min-height: 86px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 42px;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .brand__mark {
+    width: 38px;
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+    color: var(--color-gold);
+    border: 1px solid rgba(48, 58, 43, 0.26);
+    border-radius: 50%;
+    font-size: 0.7rem;
+  }
+
+  .brand strong,
+  .brand small {
+    display: block;
+  }
+
+  .brand strong {
+    font-family: var(--font-display);
+    font-size: 1.34rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+  }
+
+  .brand small {
+    margin-top: 1px;
+    color: var(--color-text-soft);
+    font-size: 0.57rem;
+    font-weight: 600;
+    letter-spacing: 0.21em;
+    text-transform: uppercase;
+  }
+
+  .navigation__links {
+    display: flex;
+    justify-content: center;
+    gap: clamp(18px, 2.4vw, 38px);
+    color: var(--color-olive-dark);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .navigation__links a {
+    position: relative;
+  }
+
+  .navigation__links a::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: -7px;
+    left: 0;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform var(--transition);
+  }
+
+  .navigation__links a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  .navigation__actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .menu-button {
+    width: 46px;
+    aspect-ratio: 1;
+    display: none;
+    place-content: center;
+    gap: 6px;
+    border: 1px solid var(--color-line);
+    border-radius: 50%;
+    background: rgba(255, 253, 248, 0.45);
+  }
+
+  .menu-button span {
+    width: 18px;
+    height: 1px;
+    display: block;
+    background: var(--color-olive-dark);
+  }
+
+  @media (max-width: 930px) {
+    .navigation__links {
+      display: none;
+    }
+
+    .navigation {
+      grid-template-columns: 1fr auto;
+    }
+
+    .menu-button {
+      display: grid;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .announcement__inner span {
+      display: none;
+    }
+
+    .navigation {
+      min-height: 74px;
+      gap: 12px;
+    }
+
+    .navigation__actions .button {
+      display: none;
+    }
+  }
+</style>
