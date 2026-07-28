@@ -1814,29 +1814,30 @@
       });
     });
 
-    /* Masaüstü modu dar ekranda da GERÇEK masaüstü düzenini göstersin:
-       iframe masaüstü genişliğinde render edilir, sahneye sığacak şekilde ölçeklenir */
+    /* Masaüstü modu dar ekranda da GERÇEK masaüstü düzenini göstersin.
+       KRİTİK: iframe'in ölçüsü SABİT ve gerçekçi bir pencere olmalı (1200x820).
+       Demoların hero bölümü pencere yüksekliğine kilitli; yüksekliği sahneye
+       göre hesaplarsak demoya 1100x1700 gibi var olmayan bir pencere vermiş
+       oluruz ve kompozisyon gerilir. Doğrusu: pencere sabit, SAHNE ona uyar. */
     var stage = document.querySelector('.preview-stage');
-    var DESKTOP_W = 1100, MOBILE_W = 390;
+    var DESKTOP_W = 1200, DESKTOP_H = 820;
+    var MOBILE_W  = 390,  MOBILE_H  = 780;
 
     function applyPreviewScale(){
       if(!stage) return;
       var mobile = shell.classList.contains('mobile');
-      var target = mobile ? MOBILE_W : DESKTOP_W;
-      var stageW = stage.clientWidth;
-      var stageH = stage.clientHeight;
+      var tw = mobile ? MOBILE_W : DESKTOP_W;
+      var th = mobile ? MOBILE_H : DESKTOP_H;
+      var scale = Math.min(1, stage.clientWidth / tw);
 
-      if(stageW >= target){
-        frame.style.width = mobile ? (MOBILE_W + 'px') : '100%';
-        frame.style.transform = '';
-        frame.style.height = '';
-      } else {
-        var scale = stageW / target;
-        frame.style.width = target + 'px';
-        frame.style.transformOrigin = '0 0';
-        frame.style.transform = 'scale(' + scale + ')';
-        frame.style.height = (stageH / scale) + 'px';
-      }
+      frame.style.width = tw + 'px';
+      frame.style.height = th + 'px';
+      /* CSS'teki max-width:100% pencereyi sahneye kırpmasın; ölçüyü JS belirler */
+      frame.style.maxWidth = 'none';
+      frame.style.transformOrigin = '0 0';
+      frame.style.transform = scale < 1 ? 'scale(' + scale + ')' : '';
+      /* Sahne, ölçeklenmiş görüntünün tam boyunda olur: ne boşluk ne taşma */
+      stage.style.height = Math.round(th * scale) + 'px';
     }
 
     viewBtns.forEach(function(b){
